@@ -22,7 +22,7 @@ public class Artista extends Pessoa {
 		
 		this.estiloMusical = estiloMusical;
 	}
-	
+
 	/* 
 	 * Criando o método construtor da classe Artista, assim, quando um artista for criado, criamos também uma lista de musicas :
 	*/
@@ -57,5 +57,13 @@ public class Artista extends Pessoa {
 		return musicas.get(posicao);
 	}
 	
+	public ArrayList<Musica> getMusicas() {
+		return musicas;
+	}
 	
+	public void listarMusicas() {
+		for (Musica musica : musicas) {
+			System.out.println(musica.getNomeMusica());
+		}
+	}
 }

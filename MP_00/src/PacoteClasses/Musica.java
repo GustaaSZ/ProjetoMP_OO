@@ -1,7 +1,6 @@
 package PacoteClasses;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Musica {
 
@@ -60,7 +59,6 @@ public class Musica {
 	 * criada, criamos também uma lista de artistas, duplas e playlists :
 	*/
 	public Musica() {
-		
 		artistas = new ArrayList<Artista>();
 		duplas = new ArrayList<Dupla>();
 		playlists = new ArrayList<Playlist>();

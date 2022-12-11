@@ -80,6 +80,16 @@ public class Dupla extends Pessoa {
 			// Retorna as musicas de cada posição
 			return musicas.get(posicao);
 		}
+
+		public ArrayList<Musica> getMusicas() {
+			return musicas;
+		}
+		
+		public void listarMusicas() {
+			for (Musica musica : musicas) {
+				System.out.println(musica.getNomeMusica());
+			}
+		}
 	
 	
 }
