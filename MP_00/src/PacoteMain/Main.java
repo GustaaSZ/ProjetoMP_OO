@@ -9,7 +9,7 @@ import PacoteClasses.Playlist;
 
 public class Main {
 
-	public static void main(String[] args) {
+public static void main(String[] args) {
 		
 		// Atributo usado apenas na classe princial
 		int opcao = 0;
@@ -36,7 +36,8 @@ public class Main {
 			System.out.println("");
 			switch(opcao) {
 			
-			case 1: // ARTISTA E MUSICA
+			case 1: // ARTISTA 
+				
 				ler.nextLine();
 				// Criando o objeto artista1
 				
@@ -73,7 +74,7 @@ public class Main {
 				
 				break;
 				
-			case 2: // DUPLA E MUSICA
+			case 2: // DUPLA
 
 				// Criando o objeto dupla1
 				Dupla dupla = new Dupla();
@@ -112,7 +113,7 @@ public class Main {
 				System.out.println("Dados da Dupla "+dupla.getNome()+" e "+dupla.getNomeDupla());
 				System.out.println("");
 				System.out.println("Nome: "+dupla.getNome()+" e "+dupla.getNomeDupla());
-				System.out.println("* Idade \n- "+dupla.getNome()+": "+dupla.getIdade()+"\n- "+dupla.getNomeDupla()+": "+dupla.getIdadeDupla());
+				System.out.println("* Idade \n- "+dupla.getNome()+": "+dupla.getIdade()+"\n - "+dupla.getNomeDupla()+": "+dupla.getIdadeDupla());
 				System.out.println("* Nacionalidade \n- "+dupla.getNome()+": "+dupla.getNacionalidade()+"\n-"+dupla.getNomeDupla()+": "+dupla.getNacionalidadeDupla());
 				System.out.println("Estilo Musical: "+dupla.getEstiloMusicalDupla());
 				System.out.println("");
@@ -155,29 +156,43 @@ public class Main {
 				do {
 					System.out.println("Adicionar musica para um artista ou uma dupla? (A/D)");
 					op = ler.nextLine();
+					
 					if (op.equalsIgnoreCase("a")) {
+						
 						System.out.println("Para qual artista deseja cadastrar a musica?");
 						nome = ler.nextLine();
+						
 						for (Artista art : artistasCadastrados) {
+							
 							if (nome.equalsIgnoreCase(art.getNome())) {
+								
 								musica.adicionarArtista(art);
 								art.adicionarMusica(musica);
 								verifica = true;
+								
 								break;
 							}
 						}
+						
 					} else if (op.equalsIgnoreCase("d")) {
+						
 						System.out.println("Para qual dupla deseja cadastrar a musica?");
 						nome = ler.nextLine();
+						
 						for (Dupla dup : duplasCadastradas) {
-							if (nome.equalsIgnoreCase(dup.getNome())) {
+							
+							if (nome.equalsIgnoreCase(dup.getNome()+" e "+dup.getNomeDupla())) {
+								
 								musica.adicionarDupla(dup);
 								dup.adicionarMusica(musica);
 								verifica = true;
 								break;
+								
 							}
 						}
+						
 					} else {
+						
 						System.out.println("Insira uma opcao valida (A/D)");
 					}
 						
@@ -197,6 +212,7 @@ public class Main {
 			case 4:// PLAYLIST
 				
 				if (artistasCadastrados.size() == 0 && duplasCadastradas.size() == 0) {
+					
 					System.out.println("Nao existe nenhum artista ou dupla cadastrada!");
 					System.out.println("");
 					break;
@@ -216,15 +232,23 @@ public class Main {
 				do {
 					System.out.println("Adicionar musica de um artista ou uma dupla? (A/D)");
 					op = ler.nextLine();
+					
 					if (op.equalsIgnoreCase("a")) {
+						
 						System.out.println("De qual artista deseja adicionar uma musica na playlist?");
 						String nomeArtista = ler.nextLine();
+						
 						for (Artista art : artistasCadastrados) {
+							
 							if (nomeArtista.equalsIgnoreCase(art.getNome())){
+								
 								System.out.println("Qual musica do artista " + art.getNome()+"?");
 								nomeMusica = ler.nextLine();
+								
 								for (Musica mus : art.getMusicas()) {
+									
 									if (mus.getNomeMusica().equalsIgnoreCase(nomeMusica)) {
+										
 										playlist.adicionarMusica(mus);
 										verifica = true;
 										break;
@@ -233,15 +257,23 @@ public class Main {
 								
 							}
 						}
+						
 					} else if (op.equalsIgnoreCase("d")) {
+						
 						System.out.println("De qual dupla deseja adicionar uma musica na playlist?");
 						String nomeDupla = ler.nextLine();
+						
 						for (Dupla dup : duplasCadastradas) {
-							if (nomeDupla.equalsIgnoreCase(dup.getNome())){
-								System.out.println("Qual musica do artista " + dup.getNome()+"?");
+							
+							if (nomeDupla.equalsIgnoreCase(dup.getNome()+ " e "+dup.getNomeDupla() )){
+								
+								System.out.println("Qual musica da dupla " + dup.getNome()+" e "+dup.getNomeDupla()+"?");
 								nomeMusica = ler.nextLine();
+								
 								for (Musica mus : dup.getMusicas()) {
+									
 									if (mus.getNomeMusica().equalsIgnoreCase(nomeMusica)) {
+										
 										playlist.adicionarMusica(mus);
 										verifica = true;
 										break;
@@ -263,6 +295,7 @@ public class Main {
 			case 5: 
 				
 				if (artistasCadastrados.size() == 0 && duplasCadastradas.size() == 0) {
+					
 					System.out.println("Nao existe nenhum artista ou dupla cadastrada!");
 					System.out.println("");
 					break;
@@ -274,6 +307,7 @@ public class Main {
 					System.out.println("Lista de artistas e suas musicas:");
 					System.out.println("");
 					for (Artista art : artistasCadastrados) {
+						
 						i = 1;
 						System.out.println(i+ ") " + art.getNome()+ ":");
 						art.listarMusicas();
@@ -284,15 +318,19 @@ public class Main {
 				}
 				
 				if (duplasCadastradas.size() > 0) {
+					
 					System.out.println("Lista de duplas e suas musicas:");
 					System.out.println("");
+					
 					for (Dupla dup : duplasCadastradas) {
+						
 						i = 1;
-						System.out.println(i+ ") " + dup.getNomeDupla()+ ":");
+						System.out.println(i+ ") " +dup.getNome()+" e "+ dup.getNomeDupla()+ ":");
 						dup.listarMusicas();
 						System.out.println("");
 						System.out.println("");
 						i++;
+						
 					}
 				}
 				
@@ -313,5 +351,6 @@ public class Main {
 		
 		ler.close();
 	}
+	
 	
 }
