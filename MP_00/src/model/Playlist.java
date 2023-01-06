@@ -49,8 +49,8 @@ public class Playlist {
 	}
 
 	public void listarMusicas() {
-		System.out.println("Musicas da playlist " + this.nome + ":");
 		System.out.println("--------------------------------------------------");
+		System.out.println("Musicas da playlist " + this.nome + ":");
 		for (Musica value: musicas) {
 			System.out.println(value);
 		}
