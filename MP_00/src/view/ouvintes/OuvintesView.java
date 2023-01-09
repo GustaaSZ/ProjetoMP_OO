@@ -69,7 +69,7 @@ public class OuvintesView implements ActionListener{
     		pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	btnAdd = new JButton("Adicionar ouvinte");
+    	btnAdd = new JButton("Cadastrar ouvinte");
     	btnRemove = new JButton("Remover ouvinte");
     	btnUpdate = new JButton("Atualizar ouvinte");
     	btnList = new JButton("Listar ouvintes");

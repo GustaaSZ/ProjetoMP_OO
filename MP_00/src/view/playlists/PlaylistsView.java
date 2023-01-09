@@ -69,7 +69,7 @@ public class PlaylistsView implements ActionListener{
     		pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	btnAdd = new JButton("Adicionar playlist");
+    	btnAdd = new JButton("Cadastrar playlist");
     	btnRemove = new JButton("Remover playlist");
     	btnUpdate = new JButton("Atualizar playlist");
     	btnList = new JButton("Listar Playlists");

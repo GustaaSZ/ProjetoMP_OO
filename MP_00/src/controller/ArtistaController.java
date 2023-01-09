@@ -1,9 +1,10 @@
 package controller;
 
 import static model.Artista.artistasCadastrados;
-import static model.Musica.musicasCadastradas;
 
 import java.util.Objects;
+
+import javax.swing.JOptionPane;
 
 import model.Artista;
 import model.Musica;
@@ -65,15 +66,15 @@ public class ArtistaController {
 
     public static boolean removerArtistaCadastrado(Artista artista) {
         if (!artistaExiste(artista)) {
-            System.out.println("Artista nao cadastrado!");
+//            System.out.println("Artista nao cadastrado!");
             return false;
         }
         if (artista.getMusicas().isEmpty()) {
             artistasCadastrados.remove(artista);
-            System.out.println("artista removido");
+//            System.out.println("artista removido");
             return true;
         } else {
-            System.out.println("Artista possui musicas cadastradas!");
+//            System.out.println("Artista possui musicas cadastradas!");
             return false;
         }
     }
@@ -84,14 +85,14 @@ public class ArtistaController {
         }
     }
 
-    public static void buscarArtistaPorNome(String nome) {
+    public static Artista buscarArtistaPorNome(String nome) {
         for (Artista value : artistasCadastrados) {
             if (Objects.equals(value.getNome(), nome)) {
-                System.out.println(value);
-                return;
+                return value;
             }
         }
-        System.out.println("Artista nao encontrado!");
+        JOptionPane.showMessageDialog(null, "Não foi possível encontrar o artista!");
+		return null;
     }
 
     private static Boolean artistaExiste(Artista artista) {

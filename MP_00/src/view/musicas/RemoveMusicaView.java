@@ -1,7 +1,7 @@
 package view.musicas;
 
-import static model.Artista.artistasCadastrados;
 import static model.Musica.musicasCadastradas;
+import static controller.MusicaController.removerMusica;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,7 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import model.Artista;
 import model.Musica;
 
 public class RemoveMusicaView extends JFrame implements ActionListener {
@@ -105,9 +104,8 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnRemover) {
-			
-			musicasCadastradas.remove((Musica) cboxMusica.getSelectedItem());
 
+			removerMusica((Musica) cboxMusica.getSelectedItem());
 			this.dispose();
 			new MusicasView();
 			JOptionPane.showMessageDialog(null, "Musica removida com sucesso!");

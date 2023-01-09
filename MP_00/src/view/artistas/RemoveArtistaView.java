@@ -16,7 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import controller.ArtistaController;
 import model.Artista;
 
 public class RemoveArtistaView extends JFrame implements ActionListener {
@@ -108,6 +107,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 			
 			if(!removerArtistaCadastrado((Artista) cboxArtista.getSelectedItem())) {
 				JOptionPane.showMessageDialog(null, "Não foi possível remover o artista!");
+				return;
 			}
 			
 			this.dispose();

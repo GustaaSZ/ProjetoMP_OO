@@ -69,7 +69,7 @@ public class MusicasView implements ActionListener {
 			pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnAdd = new JButton("Adicionar Musica");
+		btnAdd = new JButton("Cadastrar Musica");
 		btnRemove = new JButton("Remover Musica");
 		btnUpdate = new JButton("Atualizar Musica");
 		btnList = new JButton("Listar Musicas");

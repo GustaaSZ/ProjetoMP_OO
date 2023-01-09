@@ -70,7 +70,7 @@ public class ArtistasView implements ActionListener {
 			pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnAdd = new JButton("Adicionar Artista");
+		btnAdd = new JButton("Cadastrar Artista");
 		btnRemove = new JButton("Remover Artista");
 		btnUpdate = new JButton("Atualizar Artista");
 		btnList = new JButton("Listar Artistas");
