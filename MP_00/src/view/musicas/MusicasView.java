@@ -10,23 +10,23 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import static model.Artista.artistasCadastrados;
-
 import view.MainView;
 
 public class MusicasView implements ActionListener{
 	
 	private JFrame musicaView = new JFrame("Gerenciamento de Musicas");
-	protected JPanel pnlTitle;
-	protected JPanel pnlBody;
+	
+	private JPanel pnlTitle;
+	private JPanel pnlBody;
+	private JPanel pnlRodape;
 	
 	private JLabel lblTitle;
 	
-	protected JButton btnAdd;
-	protected JButton btnRemove;
-	protected JButton btnUpdate;
-	protected JButton btnList;
-	protected JButton btnVoltar;
+	private JButton btnAdd;
+	private JButton btnRemove;
+	private JButton btnUpdate;
+	private JButton btnList;
+	private JButton btnVoltar;
 
 	public MusicasView() {
         inicializar();
@@ -41,6 +41,7 @@ public class MusicasView implements ActionListener{
         musicaView.getContentPane().setLayout(new BorderLayout());
         musicaView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
         musicaView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
+        musicaView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         
         btnAdd.addActionListener(this);
         btnRemove.addActionListener(this);
@@ -69,15 +70,25 @@ public class MusicasView implements ActionListener{
     	btnRemove = new JButton("Remover Musica");
     	btnUpdate = new JButton("Atualizar Musica");
     	btnList = new JButton("Listar Musicas");
-    	btnVoltar = new JButton("Voltar");
     	
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
     	pnlBody.add(btnList);
-    	pnlBody.add(btnVoltar);
     	
 		return pnlBody;
+	}
+    
+    public JPanel getPnlRodape() {
+		if (pnlRodape == null) {
+			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		}
+		
+		btnVoltar = new JButton("Voltar");
+    	
+    	pnlRodape.add(btnVoltar);
+		
+		return pnlRodape;
 	}
 
     @Override
@@ -85,17 +96,13 @@ public class MusicasView implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnAdd) {
-			if (artistasCadastrados.size() > 0) {
-				musicaView.dispose();
-				new AddMusicaView();
-			} else {
-				//nao tem artista cadastrado
-			}
+			musicaView.dispose();
+			new AddMusicaView();
 		}
 		
 		if (src == btnRemove) {
 			musicaView.dispose();
-//			new RemoveMusicasView();
+			new RemoveMusicaView();
 		}
 		
 		if (src == btnUpdate) {

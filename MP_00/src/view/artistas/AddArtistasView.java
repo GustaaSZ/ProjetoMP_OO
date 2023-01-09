@@ -1,30 +1,23 @@
-package view.musicas;
+package view.artistas;
 
 import static model.Artista.artistasCadastrados;
-import static model.Musica.musicasCadastradas;
-import static util.Conversor.stringToDate;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
+import java.util.InputMismatchException;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
 
 import model.Artista;
-import model.LetraMusica;
-import model.Musica;
 
-public class AddMusicaView extends JFrame implements ActionListener{
+public class AddArtistasView extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -34,22 +27,14 @@ public class AddMusicaView extends JFrame implements ActionListener{
 	
 	private JLabel lblTitle;
 	private JLabel lblNome;
-	private JLabel lblGenero;
-	private JLabel lblLancamento;
-	private JLabel lblLetra;
-	private JLabel lblArtista;
 	
 	private JTextField txtNome;
-	private JTextField txtGenero;
-	private JFormattedTextField txtLancamento;
-	private JTextField txtLetra;
 	
-	private JComboBox<Artista> cboxArtista;	
-		
+	
 	private JButton btnCriar;
 	private JButton btnCancelar;
 
-	public AddMusicaView(){
+	public AddArtistasView(){
 		inicializar();
 	}
 
@@ -84,40 +69,14 @@ public class AddMusicaView extends JFrame implements ActionListener{
 	
 	public JPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(5,2));
+    		pnlForm = new JPanel(new GridLayout(1,2));
     	}
     	
     	lblNome = new JLabel("Nome");
-    	txtNome = new JTextField(15);
-    	
-    	lblGenero = new JLabel("Genero");
-    	txtGenero = new JTextField(15);
-    	
-    	lblLancamento = new JLabel("Lancamento");
-    	txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
-    	
-    	lblLetra = new JLabel("Letra");
-    	txtLetra = new JTextField(20);
-    	
-    	lblArtista = new JLabel("Artista");
-    	
-    	Artista[] array = new Artista[artistasCadastrados.size()];
-    	for(int i = 0; i < array.length; i++) {
-    	    array[i] = artistasCadastrados.get(i);
-    	}
-    	cboxArtista = new JComboBox<>(array);
-    	
+    	txtNome = new JTextField(20);
     	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
-    	pnlForm.add(lblGenero);
-    	pnlForm.add(txtGenero);
-    	pnlForm.add(lblLancamento);
-    	pnlForm.add(txtLancamento);
-    	pnlForm.add(lblLetra);
-    	pnlForm.add(txtLetra);
-    	pnlForm.add(lblArtista);
-    	pnlForm.add(cboxArtista);
     	
 		return pnlForm;
 	}
@@ -127,7 +86,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnCriar = new JButton("Criar Musica");
+		btnCriar = new JButton("Criar Artista");
     	btnCancelar = new JButton("Cancelar");
     	
     	pnlRodape.add(btnCriar);
@@ -141,34 +100,19 @@ public class AddMusicaView extends JFrame implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnCriar) {
-			try {
-				new Musica(
-					(Artista) cboxArtista.getSelectedItem(),
-					txtNome.getText().trim(), 
-					new LetraMusica(txtLetra.getText()), 
-					txtGenero.getText().trim(), 
-					stringToDate(txtLancamento.getText())
-					);
-				System.out.println(musicasCadastradas.get(0));
-			} catch (ParseException e1) {
-				e1.printStackTrace();
+			if(txtNome.getText() == null || txtNome.getText().trim() == "") {
+				throw new InputMismatchException("Campo invalido");
 			}
-			
+			new Artista(txtNome.getText().trim());
+			System.out.println(artistasCadastrados.get(0));
 			this.dispose();
-			new MusicasView();
+			new ArtistasView();
 		}
 		
 		if (src == btnCancelar) {
 			this.dispose();
-			new MusicasView();
+			new ArtistasView();
 		}
 	}
 	
-	private MaskFormatter setMascara(String mascara){
-	    MaskFormatter mask = null;
-	    try{
-	        mask = new MaskFormatter(mascara);                      
-	        }catch(java.text.ParseException ex){}
-	    return mask;
-	}
 }

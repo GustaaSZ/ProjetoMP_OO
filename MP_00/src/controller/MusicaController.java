@@ -49,7 +49,7 @@ public class MusicaController {
     }
 
     public void editarLetra(String letra) {
-        musica.getLetraMusica().setLetra(letra);
+        musica.getletra().setLetra(letra);
     }
 
     public int quantidadeArtistas() {

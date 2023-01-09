@@ -1,36 +1,35 @@
 package model;
 
-import util.Conversor;
-
 import java.util.ArrayList;
 import java.util.Date;
 
+import util.Conversor;
+
 public class Musica {
 
-    private final ArrayList<Artista> artistas;
+    private ArrayList<Artista> artistas;
     private String nome;
     private String genero;
     private Date lancamento;
-    private LetraMusica letraMusica;
+    private LetraMusica letra;
 
     //Array com todas as músicas cadastradas.
     public static ArrayList<Musica> musicasCadastradas = new ArrayList<>();
 
-    public Musica(ArrayList<Artista> artistas, String nomeDaMusica, LetraMusica letraMusica, String genero, Date lancamento) {
-        this.artistas = artistas;
-        this.nome = nomeDaMusica;
-        this.letraMusica = letraMusica;
+    public Musica(Artista artista, String nome, LetraMusica letra, String genero, Date lancamento) {
+        this.artistas = new ArrayList<>();
+        this.nome = nome;
+        this.letra = letra;
         this.genero = genero;
         this.lancamento = lancamento;
 
         musicasCadastradas.add(this);
 
-        for (Artista artista : artistas) {
-            artista.getMusicas().add(this);
-        }
+        artistas.add(artista);
+        artista.getMusicas().add(this);
     }
 
-    public ArrayList<Artista> getArtistas() {
+	public ArrayList<Artista> getArtistas() {
         return artistas;
     }
 
@@ -58,8 +57,8 @@ public class Musica {
         this.lancamento = lancamento;
     }
 
-    public LetraMusica getLetraMusica() {
-        return letraMusica;
+    public LetraMusica getletra() {
+        return letra;
     }
 
     @Override

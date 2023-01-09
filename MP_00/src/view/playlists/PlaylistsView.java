@@ -1,4 +1,4 @@
-package view.artistas;
+package view.playlists;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 
 import view.MainView;
 
-public class ArtistasView implements ActionListener{
+public class PlaylistsView implements ActionListener{
 	
-	private static JFrame artistaView = new JFrame("Crud de Artistas");
+	private JFrame playlistView = new JFrame("Gerenciamento de Playlists");
 	
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
@@ -27,23 +27,21 @@ public class ArtistasView implements ActionListener{
 	private JButton btnUpdate;
 	private JButton btnList;
 	private JButton btnVoltar;
-	
 
-	public ArtistasView() {
+	public PlaylistsView() {
         inicializar();
     }
 
     private void inicializar() {
-        artistaView.setTitle("Gerenciamento de Artistas");
-        artistaView.setSize(600, 400);
-        artistaView.setLocationRelativeTo(null);
-        artistaView.setResizable(false);
-        artistaView.setVisible(true);
+        playlistView.setSize(600, 400);
+        playlistView.setLocationRelativeTo(null);
+        playlistView.setResizable(false);
+        playlistView.setVisible(true);
         
-        artistaView.getContentPane().setLayout(new BorderLayout());
-        artistaView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        artistaView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
-        artistaView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
+        playlistView.getContentPane().setLayout(new BorderLayout());
+        playlistView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
+        playlistView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
+        playlistView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         
         btnAdd.addActionListener(this);
         btnRemove.addActionListener(this);
@@ -57,7 +55,7 @@ public class ArtistasView implements ActionListener{
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Crud de Artistas");
+    	lblTitle = new JLabel("Crud de Playlists");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -68,10 +66,10 @@ public class ArtistasView implements ActionListener{
     		pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	btnAdd = new JButton("Adicionar Artista");
-    	btnRemove = new JButton("Remover Artista");
-    	btnUpdate = new JButton("Atualizar Artista");
-    	btnList = new JButton("Listar Artistas");
+    	btnAdd = new JButton("Adicionar playlist");
+    	btnRemove = new JButton("Remover playlist");
+    	btnUpdate = new JButton("Atualizar playlist");
+    	btnList = new JButton("Listar Playlists");
     	
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
@@ -93,34 +91,33 @@ public class ArtistasView implements ActionListener{
 		return pnlRodape;
 	}
 
-	@Override
+    @Override
 	public void actionPerformed(ActionEvent e) {
-Object src = e.getSource();
+		Object src = e.getSource();
 		
 		if (src == btnAdd) {
-			artistaView.dispose();
-			new AddArtistasView();
+				playlistView.dispose();
+//				new AddPlaylistView();
 		}
 		
 		if (src == btnRemove) {
-			artistaView.dispose();
-			new RemoveArtistaView();
+			playlistView.dispose();
+//			new RemovePlaylistsView();
 		}
 		
 		if (src == btnUpdate) {
-			artistaView.dispose();
-//			new UpdateMusicasView();
+			playlistView.dispose();
+//			new UpdatePlaylistsView();
 		}
 		
 		if (src == btnList) {
-			artistaView.dispose();
-//			new ListMusicasView();
+			playlistView.dispose();
+//			new ListPlaylistsView();
 		}
 		
 		if (src == btnVoltar) {
-			artistaView.dispose();
+			playlistView.dispose();
 			new MainView();
 		}
 	}
-
 }

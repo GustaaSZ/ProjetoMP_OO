@@ -1,4 +1,4 @@
-package view.artistas;
+package view.ouvintes;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 
 import view.MainView;
 
-public class ArtistasView implements ActionListener{
+public class OuvintesView implements ActionListener{
 	
-	private static JFrame artistaView = new JFrame("Crud de Artistas");
+	private JFrame ouvinteView = new JFrame("Gerenciamento de ouvintes");
 	
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
@@ -27,23 +27,21 @@ public class ArtistasView implements ActionListener{
 	private JButton btnUpdate;
 	private JButton btnList;
 	private JButton btnVoltar;
-	
 
-	public ArtistasView() {
+	public OuvintesView() {
         inicializar();
     }
 
     private void inicializar() {
-        artistaView.setTitle("Gerenciamento de Artistas");
-        artistaView.setSize(600, 400);
-        artistaView.setLocationRelativeTo(null);
-        artistaView.setResizable(false);
-        artistaView.setVisible(true);
+        ouvinteView.setSize(600, 400);
+        ouvinteView.setLocationRelativeTo(null);
+        ouvinteView.setResizable(false);
+        ouvinteView.setVisible(true);
         
-        artistaView.getContentPane().setLayout(new BorderLayout());
-        artistaView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        artistaView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
-        artistaView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
+        ouvinteView.getContentPane().setLayout(new BorderLayout());
+        ouvinteView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
+        ouvinteView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
+        ouvinteView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         
         btnAdd.addActionListener(this);
         btnRemove.addActionListener(this);
@@ -57,7 +55,7 @@ public class ArtistasView implements ActionListener{
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Crud de Artistas");
+    	lblTitle = new JLabel("Crud de ouvintes");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -68,10 +66,10 @@ public class ArtistasView implements ActionListener{
     		pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	btnAdd = new JButton("Adicionar Artista");
-    	btnRemove = new JButton("Remover Artista");
-    	btnUpdate = new JButton("Atualizar Artista");
-    	btnList = new JButton("Listar Artistas");
+    	btnAdd = new JButton("Adicionar ouvinte");
+    	btnRemove = new JButton("Remover ouvinte");
+    	btnUpdate = new JButton("Atualizar ouvinte");
+    	btnList = new JButton("Listar ouvintes");
     	
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
@@ -93,34 +91,33 @@ public class ArtistasView implements ActionListener{
 		return pnlRodape;
 	}
 
-	@Override
+    @Override
 	public void actionPerformed(ActionEvent e) {
-Object src = e.getSource();
+		Object src = e.getSource();
 		
 		if (src == btnAdd) {
-			artistaView.dispose();
-			new AddArtistasView();
+				ouvinteView.dispose();
+//				new AddouvinteView();
 		}
 		
 		if (src == btnRemove) {
-			artistaView.dispose();
-			new RemoveArtistaView();
+			ouvinteView.dispose();
+//			new RemoveOuvintesView();
 		}
 		
 		if (src == btnUpdate) {
-			artistaView.dispose();
-//			new UpdateMusicasView();
+			ouvinteView.dispose();
+//			new UpdateOuvintesView();
 		}
 		
 		if (src == btnList) {
-			artistaView.dispose();
-//			new ListMusicasView();
+			ouvinteView.dispose();
+//			new ListoOvintesView();
 		}
 		
 		if (src == btnVoltar) {
-			artistaView.dispose();
+			ouvinteView.dispose();
 			new MainView();
 		}
 	}
-
 }

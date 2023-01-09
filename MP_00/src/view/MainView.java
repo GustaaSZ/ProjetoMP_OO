@@ -12,18 +12,22 @@ import javax.swing.JPanel;
 
 import view.artistas.ArtistasView;
 import view.musicas.MusicasView;
+import view.ouvintes.OuvintesView;
+import view.playlists.PlaylistsView;
 
 public class MainView implements ActionListener{
 	
 	private static JFrame telaPrincipal = new JFrame("Crud Musicas");
-	protected JPanel pnlTitle;
-	protected JPanel pnlBody;
+	private JPanel pnlTitle;
+	private JPanel pnlBody;
 	
 	private JLabel lblTitle;
 	
-	protected JButton btnArtistas;
-	protected JButton btnMusicas;
-	protected JButton btnFechar;
+	private JButton btnArtistas;
+	private JButton btnMusicas;
+	private JButton btnPlaylists;
+	private JButton btnOuvintes;
+	private JButton btnFechar;
 	
 	public MainView() {
 		inicializar();
@@ -42,6 +46,8 @@ public class MainView implements ActionListener{
         
         btnArtistas.addActionListener(this);
         btnMusicas.addActionListener(this);
+        btnPlaylists.addActionListener(this);
+        btnOuvintes.addActionListener(this);
         btnFechar.addActionListener(this);
     }
 
@@ -63,10 +69,14 @@ public class MainView implements ActionListener{
     	
     	btnMusicas = new JButton("Gerenciar Musicas");
     	btnArtistas = new JButton("Gerenciar Artistas");
+    	btnPlaylists = new JButton("Gerenciar Playlists");
+    	btnOuvintes = new JButton("Gerenciar Ouvintes");
     	btnFechar = new JButton("Fechar Programa");
     	
     	pnlBody.add(btnArtistas);
     	pnlBody.add(btnMusicas);
+    	pnlBody.add(btnPlaylists);
+    	pnlBody.add(btnOuvintes);
     	pnlBody.add(btnFechar);
     	
 		return pnlBody;
@@ -82,8 +92,20 @@ public class MainView implements ActionListener{
 		}
 		
 		if (src == btnMusicas) {
+//			if (artistasCadastrados.size() > 0) {
 			telaPrincipal.dispose();
-			new MusicasView();
+			new MusicasView();	
+		}
+		
+		if (src == btnPlaylists) {
+			// ouvintes > 0
+			telaPrincipal.dispose();
+			new PlaylistsView();
+		}
+		
+		if (src == btnOuvintes) {
+			telaPrincipal.dispose();
+			new OuvintesView();
 		}
 		
 		if (src == btnFechar) {

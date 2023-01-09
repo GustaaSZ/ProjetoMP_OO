@@ -21,7 +21,7 @@ public class Artista extends Pessoa {
 
     @Override
     public String toString() {
-        return "Artista " + this.getNome() + " possui: " + musicas.size() + " musicas cadastradas!";
+        return this.getNome();
     }
 
 }
