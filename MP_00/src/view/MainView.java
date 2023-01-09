@@ -4,6 +4,7 @@ import static model.Artista.artistasCadastrados;
 import static model.Ouvinte.ouvintesCadastrados;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +25,7 @@ public class MainView implements ActionListener{
 	private static JFrame telaPrincipal = new JFrame("Crud Musicas");
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
+	private JPanel pnlRodape;
 	
 	private JLabel lblTitle;
 	
@@ -47,6 +49,7 @@ public class MainView implements ActionListener{
 		telaPrincipal.getContentPane().setLayout(new BorderLayout());
 		telaPrincipal.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
 		telaPrincipal.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
+		telaPrincipal.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         
         btnArtistas.addActionListener(this);
         btnMusicas.addActionListener(this);
@@ -75,17 +78,27 @@ public class MainView implements ActionListener{
     	btnArtistas = new JButton("Gerenciar Artistas");
     	btnOuvintes = new JButton("Gerenciar Ouvintes");
     	btnPlaylists = new JButton("Gerenciar Playlists");
-    	btnFechar = new JButton("Fechar Programa");
     	
     	pnlBody.add(btnArtistas);
     	pnlBody.add(btnMusicas);
     	pnlBody.add(btnOuvintes);
     	pnlBody.add(btnPlaylists);
-    	pnlBody.add(btnFechar);
     	
 		return pnlBody;
 	}
 
+    public JPanel getPnlRodape() {
+		if (pnlRodape == null) {
+			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		}
+		
+		btnFechar = new JButton("Fechar Programa");
+		
+    	pnlRodape.add(btnFechar);
+		
+		return pnlRodape;
+	}
+    
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();

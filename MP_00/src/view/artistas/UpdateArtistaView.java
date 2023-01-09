@@ -7,18 +7,19 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.InputMismatchException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.ArtistaController;
 import model.Artista;
 
-public class AddArtistasView extends JFrame implements ActionListener{
+public class UpdateArtistaView extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,14 +29,17 @@ public class AddArtistasView extends JFrame implements ActionListener{
 	
 	private JLabel lblTitle;
 	private JLabel lblNome;
+	private JLabel lblArtista;
 	
 	private JTextField txtNome;
 	
+	private JComboBox<Artista> cboxArtista;
 	
-	private JButton btnCriar;
+	private JButton btnUpdt;
 	private JButton btnCancelar;
 
-	public AddArtistasView(){
+
+	public UpdateArtistaView(){
 		inicializar();
 	}
 
@@ -52,7 +56,7 @@ public class AddArtistasView extends JFrame implements ActionListener{
         this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
         this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         
-        btnCriar.addActionListener(this);
+        btnUpdt.addActionListener(this);
         btnCancelar.addActionListener(this);
 	}
 	
@@ -70,12 +74,22 @@ public class AddArtistasView extends JFrame implements ActionListener{
 	
 	public JPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel();
+    		pnlForm = new JPanel(new GridLayout(2,2));
     	}
     	
-    	lblNome = new JLabel("Nome:");
+    	lblNome = new JLabel("Nome");
     	txtNome = new JTextField(20);
     	
+    	Artista[] array = new Artista[artistasCadastrados.size()];
+    	for(int i = 0; i < array.length; i++) {
+    	    array[i] = artistasCadastrados.get(i);
+    	}
+    	
+    	lblArtista = new JLabel("Artista:");
+    	cboxArtista = new JComboBox<>(array);
+    	
+    	pnlForm.add(lblArtista);
+    	pnlForm.add(cboxArtista);
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
     	
@@ -87,12 +101,10 @@ public class AddArtistasView extends JFrame implements ActionListener{
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnCriar = new JButton("Criar Artista");
+		btnUpdt = new JButton("Atualizar Artista");
     	btnCancelar = new JButton("Cancelar");
     	
-    	btnCriar.setSize(30, 50);
-    	
-    	pnlRodape.add(btnCriar);
+    	pnlRodape.add(btnUpdt);
     	pnlRodape.add(btnCancelar);
 		
 		return pnlRodape;
@@ -102,15 +114,14 @@ public class AddArtistasView extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-		if (src == btnCriar) {
-			if(txtNome.getText() == null || txtNome.getText().trim() == "") {
-				JOptionPane.showMessageDialog(null, "Erro ao cadastrar artista!");
-			}
-			new Artista(txtNome.getText().trim());
+		if (src == btnUpdt) {
+
+			ArtistaController controller = new ArtistaController((Artista) cboxArtista.getSelectedItem());
+			controller.editarNome(txtNome.getText().trim());
 //			System.out.println(artistasCadastrados.get(0));
 			this.dispose();
 			new ArtistasView();
-			JOptionPane.showMessageDialog(null, "Artista cadastradado com sucesso!");
+			JOptionPane.showMessageDialog(null, "Artista atualizado com sucesso!");
 		}
 		
 		if (src == btnCancelar) {

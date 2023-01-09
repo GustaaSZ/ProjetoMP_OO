@@ -21,7 +21,7 @@ public class ArtistaController {
 
     public void adicionarMusica(Musica musica) {
         if (artista.getMusicas().contains(musica)) {
-            System.out.println("Musica ja cadastrada!");
+//            System.out.println("Musica ja cadastrada!");
             return;
         }
         artista.getMusicas().add(musica);
@@ -30,7 +30,7 @@ public class ArtistaController {
 
     public void removerMusica(Musica musica) {
         if (!artista.getMusicas().contains(musica)) {
-            System.out.println("Musica nao cadastrada!");
+//            System.out.println("Musica nao cadastrada!");
             return;
         }
         artista.getMusicas().remove(musica);
@@ -91,7 +91,7 @@ public class ArtistaController {
                 return value;
             }
         }
-        JOptionPane.showMessageDialog(null, "Não foi possível encontrar o artista!");
+//        JOptionPane.showMessageDialog(null, "Não foi possível encontrar o artista!");
 		return null;
     }
 

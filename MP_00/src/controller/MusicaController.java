@@ -19,13 +19,13 @@ public class MusicaController {
 
 	// ----------------- METODOS DE EDICAO -----------------
 
-	public void adicionarArtista(Artista artista) {
+	public boolean adicionarArtista(Artista artista) {
 		if (musica.getArtistas().contains(artista)) {
-			System.out.println("Artista ja cadastrado!");
-			return;
+			return false;
 		}
 		musica.getArtistas().add(artista);
 		artista.getMusicas().add(musica);
+		return true;
 	}
 
 	public void removerArtista(Artista artista) {
@@ -68,12 +68,12 @@ public class MusicaController {
 
 	// ---------------- METODOS ESTATICOS ----------------
 
-	public static void removerMusica(Musica musica) {
+	public static boolean removerMusica(Musica musica) {
 		if (!musicaExiste(musica)) {
-			JOptionPane.showMessageDialog(null, "Erro ao remover a música!");
-			return;
+			return false;
 		}
 		musicasCadastradas.remove(musica);
+		return true;
 	}
 
 	public static void listarTodasMusicasCadastradas() {

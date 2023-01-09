@@ -150,7 +150,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 					txtGenero.getText().trim(), 
 					stringToDate(txtLancamento.getText())
 					);
-				System.out.println(musicasCadastradas.get(0));
+//				System.out.println(musicasCadastradas.get(0));
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}

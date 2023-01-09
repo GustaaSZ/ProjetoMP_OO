@@ -65,7 +65,7 @@ public class ListarArtistasView extends JFrame implements ActionListener{
 	
 	public JPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(1,2));
+    		pnlForm = new JPanel();
     	}
 
     	DefaultListModel<Artista> model = new DefaultListModel<Artista>();

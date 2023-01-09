@@ -30,6 +30,7 @@ public class MusicasView implements ActionListener {
 	private JButton btnUpdate;
 	private JButton btnList;
 	private JButton btnVoltar;
+	private JButton btnAddArt;
 
 	public MusicasView() {
 		inicializar();
@@ -51,6 +52,7 @@ public class MusicasView implements ActionListener {
 		btnUpdate.addActionListener(this);
 		btnList.addActionListener(this);
 		btnVoltar.addActionListener(this);
+		btnAddArt.addActionListener(this);
 	}
 
 	public JPanel getPnlTitle() {
@@ -73,11 +75,13 @@ public class MusicasView implements ActionListener {
 		btnRemove = new JButton("Remover Musica");
 		btnUpdate = new JButton("Atualizar Musica");
 		btnList = new JButton("Listar Musicas");
+		btnAddArt = new JButton("Adicionar artista");
 
 		pnlBody.add(btnAdd);
 		pnlBody.add(btnRemove);
 		pnlBody.add(btnUpdate);
 		pnlBody.add(btnList);
+		pnlBody.add(btnAddArt);
 
 		return pnlBody;
 	}
@@ -128,6 +132,15 @@ public class MusicasView implements ActionListener {
 			}
 			musicaView.dispose();
 			new ListarMusicasView();
+		}
+		
+		if (src == btnAddArt) {
+			if (musicasCadastradas.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Cadastre uma música primeiro!");
+				return;
+			}
+			musicaView.dispose();
+			new AdicionarArtistasView();
 		}
 
 		if (src == btnVoltar) {

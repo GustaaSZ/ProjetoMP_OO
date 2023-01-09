@@ -119,7 +119,7 @@ public class ArtistasView implements ActionListener {
 				return;
 			}
 			artistaView.dispose();
-//			new UpdateMusicasView();
+			new UpdateArtistaView();
 		}
 
 		if (src == btnList) {

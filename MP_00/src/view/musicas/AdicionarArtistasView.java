@@ -1,7 +1,7 @@
 package view.musicas;
 
+import static model.Artista.artistasCadastrados;
 import static model.Musica.musicasCadastradas;
-import static controller.MusicaController.removerMusica;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,9 +16,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import controller.MusicaController;
+import model.Artista;
 import model.Musica;
 
-public class RemoveMusicaView extends JFrame implements ActionListener {
+public class AdicionarArtistasView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,18 +30,20 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 
 	private JLabel lblTitle;
 	private JLabel lblArtista;
+	private JLabel lblMusica;
 
+	private JComboBox<Artista> cboxArtista;
 	private JComboBox<Musica> cboxMusica;
 
-	private JButton btnRemover;
+	private JButton btnAdd;
 	private JButton btnCancelar;
 
-	public RemoveMusicaView() {
+	public AdicionarArtistasView() {
 		inicializar();
 	}
 
 	private void inicializar() {
-		setTitle("Criar Musica");
+		setTitle("Adicionar artista");
 		setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -51,7 +55,7 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
 		this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
 
-		btnRemover.addActionListener(this);
+		btnAdd.addActionListener(this);
 		btnCancelar.addActionListener(this);
 	}
 
@@ -60,7 +64,7 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		lblTitle = new JLabel("Remover Musica");
+		lblTitle = new JLabel("Adicionar Artista");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -68,19 +72,30 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 
 	public JPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(1, 2));
+			pnlForm = new JPanel(new GridLayout(2, 2));
 		}
 
-		lblArtista = new JLabel("Musica:");
+		lblArtista = new JLabel("Artista:");
+		lblMusica = new JLabel("Música:");
 
-		Musica[] array = new Musica[musicasCadastradas.size()];
+		Artista[] array = new Artista[artistasCadastrados.size()];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = musicasCadastradas.get(i);
+			array[i] = artistasCadastrados.get(i);
 		}
-		cboxMusica = new JComboBox<>(array);
+		cboxArtista = new JComboBox<>(array);
+		
+		Musica[] arrayMusica = new Musica[musicasCadastradas.size()];
+		for (int i = 0; i < arrayMusica.length; i++) {
+			arrayMusica[i] = musicasCadastradas.get(i);
+		}
+		cboxMusica = new JComboBox<>(arrayMusica);
+
 
 		pnlForm.add(lblArtista);
+		pnlForm.add(cboxArtista);
+		pnlForm.add(lblMusica);
 		pnlForm.add(cboxMusica);
+		
 
 		return pnlForm;
 	}
@@ -90,10 +105,10 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnRemover = new JButton("Remover Musica");
+		btnAdd = new JButton("Adicionar Artista");
 		btnCancelar = new JButton("Cancelar");
 
-		pnlRodape.add(btnRemover);
+		pnlRodape.add(btnAdd);
 		pnlRodape.add(btnCancelar);
 
 		return pnlRodape;
@@ -103,15 +118,16 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
-		if (src == btnRemover) {
-
-			if (!removerMusica((Musica) cboxMusica.getSelectedItem())) {
-				JOptionPane.showMessageDialog(null, "Erro ao remover a música!");
+		if (src == btnAdd) {
+			MusicaController controller = new MusicaController((Musica) cboxMusica.getSelectedItem());
+			if (!controller.adicionarArtista((Artista) cboxArtista.getSelectedItem())) {
+				JOptionPane.showMessageDialog(null, "Artista já pertence a música!");
 				return;
 			}
+			
 			this.dispose();
 			new MusicasView();
-			JOptionPane.showMessageDialog(null, "Musica removida com sucesso!");
+			JOptionPane.showMessageDialog(null, "Artista adicionado com sucesso!");
 		}
 
 		if (src == btnCancelar) {
