@@ -1,5 +1,7 @@
 package view.ouvintes;
 
+import static model.Ouvinte.ouvintesCadastrados;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -8,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import view.MainView;
@@ -101,18 +104,30 @@ public class OuvintesView implements ActionListener{
 		}
 		
 		if (src == btnRemove) {
+			if (ouvintesCadastrados.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Cadastre um ouvinte primeiro!");
+				return;
+			}
 			ouvinteView.dispose();
 //			new RemoveOuvintesView();
 		}
 		
 		if (src == btnUpdate) {
+			if (ouvintesCadastrados.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Cadastre um ouvinte primeiro!");
+				return;
+			}
 			ouvinteView.dispose();
 //			new UpdateOuvintesView();
 		}
 		
 		if (src == btnList) {
+			if (ouvintesCadastrados.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Cadastre um ouvinte primeiro!");
+				return;
+			}
 			ouvinteView.dispose();
-//			new ListoOvintesView();
+//			new ListarOuvintesView();
 		}
 		
 		if (src == btnVoltar) {

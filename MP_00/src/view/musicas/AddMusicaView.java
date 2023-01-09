@@ -16,6 +16,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
@@ -156,6 +157,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 			
 			this.dispose();
 			new MusicasView();
+			JOptionPane.showMessageDialog(null, "Musica cadastrada com sucesso!");
 		}
 		
 		if (src == btnCancelar) {

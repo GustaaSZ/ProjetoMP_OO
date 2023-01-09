@@ -12,6 +12,7 @@ import java.util.InputMismatchException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -39,7 +40,7 @@ public class AddArtistasView extends JFrame implements ActionListener{
 	}
 
 	private void inicializar() {
-		setTitle("Criar Musica");
+		setTitle("Criar Artista");
         setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -61,7 +62,7 @@ public class AddArtistasView extends JFrame implements ActionListener{
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Crud de musicas");
+    	lblTitle = new JLabel("Crud de Artistas");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -104,9 +105,10 @@ public class AddArtistasView extends JFrame implements ActionListener{
 				throw new InputMismatchException("Campo invalido");
 			}
 			new Artista(txtNome.getText().trim());
-			System.out.println(artistasCadastrados.get(0));
+//			System.out.println(artistasCadastrados.get(0));
 			this.dispose();
 			new ArtistasView();
+			JOptionPane.showMessageDialog(null, "Artista cadastradado com sucesso.");
 		}
 		
 		if (src == btnCancelar) {

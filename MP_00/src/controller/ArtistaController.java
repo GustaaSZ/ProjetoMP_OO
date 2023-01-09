@@ -63,16 +63,18 @@ public class ArtistaController {
 
     // ---------------- METODOS ESTATICOS ----------------
 
-    public static void removerArtistaCadastrado(Artista artista) {
+    public static boolean removerArtistaCadastrado(Artista artista) {
         if (!artistaExiste(artista)) {
             System.out.println("Artista nao cadastrado!");
-            return;
+            return false;
         }
         if (artista.getMusicas().isEmpty()) {
             artistasCadastrados.remove(artista);
             System.out.println("artista removido");
+            return true;
         } else {
             System.out.println("Artista possui musicas cadastradas!");
+            return false;
         }
     }
 

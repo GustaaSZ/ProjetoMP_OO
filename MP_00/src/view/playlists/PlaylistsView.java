@@ -1,5 +1,7 @@
 package view.playlists;
 
+import static model.Playlist.playlistsCadastradas;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -8,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import view.MainView;
@@ -101,16 +104,28 @@ public class PlaylistsView implements ActionListener{
 		}
 		
 		if (src == btnRemove) {
+			if (playlistsCadastradas.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Cadastre uma playlist primeiro!");
+				return;
+			}
 			playlistView.dispose();
 //			new RemovePlaylistsView();
 		}
 		
 		if (src == btnUpdate) {
+			if (playlistsCadastradas.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Cadastre uma playlist primeiro!");
+				return;
+			}
 			playlistView.dispose();
 //			new UpdatePlaylistsView();
 		}
 		
 		if (src == btnList) {
+			if (playlistsCadastradas.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Cadastre uma playlist primeiro!");
+				return;
+			}
 			playlistView.dispose();
 //			new ListPlaylistsView();
 		}

@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import model.Artista;
@@ -104,11 +105,12 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnRemover) {
-
+			
 			musicasCadastradas.remove((Musica) cboxMusica.getSelectedItem());
 
 			this.dispose();
 			new MusicasView();
+			JOptionPane.showMessageDialog(null, "Musica removida com sucesso!");
 		}
 
 		if (src == btnCancelar) {

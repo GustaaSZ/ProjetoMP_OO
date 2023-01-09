@@ -1,28 +1,23 @@
 package view.artistas;
 
 import static model.Artista.artistasCadastrados;
-import static model.Musica.musicasCadastradas;
-import static util.Conversor.stringToDate;
+import static controller.ArtistaController.removerArtistaCadastrado;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
 
+import controller.ArtistaController;
 import model.Artista;
-import model.LetraMusica;
-import model.Musica;
 
 public class RemoveArtistaView extends JFrame implements ActionListener {
 
@@ -110,11 +105,14 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnRemover) {
-
-			artistasCadastrados.remove((Artista) cboxArtista.getSelectedItem());
-
+			
+			if(!removerArtistaCadastrado((Artista) cboxArtista.getSelectedItem())) {
+				JOptionPane.showMessageDialog(null, "Não foi possível remover o artista!");
+			}
+			
 			this.dispose();
 			new ArtistasView();
+			JOptionPane.showMessageDialog(null, "Artista removido com sucesso!");
 		}
 
 		if (src == btnCancelar) {

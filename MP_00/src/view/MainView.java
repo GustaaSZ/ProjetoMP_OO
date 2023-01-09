@@ -73,14 +73,14 @@ public class MainView implements ActionListener{
     	
     	btnMusicas = new JButton("Gerenciar Musicas");
     	btnArtistas = new JButton("Gerenciar Artistas");
-    	btnPlaylists = new JButton("Gerenciar Playlists");
     	btnOuvintes = new JButton("Gerenciar Ouvintes");
+    	btnPlaylists = new JButton("Gerenciar Playlists");
     	btnFechar = new JButton("Fechar Programa");
     	
     	pnlBody.add(btnArtistas);
     	pnlBody.add(btnMusicas);
-    	pnlBody.add(btnPlaylists);
     	pnlBody.add(btnOuvintes);
+    	pnlBody.add(btnPlaylists);
     	pnlBody.add(btnFechar);
     	
 		return pnlBody;
@@ -97,26 +97,27 @@ public class MainView implements ActionListener{
 		
 		if (src == btnMusicas) {
 			if (artistasCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "cadastre um artista primeiro");
+				JOptionPane.showMessageDialog(null, "Cadastre um artista primeiro!");
 				return;
 			}
 			telaPrincipal.dispose();
 			new MusicasView();	
 		}
 		
+		if (src == btnOuvintes) {
+			telaPrincipal.dispose();
+			new OuvintesView();
+		}
+		
 		if (src == btnPlaylists) {
 			if (ouvintesCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "cadastre um ouvinte primeiro");
+				JOptionPane.showMessageDialog(null, "Cadastre um ouvinte primeiro!");
 				return;
 			}
 			telaPrincipal.dispose();
 			new PlaylistsView();
 		}
 		
-		if (src == btnOuvintes) {
-			telaPrincipal.dispose();
-			new OuvintesView();
-		}
 		
 		if (src == btnFechar) {
 			System.exit(0);
