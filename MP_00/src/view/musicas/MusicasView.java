@@ -112,7 +112,7 @@ public class MusicasView implements ActionListener{
 		
 		if (src == btnList) {
 			musicaView.dispose();
-//			new ListMusicasView();
+			new ListarMusicasView();
 		}
 		
 		if (src == btnVoltar) {

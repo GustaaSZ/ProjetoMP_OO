@@ -114,7 +114,7 @@ Object src = e.getSource();
 		
 		if (src == btnList) {
 			artistaView.dispose();
-//			new ListMusicasView();
+			new ListarArtistasView();
 		}
 		
 		if (src == btnVoltar) {

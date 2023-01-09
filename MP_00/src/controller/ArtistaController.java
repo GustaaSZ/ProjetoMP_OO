@@ -1,11 +1,12 @@
 package controller;
 
-import model.Artista;
-import model.Musica;
+import static model.Artista.artistasCadastrados;
+import static model.Musica.musicasCadastradas;
 
 import java.util.Objects;
 
-import static model.Artista.artistasCadastrados;
+import model.Artista;
+import model.Musica;
 
 public class ArtistaController {
 
@@ -67,7 +68,7 @@ public class ArtistaController {
             System.out.println("Artista nao cadastrado!");
             return;
         }
-        if (artista.getMusicas().size() == 0) {
+        if (artista.getMusicas().isEmpty()) {
             artistasCadastrados.remove(artista);
             System.out.println("artista removido");
         } else {
