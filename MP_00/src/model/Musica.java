@@ -16,6 +16,16 @@ public class Musica {
     //Array com todas as músicas cadastradas.
     public static ArrayList<Musica> musicasCadastradas = new ArrayList<>();
 
+    public Musica(String nome, LetraMusica letra, String genero, Date lancamento) {
+        this.artistas = new ArrayList<>();
+        this.nome = nome;
+        this.letra = letra;
+        this.genero = genero;
+        this.lancamento = lancamento;
+
+        musicasCadastradas.add(this);
+    }
+    
     public Musica(Artista artista, String nome, LetraMusica letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();
         this.nome = nome;

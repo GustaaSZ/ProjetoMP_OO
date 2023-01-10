@@ -2,6 +2,7 @@ package controller;
 
 import static model.Musica.musicasCadastradas;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import javax.swing.JOptionPane;
@@ -25,6 +26,20 @@ public class MusicaController {
 		}
 		musica.getArtistas().add(artista);
 		artista.getMusicas().add(musica);
+		return true;
+	}
+
+	public boolean adicionarArtista(ArrayList<Artista> artistas) {
+		//musica nao pode ter artista repetido
+		for (Artista artista : artistas) {
+			if (musica.getArtistas().contains(artista)) {
+				return false;
+			}
+		}
+		musica.getArtistas().addAll(artistas);
+		for (Artista artista : artistas) {
+			artista.getMusicas().add(musica);
+		}
 		return true;
 	}
 
@@ -88,7 +103,6 @@ public class MusicaController {
 				return value;
 			}
 		}
-		JOptionPane.showMessageDialog(null, "Não foi possível encontrar a música!");
 		return null;
 	}
 

@@ -1,6 +1,7 @@
 package view.musicas;
 
 import static model.Musica.musicasCadastradas;
+import static controller.MusicaController.buscarMusicaPorNome;
 import static controller.MusicaController.removerMusica;
 
 import java.awt.BorderLayout;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import controller.MusicaController;
 import model.Musica;
 
 public class RemoveMusicaView extends JFrame implements ActionListener {
@@ -29,7 +31,7 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 	private JLabel lblTitle;
 	private JLabel lblArtista;
 
-	private JComboBox<Musica> cboxMusica;
+	private JComboBox<String> cboxMusica;
 
 	private JButton btnRemover;
 	private JButton btnCancelar;
@@ -73,9 +75,9 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 
 		lblArtista = new JLabel("Musica:");
 
-		Musica[] array = new Musica[musicasCadastradas.size()];
+		String[] array = new String[musicasCadastradas.size()];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = musicasCadastradas.get(i);
+			array[i] = musicasCadastradas.get(i).getNome();
 		}
 		cboxMusica = new JComboBox<>(array);
 
@@ -105,7 +107,10 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 
 		if (src == btnRemover) {
 
-			if (!removerMusica((Musica) cboxMusica.getSelectedItem())) {
+			
+			Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
+			
+			if (!removerMusica(musicaSelecionada)) {
 				JOptionPane.showMessageDialog(null, "Erro ao remover a música!");
 				return;
 			}

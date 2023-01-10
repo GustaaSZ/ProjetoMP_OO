@@ -108,7 +108,6 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	}
     	cboxArtista = new JComboBox<>(array);
     	
-    	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
     	pnlForm.add(lblGenero);
@@ -150,7 +149,6 @@ public class AddMusicaView extends JFrame implements ActionListener{
 					txtGenero.getText().trim(), 
 					stringToDate(txtLancamento.getText())
 					);
-//				System.out.println(musicasCadastradas.get(0));
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
@@ -170,7 +168,9 @@ public class AddMusicaView extends JFrame implements ActionListener{
 	    MaskFormatter mask = null;
 	    try{
 	        mask = new MaskFormatter(mascara);                      
-	        }catch(java.text.ParseException ex){}
+	    }catch(ParseException ex){
+	    	ex.printStackTrace();
+	    }
 	    return mask;
 	}
 }

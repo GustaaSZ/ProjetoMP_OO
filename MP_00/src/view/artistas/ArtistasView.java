@@ -1,6 +1,7 @@
 package view.artistas;
 
 import static model.Artista.artistasCadastrados;
+import static model.Musica.musicasCadastradas;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -29,6 +30,7 @@ public class ArtistasView implements ActionListener {
 	private JButton btnRemove;
 	private JButton btnUpdate;
 	private JButton btnList;
+	private JButton btnListMusicas;
 	private JButton btnVoltar;
 
 	public ArtistasView() {
@@ -51,6 +53,7 @@ public class ArtistasView implements ActionListener {
 		btnRemove.addActionListener(this);
 		btnUpdate.addActionListener(this);
 		btnList.addActionListener(this);
+		btnListMusicas.addActionListener(this);
 		btnVoltar.addActionListener(this);
 	}
 
@@ -74,11 +77,13 @@ public class ArtistasView implements ActionListener {
 		btnRemove = new JButton("Remover Artista");
 		btnUpdate = new JButton("Atualizar Artista");
 		btnList = new JButton("Listar Artistas");
+		btnListMusicas = new JButton("Listar Músicas do Artista");
 
 		pnlBody.add(btnAdd);
 		pnlBody.add(btnRemove);
 		pnlBody.add(btnUpdate);
 		pnlBody.add(btnList);
+		pnlBody.add(btnListMusicas);
 
 		return pnlBody;
 	}
@@ -129,6 +134,15 @@ public class ArtistasView implements ActionListener {
 			}
 			artistaView.dispose();
 			new ListarArtistasView();
+		}
+		
+		if (src == btnListMusicas) {
+			if (musicasCadastradas.isEmpty() || artistasCadastrados.isEmpty()) {
+//				JOptionPane.showMessageDialog(null, "Cadastre uma música e um artista primeiro!");
+//				return;
+			}
+			artistaView.dispose();
+			new ListarMusicasArtistaView();
 		}
 
 		if (src == btnVoltar) {
