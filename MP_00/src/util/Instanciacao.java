@@ -34,8 +34,8 @@ public class Instanciacao {
 		playlist2.adicionarMusica(musica5);
 		playlist2.adicionarMusica(musica6);
 
-		Ouvinte ouvinte1 = new Ouvinte(" Joãozinho");
-		Ouvinte ouvinte2 = new Ouvinte(" Maria");
-		Ouvinte ouvinte3 = new Ouvinte(" Pedro");
+		Ouvinte ouvinte1 = new Ouvinte("Joãozinho");
+		Ouvinte ouvinte2 = new Ouvinte("Maria");
+		Ouvinte ouvinte3 = new Ouvinte("Pedro");
 	}
 }
