@@ -16,11 +16,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import model.Artista;
 import model.Musica;
 
-public class ListarMusicasArtistaView extends JFrame implements ActionListener {
+public class ListarMusicasArtistaView extends JFrame implements ActionListener, ListSelectionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +44,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 	}
 
 	private void inicializar() {
-		setTitle("Lista de músicas do Artista");
+		setTitle("CRUD Artista");
 		setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -97,6 +99,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 		pnlForm.add(lista);
 
 		cboxArtista.addItemListener(new ItemListener() {
+			//
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -135,6 +138,12 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 			this.dispose();
 			new ArtistasView();
 		}
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

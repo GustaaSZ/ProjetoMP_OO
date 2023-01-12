@@ -37,14 +37,14 @@ public class ArtistaController {
         musica.getArtistas().remove(artista);
     }
 
-    public void listarMusicas() {
-    	System.out.println("--------------------------------------------------");
-        System.out.println("Musicas do artista " + artista.getNome() + ":");
-        for (Musica value : artista.getMusicas()) {
-            System.out.println(value);
-        }
-        System.out.println("--------------------------------------------------");
-    }
+//    public void listarMusicas() {
+//    	System.out.println("--------------------------------------------------");
+//        System.out.println("Musicas do artista " + artista.getNome() + ":");
+//        for (Musica value : artista.getMusicas()) {
+//            System.out.println(value);
+//        }
+//        System.out.println("--------------------------------------------------");
+//    }
 
     public void editarNome(String nome) {
         artista.setNome(nome);

@@ -1,8 +1,9 @@
 package view.musicas;
 
-import static model.Musica.musicasCadastradas;
 import static controller.MusicaController.buscarMusicaPorNome;
 import static controller.MusicaController.removerMusica;
+import static model.Musica.musicasCadastradas;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -14,10 +15,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import controller.MusicaController;
 import model.Musica;
 
 public class RemoveMusicaView extends JFrame implements ActionListener {
@@ -41,7 +40,7 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 	}
 
 	private void inicializar() {
-		setTitle("Criar Musica");
+		setTitle("CRUD Música");
 		setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -111,12 +110,12 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 			Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
 			
 			if (!removerMusica(musicaSelecionada)) {
-				JOptionPane.showMessageDialog(null, "Erro ao remover a música!");
+				openDialog("error");
 				return;
 			}
 			this.dispose();
 			new MusicasView();
-			JOptionPane.showMessageDialog(null, "Musica removida com sucesso!");
+			openDialog("success");
 		}
 
 		if (src == btnCancelar) {

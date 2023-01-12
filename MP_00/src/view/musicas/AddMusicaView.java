@@ -1,8 +1,8 @@
 package view.musicas;
 
 import static model.Artista.artistasCadastrados;
-import static model.Musica.musicasCadastradas;
 import static util.Conversor.stringToDate;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,7 +16,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
@@ -55,7 +54,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 	}
 
 	private void inicializar() {
-		setTitle("Criar Musica");
+		setTitle("CRUD Música");
         setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -77,7 +76,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Crud de musicas");
+    	lblTitle = new JLabel("Cadastro de musicas");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -88,19 +87,19 @@ public class AddMusicaView extends JFrame implements ActionListener{
     		pnlForm = new JPanel(new GridLayout(5,2));
     	}
     	
-    	lblNome = new JLabel("Nome");
+    	lblNome = new JLabel("Nome:");
     	txtNome = new JTextField(15);
     	
-    	lblGenero = new JLabel("Genero");
+    	lblGenero = new JLabel("Genero:");
     	txtGenero = new JTextField(15);
     	
-    	lblLancamento = new JLabel("Lancamento");
+    	lblLancamento = new JLabel("Lancamento:");
     	txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
     	
-    	lblLetra = new JLabel("Letra");
+    	lblLetra = new JLabel("Letra:");
     	txtLetra = new JTextField(20);
     	
-    	lblArtista = new JLabel("Artista");
+    	lblArtista = new JLabel("Artista:");
     	
     	Artista[] array = new Artista[artistasCadastrados.size()];
     	for(int i = 0; i < array.length; i++) {
@@ -127,7 +126,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnCriar = new JButton("Criar Musica");
+		btnCriar = new JButton("Cadastrar");
     	btnCancelar = new JButton("Cancelar");
     	
     	pnlRodape.add(btnCriar);
@@ -149,13 +148,13 @@ public class AddMusicaView extends JFrame implements ActionListener{
 					txtGenero.getText().trim(), 
 					stringToDate(txtLancamento.getText())
 					);
-			} catch (ParseException e1) {
-				e1.printStackTrace();
+			} catch (Exception e1) {
+				openDialog("error");
 			}
 			
 			this.dispose();
 			new MusicasView();
-			JOptionPane.showMessageDialog(null, "Musica cadastrada com sucesso!");
+			openDialog("success");
 		}
 		
 		if (src == btnCancelar) {

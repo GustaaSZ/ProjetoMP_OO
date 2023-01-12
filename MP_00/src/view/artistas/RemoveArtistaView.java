@@ -1,6 +1,7 @@
 package view.artistas;
 
 import static model.Artista.artistasCadastrados;
+import static view.dialog.Dialog.openDialog;
 import static controller.ArtistaController.removerArtistaCadastrado;
 
 import java.awt.BorderLayout;
@@ -39,7 +40,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 	}
 
 	private void inicializar() {
-		setTitle("Criar Musica");
+		setTitle("CRUD Artista");
 		setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -68,10 +69,10 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 
 	public JPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(1, 2));
+			pnlForm = new JPanel();
 		}
 
-		lblArtista = new JLabel("Artista:");
+		lblArtista = new JLabel("Artista que deseja remover:");
 
 		Artista[] array = new Artista[artistasCadastrados.size()];
 		for (int i = 0; i < array.length; i++) {
@@ -106,13 +107,13 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		if (src == btnRemover) {
 			
 			if(!removerArtistaCadastrado((Artista) cboxArtista.getSelectedItem())) {
-				JOptionPane.showMessageDialog(null, "Não foi possível remover o artista!");
+				openDialog("error");
 				return;
 			}
 			
 			this.dispose();
 			new ArtistasView();
-			JOptionPane.showMessageDialog(null, "Artista removido com sucesso!");
+			openDialog("success");
 		}
 
 		if (src == btnCancelar) {

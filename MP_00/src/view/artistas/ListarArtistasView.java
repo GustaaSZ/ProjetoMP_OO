@@ -4,7 +4,6 @@ import static model.Artista.artistasCadastrados;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import model.Artista;
 
@@ -24,6 +24,8 @@ public class ListarArtistasView extends JFrame implements ActionListener{
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
 	private JPanel pnlRodape;
+	
+	private JScrollPane scroll;
 	
 	private JLabel lblTitle;
 	
@@ -36,7 +38,7 @@ public class ListarArtistasView extends JFrame implements ActionListener{
 	}
 
 	private void inicializar() {
-		setTitle("Criar Musica");
+		setTitle("CRUD Artista");
         setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -68,6 +70,7 @@ public class ListarArtistasView extends JFrame implements ActionListener{
     		pnlForm = new JPanel();
     	}
 
+    	
     	DefaultListModel<Artista> model = new DefaultListModel<Artista>();
     	lista = new JList<Artista>(model);
 
@@ -75,7 +78,9 @@ public class ListarArtistasView extends JFrame implements ActionListener{
     	    model.add(i, artistasCadastrados.get(i));
     	}
     	
-    	pnlForm.add(lista);
+    	scroll = new JScrollPane(lista);
+    	
+    	pnlForm.add(scroll);
     	
 		return pnlForm;
 	}

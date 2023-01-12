@@ -2,6 +2,7 @@ package view.artistas;
 
 import static model.Artista.artistasCadastrados;
 import static model.Musica.musicasCadastradas;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -18,7 +19,7 @@ import view.MainView;
 
 public class ArtistasView implements ActionListener {
 
-	private static JFrame artistaView = new JFrame("Crud de Artistas");
+	private static JFrame artistaView = new JFrame("CRUD Artistas");
 
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
@@ -111,7 +112,7 @@ public class ArtistasView implements ActionListener {
 
 		if (src == btnRemove) {
 			if (artistasCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre um artista primeiro!");
+				openDialog("artista");
 				return;
 			}
 			artistaView.dispose();
@@ -120,7 +121,7 @@ public class ArtistasView implements ActionListener {
 
 		if (src == btnUpdate) {
 			if (artistasCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre um artista primeiro!");
+				openDialog("artista");
 				return;
 			}
 			artistaView.dispose();
@@ -129,7 +130,7 @@ public class ArtistasView implements ActionListener {
 
 		if (src == btnList) {
 			if (artistasCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre um artista primeiro!");
+				openDialog("artista");
 				return;
 			}
 			artistaView.dispose();
@@ -138,8 +139,8 @@ public class ArtistasView implements ActionListener {
 		
 		if (src == btnListMusicas) {
 			if (musicasCadastradas.isEmpty() || artistasCadastrados.isEmpty()) {
-//				JOptionPane.showMessageDialog(null, "Cadastre uma música e um artista primeiro!");
-//				return;
+				openDialog("artista_musica");
+				return;
 			}
 			artistaView.dispose();
 			new ListarMusicasArtistaView();

@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import model.Musica;
 
@@ -24,6 +25,8 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
 	private JPanel pnlRodape;
+	
+	private JScrollPane scroll;
 	
 	private JLabel lblTitle;
 	
@@ -36,8 +39,8 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 	}
 
 	private void inicializar() {
-		setTitle("Criar Musica");
-        setSize(600, 400);
+		setTitle("CRUD Música");
+        setSize(800, 600);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -65,7 +68,7 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 	
 	public JPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(1,2));
+    		pnlForm = new JPanel();
     	}
 
     	DefaultListModel<Musica> model = new DefaultListModel<Musica>();
@@ -75,7 +78,9 @@ public class ListarMusicasView extends JFrame implements ActionListener{
     	    model.add(i, musicasCadastradas.get(i));
     	}
     	
-    	pnlForm.add(lista);
+    	scroll = new JScrollPane(lista);
+    	
+    	pnlForm.add(scroll);
     	
 		return pnlForm;
 	}

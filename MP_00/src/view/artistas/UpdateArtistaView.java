@@ -1,6 +1,7 @@
 package view.artistas;
 
 import static model.Artista.artistasCadastrados;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -44,7 +45,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 	}
 
 	private void inicializar() {
-		setTitle("Criar Artista");
+		setTitle("CRUD Artista");
         setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -74,10 +75,10 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 	
 	public JPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(2,2));
+    		pnlForm = new JPanel(new GridLayout(3,2));
     	}
     	
-    	lblNome = new JLabel("Nome");
+    	lblNome = new JLabel("Nome:");
     	txtNome = new JTextField(20);
     	
     	Artista[] array = new Artista[artistasCadastrados.size()];
@@ -118,10 +119,10 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 
 			ArtistaController controller = new ArtistaController((Artista) cboxArtista.getSelectedItem());
 			controller.editarNome(txtNome.getText().trim());
-//			System.out.println(artistasCadastrados.get(0));
+			
 			this.dispose();
 			new ArtistasView();
-			JOptionPane.showMessageDialog(null, "Artista atualizado com sucesso!");
+			openDialog("success");
 		}
 		
 		if (src == btnCancelar) {

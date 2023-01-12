@@ -1,6 +1,7 @@
 package view.musicas;
 
 import static model.Musica.musicasCadastradas;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -17,7 +18,7 @@ import view.MainView;
 
 public class MusicasView implements ActionListener {
 
-	private JFrame musicaView = new JFrame("Gerenciamento de Musicas");
+	private JFrame musicaView = new JFrame("Gerenciamento de Músicas");
 
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
@@ -109,7 +110,7 @@ public class MusicasView implements ActionListener {
 
 		if (src == btnRemove) {
 			if (musicasCadastradas.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre uma música primeiro!");
+				openDialog("musica");
 				return;
 			}
 			musicaView.dispose();
@@ -118,16 +119,16 @@ public class MusicasView implements ActionListener {
 
 		if (src == btnUpdate) {
 			if (musicasCadastradas.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre uma música primeiro!");
+				openDialog("musica");
 				return;
 			}
 			musicaView.dispose();
-//			new UpdateMusicasView();
+			new UpdateMusicaView();
 		}
 
 		if (src == btnList) {
 			if (musicasCadastradas.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre uma música primeiro!");
+				openDialog("musica");
 				return;
 			}
 			musicaView.dispose();
@@ -136,7 +137,7 @@ public class MusicasView implements ActionListener {
 		
 		if (src == btnAddArt) {
 			if (musicasCadastradas.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre uma música primeiro!");
+				openDialog("musica");
 				return;
 			}
 			musicaView.dispose();

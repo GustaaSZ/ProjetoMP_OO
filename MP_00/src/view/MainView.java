@@ -2,9 +2,9 @@ package view;
 
 import static model.Artista.artistasCadastrados;
 import static model.Ouvinte.ouvintesCadastrados;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import view.artistas.ArtistasView;
 import view.musicas.MusicasView;
@@ -22,7 +23,7 @@ import view.playlists.PlaylistsView;
 
 public class MainView implements ActionListener{
 	
-	private static JFrame telaPrincipal = new JFrame("Crud Musicas");
+	private static JFrame telaPrincipal = new JFrame("Projeto Orientação à Objetos");
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
 	private JPanel pnlRodape;
@@ -110,7 +111,7 @@ public class MainView implements ActionListener{
 		
 		if (src == btnMusicas) {
 			if (artistasCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre um artista primeiro!");
+				openDialog("artista");
 				return;
 			}
 			telaPrincipal.dispose();
@@ -124,7 +125,7 @@ public class MainView implements ActionListener{
 		
 		if (src == btnPlaylists) {
 			if (ouvintesCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre um ouvinte primeiro!");
+				openDialog("ouvinte");
 				return;
 			}
 			telaPrincipal.dispose();

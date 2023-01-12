@@ -1,6 +1,7 @@
 package view.artistas;
 
 import static model.Artista.artistasCadastrados;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -40,7 +41,7 @@ public class AddArtistasView extends JFrame implements ActionListener{
 	}
 
 	private void inicializar() {
-		setTitle("Criar Artista");
+		setTitle("CRUD Artista");
         setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -104,13 +105,13 @@ public class AddArtistasView extends JFrame implements ActionListener{
 		
 		if (src == btnCriar) {
 			if(txtNome.getText() == null || txtNome.getText().trim() == "") {
-				JOptionPane.showMessageDialog(null, "Erro ao cadastrar artista!");
+				openDialog("error");
 			}
 			new Artista(txtNome.getText().trim());
 //			System.out.println(artistasCadastrados.get(0));
 			this.dispose();
 			new ArtistasView();
-			JOptionPane.showMessageDialog(null, "Artista cadastradado com sucesso!");
+			openDialog("success");
 		}
 		
 		if (src == btnCancelar) {

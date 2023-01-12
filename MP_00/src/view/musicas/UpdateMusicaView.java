@@ -1,7 +1,6 @@
 package view.musicas;
 
 import static controller.MusicaController.buscarMusicaPorNome;
-import static model.Artista.artistasCadastrados;
 import static model.Musica.musicasCadastradas;
 import static view.dialog.Dialog.openDialog;
 
@@ -10,18 +9,21 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import controller.MusicaController;
-import model.Artista;
 import model.Musica;
 
-public class AdicionarArtistasView extends JFrame implements ActionListener {
+public class UpdateMusicaView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,16 +32,23 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 	private JPanel pnlRodape;
 
 	private JLabel lblTitle;
-	private JLabel lblArtista;
 	private JLabel lblMusica;
+	private JLabel lblNome;
+	private JLabel lblGenero;
+	private JLabel lblLancamento;
+	private JLabel lblLetra;
 
-	private JComboBox<Artista> cboxArtista;
+	private JTextField txtNome;
+	private JTextField txtGenero;
+	private JFormattedTextField txtLancamento;
+	private JTextField txtLetra;
+
 	private JComboBox<String> cboxMusica;
 
-	private JButton btnAdd;
+	private JButton btnUpdt;
 	private JButton btnCancelar;
 
-	public AdicionarArtistasView() {
+	public UpdateMusicaView() {
 		inicializar();
 	}
 
@@ -56,7 +65,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
 		this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
 
-		btnAdd.addActionListener(this);
+		btnUpdt.addActionListener(this);
 		btnCancelar.addActionListener(this);
 	}
 
@@ -65,7 +74,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		lblTitle = new JLabel("Adicionar Artista");
+		lblTitle = new JLabel("Atualizar Música");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -73,30 +82,39 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 
 	public JPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(2, 2));
+			pnlForm = new JPanel(new GridLayout(5, 5));
 		}
 
-		lblArtista = new JLabel("Artista:");
-		lblMusica = new JLabel("Música:");
-
-		Artista[] array = new Artista[artistasCadastrados.size()];
+		String[] array = new String[musicasCadastradas.size()];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = artistasCadastrados.get(i);
+			array[i] = musicasCadastradas.get(i).getNome();
 		}
-		cboxArtista = new JComboBox<>(array);
-		
-		String[] arrayMusica = new String[musicasCadastradas.size()];
-		for (int i = 0; i < arrayMusica.length; i++) {
-			arrayMusica[i] = musicasCadastradas.get(i).getNome();
-		}
-		cboxMusica = new JComboBox<>(arrayMusica);
 
+		lblMusica = new JLabel("Música:");
+		cboxMusica = new JComboBox<>(array);
 
-		pnlForm.add(lblArtista);
-		pnlForm.add(cboxArtista);
+		lblNome = new JLabel("Nome");
+		txtNome = new JTextField(20);
+
+		lblGenero = new JLabel("Genero");
+		txtGenero = new JTextField(15);
+
+		lblLancamento = new JLabel("Lancamento");
+		txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
+
+		lblLetra = new JLabel("Letra");
+		txtLetra = new JTextField(20);
+
 		pnlForm.add(lblMusica);
 		pnlForm.add(cboxMusica);
-		
+		pnlForm.add(lblNome);
+		pnlForm.add(txtNome);
+		pnlForm.add(lblGenero);
+		pnlForm.add(txtGenero);
+		pnlForm.add(lblLancamento);
+		pnlForm.add(txtLancamento);
+		pnlForm.add(lblLetra);
+		pnlForm.add(txtLetra);
 
 		return pnlForm;
 	}
@@ -106,10 +124,10 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnAdd = new JButton("Adicionar Artista");
+		btnUpdt = new JButton("Atualizar Música");
 		btnCancelar = new JButton("Cancelar");
 
-		pnlRodape.add(btnAdd);
+		pnlRodape.add(btnUpdt);
 		pnlRodape.add(btnCancelar);
 
 		return pnlRodape;
@@ -119,15 +137,16 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
-		if (src == btnAdd) {
-			
-			Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-			MusicaController controller = new MusicaController(musicaSelecionada);
-			if (!controller.adicionarArtista((Artista) cboxArtista.getSelectedItem())) {
-				openDialog("artista_repetido");
-				return;
-			}
-			
+		if (src == btnUpdt) {
+
+			Musica selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
+
+			MusicaController controller = new MusicaController(selected);
+			controller.atualizarMusica(
+					txtNome.getText(), 
+					txtGenero.getText(), 
+					txtLancamento.getText(),
+					txtLetra.getText());
 			this.dispose();
 			new MusicasView();
 			openDialog("success");
@@ -139,4 +158,13 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		}
 	}
 
+	private MaskFormatter setMascara(String mascara) {
+		MaskFormatter mask = null;
+		try {
+			mask = new MaskFormatter(mascara);
+		} catch (ParseException ex) {
+			ex.printStackTrace();
+		}
+		return mask;
+	}
 }

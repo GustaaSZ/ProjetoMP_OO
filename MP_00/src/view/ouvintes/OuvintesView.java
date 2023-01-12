@@ -1,6 +1,7 @@
 package view.ouvintes;
 
 import static model.Ouvinte.ouvintesCadastrados;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -29,6 +30,7 @@ public class OuvintesView implements ActionListener{
 	private JButton btnRemove;
 	private JButton btnUpdate;
 	private JButton btnList;
+	private JButton btnPlaylists;
 	private JButton btnVoltar;
 
 	public OuvintesView() {
@@ -73,11 +75,13 @@ public class OuvintesView implements ActionListener{
     	btnRemove = new JButton("Remover ouvinte");
     	btnUpdate = new JButton("Atualizar ouvinte");
     	btnList = new JButton("Listar ouvintes");
+    	btnPlaylists = new JButton("Listar Playlists do Ouvinte");
     	
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
     	pnlBody.add(btnList);
+    	pnlBody.add(btnPlaylists);
     	
 		return pnlBody;
 	}
@@ -105,7 +109,7 @@ public class OuvintesView implements ActionListener{
 		
 		if (src == btnRemove) {
 			if (ouvintesCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre um ouvinte primeiro!");
+				openDialog("ouvinte");
 				return;
 			}
 			ouvinteView.dispose();
@@ -114,7 +118,7 @@ public class OuvintesView implements ActionListener{
 		
 		if (src == btnUpdate) {
 			if (ouvintesCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre um ouvinte primeiro!");
+				openDialog("ouvinte");
 				return;
 			}
 			ouvinteView.dispose();
@@ -123,11 +127,20 @@ public class OuvintesView implements ActionListener{
 		
 		if (src == btnList) {
 			if (ouvintesCadastrados.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre um ouvinte primeiro!");
+				openDialog("ouvinte");
 				return;
 			}
 			ouvinteView.dispose();
 //			new ListarOuvintesView();
+		}
+		
+		if (src == btnPlaylists) {
+			if (ouvintesCadastrados.isEmpty()) {
+				openDialog("ouvinte");
+				return;
+			}
+			ouvinteView.dispose();
+//			new ListarPlaylistsOuvinteView();
 		}
 		
 		if (src == btnVoltar) {
