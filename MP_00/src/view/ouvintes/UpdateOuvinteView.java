@@ -1,7 +1,6 @@
-package view.artistas;
+package view.ouvintes;
 
-import static model.Artista.artistasCadastrados;
-import static view.dialog.Dialog.openDialog;
+import static model.Ouvinte.ouvintesCadastrados;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -17,12 +16,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import controller.ArtistaController;
-import model.Artista;
+import controller.OuvinteController;
+import model.Ouvinte;
 
-public class UpdateArtistaView extends JFrame implements ActionListener{
+public class UpdateOuvinteView extends JFrame implements ActionListener{
 
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 	
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
@@ -30,24 +29,22 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 	
 	private JLabel lblTitle;
 	private JLabel lblNome;
-	private JLabel lblArtista;
+	private JLabel lblOuvinte;
 	
 	private JTextField txtNome;
 	
-	private JComboBox<Artista> cboxArtista;
+	private JComboBox<Ouvinte> cboxOuvinte;
 	
 	private JButton btnUpdt;
 	private JButton btnCancelar;
 
 
-	public UpdateArtistaView(){
+	public UpdateOuvinteView(){
 		inicializar();
 	}
 
-	//	-------------------------------------------------------------
-
 	private void inicializar() {
-		setTitle("CRUD Artista");
+		setTitle("Criar Ouvinte");
         setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -62,55 +59,49 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
         btnUpdt.addActionListener(this);
         btnCancelar.addActionListener(this);
 	}
-	
-	//	-------------------------------------------------------------
 
+	
 	public JPanel getPnlTitle() {
     	if (pnlTitle == null) {
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Crud de Artistas");
+    	lblTitle = new JLabel("Crud de Ouvintes");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
 	}
 	
-	//	-------------------------------------------------------------
-
 	public JPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(3,2));
+    		pnlForm = new JPanel(new GridLayout(2,2));
     	}
     	
-    	lblNome = new JLabel("Nome:");
+    	lblNome = new JLabel("Nome");
     	txtNome = new JTextField(20);
     	
-    	Artista[] array = new Artista[artistasCadastrados.size()];
+    	Ouvinte[] array = new Ouvinte[ouvintesCadastrados.size()];
     	for(int i = 0; i < array.length; i++) {
-    	    array[i] = artistasCadastrados.get(i);
+    	    array[i] = ouvintesCadastrados.get(i);
     	}
     	
-    	lblArtista = new JLabel("Artista:");
-    	cboxArtista = new JComboBox<>(array);
+    	lblOuvinte = new JLabel("Ouvinte:");
+    	cboxOuvinte = new JComboBox<>(array);
     	
-    	pnlForm.add(lblArtista);
-    	pnlForm.add(cboxArtista);
+    	pnlForm.add(lblOuvinte);
+    	pnlForm.add(cboxOuvinte);
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
     	
 		return pnlForm;
-	
 	}
-
-	//	-------------------------------------------------------------
 	
 	public JPanel getPnlRodape() {
 		if (pnlRodape == null) {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnUpdt = new JButton("Atualizar Artista");
+		btnUpdt = new JButton("Atualizar Ouvinte");
     	btnCancelar = new JButton("Cancelar");
     	
     	pnlRodape.add(btnUpdt);
@@ -118,26 +109,24 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 		
 		return pnlRodape;
 	}
-
-	//	-------------------------------------------------------------
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
 		if (src == btnUpdt) {
 
-			ArtistaController controller = new ArtistaController((Artista) cboxArtista.getSelectedItem());
+			OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
 			controller.editarNome(txtNome.getText().trim());
-			
+//			System.out.println(artistasCadastrados.get(0));
 			this.dispose();
-			new ArtistasView();
-			openDialog("success");
+			new OuvintesView();
+			JOptionPane.showMessageDialog(null, "Ouvinte Atualizado com Sucesso!");
 		}
 		
 		if (src == btnCancelar) {
 			this.dispose();
-			new ArtistasView();
+			new OuvintesView();
 		}
 	}
 	

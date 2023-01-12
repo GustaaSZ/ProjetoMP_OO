@@ -39,6 +39,8 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		inicializar();
 	}
 
+	//	-------------------------------------------------------------
+
 	private void inicializar() {
 		setTitle("CRUD Artista");
 		setSize(600, 400);
@@ -56,6 +58,8 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		btnCancelar.addActionListener(this);
 	}
 
+	//	-------------------------------------------------------------
+
 	public JPanel getPnlTitle() {
 		if (pnlTitle == null) {
 			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -66,6 +70,8 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 
 		return pnlTitle;
 	}
+
+	//	-------------------------------------------------------------
 
 	public JPanel getPnlForm() {
 		if (pnlForm == null) {
@@ -86,6 +92,8 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		return pnlForm;
 	}
 
+	//	-------------------------------------------------------------
+
 	public JPanel getPnlRodape() {
 		if (pnlRodape == null) {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -99,6 +107,8 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 
 		return pnlRodape;
 	}
+
+	//	-------------------------------------------------------------
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

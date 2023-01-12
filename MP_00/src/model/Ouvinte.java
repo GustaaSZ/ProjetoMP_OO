@@ -16,6 +16,17 @@ public class Ouvinte extends Pessoa {
         ouvintesCadastrados.add(this);
     }
 
+    //------------------- MUDANÇA NESSE PARTE (ADICIONEI ESSE 2º CONSTRUTOR)------------------
+//    public Ouvinte(Playlist playlist, String nome, Musica musicaFavorita) {
+//        super(nome);
+//        this.playlists = new ArrayList<>();
+//        
+//        ouvintesCadastrados.add(this);
+//        
+//        playlists.add(playlist);
+//        playlist.getOuvintes().add(this);
+//    }
+
     public ArrayList<Playlist> getPlaylists() {
         return playlists;
     }

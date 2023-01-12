@@ -1,5 +1,6 @@
 package view.artistas;
 
+
 import static model.Artista.artistasCadastrados;
 import static model.Musica.musicasCadastradas;
 import static view.dialog.Dialog.openDialog;
@@ -17,8 +18,8 @@ import javax.swing.JPanel;
 
 import view.MainView;
 
-public class ArtistasView implements ActionListener {
-
+public class ArtistasView implements ActionListener{
+	
 	private static JFrame artistaView = new JFrame("CRUD Artistas");
 
 	private JPanel pnlTitle;
@@ -37,7 +38,9 @@ public class ArtistasView implements ActionListener {
 	public ArtistasView() {
 		inicializar();
 	}
-
+	
+//	-------------------------------------------------------
+	
 	private void inicializar() {
 		artistaView.setTitle("Gerenciamento de Artistas");
 		artistaView.setSize(600, 400);
@@ -58,6 +61,8 @@ public class ArtistasView implements ActionListener {
 		btnVoltar.addActionListener(this);
 	}
 
+// ---------------------------------------------------------------
+    
 	public JPanel getPnlTitle() {
 		if (pnlTitle == null) {
 			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -69,6 +74,8 @@ public class ArtistasView implements ActionListener {
 		return pnlTitle;
 	}
 
+ // ---------------------------------------------------------------
+    
 	public JPanel getPnlBody() {
 		if (pnlBody == null) {
 			pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -89,6 +96,8 @@ public class ArtistasView implements ActionListener {
 		return pnlBody;
 	}
 
+// ---------------------------------------------------------------
+	
 	public JPanel getPnlRodape() {
 		if (pnlRodape == null) {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -100,7 +109,9 @@ public class ArtistasView implements ActionListener {
 
 		return pnlRodape;
 	}
-
+	
+// ---------------------------------------------------------------
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -151,5 +162,6 @@ public class ArtistasView implements ActionListener {
 			new MainView();
 		}
 	}
+
 
 }

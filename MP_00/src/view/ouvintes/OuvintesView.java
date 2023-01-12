@@ -1,6 +1,7 @@
 package view.ouvintes;
 
 import static model.Ouvinte.ouvintesCadastrados;
+import static model.Playlist.playlistsCadastradas;
 import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
@@ -23,14 +24,14 @@ public class OuvintesView implements ActionListener{
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
 	private JPanel pnlRodape;
-	
+
 	private JLabel lblTitle;
-	
+
 	private JButton btnAdd;
 	private JButton btnRemove;
 	private JButton btnUpdate;
 	private JButton btnList;
-	private JButton btnPlaylists;
+	private JButton btnListPlaylists;
 	private JButton btnVoltar;
 
 	public OuvintesView() {
@@ -38,6 +39,7 @@ public class OuvintesView implements ActionListener{
     }
 
     private void inicializar() {
+    	ouvinteView.setTitle("Gerenciamento de Ouvintes");
         ouvinteView.setSize(600, 400);
         ouvinteView.setLocationRelativeTo(null);
         ouvinteView.setResizable(false);
@@ -51,6 +53,7 @@ public class OuvintesView implements ActionListener{
         btnAdd.addActionListener(this);
         btnRemove.addActionListener(this);
         btnUpdate.addActionListener(this);
+        btnListPlaylists.addActionListener(this);
         btnList.addActionListener(this);
         btnVoltar.addActionListener(this);
     }
@@ -60,33 +63,35 @@ public class OuvintesView implements ActionListener{
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Crud de ouvintes");
+    	lblTitle = new JLabel("Crud de Ouvintes");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
 	}
     
     public JPanel getPnlBody() {
+    	
     	if (pnlBody == null) {
     		pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	btnAdd = new JButton("Cadastrar ouvinte");
-    	btnRemove = new JButton("Remover ouvinte");
-    	btnUpdate = new JButton("Atualizar ouvinte");
-    	btnList = new JButton("Listar ouvintes");
-    	btnPlaylists = new JButton("Listar Playlists do Ouvinte");
+    	btnAdd = new JButton("Adicionar Ouvinte");
+    	btnRemove = new JButton("Remover Ouvinte");
+    	btnUpdate = new JButton("Atualizar Ouvinte");
+    	btnList = new JButton("Listar Ouvintes");
+    	btnListPlaylists = new JButton("Listar Playlists do Ouvinte");
     	
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
     	pnlBody.add(btnList);
-    	pnlBody.add(btnPlaylists);
+    	pnlBody.add(btnListPlaylists);
     	
 		return pnlBody;
 	}
     
     public JPanel getPnlRodape() {
+    	
 		if (pnlRodape == null) {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
@@ -104,48 +109,56 @@ public class OuvintesView implements ActionListener{
 		
 		if (src == btnAdd) {
 				ouvinteView.dispose();
-//				new AddouvinteView();
+				new AddOuvintesView();
 		}
 		
 		if (src == btnRemove) {
 			if (ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
+//				JOptionPane.showMessageDialog(null, "Cadastre um Ouvinte Primeiro!");
 				return;
 			}
 			ouvinteView.dispose();
-//			new RemoveOuvintesView();
+			new RemoveOuvinteView();
 		}
 		
 		if (src == btnUpdate) {
 			if (ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
+//				JOptionPane.showMessageDialog(null, "Cadastre um Ouvinte Primeiro!");
 				return;
 			}
 			ouvinteView.dispose();
-//			new UpdateOuvintesView();
+			new UpdateOuvinteView();
 		}
 		
 		if (src == btnList) {
 			if (ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
+//				JOptionPane.showMessageDialog(null, "Cadastre um Ouvinte Primeiro!");
 				return;
 			}
 			ouvinteView.dispose();
-//			new ListarOuvintesView();
+			new ListarOuvintesView();
 		}
 		
-		if (src == btnPlaylists) {
-			if (ouvintesCadastrados.isEmpty()) {
+//		----------------- Adicionada aqui essa funcionalidade --------------------
+		
+		if(src == btnListPlaylists) {
+			if(playlistsCadastradas.isEmpty() || ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
+//				JOptionPane.showMessageDialog(null, "Cadastre uma Playlist e um Ouvinte primeiro!");
 				return;
 			}
 			ouvinteView.dispose();
-//			new ListarPlaylistsOuvinteView();
+			new ListarPlaylistsOuvinteView();
 		}
+		
 		
 		if (src == btnVoltar) {
 			ouvinteView.dispose();
 			new MainView();
 		}
+		
 	}
 }

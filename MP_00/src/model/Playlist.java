@@ -11,14 +11,28 @@ public class Playlist {
 	//Array com todas as playlists cadastradas
 	public static ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
 
+//	Mudança feita aq
+	// Adicionando uma lista de ouvintes
+
+	// Playlist pode ter vários ouvintes, com isso, pegamos uma lista de 
+	private final ArrayList<Ouvinte> ouvintes;
+	
+	// Mudança aq, eu havia colocado no construtor o array de ouvintes, porém havia dado probela em outra classe. (ArrayList<Ouvinte> ouvintes)
 	public Playlist(String nome, String descricao) {
 		this.nome = nome;
+//		Mudança feita aq
+		this.ouvintes = new ArrayList<>();
 		this.descricao = descricao;
 		this.musicas = new ArrayList<>();
 
 		playlistsCadastradas.add(this);
 	}
 
+	// Encapsulando o Array de ouvintes
+	public ArrayList<Ouvinte> getOuvintes() {
+        return ouvintes;
+    }
+	
 	public String getNome() {
 		return nome;
 	}
@@ -56,4 +70,5 @@ public class Playlist {
 		}
 		System.out.println("--------------------------------------------------");
 	}
+	
 }
