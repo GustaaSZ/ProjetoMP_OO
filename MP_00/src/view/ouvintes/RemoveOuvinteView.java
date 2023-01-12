@@ -49,7 +49,7 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 	private void inicializar() {
 		
 		// Título
-		setTitle("Criar Ouvinte");
+		setTitle("CRUD Ouvintes");
 		
 		// Definições do tamanho da tela
         setSize(600, 400);

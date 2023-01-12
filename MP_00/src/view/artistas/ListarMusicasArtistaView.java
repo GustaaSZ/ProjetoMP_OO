@@ -16,13 +16,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import model.Artista;
 import model.Musica;
 
-public class ListarMusicasArtistaView extends JFrame implements ActionListener, ListSelectionListener {
+public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -148,14 +145,6 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener, 
 			this.dispose();
 			new ArtistasView();
 		}
-	}
-
-	//	-------------------------------------------------------------
-
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
