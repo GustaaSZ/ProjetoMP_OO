@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import view.MainView;
@@ -115,7 +114,6 @@ public class OuvintesView implements ActionListener{
 		if (src == btnRemove) {
 			if (ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
-//				JOptionPane.showMessageDialog(null, "Cadastre um Ouvinte Primeiro!");
 				return;
 			}
 			ouvinteView.dispose();
@@ -125,7 +123,6 @@ public class OuvintesView implements ActionListener{
 		if (src == btnUpdate) {
 			if (ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
-//				JOptionPane.showMessageDialog(null, "Cadastre um Ouvinte Primeiro!");
 				return;
 			}
 			ouvinteView.dispose();
@@ -135,19 +132,15 @@ public class OuvintesView implements ActionListener{
 		if (src == btnList) {
 			if (ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
-//				JOptionPane.showMessageDialog(null, "Cadastre um Ouvinte Primeiro!");
 				return;
 			}
 			ouvinteView.dispose();
 			new ListarOuvintesView();
 		}
-		
 //		----------------- Adicionada aqui essa funcionalidade --------------------
-		
 		if(src == btnListPlaylists) {
 			if(playlistsCadastradas.isEmpty() || ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
-//				JOptionPane.showMessageDialog(null, "Cadastre uma Playlist e um Ouvinte primeiro!");
 				return;
 			}
 			ouvinteView.dispose();

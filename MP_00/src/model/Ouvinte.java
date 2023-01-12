@@ -41,7 +41,9 @@ public class Ouvinte extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Ouvinte:" +getNome();
+
+		return this.getNome();
+		
 	}
     
     

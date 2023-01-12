@@ -1,15 +1,9 @@
 package view.ouvintes;
 
-import static model.Ouvinte.ouvintesCadastrados;
-//import static model.Playlist.playlistsCadastradas;
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.InputMismatchException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

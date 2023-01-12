@@ -89,10 +89,10 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		DefaultListModel<Playlist> model = new DefaultListModel<Playlist>();
 		lista = new JList<Playlist>(model);
 
-		Ouvinte art = (Ouvinte) cboxOuvinte.getSelectedItem();
+		Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
 
-		for (int i = 0; i < art.getPlaylists().size(); i++) {
-			model.add(i, art.getPlaylists().get(i));
+		for (int i = 0; i < selected.getPlaylists().size(); i++) {
+			model.add(i, selected.getPlaylists().get(i));
 		}
 		
 		pnlForm.add(lista);

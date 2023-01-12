@@ -1,6 +1,7 @@
 package view.playlists;
 
 import static model.Playlist.playlistsCadastradas;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -10,7 +11,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import view.MainView;
@@ -108,7 +108,7 @@ public class PlaylistsView implements ActionListener{
 		
 		if (src == btnRemove) {
 			if (playlistsCadastradas.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre uma playlist primeiro!");
+				openDialog("playlist");
 				return;
 			}
 			playlistView.dispose();
@@ -117,7 +117,7 @@ public class PlaylistsView implements ActionListener{
 		
 		if (src == btnUpdate) {
 			if (playlistsCadastradas.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre uma playlist primeiro!");
+				openDialog("playlist");
 				return;
 			}
 			playlistView.dispose();
@@ -126,7 +126,7 @@ public class PlaylistsView implements ActionListener{
 		
 		if (src == btnList) {
 			if (playlistsCadastradas.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre uma playlist primeiro!");
+				openDialog("playlist");
 				return;
 			}
 			playlistView.dispose();
@@ -135,7 +135,7 @@ public class PlaylistsView implements ActionListener{
 		
 		if (src == btnAddMusica) {
 			if (playlistsCadastradas.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Cadastre uma playlist primeiro!");
+				openDialog("playlist");
 				return;
 			}
 			playlistView.dispose();

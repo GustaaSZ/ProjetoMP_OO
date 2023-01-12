@@ -44,7 +44,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	private void inicializar() {
-		setTitle("Criar Ouvinte");
+		setTitle("CRUD Ouvintes");
         setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -66,7 +66,7 @@ private static final long serialVersionUID = 1L;
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Crud de Ouvintes");
+    	lblTitle = new JLabel("Atualizar Ouvinte");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -77,7 +77,7 @@ private static final long serialVersionUID = 1L;
     		pnlForm = new JPanel(new GridLayout(2,2));
     	}
     	
-    	lblNome = new JLabel("Nome");
+    	lblNome = new JLabel("Nome: ");
     	txtNome = new JTextField(20);
     	
     	Ouvinte[] array = new Ouvinte[ouvintesCadastrados.size()];
