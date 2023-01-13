@@ -51,6 +51,7 @@ public class PlaylistsView implements ActionListener{
         btnRemove.addActionListener(this);
         btnUpdate.addActionListener(this);
         btnList.addActionListener(this);
+        btnAddMusica.addActionListener(this);
         btnVoltar.addActionListener(this);
     }
     
@@ -139,7 +140,7 @@ public class PlaylistsView implements ActionListener{
 				return;
 			}
 			playlistView.dispose();
-//			new ListPlaylistsView();
+			new AddMusicaView();
 		}
 		
 		if (src == btnVoltar) {
