@@ -67,20 +67,18 @@ public class MusicaController {
 			
 	//------------------- FUNÇÃO DE REMOVER ARTISTA DA MUSICA ---------------------
 			
-	public void removerArtista(Artista artista) {
+	public boolean removerArtista(Artista artista) {
 		
 		// Lendo todos os artistas que estão cadastrados á determinada musica, se esse artista n for encontrado...
-		
 		if(!musica.getArtistas().contains(artista)) {
-			
-			System.out.println("Artista Nao Cadastrado!");
-            return;
+            return false;
 		}
 		// remove artista da musica
 		musica.getArtistas().remove(artista);
 		
 		// remove musica do artista
 		artista.getMusicas().remove(musica);
+		return true;
 	}
 	
 	//------------------- FUNÇÃO DE ATT MUSICA ---------------------
@@ -94,22 +92,6 @@ public class MusicaController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	
-	//------------------- FUNÇÃO DE LISTAR ARTISTAS---------------------
-	
-	public void listarArtistas() {
-		
-		System.out.println("--------------------------------------------------");
-        System.out.println("Artistas da musica " + musica.getNome() + ":");
-        
-        // 
-        for (Artista artista : musica.getArtistas()) {
-        	
-            System.out.println(artista);
-        }
-        System.out.println("--------------------------------------------------");
 	}
 	
 //	---------------------------------------------------------------
@@ -134,7 +116,6 @@ public class MusicaController {
 	
 	// Método que permite o usuário fazer uma busca pelo artita atrávez de um caracter
 	public int indexArtista(Artista artista) {
-		
 		//Método indexOf – Permite localizar a primeira ocorrência de uma sequência de caracteres em uma string...
         return musica.getArtistas().indexOf(artista);
     }
@@ -160,14 +141,6 @@ public class MusicaController {
         return true;
     }
     
-    // FUNÇÃO DE LISTAR AS MUSICAS
-    
-//    public static void buscarMusicaPorNome() {
-//        for (Musica value : musicasCadastradas) {
-//            System.out.println(value);
-//        }
-//    }
-
     public static void listarTodasMusicasCadastradas() {
 		for (Musica value : musicasCadastradas) {
 			System.out.println(value);
@@ -178,7 +151,6 @@ public class MusicaController {
     	
         for (Musica value : musicasCadastradas) {
             if (Objects.equals(value.getNome(), nome)) {
-//                System.out.println(value);
                 return value;
             }
         }

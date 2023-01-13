@@ -1,7 +1,5 @@
 package controller;
 
-import javax.swing.JOptionPane;
-
 import model.Musica;
 import model.Ouvinte;
 import model.Playlist;
@@ -23,8 +21,6 @@ public class OuvinteController {
 	public OuvinteController(Ouvinte ouvinte) {
 		this.ouvinte = ouvinte;
 	}
-	
-//	 ********************************* METODOS NÃO ESTATICOS *********************************
 	
 //	-----------------------------------------------------------------------------
 
@@ -67,33 +63,17 @@ public class OuvinteController {
 
 	// Método de remover Playlist ao ouvonte
 	
-	public void removerPlaylist(Playlist playlist) {
+	public boolean removerPlaylist(Playlist playlist) {
 		if (!ouvinte.getPlaylists().contains(playlist)) {
-			System.out.println("Playlist não Cadastrada!");
-			return;
+			return false;
 		}
 		// Removendo o ouvinte da Playlist
         ouvinte.getPlaylists().remove(playlist);
         
         // Removendo a playlist do ouvinte ouvinte
  		playlist.getOuvintes().remove(ouvinte);
+		return true;
     }
-	
-//	-----------------------------------------------------------------------------
-
-	// Método de listar Playlists do ouvonte
-	
-	public void listarPlaylists() {
-		
-		System.out.println("--------------------------------------------------");
-		System.out.println("Playlists do ouvinte "+ouvinte.getNome()+":");
-		
-		for(Playlist value : ouvinte.getPlaylists()) {
-			System.out.println(value);
-		}
-		System.out.println("--------------------------------------------------");
-	}
-	
 //	-----------------------------------------------------------------------------
 
 	// Método de adicionar Musica favorita do ouvinte
@@ -136,10 +116,8 @@ public class OuvinteController {
         // Pegando a lista de playlists do ouvinte e removendo
         if (ouvinte.getPlaylists().isEmpty()) {
             ouvintesCadastrados.remove(ouvinte);
-//            System.out.println("ouvinte removido!");
             return true;
         } else {
-//            System.out.println("Ouvinte possui playlists cadastradas!");
             return false;
         }
     }
@@ -153,25 +131,12 @@ public class OuvinteController {
 		
 		for(Playlist value : playlistsCadastradas) {
 			if(value.getNome().equals(nome)) {
-				System.out.println(value);
 				return value;
 			}
 		}
-		JOptionPane.showMessageDialog(null, "Não foi possível encontrar a playlist!");
 		return null;
 	}
 	
-//	-----------------------------------------------------------------------------
-
-	// Método de listar ouvintes
-	 public static void listarTodosOuvintesCadastrados() {
-		 
-		 // Repetição que vi percorrer a lista de ouvintes cadastrados e vai listar todos
-	        for (Ouvinte value : ouvintesCadastrados) {
-	            System.out.println(value);
-	        }
-	 }
-
 //		-----------------------------------------------------------------------------
 	 
 	 // Método que fara uam busca por nome de um ouvinte que o usuário deseja
@@ -185,10 +150,8 @@ public class OuvinteController {
 	                return value;
 	            }
 	        }
-	        
 	        // Ao sair condição, se o nome digitado não foi encontrado na lista
 	        // de ouvintesCadastrados, mostra a seguinte mensagem na tela do usuário!
-	        JOptionPane.showMessageDialog(null, "Não foi possível encontrar o Ouvinte!");
 			return null;
     }
 	 

@@ -11,7 +11,6 @@ public class Playlist {
 	// Playlist pode ter vários ouvintes
 	private final ArrayList<Ouvinte> ouvintes;
 	
-
 	//Array com todas as playlists cadastradas
 	public static ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
 	
