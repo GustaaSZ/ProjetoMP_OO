@@ -2,6 +2,7 @@ package util;
 
 import java.util.Date;
 
+import controller.PlaylistController;
 import model.Artista;
 import model.LetraMusica;
 import model.Musica;
@@ -25,14 +26,19 @@ public class Instanciacao {
 		Musica musica6 = new Musica(artista6, "Musica 6", new LetraMusica("letra"), "rap", new Date());
 
 		Playlist playlist1 = new Playlist("Playlist 1", "Descrição 1");
-		playlist1.adicionarMusica(musica1);
-		playlist1.adicionarMusica(musica2);
-		playlist1.adicionarMusica(musica3);
+
+		PlaylistController controller1 = new PlaylistController(playlist1);
+
+		controller1.adicionarMusica(musica1);
+		controller1.adicionarMusica(musica2);
+		controller1.adicionarMusica(musica3);
 
 		Playlist playlist2 = new Playlist("Playlist 2", "Descrição 2");
-		playlist2.adicionarMusica(musica4);
-		playlist2.adicionarMusica(musica5);
-		playlist2.adicionarMusica(musica6);
+		PlaylistController controller2 = new PlaylistController(playlist2);
+
+		controller2.adicionarMusica(musica4);
+		controller2.adicionarMusica(musica5);
+		controller2.adicionarMusica(musica6);
 
 		Ouvinte ouvinte1 = new Ouvinte("Joãozinho");
 		Ouvinte ouvinte2 = new Ouvinte("Maria");

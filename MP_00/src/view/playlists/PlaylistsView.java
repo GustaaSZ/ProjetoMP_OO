@@ -103,7 +103,7 @@ public class PlaylistsView implements ActionListener{
 		
 		if (src == btnAdd) {
 				playlistView.dispose();
-//				new AddPlaylistView();
+				new AddPlaylistView();
 		}
 		
 		if (src == btnRemove) {
@@ -112,7 +112,7 @@ public class PlaylistsView implements ActionListener{
 				return;
 			}
 			playlistView.dispose();
-//			new RemovePlaylistsView();
+			new RemovePlaylistView();
 		}
 		
 		if (src == btnUpdate) {
@@ -121,7 +121,7 @@ public class PlaylistsView implements ActionListener{
 				return;
 			}
 			playlistView.dispose();
-//			new UpdatePlaylistsView();
+			new UpdatePlaylistView();
 		}
 		
 		if (src == btnList) {
@@ -130,7 +130,7 @@ public class PlaylistsView implements ActionListener{
 				return;
 			}
 			playlistView.dispose();
-//			new ListPlaylistsView();
+			new ListarPlaylistsView();
 		}
 		
 		if (src == btnAddMusica) {

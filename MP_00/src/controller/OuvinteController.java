@@ -28,8 +28,6 @@ public class OuvinteController {
 	
 //	-----------------------------------------------------------------------------
 
-//	MUDANÇA FEITA AQUI E NA CLASSE Playlist
-	
 	// Método de add Playlist ao ouvinte
 	
 	public boolean adicionarPlaylist(Playlist playlist) {
@@ -39,8 +37,6 @@ public class OuvinteController {
 			System.out.println("Playlist já Cadastrada!");
             return false;
 		}
-		
-		
 		// Adicionando a ouvinte á lista de playlists
 		ouvinte.getPlaylists().add(playlist);
 		
@@ -50,9 +46,7 @@ public class OuvinteController {
 		return true;
     }
 	
-	
 //	-----------------------------------------------------------------------------
-//	MUDANÇA FEITO AQ...
 	
 	public boolean adicionarPlaylist(ArrayList<Playlist> playlists) {
 		//musica nao pode ter artista repetido

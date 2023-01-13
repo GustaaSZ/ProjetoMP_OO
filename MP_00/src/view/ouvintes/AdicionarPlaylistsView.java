@@ -54,7 +54,7 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	private void inicializar() {
 		
 		// Título
-		setTitle("Adicionar Playlist");
+		setTitle("CRUD Ouvintes");
 		
 		// Definições do tamanho da tela
         setSize(600, 400);

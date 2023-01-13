@@ -42,7 +42,7 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 	}
 
 	private void inicializar() {
-		setTitle("Lista de Playlists do Ouvinte");
+		setTitle("CRUD Ouvintes");
 		setSize(600, 400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
