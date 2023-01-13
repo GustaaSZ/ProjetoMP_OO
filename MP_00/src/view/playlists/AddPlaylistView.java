@@ -1,7 +1,6 @@
 package view.playlists;
 
 import static model.Ouvinte.ouvintesCadastrados;
-import static util.Conversor.stringToDate;
 import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
@@ -17,9 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.Ouvinte;
 import model.Playlist;
-import model.LetraMusica;
-import model.Musica;
-import model.Ouvinte;
 
 public class AddPlaylistView extends JFrame implements ActionListener{
 
@@ -97,6 +93,8 @@ public class AddPlaylistView extends JFrame implements ActionListener{
     	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
+    	pnlForm.add(lblDescricao);
+    	pnlForm.add(txtDescricao);
     	pnlForm.add(lblOuvinte);
     	pnlForm.add(cboxOuvinte);
     	

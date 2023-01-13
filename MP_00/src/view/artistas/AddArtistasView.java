@@ -1,19 +1,14 @@
 package view.artistas;
 
-import static model.Artista.artistasCadastrados;
 import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.InputMismatchException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 

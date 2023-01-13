@@ -4,8 +4,6 @@ import static model.Artista.artistasCadastrados;
 
 import java.util.Objects;
 
-import javax.swing.JOptionPane;
-
 import model.Artista;
 import model.Musica;
 
