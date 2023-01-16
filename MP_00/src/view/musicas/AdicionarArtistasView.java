@@ -46,7 +46,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 	private void inicializar() {
 		setTitle("CRUD Música");
 		setSize(600, 400);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
@@ -106,7 +106,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnAdd = new JButton("Adicionar Artista");
+		btnAdd = new JButton("Cadastrar");
 		btnCancelar = new JButton("Cancelar");
 
 		pnlRodape.add(btnAdd);

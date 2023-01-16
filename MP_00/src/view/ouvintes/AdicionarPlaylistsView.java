@@ -60,7 +60,7 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
         setSize(600, 400);
         
         // Ao clicar para fechar a tela, o programa será encerrado
-//	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Ao iniciar o programa, o container e seus respectivos componetes serão direcionados ao centro da tela
         setLocationRelativeTo(null);
@@ -134,7 +134,7 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnAdd = new JButton("Adicionar Playlist");
+		btnAdd = new JButton("Adicionar");
 		btnCancelar = new JButton("Cancelar");
 
 		pnlRodape.add(btnAdd);

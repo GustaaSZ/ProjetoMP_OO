@@ -41,6 +41,7 @@ public class PlaylistsView implements ActionListener{
         playlistView.setLocationRelativeTo(null);
         playlistView.setResizable(false);
         playlistView.setVisible(true);
+		playlistView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         playlistView.getContentPane().setLayout(new BorderLayout());
         playlistView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);

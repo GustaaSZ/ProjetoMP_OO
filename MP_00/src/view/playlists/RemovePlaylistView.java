@@ -42,7 +42,7 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 	private void inicializar() {
 		setTitle("CRUD Playlist");
 		setSize(600, 400);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
@@ -91,7 +91,7 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnRemover = new JButton("Remover Musica");
+		btnRemover = new JButton("Remover");
 		btnCancelar = new JButton("Cancelar");
 
 		pnlRodape.add(btnRemover);

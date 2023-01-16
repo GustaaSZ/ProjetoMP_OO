@@ -17,8 +17,13 @@ public class PlaylistController {
 	}
 	
 	// Métodos de Edição do CRUD
-	public void adicionarMusica(Musica musica) {
+	public boolean adicionarMusica(Musica musica) {
+		if (playlist.getMusicas().contains(musica)) {
+			return false;
+		}
+		
 		playlist.getMusicas().add(musica);
+		return true;
 	}
 
 	public void removerMusica(Musica musica) {

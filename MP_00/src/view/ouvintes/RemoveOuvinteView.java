@@ -55,7 +55,7 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
         setSize(600, 400);
         
         // Ao clicar para fechar a tela, o programa será encerrado
-//	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Ao iniciar o programa, o container e seus respectivos componetes serão direcionados ao centro da tela
         setLocationRelativeTo(null);
@@ -116,7 +116,7 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnRemover = new JButton("Remover Ouvinte");
+		btnRemover = new JButton("Remover");
 		btnCancelar = new JButton("Cancelar");
 
 		pnlRodape.add(btnRemover);

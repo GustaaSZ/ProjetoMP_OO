@@ -46,7 +46,7 @@ private static final long serialVersionUID = 1L;
 	private void inicializar() {
 		setTitle("CRUD Ouvintes");
         setSize(600, 400);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
@@ -101,7 +101,7 @@ private static final long serialVersionUID = 1L;
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnUpdt = new JButton("Atualizar Ouvinte");
+		btnUpdt = new JButton("Atualizar");
     	btnCancelar = new JButton("Cancelar");
     	
     	pnlRodape.add(btnUpdt);

@@ -43,6 +43,7 @@ public class OuvintesView implements ActionListener{
         ouvinteView.setLocationRelativeTo(null);
         ouvinteView.setResizable(false);
         ouvinteView.setVisible(true);
+		ouvinteView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         ouvinteView.getContentPane().setLayout(new BorderLayout());
         ouvinteView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);

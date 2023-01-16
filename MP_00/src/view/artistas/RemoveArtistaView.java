@@ -42,7 +42,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 	private void inicializar() {
 		setTitle("CRUD Artista");
 		setSize(600, 400);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
@@ -97,7 +97,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnRemover = new JButton("Remover Artista");
+		btnRemover = new JButton("Remover");
 		btnCancelar = new JButton("Cancelar");
 
 		pnlRodape.add(btnRemover);

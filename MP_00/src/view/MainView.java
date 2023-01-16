@@ -129,7 +129,6 @@ public class MainView implements ActionListener{
 			new PlaylistsView();
 		}
 		
-		
 		if (src == btnFechar) {
 			System.exit(0);
 		}

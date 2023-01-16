@@ -52,7 +52,7 @@ private static final long serialVersionUID = 1L;
         setSize(600, 400);
         
         // Ao clicar para fechar a tela, o programa será encerrado
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Ao iniciar o programa, o container e seus respectivos componetes serão direcionados ao centro da tela
         setLocationRelativeTo(null);

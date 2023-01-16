@@ -42,7 +42,7 @@ private static final long serialVersionUID = 1L;
 		
 		setTitle("Criar Ouvinte");
         setSize(600, 400);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
@@ -99,7 +99,7 @@ private static final long serialVersionUID = 1L;
 		}
 		
 		// Definindo a mensagem que irá aparecer no btnCriar
-		btnCriar = new JButton("Criar Ouvinte");
+		btnCriar = new JButton("Cadastrar");
 		// Definindo a mensagem que irá aparecer no btnCancelar
     	btnCancelar = new JButton("Cancelar");
     	

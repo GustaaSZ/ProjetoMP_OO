@@ -41,6 +41,7 @@ public class MusicasView implements ActionListener {
 		musicaView.setLocationRelativeTo(null);
 		musicaView.setResizable(false);
 		musicaView.setVisible(true);
+		musicaView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		musicaView.getContentPane().setLayout(new BorderLayout());
 		musicaView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);

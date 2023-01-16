@@ -46,6 +46,7 @@ public class ArtistasView implements ActionListener{
 		artistaView.setLocationRelativeTo(null);
 		artistaView.setResizable(false);
 		artistaView.setVisible(true);
+		artistaView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		artistaView.getContentPane().setLayout(new BorderLayout());
 		artistaView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);

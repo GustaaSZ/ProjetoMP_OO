@@ -43,7 +43,7 @@ public class AddMusicaView extends JFrame implements ActionListener {
 	private void inicializar() {
 		setTitle("CRUD Playlist");
 		setSize(600, 400);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
@@ -104,7 +104,7 @@ public class AddMusicaView extends JFrame implements ActionListener {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnAdd = new JButton("Adicionar Música");
+		btnAdd = new JButton("Adicionar");
 		btnCancelar = new JButton("Cancelar");
 
 		pnlRodape.add(btnAdd);
@@ -123,7 +123,10 @@ public class AddMusicaView extends JFrame implements ActionListener {
 				buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem())
 				);
 			
-			controller.adicionarMusica(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
+			if (!controller.adicionarMusica(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()))) {
+				openDialog("error");
+				return;
+			}
 			
 			this.dispose();
 			new PlaylistsView();

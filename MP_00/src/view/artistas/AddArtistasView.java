@@ -38,7 +38,7 @@ public class AddArtistasView extends JFrame implements ActionListener{
 	private void inicializar() {
 		setTitle("CRUD Artista");
         setSize(600, 400);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
@@ -83,7 +83,7 @@ public class AddArtistasView extends JFrame implements ActionListener{
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnCriar = new JButton("Criar Artista");
+		btnCriar = new JButton("Cadastrar");
     	btnCancelar = new JButton("Cancelar");
     	
     	btnCriar.setSize(30, 50);
@@ -103,7 +103,6 @@ public class AddArtistasView extends JFrame implements ActionListener{
 				openDialog("error");
 			}
 			new Artista(txtNome.getText().trim());
-//			System.out.println(artistasCadastrados.get(0));
 			this.dispose();
 			new ArtistasView();
 			openDialog("success");
