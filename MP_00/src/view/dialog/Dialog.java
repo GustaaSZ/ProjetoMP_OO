@@ -33,6 +33,10 @@ public class Dialog {
 			JOptionPane.showMessageDialog(null, "Artista já pertence a música!", null, 
 					JOptionPane.ERROR_MESSAGE);
 			break;
+		case "playlist_not_null":
+			JOptionPane.showMessageDialog(null, "Playlist possui músicas cadastradas, remova elas para excluir a playlist!", null, 
+					JOptionPane.ERROR_MESSAGE);
+			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Falha ao realizar a operação!", null, 
 					JOptionPane.ERROR_MESSAGE);		

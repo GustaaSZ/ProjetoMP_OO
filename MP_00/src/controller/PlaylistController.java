@@ -26,8 +26,12 @@ public class PlaylistController {
 		return true;
 	}
 
-	public void removerMusica(Musica musica) {
+	public boolean removerMusica(Musica musica) {
+		if (!playlist.getMusicas().contains(musica)) {
+			return false;
+		}
 		playlist.getMusicas().remove(musica);
+		return true;
 	}
 
 	public void atualizarPlaylist(String nome, String descricao) {
@@ -36,6 +40,10 @@ public class PlaylistController {
 	}
 
 	public static boolean removerPlaylist(Playlist playlist) {
+		if (!playlist.getMusicas().isEmpty()) {
+			return false;
+		}
+
 		playlistsCadastradas.remove(playlist);
 		return true;
 	}

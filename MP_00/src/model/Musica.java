@@ -11,12 +11,12 @@ public class Musica {
     private String nome;
     private String genero;
     private Date lancamento;
-    private LetraMusica letra;
+    private String letra;
 
     //Array com todas as músicas cadastradas.
     public static ArrayList<Musica> musicasCadastradas = new ArrayList<>();
 
-    public Musica(String nome, LetraMusica letra, String genero, Date lancamento) {
+    public Musica(String nome, String letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();
         this.nome = nome;
         this.letra = letra;
@@ -26,7 +26,7 @@ public class Musica {
         musicasCadastradas.add(this);
     }
     
-    public Musica(Artista artista, String nome, LetraMusica letra, String genero, Date lancamento) {
+    public Musica(Artista artista, String nome, String letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();
         this.nome = nome;
         this.letra = letra;
@@ -67,8 +67,12 @@ public class Musica {
         this.lancamento = lancamento;
     }
 
-    public LetraMusica getletra() {
+    public String getLetra() {
         return letra;
+    }
+
+    public void setLetra(String letra) {
+        this.letra = letra;
     }
 
     @Override

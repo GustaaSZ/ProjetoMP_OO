@@ -110,7 +110,7 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 			Playlist playlistSelecionada = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
 			
 			if (!removerPlaylist(playlistSelecionada)) {
-				openDialog("error");
+				openDialog("playlist_not_null");
 				return;
 			}
 			this.dispose();

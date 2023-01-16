@@ -27,10 +27,7 @@ public class OuvinteController {
 	// Método de add Playlist ao ouvinte
 	
 	public boolean adicionarPlaylist(Playlist playlist) {
-		
-		// Se a playlist já existir ao tentar add ela, será mostrada a seguinte mensagem
 		if(ouvinte.getPlaylists().contains(playlist)) {
-			System.out.println("Playlist já Cadastrada!");
             return false;
 		}
 		// Adicionando a ouvinte á lista de playlists
@@ -44,7 +41,7 @@ public class OuvinteController {
 	
 //	-----------------------------------------------------------------------------
 	
-	public boolean adicionarPlaylist(ArrayList<Playlist> playlists) {
+	public boolean adicionarPlaylists(ArrayList<Playlist> playlists) {
 		//musica nao pode ter artista repetido
 		for (Playlist playlist : playlists) {
 			if (ouvinte.getPlaylists().contains(playlist)) {
@@ -109,11 +106,9 @@ public class OuvinteController {
 	// e nele verificamos se ouvinte que deseja-se excluir existe de fato!
 		
         if (!ouvinteExiste(ouvinte)) {
-//            System.out.println("Ouvinte não cadastrado!");
             return false;
         }
         
-        // Pegando a lista de playlists do ouvinte e removendo
         if (ouvinte.getPlaylists().isEmpty()) {
             ouvintesCadastrados.remove(ouvinte);
             return true;
@@ -145,13 +140,11 @@ public class OuvinteController {
 		 // Contador que percorre a quantidade de ouvintes cadastrados
 	        for (Ouvinte value : ouvintesCadastrados) {
 	        	
-	        	// Se o nome digitado pelo usuário for encontrado na lista de ouvintesCadastrados ele retorna o nome
+	        	// Se o nome digitado pelo usuário for encontrado na lista de ouvintesCadastrados ele retorna o Ouvinte
 	            if (Objects.equals(value.getNome(), nome)) {
 	                return value;
 	            }
 	        }
-	        // Ao sair condição, se o nome digitado não foi encontrado na lista
-	        // de ouvintesCadastrados, mostra a seguinte mensagem na tela do usuário!
 			return null;
     }
 	 

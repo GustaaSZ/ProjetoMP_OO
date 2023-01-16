@@ -93,16 +93,16 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		lblMusica = new JLabel("Música:");
 		cboxMusica = new JComboBox<>(array);
 
-		lblNome = new JLabel("Nome");
+		lblNome = new JLabel("Nome:");
 		txtNome = new JTextField(20);
 
-		lblGenero = new JLabel("Genero");
+		lblGenero = new JLabel("Genero:");
 		txtGenero = new JTextField(15);
 
-		lblLancamento = new JLabel("Lancamento");
+		lblLancamento = new JLabel("Lancamento:");
 		txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
 
-		lblLetra = new JLabel("Letra");
+		lblLetra = new JLabel("Letra:");
 		txtLetra = new JTextField(20);
 
 		pnlForm.add(lblMusica);

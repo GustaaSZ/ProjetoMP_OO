@@ -21,7 +21,6 @@ import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import model.Artista;
-import model.LetraMusica;
 import model.Musica;
 
 public class AddMusicaView extends JFrame implements ActionListener{
@@ -144,7 +143,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 				new Musica(
 					(Artista) cboxArtista.getSelectedItem(),
 					txtNome.getText().trim(), 
-					new LetraMusica(txtLetra.getText()), 
+					txtLetra.getText().trim(), 
 					txtGenero.getText().trim(), 
 					stringToDate(txtLancamento.getText())
 					);

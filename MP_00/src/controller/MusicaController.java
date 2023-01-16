@@ -4,7 +4,6 @@ import static model.Musica.musicasCadastradas;
 
 import java.util.ArrayList;
 import java.util.Objects;
-import javax.swing.JOptionPane;
 
 import model.Artista;
 import model.Musica;
@@ -27,18 +26,9 @@ public class MusicaController {
 	
 	public boolean adicionarArtista(Artista artista) {
 		
-		/*
-		 * contains(): Ele serve para você verificar se na sua Collection
-		 *  (o teu ArrayList) possui um determinado elemento
-		*/
-		
-		// Se o artista já existir ao tentar add ele, será mostrada a seguinte mensagem
-		
 		if(musica.getArtistas().contains(artista)) {
-			System.out.println("Artista ja cadastrado!");
 			return false;
 		}
-		
 		// Add o artista á musica
 		musica.getArtistas().add(artista);
 		
@@ -49,8 +39,7 @@ public class MusicaController {
 	
 //	---------------------------------------------------------------
 	
-	public boolean adicionarArtista(ArrayList<Artista> artistas) {
-		
+	public boolean adicionarArtistas(ArrayList<Artista> artistas) {
 		//musica nao pode ter artista repetido
 		for (Artista artista : artistas) {
 			if (musica.getArtistas().contains(artista)) {
@@ -88,7 +77,7 @@ public class MusicaController {
 		this.musica.setNome(nome);
 		this.musica.setGenero(genero);
 		this.musica.setLancamento(stringToDate(lancamento));
-		this.musica.getletra().setLetra(new LetraMusica(letra).getLetra());
+		this.musica.setLetra(new LetraMusica(letra).getLetra());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -105,18 +94,10 @@ public class MusicaController {
 	// Método de editar letra da Musica
 	
 	public void editarLetra(String letra) {
-		musica.getletra().setLetra(letra);
+		musica.setLetra(letra);
 	}
 	
-	// Método que retorna a quantidade de artistas
-	
-	public int quantidadeArtistas(Artista artista) {
-		return musica.getArtistas().size();
-	}
-	
-	// Método que permite o usuário fazer uma busca pelo artita atrávez de um caracter
 	public int indexArtista(Artista artista) {
-		//Método indexOf – Permite localizar a primeira ocorrência de uma sequência de caracteres em uma string...
         return musica.getArtistas().indexOf(artista);
     }
 
@@ -132,20 +113,12 @@ public class MusicaController {
     	
     	// Se ao tentar remover a musica, e ela não estiver cadastrada...
     	if(!musicaExiste(musica)) {
-    		System.out.println("Musica Nao Cadastrada!");
             return false;
     	}
     	// removendo a musica
     	musicasCadastradas.remove(musica);
-        System.out.println("Musica Removida");
         return true;
     }
-    
-    public static void listarTodasMusicasCadastradas() {
-		for (Musica value : musicasCadastradas) {
-			System.out.println(value);
-		}
-	}
     
     public static Musica buscarMusicaPorNome(String nome) {
     	
@@ -154,7 +127,6 @@ public class MusicaController {
                 return value;
             }
         }
-        JOptionPane.showMessageDialog(null, "Não foi possível encontrar a música!");
 		return null;
     }
 
