@@ -1,23 +1,22 @@
-package view.playlists;
+package view.ouvintes;
 
-import static model.Ouvinte.ouvintesCadastrados;
 import static view.dialog.Dialog.openDialog;
+import static view.dialog.Dialog.objetoEncontrado;
+import static controller.OuvinteController.buscarOuvintePorNome;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import model.Ouvinte;
-import model.Playlist;
 
-public class AddPlaylistView extends JFrame implements ActionListener{
+import model.Ouvinte;
+
+public class BuscarOuvinte extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -27,25 +26,21 @@ public class AddPlaylistView extends JFrame implements ActionListener{
 	
 	private JLabel lblTitle;
 	private JLabel lblNome;
-	private JLabel lblDescricao;
-	private JLabel lblOuvinte;
 	
 	private JTextField txtNome;
-	private JTextField txtDescricao;
 	
-	private JComboBox<Ouvinte> cboxOuvinte;	
-		
-	private JButton btnCriar;
+	
+	private JButton btnBuscar;
 	private JButton btnCancelar;
 
-	public AddPlaylistView(){
+	public BuscarOuvinte(){
 		inicializar();
 	}
 
 	private void inicializar() {
-		setTitle("CRUD Playlist");
+		setTitle("CRUD Ouvinte");
         setSize(600, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
@@ -55,7 +50,7 @@ public class AddPlaylistView extends JFrame implements ActionListener{
         this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
         this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         
-        btnCriar.addActionListener(this);
+        btnBuscar.addActionListener(this);
         btnCancelar.addActionListener(this);
 	}
 	
@@ -65,7 +60,7 @@ public class AddPlaylistView extends JFrame implements ActionListener{
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Cadastro de Playlist");
+    	lblTitle = new JLabel("Buscar Artista");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -73,30 +68,14 @@ public class AddPlaylistView extends JFrame implements ActionListener{
 	
 	public JPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(3,2));
+    		pnlForm = new JPanel();
     	}
     	
     	lblNome = new JLabel("Nome:");
-    	txtNome = new JTextField(15);
-    	
-    	lblDescricao = new JLabel("Descrição:");
-    	txtDescricao = new JTextField(15);
-    	
-    	
-    	lblOuvinte = new JLabel("Ouvinte:");
-    	
-    	Ouvinte[] array = new Ouvinte[ouvintesCadastrados.size()];
-    	for(int i = 0; i < array.length; i++) {
-    	    array[i] = ouvintesCadastrados.get(i);
-    	}
-    	cboxOuvinte = new JComboBox<>(array);
+    	txtNome = new JTextField(20);
     	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
-    	pnlForm.add(lblDescricao);
-    	pnlForm.add(txtDescricao);
-    	pnlForm.add(lblOuvinte);
-    	pnlForm.add(cboxOuvinte);
     	
 		return pnlForm;
 	}
@@ -106,10 +85,12 @@ public class AddPlaylistView extends JFrame implements ActionListener{
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnCriar = new JButton("Cadastrar");
-    	btnCancelar = new JButton("Cancelar");
+		btnBuscar = new JButton("Buscar");
+    	btnCancelar = new JButton("Voltar");
     	
-    	pnlRodape.add(btnCriar);
+    	btnBuscar.setSize(30, 50);
+    	
+    	pnlRodape.add(btnBuscar);
     	pnlRodape.add(btnCancelar);
 		
 		return pnlRodape;
@@ -119,26 +100,26 @@ public class AddPlaylistView extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-		if (src == btnCriar) {
-			try {
-				new Playlist(
-					(Ouvinte) cboxOuvinte.getSelectedItem(),
-					txtNome.getText().trim(), 
-					txtDescricao.getText().trim()
-					);
-			} catch (Exception e1) {
+		if (src == btnBuscar) {
+			if(txtNome.getText() == null || txtNome.getText().trim() == "") {
 				openDialog("error");
-				return;
 			}
 			
-			this.dispose();
-			new PlaylistsView();
-			openDialog("success");
+			Ouvinte ouvinte = buscarOuvintePorNome(txtNome.getText());
+
+			if (ouvinte.equals(null)) {
+				openDialog("ouvinte_nao_encontradado");
+				return;
+			} else {
+				objetoEncontrado(ouvinte);
+				return;
+			}
 		}
 		
 		if (src == btnCancelar) {
 			this.dispose();
-			new PlaylistsView();
+			new OuvintesView();
 		}
 	}
+	
 }

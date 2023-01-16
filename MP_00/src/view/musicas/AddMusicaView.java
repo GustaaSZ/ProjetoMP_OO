@@ -17,6 +17,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -41,8 +43,10 @@ public class AddMusicaView extends JFrame implements ActionListener{
 	private JTextField txtNome;
 	private JTextField txtGenero;
 	private JFormattedTextField txtLancamento;
-	private JTextField txtLetra;
-	
+	private JTextArea txtLetra;
+
+	private JScrollPane scrollPane;
+
 	private JComboBox<Artista> cboxArtista;	
 		
 	private JButton btnCriar;
@@ -96,8 +100,11 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
     	
     	lblLetra = new JLabel("Letra:");
-    	txtLetra = new JTextField(20);
+    	txtLetra = new JTextArea();
+		txtLetra.setLineWrap(true);
     	
+		scrollPane = new JScrollPane(txtLetra);
+
     	lblArtista = new JLabel("Artista:");
     	
     	Artista[] array = new Artista[artistasCadastrados.size()];
@@ -113,7 +120,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	pnlForm.add(lblLancamento);
     	pnlForm.add(txtLancamento);
     	pnlForm.add(lblLetra);
-    	pnlForm.add(txtLetra);
+    	pnlForm.add(scrollPane);
     	pnlForm.add(lblArtista);
     	pnlForm.add(cboxArtista);
     	
@@ -149,6 +156,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 					);
 			} catch (Exception e1) {
 				openDialog("error");
+				return;
 			}
 			
 			this.dispose();

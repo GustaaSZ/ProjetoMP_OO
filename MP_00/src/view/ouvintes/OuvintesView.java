@@ -30,6 +30,7 @@ public class OuvintesView implements ActionListener{
 	private JButton btnRemove;
 	private JButton btnUpdate;
 	private JButton btnList;
+	private JButton btnBuscar;
 	private JButton btnListPlaylists;
 	private JButton btnVoltar;
 
@@ -55,6 +56,7 @@ public class OuvintesView implements ActionListener{
         btnUpdate.addActionListener(this);
         btnListPlaylists.addActionListener(this);
         btnList.addActionListener(this);
+        btnBuscar.addActionListener(this);
         btnVoltar.addActionListener(this);
     }
     
@@ -79,12 +81,14 @@ public class OuvintesView implements ActionListener{
     	btnRemove = new JButton("Remover Ouvinte");
     	btnUpdate = new JButton("Atualizar Ouvinte");
     	btnList = new JButton("Listar Ouvintes");
+    	btnBuscar = new JButton("Buscar Ouvinte");
     	btnListPlaylists = new JButton("Listar Playlists do Ouvinte");
     	
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
     	pnlBody.add(btnList);
+    	pnlBody.add(btnBuscar);
     	pnlBody.add(btnListPlaylists);
     	
 		return pnlBody;
@@ -138,7 +142,7 @@ public class OuvintesView implements ActionListener{
 			ouvinteView.dispose();
 			new ListarOuvintesView();
 		}
-//		----------------- Adicionada aqui essa funcionalidade --------------------
+
 		if(src == btnListPlaylists) {
 			if(playlistsCadastradas.isEmpty() || ouvintesCadastrados.isEmpty()) {
 				openDialog("ouvinte");
@@ -147,7 +151,15 @@ public class OuvintesView implements ActionListener{
 			ouvinteView.dispose();
 			new ListarPlaylistsOuvinteView();
 		}
-		
+
+		if(src == btnBuscar) {
+			if(playlistsCadastradas.isEmpty() || ouvintesCadastrados.isEmpty()) {
+				openDialog("ouvinte");
+				return;
+			}
+			ouvinteView.dispose();
+			new BuscarOuvinte();
+		}
 		
 		if (src == btnVoltar) {
 			ouvinteView.dispose();

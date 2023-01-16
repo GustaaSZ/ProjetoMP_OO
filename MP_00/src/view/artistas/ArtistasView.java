@@ -32,6 +32,7 @@ public class ArtistasView implements ActionListener{
 	private JButton btnUpdate;
 	private JButton btnList;
 	private JButton btnListMusicas;
+	private JButton btnBuscar;
 	private JButton btnVoltar;
 
 	public ArtistasView() {
@@ -58,6 +59,7 @@ public class ArtistasView implements ActionListener{
 		btnUpdate.addActionListener(this);
 		btnList.addActionListener(this);
 		btnListMusicas.addActionListener(this);
+		btnBuscar.addActionListener(this);
 		btnVoltar.addActionListener(this);
 	}
 
@@ -85,12 +87,14 @@ public class ArtistasView implements ActionListener{
 		btnRemove = new JButton("Remover Artista");
 		btnUpdate = new JButton("Atualizar Artista");
 		btnList = new JButton("Listar Artistas");
+		btnBuscar = new JButton("Buscar Artista");
 		btnListMusicas = new JButton("Listar Músicas do Artista");
 
 		pnlBody.add(btnAdd);
 		pnlBody.add(btnRemove);
 		pnlBody.add(btnUpdate);
 		pnlBody.add(btnList);
+		pnlBody.add(btnBuscar);
 		pnlBody.add(btnListMusicas);
 
 		return pnlBody;
@@ -146,6 +150,15 @@ public class ArtistasView implements ActionListener{
 			}
 			artistaView.dispose();
 			new ListarArtistasView();
+		}
+
+		if (src == btnBuscar) {
+			if (artistasCadastrados.isEmpty()) {
+				openDialog("artista");
+				return;
+			}
+			artistaView.dispose();
+			new BuscarArtista();
 		}
 		
 		if (src == btnListMusicas) {

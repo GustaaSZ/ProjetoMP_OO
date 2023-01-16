@@ -20,6 +20,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
@@ -44,7 +45,7 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 	private JTextField txtNome;
 	private JTextField txtGenero;
 	private JFormattedTextField txtLancamento;
-	private JTextField txtLetra;
+	private JTextArea txtLetra;
 
 	private JComboBox<String> cboxMusica;
 
@@ -109,7 +110,8 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		txtLancamento.setText(dateToString(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getLancamento()));
 
 		lblLetra = new JLabel("Letra:");
-		txtLetra = new JTextField(20);
+		txtLetra = new JTextArea();
+		txtLetra.setLineWrap(true);
 		txtLetra.setText(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getLetra());
 
 		pnlForm.add(lblMusica);

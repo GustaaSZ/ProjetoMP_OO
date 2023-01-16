@@ -141,7 +141,7 @@ public class OuvinteController {
 	        for (Ouvinte value : ouvintesCadastrados) {
 	        	
 	        	// Se o nome digitado pelo usuário for encontrado na lista de ouvintesCadastrados ele retorna o Ouvinte
-	            if (Objects.equals(value.getNome(), nome)) {
+	            if (value.getNome().trim().equalsIgnoreCase(nome)) {
 	                return value;
 	            }
 	        }

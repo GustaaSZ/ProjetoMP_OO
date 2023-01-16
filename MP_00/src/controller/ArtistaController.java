@@ -53,7 +53,7 @@ public class ArtistaController {
 
     public static Artista buscarArtistaPorNome(String nome) {
         for (Artista value : artistasCadastrados) {
-            if (Objects.equals(value.getNome(), nome)) {
+            if (value.getNome().trim().equalsIgnoreCase(nome)) {
                 return value;
             }
         }
