@@ -41,6 +41,10 @@ public class Dialog {
 			JOptionPane.showMessageDialog(null, "Música não pode ficar sem artista cadastrado!", null, 
 					JOptionPane.ERROR_MESSAGE);
 			break;
+		case "playlist_vazia":
+			JOptionPane.showMessageDialog(null, "Nenhuma música cadastrada para esta playlist!", null, 
+					JOptionPane.ERROR_MESSAGE);
+			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Falha ao realizar a operação!", null, 
 					JOptionPane.ERROR_MESSAGE);		

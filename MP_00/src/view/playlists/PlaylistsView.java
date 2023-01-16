@@ -1,6 +1,7 @@
 package view.playlists;
 
 import static model.Playlist.playlistsCadastradas;
+import static model.Musica.musicasCadastradas;
 import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
@@ -153,7 +154,7 @@ public class PlaylistsView implements ActionListener{
 		}
 		
 		if (src == btnAddMusica) {
-			if (playlistsCadastradas.isEmpty()) {
+			if (playlistsCadastradas.isEmpty() || musicasCadastradas.isEmpty()) {
 				openDialog("playlist");
 				return;
 			}
@@ -162,7 +163,7 @@ public class PlaylistsView implements ActionListener{
 		}
 
 		if (src == btnRmvMusica) {
-			if (playlistsCadastradas.isEmpty()) {
+			if (playlistsCadastradas.isEmpty() || musicasCadastradas.isEmpty()) {
 				openDialog("playlist");
 				return;
 			}

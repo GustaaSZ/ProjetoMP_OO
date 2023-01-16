@@ -2,6 +2,7 @@ package view.playlists;
 
 import static model.Playlist.playlistsCadastradas;
 import static controller.PlaylistController.buscarPlaylistPorNome;
+import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -106,12 +107,14 @@ public class MusicasView extends JFrame implements ActionListener {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					pnlForm.remove(lista);
 					Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-					for (int i = 0; i < selected.getMusicas().size(); i++) {
-						model.add(i, selected.getMusicas().get(i));
+					Musica[] musicas = selected.getMusicas().toArray(new Musica[selected.getMusicas().size()]);
+					if (musicas.length > 0) {
+						lista.setListData(musicas);
+					} else {
+						lista.setListData(musicas);
+						openDialog("playlist_vazia");
 					}
-					pnlForm.add(lista, BorderLayout.CENTER);
 				}
 			}
 		});
