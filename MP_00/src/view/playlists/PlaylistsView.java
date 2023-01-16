@@ -30,6 +30,7 @@ public class PlaylistsView implements ActionListener{
 	private JButton btnUpdate;
 	private JButton btnList;
 	private JButton btnAddMusica;
+	private JButton btnRmvMusica;
 	private JButton btnVoltar;
 
 	public PlaylistsView() {
@@ -53,6 +54,7 @@ public class PlaylistsView implements ActionListener{
         btnUpdate.addActionListener(this);
         btnList.addActionListener(this);
         btnAddMusica.addActionListener(this);
+        btnRmvMusica.addActionListener(this);
         btnVoltar.addActionListener(this);
     }
     
@@ -77,12 +79,14 @@ public class PlaylistsView implements ActionListener{
     	btnUpdate = new JButton("Atualizar playlist");
     	btnList = new JButton("Listar Playlists");
     	btnAddMusica = new JButton("Adicionar música na playlist");
+    	btnRmvMusica = new JButton("Remover música da playlist");
     	
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
     	pnlBody.add(btnList);
     	pnlBody.add(btnAddMusica);
+    	pnlBody.add(btnRmvMusica);
     	
 		return pnlBody;
 	}
@@ -142,6 +146,15 @@ public class PlaylistsView implements ActionListener{
 			}
 			playlistView.dispose();
 			new AddMusicaView();
+		}
+
+		if (src == btnRmvMusica) {
+			if (playlistsCadastradas.isEmpty()) {
+				openDialog("playlist");
+				return;
+			}
+			playlistView.dispose();
+			new RemoveMusicaView();
 		}
 		
 		if (src == btnVoltar) {

@@ -18,12 +18,12 @@ public class Instanciacao {
 		Artista artista5 = new Artista("Kyan");
 		Artista artista6 = new Artista("Leviano");
 
-		Musica musica1 = new Musica(artista1, "O Mundo é Nosso", "letra", "Rap", new Date());
-		Musica musica2 = new Musica(artista2, "Peita de dar Rolê", "letra", "Rap", new Date());
-		Musica musica3 = new Musica(artista3, "Mil Maneiras", "letra", "Trap", new Date());
-		Musica musica4 = new Musica(artista4, "237", "letra", "Trap", new Date());
-		Musica musica5 = new Musica(artista5, "Mandrake", "letra", "Drill", new Date());
-		Musica musica6 = new Musica(artista6, "Quieto", "letra", "Trap", new Date());
+		Musica musica1 = new Musica(artista1, "O Mundo é Nosso", "aaaaaa", "Rap", new Date());
+		Musica musica2 = new Musica(artista2, "Peita de dar Rolê", "bbb", "Rap", new Date());
+		Musica musica3 = new Musica(artista3, "Mil Maneiras", "cccccc", "Trap", new Date());
+		Musica musica4 = new Musica(artista4, "237", "dddddddddd", "Trap", new Date());
+		Musica musica5 = new Musica(artista5, "Mandrake", "eeeeeeee", "Drill", new Date());
+		Musica musica6 = new Musica(artista6, "Quieto", "fffffffff", "Trap", new Date());
 
 		Playlist playlist1 = new Playlist("Rap", "Descrição 1");
 

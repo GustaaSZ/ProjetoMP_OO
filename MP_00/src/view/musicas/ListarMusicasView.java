@@ -6,14 +6,18 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JViewport;
+import javax.swing.ScrollPaneConstants;
 
 import model.Musica;
 
@@ -39,7 +43,7 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 
 	private void inicializar() {
 		setTitle("CRUD Música");
-        setSize(800, 600);
+        setSize(600, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -75,10 +79,19 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 
     	for (int i = 0; i < musicasCadastradas.size(); i++) {
     	    model.add(i, musicasCadastradas.get(i));
-    	}
+		}
     	
-    	scroll = new JScrollPane(lista);
-    	
+		scroll = new JScrollPane(lista);
+
+		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+		JViewport viewport = scroll.getViewport();
+            int w = 400;
+            int h = viewport.getPreferredSize().height;
+            Dimension preferredSize = new Dimension(w, h);
+            viewport.setPreferredSize(preferredSize);
+
     	pnlForm.add(scroll);
     	
 		return pnlForm;

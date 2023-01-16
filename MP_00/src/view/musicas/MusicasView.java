@@ -31,6 +31,8 @@ public class MusicasView implements ActionListener {
 	private JButton btnList;
 	private JButton btnVoltar;
 	private JButton btnAddArt;
+	private JButton btnRmvArt;
+	private JButton btnLetra;
 
 	public MusicasView() {
 		inicializar();
@@ -54,6 +56,8 @@ public class MusicasView implements ActionListener {
 		btnList.addActionListener(this);
 		btnVoltar.addActionListener(this);
 		btnAddArt.addActionListener(this);
+		btnRmvArt.addActionListener(this);
+		btnLetra.addActionListener(this);
 	}
 
 	public JPanel getPnlTitle() {
@@ -76,13 +80,17 @@ public class MusicasView implements ActionListener {
 		btnRemove = new JButton("Remover Musica");
 		btnUpdate = new JButton("Atualizar Musica");
 		btnList = new JButton("Listar Musicas");
-		btnAddArt = new JButton("Adicionar artista");
+		btnAddArt = new JButton("Adicionar artista na Música");
+		btnRmvArt = new JButton("Remover artista da Música");
+		btnLetra = new JButton("Ver letra da Música");
 
 		pnlBody.add(btnAdd);
 		pnlBody.add(btnRemove);
 		pnlBody.add(btnUpdate);
 		pnlBody.add(btnList);
+		pnlBody.add(btnLetra);
 		pnlBody.add(btnAddArt);
+		pnlBody.add(btnRmvArt);
 
 		return pnlBody;
 	}
@@ -142,6 +150,24 @@ public class MusicasView implements ActionListener {
 			}
 			musicaView.dispose();
 			new AdicionarArtistasView();
+		}
+
+		if (src == btnRmvArt) {
+			if (musicasCadastradas.isEmpty()) {
+				openDialog("musica");
+				return;
+			}
+			musicaView.dispose();
+			new RemoverArtistaView();
+		}
+
+		if (src == btnLetra) {
+			if (musicasCadastradas.isEmpty()) {
+				openDialog("musica");
+				return;
+			}
+			musicaView.dispose();
+			new LetraView();
 		}
 
 		if (src == btnVoltar) {

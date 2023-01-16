@@ -1,14 +1,13 @@
 package controller;
 
 import static model.Musica.musicasCadastradas;
+import static util.Conversor.stringToDate;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 import model.Artista;
 import model.Musica;
-import model.LetraMusica;
-import static util.Conversor.stringToDate;
 import java.text.ParseException;
 
 public class MusicaController {
@@ -62,6 +61,9 @@ public class MusicaController {
 		if(!musica.getArtistas().contains(artista)) {
             return false;
 		}
+		if (musica.getArtistas().size() == 1) {
+			return false;
+		}
 		// remove artista da musica
 		musica.getArtistas().remove(artista);
 		
@@ -74,10 +76,10 @@ public class MusicaController {
 	
 	public void atualizarMusica(String nome, String genero, String lancamento, String letra) {
 		try {
-		this.musica.setNome(nome);
-		this.musica.setGenero(genero);
-		this.musica.setLancamento(stringToDate(lancamento));
-		this.musica.setLetra(new LetraMusica(letra).getLetra());
+		musica.setNome(nome);
+		musica.setGenero(genero);
+		musica.setLancamento(stringToDate(lancamento));
+		musica.setLetra(letra);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
