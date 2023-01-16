@@ -29,6 +29,7 @@ public class PlaylistsView implements ActionListener{
 	private JButton btnRemove;
 	private JButton btnUpdate;
 	private JButton btnList;
+	private JButton btnMusicas;
 	private JButton btnAddMusica;
 	private JButton btnRmvMusica;
 	private JButton btnVoltar;
@@ -53,6 +54,7 @@ public class PlaylistsView implements ActionListener{
         btnRemove.addActionListener(this);
         btnUpdate.addActionListener(this);
         btnList.addActionListener(this);
+        btnMusicas.addActionListener(this);
         btnAddMusica.addActionListener(this);
         btnRmvMusica.addActionListener(this);
         btnVoltar.addActionListener(this);
@@ -78,6 +80,7 @@ public class PlaylistsView implements ActionListener{
     	btnRemove = new JButton("Remover playlist");
     	btnUpdate = new JButton("Atualizar playlist");
     	btnList = new JButton("Listar Playlists");
+    	btnMusicas = new JButton("Listar Músicas da Playlist");
     	btnAddMusica = new JButton("Adicionar música na playlist");
     	btnRmvMusica = new JButton("Remover música da playlist");
     	
@@ -85,6 +88,7 @@ public class PlaylistsView implements ActionListener{
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
     	pnlBody.add(btnList);
+    	pnlBody.add(btnMusicas);
     	pnlBody.add(btnAddMusica);
     	pnlBody.add(btnRmvMusica);
     	
@@ -137,6 +141,15 @@ public class PlaylistsView implements ActionListener{
 			}
 			playlistView.dispose();
 			new ListarPlaylistsView();
+		}
+
+		if (src == btnMusicas) {
+			if (playlistsCadastradas.isEmpty()) {
+				openDialog("playlist");
+				return;
+			}
+			playlistView.dispose();
+			new MusicasView();
 		}
 		
 		if (src == btnAddMusica) {

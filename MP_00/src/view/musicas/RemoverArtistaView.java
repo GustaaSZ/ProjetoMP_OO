@@ -105,15 +105,13 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					pnlForm.remove(cboxArtista);
+					cboxArtista.removeAllItems();
 					
 					Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
 					Artista[] array = new Artista[musicaSelecionada.getArtistas().size()];
 					for (int i = 0; i < array.length; i++) {
-						array[i] = musicaSelecionada.getArtistas().get(i);
+						cboxArtista.addItem(musicaSelecionada.getArtistas().get(i));
 					}
-					cboxArtista = new JComboBox<>(array);
-					pnlForm.add(cboxArtista);
 				}
 			}
 		});

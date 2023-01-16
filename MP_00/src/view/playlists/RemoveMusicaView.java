@@ -11,12 +11,18 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import controller.PlaylistController;
+import model.Artista;
+import model.Musica;
+import model.Playlist;
 
 public class RemoveMusicaView extends JFrame implements ActionListener {
 
@@ -82,11 +88,13 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		
 		cboxPlaylist = new JComboBox<>(array);
 
+		Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+
 		lblMusica = new JLabel("Música:");
     	
-		String[] arrayMusica = new String[musicasCadastradas.size()];
+		String[] arrayMusica = new String[selected.getMusicas().size()];
 		for (int i = 0; i < arrayMusica.length; i++) {
-			arrayMusica[i] = musicasCadastradas.get(i).getNome();
+			arrayMusica[i] = selected.getMusicas().get(i).getNome();
 		}
 		
 		cboxMusica = new JComboBox<>(arrayMusica);
@@ -95,6 +103,22 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
     	pnlForm.add(cboxPlaylist);
     	pnlForm.add(lblMusica);
     	pnlForm.add(cboxMusica);
+
+		cboxPlaylist.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					cboxMusica.removeAllItems();
+					
+					Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+					Musica[] array = new Musica[selected.getMusicas().size()];
+					for (int i = 0; i < array.length; i++) {
+						cboxMusica.addItem(selected.getMusicas().get(i).getNome());
+					}
+				}
+			}
+		});
 
 		return pnlForm;
 	}

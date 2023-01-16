@@ -71,12 +71,12 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 	public JPanel getPnlForm() {
 		
 		if (pnlForm == null) {
-			pnlForm = new JPanel();
+			pnlForm = new JPanel(new BorderLayout());
 		}
 
 		lblOuvinte = new JLabel("Ouvinte:");
 		
-		pnlForm.add(lblOuvinte);
+		pnlForm.add(lblOuvinte, BorderLayout.NORTH);
 		
 		Ouvinte[] array = new Ouvinte[ouvintesCadastrados.size()];
 		for (int i = 0; i < array.length; i++) {
@@ -84,7 +84,7 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		}
 		cboxOuvinte = new JComboBox<>(array);
 		
-		pnlForm.add(cboxOuvinte);
+		pnlForm.add(cboxOuvinte, BorderLayout.NORTH);
 
 		DefaultListModel<Playlist> model = new DefaultListModel<Playlist>();
 		lista = new JList<Playlist>(model);
@@ -95,22 +95,16 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 			model.add(i, selected.getPlaylists().get(i));
 		}
 		
-		pnlForm.add(lista);
+		pnlForm.add(lista, BorderLayout.CENTER);
 		
 		
 		cboxOuvinte.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					pnlForm.remove(lista);
-					DefaultListModel<Playlist> model = new DefaultListModel<Playlist>();
-					lista = new JList<Playlist>(model);
-					Ouvinte item = (Ouvinte) e.getItem();
-
-					for (int i = 0; i < item.getPlaylists().size(); i++) {
-						model.add(i, item.getPlaylists().get(i));
-					}
-					pnlForm.add(lista);
+					Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
+					Playlist[] playlists = selected.getPlaylists().toArray(new Playlist[selected.getPlaylists().size()]);
+					lista.setListData(playlists);
 				}
 			}
 		});

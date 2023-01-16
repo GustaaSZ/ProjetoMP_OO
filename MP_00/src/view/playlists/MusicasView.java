@@ -1,6 +1,7 @@
-package view.artistas;
+package view.playlists;
 
-import static model.Artista.artistasCadastrados;
+import static model.Playlist.playlistsCadastradas;
+import static controller.PlaylistController.buscarPlaylistPorNome;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,10 +17,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import model.Artista;
 import model.Musica;
+import model.Playlist;
 
-public class ListarMusicasArtistaView extends JFrame implements ActionListener {
+public class MusicasView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,22 +29,22 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 	private JPanel pnlRodape;
 
 	private JLabel lblTitle;
-	private JLabel lblArtista;
-
-	private JComboBox<Artista> cboxArtista;
+	private JLabel lblPlaylist;
 
 	private JList<Musica> lista;
 
+	private JComboBox<String> cboxPlaylist;
+
 	private JButton btnVoltar;
 
-	public ListarMusicasArtistaView() {
+	public MusicasView() {
 		inicializar();
 	}
 
 	//	-------------------------------------------------------------
 
 	private void inicializar() {
-		setTitle("CRUD Artista");
+		setTitle("CRUD Playlist");
 		setSize(600, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -65,7 +66,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		lblTitle = new JLabel("Lista de músicas do Artista");
+		lblTitle = new JLabel("Músicas da Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -78,36 +79,39 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 			pnlForm = new JPanel(new BorderLayout());
 		}
 
-		lblArtista = new JLabel("Artista:");
+		lblPlaylist = new JLabel("Playlist:");
 		
-		pnlForm.add(lblArtista, BorderLayout.NORTH);
+		pnlForm.add(lblPlaylist, BorderLayout.NORTH);
 
-		Artista[] array = new Artista[artistasCadastrados.size()];
+		String[] array = new String[playlistsCadastradas.size()];
 		for (int i = 0; i < array.length; i++) {
-			array[i] = artistasCadastrados.get(i);
+			array[i] = playlistsCadastradas.get(i).getNome();
 		}
-		cboxArtista = new JComboBox<>(array);
-		
-		pnlForm.add(cboxArtista, BorderLayout.NORTH);
-		
-		Artista selected = (Artista) cboxArtista.getSelectedItem();
+		cboxPlaylist = new JComboBox<>(array);
 
+		pnlForm.add(cboxPlaylist, BorderLayout.NORTH);
+
+		Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+		
 		DefaultListModel<Musica> model = new DefaultListModel<Musica>();
 		lista = new JList<Musica>(model);
 
 		for (int i = 0; i < selected.getMusicas().size(); i++) {
 			model.add(i, selected.getMusicas().get(i));
 		}
-		
+
 		pnlForm.add(lista, BorderLayout.CENTER);
 
-		cboxArtista.addItemListener(new ItemListener() {
+		cboxPlaylist.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-					Artista selected = (Artista) cboxArtista.getSelectedItem();
-					Musica[] musicas = selected.getMusicas().toArray(new Musica[selected.getMusicas().size()]);
-					lista.setListData(musicas);
+					pnlForm.remove(lista);
+					Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+					for (int i = 0; i < selected.getMusicas().size(); i++) {
+						model.add(i, selected.getMusicas().get(i));
+					}
+					pnlForm.add(lista, BorderLayout.CENTER);
 				}
 			}
 		});
@@ -136,8 +140,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
 		if (src == btnVoltar) {
 			this.dispose();
-			new ArtistasView();
+			new PlaylistsView();
 		}
 	}
-
 }
