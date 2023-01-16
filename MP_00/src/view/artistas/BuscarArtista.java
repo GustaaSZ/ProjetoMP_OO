@@ -85,7 +85,7 @@ public class BuscarArtista extends JFrame implements ActionListener{
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnBuscar = new JButton("Cadastrar");
+		btnBuscar = new JButton("Buscar");
     	btnCancelar = new JButton("Voltar");
     	
     	btnBuscar.setSize(30, 50);
@@ -107,14 +107,14 @@ public class BuscarArtista extends JFrame implements ActionListener{
 			
 			Artista artista = buscarArtistaPorNome(txtNome.getText());
 
-			if (artista.equals(null)) {
-				openDialog("artista_nao_encontradado");
-				return;
-			} else {
-				objetoEncontrado(artista);
-				return;
+			try {
+				if (!artista.equals(null)) {
+					objetoEncontrado(artista);
+					return;
+				}
+			} catch (NullPointerException ex) {
+				openDialog("artista_nao_encontrado");
 			}
-
 		}
 		
 		if (src == btnCancelar) {

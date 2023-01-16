@@ -48,11 +48,11 @@ public class Dialog {
 			JOptionPane.showMessageDialog(null, "Nenhuma música cadastrada para esta playlist!", null, 
 					JOptionPane.ERROR_MESSAGE);
 			break;
-		case "artista_nao_encontradado":
+		case "artista_nao_encontrado":
 			JOptionPane.showMessageDialog(null, "Artista não encontradado", null, 
 					JOptionPane.ERROR_MESSAGE);
 			break;
-		case "ouvinte_nao_encontradado":
+		case "ouvinte_nao_encontrado":
 			JOptionPane.showMessageDialog(null, "Ouvinte não encontradado", null, 
 					JOptionPane.ERROR_MESSAGE);
 			break;

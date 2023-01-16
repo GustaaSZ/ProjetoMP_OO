@@ -107,19 +107,19 @@ public class BuscarOuvinte extends JFrame implements ActionListener{
 			
 			Ouvinte ouvinte = buscarOuvintePorNome(txtNome.getText());
 
-			if (ouvinte.equals(null)) {
-				openDialog("ouvinte_nao_encontradado");
-				return;
-			} else {
-				objetoEncontrado(ouvinte);
+			try {
+				if (!ouvinte.equals(null)) {
+					objetoEncontrado(ouvinte);
+					return;
+				}
+			} catch (NullPointerException ex) {
+				openDialog("ouvinte_nao_encontrado");
 				return;
 			}
 		}
-		
 		if (src == btnCancelar) {
 			this.dispose();
 			new OuvintesView();
 		}
 	}
-	
 }
