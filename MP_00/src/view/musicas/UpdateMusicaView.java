@@ -3,12 +3,15 @@ package view.musicas;
 import static controller.MusicaController.buscarMusicaPorNome;
 import static model.Musica.musicasCadastradas;
 import static view.dialog.Dialog.openDialog;
+import static util.Conversor.dateToString;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.text.ParseException;
 
 import javax.swing.JButton;
@@ -95,15 +98,19 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 
 		lblNome = new JLabel("Nome:");
 		txtNome = new JTextField(20);
+		txtNome.setText(cboxMusica.getSelectedItem().toString());
 
 		lblGenero = new JLabel("Genero:");
 		txtGenero = new JTextField(15);
+		txtGenero.setText(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getGenero());
 
 		lblLancamento = new JLabel("Lancamento:");
 		txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
+		txtLancamento.setText(dateToString(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getLancamento()));
 
 		lblLetra = new JLabel("Letra:");
 		txtLetra = new JTextField(20);
+		txtLetra.setText(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getLetra());
 
 		pnlForm.add(lblMusica);
 		pnlForm.add(cboxMusica);
@@ -115,6 +122,20 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		pnlForm.add(txtLancamento);
 		pnlForm.add(lblLetra);
 		pnlForm.add(txtLetra);
+
+		cboxMusica.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					Musica selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
+					txtNome.setText(selected.getNome());
+					txtGenero.setText(selected.getGenero());
+					txtLancamento.setText(dateToString(selected.getLancamento()));
+					txtLetra.setText(selected.getLetra());
+				}
+			}
+		});
 
 		return pnlForm;
 	}

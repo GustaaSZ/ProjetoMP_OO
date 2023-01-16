@@ -3,7 +3,6 @@ package view.playlists;
 import static controller.PlaylistController.buscarPlaylistPorNome;
 import static controller.MusicaController.buscarMusicaPorNome;
 import static model.Playlist.playlistsCadastradas;
-import static model.Musica.musicasCadastradas;
 import static view.dialog.Dialog.openDialog;
 
 import java.awt.BorderLayout;
@@ -20,7 +19,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import controller.PlaylistController;
-import model.Artista;
 import model.Musica;
 import model.Playlist;
 

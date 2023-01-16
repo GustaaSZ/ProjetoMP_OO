@@ -9,6 +9,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -87,9 +90,11 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 
 		lblNome = new JLabel("Nome:");
     	txtNome = new JTextField(15);
+		txtNome.setText(playlistsCadastradas.get(0).getNome());
     	
     	lblDescricao = new JLabel("Descrição:");
     	txtDescricao = new JTextField(15);
+		txtDescricao.setText(playlistsCadastradas.get(0).getDescricao());
     	
 		pnlForm.add(lblPlaylist);
     	pnlForm.add(cboxPlaylist);
@@ -97,6 +102,18 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
     	pnlForm.add(txtNome);
     	pnlForm.add(lblDescricao);
     	pnlForm.add(txtDescricao);
+
+		cboxPlaylist.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+					txtNome.setText(selected.getNome());
+					txtDescricao.setText(selected.getDescricao());
+					}
+				}
+		});
+
 		return pnlForm;
 	}
 
