@@ -1,26 +1,17 @@
 package main.view.playlists;
 
-import static main.model.Playlist.playlistsCadastradas;
+import main.model.Playlist;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
-import main.model.Playlist;
+import static main.model.Playlist.playlistsCadastradas;
+import static main.util.Inicializacao.inicializar;
 
 public class ListarPlaylistsView extends JFrame implements ActionListener{
 
-	private static final long serialVersionUID = 1L;
-	
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
 	private JPanel pnlRodape;
@@ -34,26 +25,10 @@ public class ListarPlaylistsView extends JFrame implements ActionListener{
 	private JButton btnVoltar;
 
 	public ListarPlaylistsView(){
-		inicializar();
+		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+		btnVoltar.addActionListener(this);
 	}
 
-	private void inicializar() {
-		setTitle("CRUD Playlist");
-        setSize(600, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setVisible(true);
-        
-        this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
-        this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-        
-        btnVoltar.addActionListener(this);
-	}
-	
-	
 	public JPanel getPnlTitle() {
     	if (pnlTitle == null) {
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));

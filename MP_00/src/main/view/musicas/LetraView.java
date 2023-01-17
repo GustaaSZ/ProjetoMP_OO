@@ -1,29 +1,20 @@
 package main.view.musicas;
 
-import static main.model.Musica.musicasCadastradas;
-import static main.controller.MusicaController.buscarMusicaPorNome;
+import main.model.Musica;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.Insets;
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-
-import main.model.Musica;
+import static main.controller.MusicaController.buscarMusicaPorNome;
+import static main.model.Musica.musicasCadastradas;
+import static main.util.Inicializacao.inicializar;
 
 public class LetraView extends JFrame implements ActionListener {
-
-	private static final long serialVersionUID = 1L;
 
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
@@ -38,24 +29,7 @@ public class LetraView extends JFrame implements ActionListener {
 	private JButton btnVoltar;
 
 	public LetraView() {
-		inicializar();
-	}
-
-	//	-------------------------------------------------------------
-
-	private void inicializar() {
-		setTitle("CRUD Musica");
-		setSize(600, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setVisible(true);
-
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-		this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
-		this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-
+		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
 		btnVoltar.addActionListener(this);
 	}
 

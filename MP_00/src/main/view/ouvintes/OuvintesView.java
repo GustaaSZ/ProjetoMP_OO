@@ -1,24 +1,18 @@
 package main.view.ouvintes;
 
-import static main.model.Ouvinte.ouvintesCadastrados;
-import static main.model.Playlist.playlistsCadastradas;
-import static main.view.dialog.Dialog.openDialog;
+import main.view.MainView;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import static main.model.Ouvinte.ouvintesCadastrados;
+import static main.model.Playlist.playlistsCadastradas;
+import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
-import main.view.MainView;
-
-public class OuvintesView implements ActionListener{
-	
-	private JFrame ouvinteView = new JFrame("Gerenciamento de ouvintes");
+public class OuvintesView extends JFrame implements ActionListener{
 	
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
@@ -31,35 +25,23 @@ public class OuvintesView implements ActionListener{
 	private JButton btnUpdate;
 	private JButton btnList;
 	private JButton btnBuscar;
+	private JButton btnAddPlaylist;
 	private JButton btnListPlaylists;
 	private JButton btnVoltar;
 
 	public OuvintesView() {
-        inicializar();
+        inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlBody(), getPnlRodape());
+
+		btnAdd.addActionListener(this);
+		btnRemove.addActionListener(this);
+		btnUpdate.addActionListener(this);
+		btnListPlaylists.addActionListener(this);
+		btnList.addActionListener(this);
+		btnBuscar.addActionListener(this);
+		btnAddPlaylist.addActionListener(this);
+		btnVoltar.addActionListener(this);
     }
 
-    private void inicializar() {
-    	ouvinteView.setTitle("Gerenciamento de Ouvintes");
-        ouvinteView.setSize(600, 400);
-        ouvinteView.setLocationRelativeTo(null);
-        ouvinteView.setResizable(false);
-        ouvinteView.setVisible(true);
-		ouvinteView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        ouvinteView.getContentPane().setLayout(new BorderLayout());
-        ouvinteView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        ouvinteView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
-        ouvinteView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-        
-        btnAdd.addActionListener(this);
-        btnRemove.addActionListener(this);
-        btnUpdate.addActionListener(this);
-        btnListPlaylists.addActionListener(this);
-        btnList.addActionListener(this);
-        btnBuscar.addActionListener(this);
-        btnVoltar.addActionListener(this);
-    }
-    
     public JPanel getPnlTitle() {
     	if (pnlTitle == null) {
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -82,6 +64,7 @@ public class OuvintesView implements ActionListener{
     	btnUpdate = new JButton("Atualizar Ouvinte");
     	btnList = new JButton("Listar Ouvintes");
     	btnBuscar = new JButton("Buscar Ouvinte");
+		btnAddPlaylist = new JButton("Adicionar Playlist");
     	btnListPlaylists = new JButton("Listar Playlists do Ouvinte");
     	
     	pnlBody.add(btnAdd);
@@ -89,8 +72,9 @@ public class OuvintesView implements ActionListener{
     	pnlBody.add(btnUpdate);
     	pnlBody.add(btnList);
     	pnlBody.add(btnBuscar);
+    	pnlBody.add(btnAddPlaylist);
     	pnlBody.add(btnListPlaylists);
-    	
+
 		return pnlBody;
 	}
     
@@ -112,7 +96,7 @@ public class OuvintesView implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnAdd) {
-				ouvinteView.dispose();
+				this.dispose();
 				new AddOuvintesView();
 		}
 		
@@ -121,7 +105,7 @@ public class OuvintesView implements ActionListener{
 				openDialog("ouvinte");
 				return;
 			}
-			ouvinteView.dispose();
+			this.dispose();
 			new RemoveOuvinteView();
 		}
 		
@@ -130,7 +114,7 @@ public class OuvintesView implements ActionListener{
 				openDialog("ouvinte");
 				return;
 			}
-			ouvinteView.dispose();
+			this.dispose();
 			new UpdateOuvinteView();
 		}
 		
@@ -139,7 +123,7 @@ public class OuvintesView implements ActionListener{
 				openDialog("ouvinte");
 				return;
 			}
-			ouvinteView.dispose();
+			this.dispose();
 			new ListarOuvintesView();
 		}
 
@@ -148,8 +132,17 @@ public class OuvintesView implements ActionListener{
 				openDialog("ouvinte");
 				return;
 			}
-			ouvinteView.dispose();
+			this.dispose();
 			new ListarPlaylistsOuvinteView();
+		}
+
+		if(src == btnAddPlaylist) {
+			if(playlistsCadastradas.isEmpty() || ouvintesCadastrados.isEmpty()) {
+				openDialog("playlist");
+				return;
+			}
+			this.dispose();
+			new AdicionarPlaylistsView();
 		}
 
 		if(src == btnBuscar) {
@@ -157,12 +150,12 @@ public class OuvintesView implements ActionListener{
 				openDialog("ouvinte");
 				return;
 			}
-			ouvinteView.dispose();
+			this.dispose();
 			new BuscarOuvinte();
 		}
 		
 		if (src == btnVoltar) {
-			ouvinteView.dispose();
+			this.dispose();
 			new MainView();
 		}
 		

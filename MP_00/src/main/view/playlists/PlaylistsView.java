@@ -1,25 +1,18 @@
 package main.view.playlists;
 
-import static main.model.Playlist.playlistsCadastradas;
-import static main.model.Musica.musicasCadastradas;
-import static main.view.dialog.Dialog.openDialog;
+import main.view.MainView;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import static main.model.Musica.musicasCadastradas;
+import static main.model.Playlist.playlistsCadastradas;
+import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
-import main.view.MainView;
-
-public class PlaylistsView implements ActionListener{
-	
-	private JFrame playlistView = new JFrame("Gerenciamento de Playlists");
-	
+public class PlaylistsView extends JFrame implements ActionListener{
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
 	private JPanel pnlRodape;
@@ -36,29 +29,16 @@ public class PlaylistsView implements ActionListener{
 	private JButton btnVoltar;
 
 	public PlaylistsView() {
-        inicializar();
-    }
+        inicializar(this, "CRUD Playlist", getPnlTitle(), getPnlBody(), getPnlRodape());
 
-    private void inicializar() {
-        playlistView.setSize(600, 400);
-        playlistView.setLocationRelativeTo(null);
-        playlistView.setResizable(false);
-        playlistView.setVisible(true);
-		playlistView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        playlistView.getContentPane().setLayout(new BorderLayout());
-        playlistView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        playlistView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
-        playlistView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-        
-        btnAdd.addActionListener(this);
-        btnRemove.addActionListener(this);
-        btnUpdate.addActionListener(this);
-        btnList.addActionListener(this);
-        btnMusicas.addActionListener(this);
-        btnAddMusica.addActionListener(this);
-        btnRmvMusica.addActionListener(this);
-        btnVoltar.addActionListener(this);
+		btnAdd.addActionListener(this);
+		btnRemove.addActionListener(this);
+		btnUpdate.addActionListener(this);
+		btnList.addActionListener(this);
+		btnMusicas.addActionListener(this);
+		btnAddMusica.addActionListener(this);
+		btnRmvMusica.addActionListener(this);
+		btnVoltar.addActionListener(this);
     }
     
     public JPanel getPnlTitle() {
@@ -113,7 +93,7 @@ public class PlaylistsView implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnAdd) {
-				playlistView.dispose();
+				this.dispose();
 				new AddPlaylistView();
 		}
 		
@@ -122,7 +102,7 @@ public class PlaylistsView implements ActionListener{
 				openDialog("playlist");
 				return;
 			}
-			playlistView.dispose();
+			this.dispose();
 			new RemovePlaylistView();
 		}
 		
@@ -131,7 +111,7 @@ public class PlaylistsView implements ActionListener{
 				openDialog("playlist");
 				return;
 			}
-			playlistView.dispose();
+			this.dispose();
 			new UpdatePlaylistView();
 		}
 		
@@ -140,7 +120,7 @@ public class PlaylistsView implements ActionListener{
 				openDialog("playlist");
 				return;
 			}
-			playlistView.dispose();
+			this.dispose();
 			new ListarPlaylistsView();
 		}
 
@@ -149,7 +129,7 @@ public class PlaylistsView implements ActionListener{
 				openDialog("playlist");
 				return;
 			}
-			playlistView.dispose();
+			this.dispose();
 			new MusicasView();
 		}
 		
@@ -158,7 +138,7 @@ public class PlaylistsView implements ActionListener{
 				openDialog("playlist");
 				return;
 			}
-			playlistView.dispose();
+			this.dispose();
 			new AddMusicaView();
 		}
 
@@ -167,12 +147,12 @@ public class PlaylistsView implements ActionListener{
 				openDialog("playlist");
 				return;
 			}
-			playlistView.dispose();
+			this.dispose();
 			new RemoveMusicaView();
 		}
 		
 		if (src == btnVoltar) {
-			playlistView.dispose();
+			this.dispose();
 			new MainView();
 		}
 	}

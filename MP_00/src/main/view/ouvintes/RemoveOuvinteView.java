@@ -1,26 +1,17 @@
 package main.view.ouvintes;
 
-import static main.controller.OuvinteController.removerOuvinteCadastrado;
-import static main.model.Ouvinte.ouvintesCadastrados;
+import main.model.Ouvinte;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
-import main.model.Ouvinte;
+import static main.controller.OuvinteController.removerOuvinteCadastrado;
+import static main.model.Ouvinte.ouvintesCadastrados;
+import static main.util.Inicializacao.inicializar;
 
 public class RemoveOuvinteView extends JFrame implements ActionListener{
-
-	private static final long serialVersionUID = 1L;
 
 	// Instânciando componentes da classe JPanel
 	private JPanel pnlTitle;
@@ -40,38 +31,8 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 
 	// Construtor
 	public RemoveOuvinteView() {
-		inicializar();
-	}
-	
-//	---------------------------------------------------------------------------
-	
-	// Método inicializar 
-	private void inicializar() {
-		
-		// Título
-		setTitle("CRUD Ouvintes");
-		
-		// Definições do tamanho da tela
-        setSize(600, 400);
-        
-        // Ao clicar para fechar a tela, o programa será encerrado
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        // Ao iniciar o programa, o container e seus respectivos componetes serão direcionados ao centro da tela
-        setLocationRelativeTo(null);
-        
-        // Não permite que o usuário redimensione a tela (Diminuir ou aumentar)
-        setResizable(false);
-        
-        // Tornando visivel a aplicação
-        setVisible(true);
-        
-        this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
-        this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-        
-        btnRemover.addActionListener(this);
+		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+		btnRemover.addActionListener(this);
 		btnCancelar.addActionListener(this);
 	}
 	

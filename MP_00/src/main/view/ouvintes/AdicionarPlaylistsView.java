@@ -1,30 +1,20 @@
 package main.view.ouvintes;
 
-import static main.model.Ouvinte.ouvintesCadastrados;
-import static main.model.Playlist.playlistsCadastradas;
-
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
 import main.controller.OuvinteController;
-//import main.model.Artista;
 import main.model.Ouvinte;
 import main.model.Playlist;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static main.model.Ouvinte.ouvintesCadastrados;
+import static main.model.Playlist.playlistsCadastradas;
+import static main.util.Inicializacao.inicializar;
+
 public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	
-	private static final long serialVersionUID = 1L;
-
 	// Instãnciando componenstes da Classe JPanel
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
@@ -45,41 +35,10 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 
 	// Construtor
 	public AdicionarPlaylistsView() {
-		inicializar();
-	}
-	
-//	---------------------------------------------------------------------------
-	
-	// Método inicializar 
-	private void inicializar() {
-		
-		// Título
-		setTitle("CRUD Ouvintes");
-		
-		// Definições do tamanho da tela
-        setSize(600, 400);
-        
-        // Ao clicar para fechar a tela, o programa será encerrado
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        // Ao iniciar o programa, o container e seus respectivos componetes serão direcionados ao centro da tela
-        setLocationRelativeTo(null);
-        
-        // Não permite que o usuário redimensione a tela (Diminuir ou aumentar)
-        setResizable(false);
-        
-        // Tornando visivel a aplicação
-        setVisible(true);
-        
-        this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
-        this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-        
-        btnAdd.addActionListener(this);
+		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+		btnAdd.addActionListener(this);
 		btnCancelar.addActionListener(this);
 	}
-	
 //	---------------------------------------------------------------------------
 	
 	public JPanel getPnlTitle() {
@@ -144,7 +103,6 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	}
 	
 //	---------------------------------------------------------------------------
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -155,7 +113,6 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Playlist já pertence a Ouvinte!");
 				return;
 			}
-//			main.controller.adicionarPlaylist((Playlist) cboxPlaylist.getSelectedItem())
 			this.dispose();
 			new OuvintesView();
 			JOptionPane.showMessageDialog(null, "Playlist adicionada com Sucesso!");
@@ -166,8 +123,4 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 			new OuvintesView();
 		}
 	}
-	
-	
-//	---------------------------------------------------------------------------
-	
 }

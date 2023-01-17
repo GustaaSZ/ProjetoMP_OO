@@ -1,27 +1,19 @@
 package main.view.artistas;
 
-import static main.model.Artista.artistasCadastrados;
+import main.model.Artista;
+import main.model.Musica;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import main.model.Artista;
-import main.model.Musica;
+import static main.model.Artista.artistasCadastrados;
+import static main.util.Inicializacao.inicializar;
 
 public class ListarMusicasArtistaView extends JFrame implements ActionListener {
-
-	private static final long serialVersionUID = 1L;
 
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
@@ -37,26 +29,11 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 	private JButton btnVoltar;
 
 	public ListarMusicasArtistaView() {
-		inicializar();
-	}
-
-	//	-------------------------------------------------------------
-
-	private void inicializar() {
-		setTitle("CRUD Artista");
-		setSize(600, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setVisible(true);
-
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-		this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
-		this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
+		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
 
 		btnVoltar.addActionListener(this);
 	}
+
 
 	//	-------------------------------------------------------------
 

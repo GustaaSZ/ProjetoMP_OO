@@ -1,22 +1,19 @@
 package main.view;
 
-import static main.model.Artista.artistasCadastrados;
-import static main.model.Ouvinte.ouvintesCadastrados;
-import static main.view.dialog.Dialog.openDialog;
-
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import main.view.artistas.ArtistasView;
 import main.view.musicas.MusicasView;
 import main.view.ouvintes.OuvintesView;
 import main.view.playlists.PlaylistsView;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static main.model.Artista.artistasCadastrados;
+import static main.model.Ouvinte.ouvintesCadastrados;
+import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
 public class MainView extends JFrame implements ActionListener{
 
@@ -33,28 +30,14 @@ public class MainView extends JFrame implements ActionListener{
 	private JButton btnFechar;
 	
 	public MainView() {
-		inicializar();
+		inicializar(this, "Sistema de Músicas", getPnlTitle(), getPnlBody(), getPnlRodape());
+
+		btnArtistas.addActionListener(this);
+		btnMusicas.addActionListener(this);
+		btnPlaylists.addActionListener(this);
+		btnOuvintes.addActionListener(this);
+		btnFechar.addActionListener(this);
 	}
-	
-	private void inicializar() {
-		this.setTitle("Sistema de Músicas");
-		this.setSize(600, 400);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
-		this.setResizable(false);
-		this.setVisible(true);
-        
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-		this.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
-		this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-        
-        btnArtistas.addActionListener(this);
-        btnMusicas.addActionListener(this);
-        btnPlaylists.addActionListener(this);
-        btnOuvintes.addActionListener(this);
-        btnFechar.addActionListener(this);
-    }
 
 	public JPanel getPnlTitle() {
     	if (pnlTitle == null) {

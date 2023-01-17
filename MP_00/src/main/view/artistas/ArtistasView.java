@@ -1,26 +1,20 @@
 package main.view.artistas;
 
 
-import static main.model.Artista.artistasCadastrados;
-import static main.model.Musica.musicasCadastradas;
-import static main.view.dialog.Dialog.openDialog;
+import main.view.MainView;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import static main.model.Artista.artistasCadastrados;
+import static main.model.Musica.musicasCadastradas;
+import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
-import main.view.MainView;
-
-public class ArtistasView implements ActionListener{
+public class ArtistasView extends JFrame implements ActionListener{
 	
-	private static JFrame artistaView = new JFrame("CRUD Artistas");
-
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
 	private JPanel pnlRodape;
@@ -36,23 +30,7 @@ public class ArtistasView implements ActionListener{
 	private JButton btnVoltar;
 
 	public ArtistasView() {
-		inicializar();
-	}
-	
-//	-------------------------------------------------------
-	
-	private void inicializar() {
-		artistaView.setTitle("Gerenciamento de Artistas");
-		artistaView.setSize(600, 400);
-		artistaView.setLocationRelativeTo(null);
-		artistaView.setResizable(false);
-		artistaView.setVisible(true);
-		artistaView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		artistaView.getContentPane().setLayout(new BorderLayout());
-		artistaView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-		artistaView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
-		artistaView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
+		inicializar(this, "CRUD Artistas", getPnlTitle(), getPnlBody(), getPnlRodape());
 
 		btnAdd.addActionListener(this);
 		btnRemove.addActionListener(this);
@@ -121,7 +99,7 @@ public class ArtistasView implements ActionListener{
 		Object src = e.getSource();
 
 		if (src == btnAdd) {
-			artistaView.dispose();
+			this.dispose();
 			new AddArtistasView();
 		}
 
@@ -130,7 +108,7 @@ public class ArtistasView implements ActionListener{
 				openDialog("artista");
 				return;
 			}
-			artistaView.dispose();
+			this.dispose();
 			new RemoveArtistaView();
 		}
 
@@ -139,7 +117,7 @@ public class ArtistasView implements ActionListener{
 				openDialog("artista");
 				return;
 			}
-			artistaView.dispose();
+			this.dispose();
 			new UpdateArtistaView();
 		}
 
@@ -148,7 +126,7 @@ public class ArtistasView implements ActionListener{
 				openDialog("artista");
 				return;
 			}
-			artistaView.dispose();
+			this.dispose();
 			new ListarArtistasView();
 		}
 
@@ -157,7 +135,7 @@ public class ArtistasView implements ActionListener{
 				openDialog("artista");
 				return;
 			}
-			artistaView.dispose();
+			this.dispose();
 			new BuscarArtista();
 		}
 		
@@ -166,12 +144,12 @@ public class ArtistasView implements ActionListener{
 				openDialog("artista_musica");
 				return;
 			}
-			artistaView.dispose();
+			this.dispose();
 			new ListarMusicasArtistaView();
 		}
 
 		if (src == btnVoltar) {
-			artistaView.dispose();
+			this.dispose();
 			new MainView();
 		}
 	}

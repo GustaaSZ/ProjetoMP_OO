@@ -1,22 +1,16 @@
 package main.view.ouvintes;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import main.model.Ouvinte;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import main.model.Ouvinte;
+import static main.util.Inicializacao.inicializar;
 
 public class AddOuvintesView extends JFrame implements ActionListener{
 
-private static final long serialVersionUID = 1L;
-	
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
 	private JPanel pnlRodape;
@@ -33,29 +27,10 @@ private static final long serialVersionUID = 1L;
 	private JButton btnCancelar;
 
 	public AddOuvintesView(){
-		inicializar();
+		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+		btnCriar.addActionListener(this);
+		btnCancelar.addActionListener(this);
 	}
-	
-//	-----------------------------------------------------------------------------
-	
-	private void inicializar() {
-		
-		setTitle("Criar Ouvinte");
-        setSize(600, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setVisible(true);
-        
-        this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
-        this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-        
-        btnCriar.addActionListener(this);
-        btnCancelar.addActionListener(this);
-	}
-	
 //	-----------------------------------------------------------------------------
 	
 	public JPanel getPnlTitle() {

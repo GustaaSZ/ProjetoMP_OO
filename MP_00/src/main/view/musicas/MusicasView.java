@@ -1,23 +1,17 @@
 package main.view.musicas;
 
-import static main.model.Musica.musicasCadastradas;
-import static main.view.dialog.Dialog.openDialog;
+import main.view.MainView;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import static main.model.Musica.musicasCadastradas;
+import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
-import main.view.MainView;
-
-public class MusicasView implements ActionListener {
-
-	private JFrame musicaView = new JFrame("Gerenciamento de Músicas");
+public class MusicasView extends JFrame implements ActionListener {
 
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
@@ -35,21 +29,7 @@ public class MusicasView implements ActionListener {
 	private JButton btnLetra;
 
 	public MusicasView() {
-		inicializar();
-	}
-
-	private void inicializar() {
-		musicaView.setSize(600, 400);
-		musicaView.setLocationRelativeTo(null);
-		musicaView.setResizable(false);
-		musicaView.setVisible(true);
-		musicaView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		musicaView.getContentPane().setLayout(new BorderLayout());
-		musicaView.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-		musicaView.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
-		musicaView.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-
+		inicializar(this, "CRUD Música", getPnlTitle(), getPnlBody(), getPnlRodape());
 		btnAdd.addActionListener(this);
 		btnRemove.addActionListener(this);
 		btnUpdate.addActionListener(this);
@@ -112,7 +92,7 @@ public class MusicasView implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnAdd) {
-			musicaView.dispose();
+			this.dispose();
 			new AddMusicaView();
 		}
 
@@ -121,7 +101,7 @@ public class MusicasView implements ActionListener {
 				openDialog("musica");
 				return;
 			}
-			musicaView.dispose();
+			this.dispose();
 			new RemoveMusicaView();
 		}
 
@@ -130,7 +110,7 @@ public class MusicasView implements ActionListener {
 				openDialog("musica");
 				return;
 			}
-			musicaView.dispose();
+			this.dispose();
 			new UpdateMusicaView();
 		}
 
@@ -139,7 +119,7 @@ public class MusicasView implements ActionListener {
 				openDialog("musica");
 				return;
 			}
-			musicaView.dispose();
+			this.dispose();
 			new ListarMusicasView();
 		}
 		
@@ -148,7 +128,7 @@ public class MusicasView implements ActionListener {
 				openDialog("musica");
 				return;
 			}
-			musicaView.dispose();
+			this.dispose();
 			new AdicionarArtistasView();
 		}
 
@@ -157,7 +137,7 @@ public class MusicasView implements ActionListener {
 				openDialog("musica");
 				return;
 			}
-			musicaView.dispose();
+			this.dispose();
 			new RemoverArtistaView();
 		}
 
@@ -166,12 +146,12 @@ public class MusicasView implements ActionListener {
 				openDialog("musica");
 				return;
 			}
-			musicaView.dispose();
+			this.dispose();
 			new LetraView();
 		}
 
 		if (src == btnVoltar) {
-			musicaView.dispose();
+			this.dispose();
 			new MainView();
 		}
 	}

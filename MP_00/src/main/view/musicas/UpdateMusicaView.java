@@ -1,35 +1,24 @@
 package main.view.musicas;
 
-import static main.controller.MusicaController.buscarMusicaPorNome;
-import static main.model.Musica.musicasCadastradas;
-import static main.view.dialog.Dialog.openDialog;
-import static main.util.Conversor.dateToString;
+import main.controller.MusicaController;
+import main.model.Musica;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.text.ParseException;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
-
-import main.controller.MusicaController;
-import main.model.Musica;
+import static main.controller.MusicaController.buscarMusicaPorNome;
+import static main.model.Musica.musicasCadastradas;
+import static main.util.Conversor.dateToString;
+import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
 public class UpdateMusicaView extends JFrame implements ActionListener {
-
-	private static final long serialVersionUID = 1L;
 
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
@@ -53,22 +42,7 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 	private JButton btnCancelar;
 
 	public UpdateMusicaView() {
-		inicializar();
-	}
-
-	private void inicializar() {
-		setTitle("CRUD Música");
-		setSize(600, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setVisible(true);
-
-		this.getContentPane().setLayout(new BorderLayout());
-		this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-		this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
-		this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-
+		inicializar(this, "CRUD Música", getPnlTitle(), getPnlForm(), getPnlRodape());
 		btnUpdt.addActionListener(this);
 		btnCancelar.addActionListener(this);
 	}

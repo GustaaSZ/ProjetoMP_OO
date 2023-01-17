@@ -1,25 +1,19 @@
 package main.view.artistas;
 
-import static main.view.dialog.Dialog.openDialog;
-import static main.view.dialog.Dialog.objetoEncontrado;
-import static main.controller.ArtistaController.buscarArtistaPorNome;
+import main.model.Artista;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import main.model.Artista;
+import static main.controller.ArtistaController.buscarArtistaPorNome;
+import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.objetoEncontrado;
+import static main.view.dialog.Dialog.openDialog;
 
 public class BuscarArtista extends JFrame implements ActionListener{
 
-	private static final long serialVersionUID = 1L;
-	
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
 	private JPanel pnlRodape;
@@ -34,27 +28,13 @@ public class BuscarArtista extends JFrame implements ActionListener{
 	private JButton btnCancelar;
 
 	public BuscarArtista(){
-		inicializar();
+		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
+
+		btnBuscar.addActionListener(this);
+		btnCancelar.addActionListener(this);
 	}
 
-	private void inicializar() {
-		setTitle("CRUD Artista");
-        setSize(600, 400);
-      	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setVisible(true);
-        
-        this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-        this.getContentPane().add(getPnlForm(), BorderLayout.CENTER);
-        this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
-        
-        btnBuscar.addActionListener(this);
-        btnCancelar.addActionListener(this);
-	}
-	
-	
+
 	public JPanel getPnlTitle() {
     	if (pnlTitle == null) {
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
