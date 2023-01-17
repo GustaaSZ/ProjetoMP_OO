@@ -19,7 +19,7 @@ public class Dialog {
             case "artista_musica" ->
                     JOptionPane.showMessageDialog(null, "Cadastre uma música e um artista primeiro!", null,
                             JOptionPane.ERROR_MESSAGE);
-            case "success" -> JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!", null,
+            case "success" -> JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!", "Sucesso!",
                     JOptionPane.INFORMATION_MESSAGE);
             case "artista_repetido" -> JOptionPane.showMessageDialog(null, "Artista já pertence a música!", null,
                     JOptionPane.ERROR_MESSAGE);
@@ -39,17 +39,21 @@ public class Dialog {
                     JOptionPane.ERROR_MESSAGE);
             case "ouvinte_nao_encontrado" -> JOptionPane.showMessageDialog(null, "Ouvinte não encontradado", null,
                     JOptionPane.ERROR_MESSAGE);
-            default -> JOptionPane.showMessageDialog(null, "Falha ao realizar a operação!", null,
+            default -> JOptionPane.showMessageDialog(null, "Falha ao realizar a operação!", "Erro!",
                     JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public static void objetoEncontrado(Object o) {
         if (o instanceof Artista) {
-            JOptionPane.showMessageDialog(null, "Artista " + o + " encontrado!");
+            JOptionPane.showMessageDialog(null, "Artista " + o + " encontrado, operação realizada com sucesso!",
+                    "Artista Encontrado!",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
-		if (o instanceof Ouvinte) {
-            JOptionPane.showMessageDialog(null, "Ouvinte " + o + " encontrado!");
+        if (o instanceof Ouvinte) {
+            JOptionPane.showMessageDialog(null, "Ouvinte " + o + " encontrado, operação realizada com sucesso!",
+                    "Ouvinte Encontrado!",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }
