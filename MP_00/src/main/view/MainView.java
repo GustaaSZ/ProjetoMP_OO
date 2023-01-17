@@ -18,9 +18,8 @@ import main.view.musicas.MusicasView;
 import main.view.ouvintes.OuvintesView;
 import main.view.playlists.PlaylistsView;
 
-public class MainView implements ActionListener{
-	
-	private static JFrame telaPrincipal = new JFrame("Projeto Orientação à Objetos");
+public class MainView extends JFrame implements ActionListener{
+
 	private JPanel pnlTitle;
 	private JPanel pnlBody;
 	private JPanel pnlRodape;
@@ -38,16 +37,17 @@ public class MainView implements ActionListener{
 	}
 	
 	private void inicializar() {
-		telaPrincipal.setSize(600, 400);
-		telaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		telaPrincipal.setLocationRelativeTo(null);
-		telaPrincipal.setResizable(false);
-		telaPrincipal.setVisible(true);
+		this.setTitle("Sistema de Músicas");
+		this.setSize(600, 400);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		this.setVisible(true);
         
-		telaPrincipal.getContentPane().setLayout(new BorderLayout());
-		telaPrincipal.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
-		telaPrincipal.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
-		telaPrincipal.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
+		this.getContentPane().setLayout(new BorderLayout());
+		this.getContentPane().add(getPnlTitle(), BorderLayout.PAGE_START);
+		this.getContentPane().add(getPnlBody(), BorderLayout.CENTER);
+		this.getContentPane().add(getPnlRodape(), BorderLayout.PAGE_END);
         
         btnArtistas.addActionListener(this);
         btnMusicas.addActionListener(this);
@@ -61,7 +61,7 @@ public class MainView implements ActionListener{
     		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Crud de musicas");
+    	lblTitle = new JLabel("Projeto Orientação à Objetos");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -102,7 +102,7 @@ public class MainView implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnArtistas) {
-			telaPrincipal.dispose();
+			this.dispose();
 			new ArtistasView();
 		}
 		
@@ -111,12 +111,12 @@ public class MainView implements ActionListener{
 				openDialog("artista");
 				return;
 			}
-			telaPrincipal.dispose();
+			this.dispose();
 			new MusicasView();	
 		}
 		
 		if (src == btnOuvintes) {
-			telaPrincipal.dispose();
+			this.dispose();
 			new OuvintesView();
 		}
 		
@@ -125,7 +125,7 @@ public class MainView implements ActionListener{
 				openDialog("ouvinte");
 				return;
 			}
-			telaPrincipal.dispose();
+			this.dispose();
 			new PlaylistsView();
 		}
 		
