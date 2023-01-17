@@ -106,7 +106,6 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnUpdt) {
-
 			ArtistaController controller = new ArtistaController((Artista) cboxArtista.getSelectedItem());
 			controller.editarNome(txtNome.getText().trim());
 			
