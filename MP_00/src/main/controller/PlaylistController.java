@@ -1,17 +1,16 @@
 package main.controller;
 
-import static main.model.Playlist.playlistsCadastradas;
+import main.model.Musica;
+import main.model.Playlist;
 
 import java.util.Objects;
 
-import main.model.Musica;
-import main.model.Playlist;
+import static main.model.Playlist.playlistsCadastradas;
 
 public class PlaylistController {
 
 	private final Playlist playlist;
-	
-	// construtor
+
 	public PlaylistController(Playlist playlist) {
 		this.playlist = playlist;
 	}

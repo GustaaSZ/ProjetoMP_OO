@@ -1,11 +1,10 @@
 package main.controller;
 
-import static main.model.Artista.artistasCadastrados;
+import main.model.Artista;
 
 import java.util.Objects;
 
-import main.model.Artista;
-import main.model.Musica;
+import static main.model.Artista.artistasCadastrados;
 
 public class ArtistaController {
 
@@ -15,7 +14,6 @@ public class ArtistaController {
         this.artista = artista;
     }
 
-    // ----------------- METODOS NAO ESTATICOS ----------------
     public void editarNome(String nome) {
         artista.setNome(nome);
     }

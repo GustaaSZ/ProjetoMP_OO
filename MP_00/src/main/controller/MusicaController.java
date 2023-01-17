@@ -1,73 +1,41 @@
 package main.controller;
 
-import static main.model.Musica.musicasCadastradas;
-import static main.util.Conversor.stringToDate;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
 import main.model.Artista;
 import main.model.Musica;
+
 import java.text.ParseException;
+import java.util.Objects;
+
+import static main.model.Musica.musicasCadastradas;
+import static main.util.Conversor.stringToDate;
 
 public class MusicaController {
 
 	private final Musica musica;
-	
-	// construtor
+
 	public MusicaController(Musica musica) {
 		this.musica = musica;
 	}
 	
-	// Métodos de Edição do CRUD
-	
 	//------------------ FUNÇÃO DE ADD ARTISTA NA MUSICA --------------------
 	
 	public boolean adicionarArtista(Artista artista) {
-		
 		if(musica.getArtistas().contains(artista)) {
 			return false;
 		}
-		// Add o artista á musica
 		musica.getArtistas().add(artista);
-		
-		// add a musica no artista
 		artista.getMusicas().add(musica);
 		return true;
 	}
-	
 //	---------------------------------------------------------------
-	
-	public boolean adicionarArtistas(ArrayList<Artista> artistas) {
-		//musica nao pode ter artista repetido
-		for (Artista artista : artistas) {
-			if (musica.getArtistas().contains(artista)) {
-				return false;
-			}
-		}
-		musica.getArtistas().addAll(artistas);
-		for (Artista artista : artistas) {
-			artista.getMusicas().add(musica);
-		}
-		return true;
-	}
-	
-			
-	//------------------- FUNÇÃO DE REMOVER ARTISTA DA MUSICA ---------------------
-			
 	public boolean removerArtista(Artista artista) {
-		
-		// Lendo todos os artistas que estão cadastrados á determinada musica, se esse artista n for encontrado...
 		if(!musica.getArtistas().contains(artista)) {
             return false;
 		}
 		if (musica.getArtistas().size() == 1) {
 			return false;
 		}
-		// remove artista da musica
 		musica.getArtistas().remove(artista);
-		
-		// remove musica do artista
 		artista.getMusicas().remove(musica);
 		return true;
 	}
@@ -84,46 +52,16 @@ public class MusicaController {
 			e.printStackTrace();
 		}
 	}
-	
-//	---------------------------------------------------------------
-	
-	// Método de editar nome da Musica
-	
-	public void editarNome(String nome) {
-		musica.setNome(nome);
-	}
-	
-	// Método de editar letra da Musica
-	
-	public void editarLetra(String letra) {
-		musica.setLetra(letra);
-	}
-	
-	public int indexArtista(Artista artista) {
-        return musica.getArtistas().indexOf(artista);
-    }
-
-    public Artista buscarArtistaPorIndex(int index) {
-        return musica.getArtistas().get(index);
-    }
-	
     // ---------------- METODOS ESTATICOS ----------------
-    
-    //Manipulando as musicas 
-    
     public static boolean removerMusica(Musica musica) {
-    	
-    	// Se ao tentar remover a musica, e ela não estiver cadastrada...
     	if(!musicaExiste(musica)) {
             return false;
     	}
-    	// removendo a musica
     	musicasCadastradas.remove(musica);
         return true;
     }
-    
+
     public static Musica buscarMusicaPorNome(String nome) {
-    	
         for (Musica value : musicasCadastradas) {
             if (Objects.equals(value.getNome(), nome)) {
                 return value;
@@ -132,7 +70,6 @@ public class MusicaController {
 		return null;
     }
 
-    
     private static Boolean musicaExiste(Musica musica) {
         for (Musica value : musicasCadastradas) {
             if (Objects.equals(musica, value)) {
@@ -141,6 +78,5 @@ public class MusicaController {
         }
         return false;
     }
-    
 }
 

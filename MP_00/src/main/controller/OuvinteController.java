@@ -1,30 +1,22 @@
 package main.controller;
 
-import main.model.Musica;
 import main.model.Ouvinte;
 import main.model.Playlist;
-
-import static main.model.Ouvinte.ouvintesCadastrados;
-import static main.model.Playlist.playlistsCadastradas;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class OuvinteController {
+import static main.model.Ouvinte.ouvintesCadastrados;
+import static main.model.Playlist.playlistsCadastradas;
 
-	// Instânciando um objeto ouvinte da classe ouvinte para a classe de controle
-	
+public class OuvinteController {
 	private final Ouvinte ouvinte;
-	
-	// Construtor
 	
 	public OuvinteController(Ouvinte ouvinte) {
 		this.ouvinte = ouvinte;
 	}
 	
 //	-----------------------------------------------------------------------------
-
-	// Método de add Playlist ao ouvinte
 	
 	public boolean adicionarPlaylist(Playlist playlist) {
 		if(ouvinte.getPlaylists().contains(playlist)) {
@@ -57,8 +49,6 @@ public class OuvinteController {
 	
 	
 //	-----------------------------------------------------------------------------
-
-	// Método de remover Playlist ao ouvonte
 	
 	public boolean removerPlaylist(Playlist playlist) {
 		if (!ouvinte.getPlaylists().contains(playlist)) {
@@ -71,44 +61,20 @@ public class OuvinteController {
  		playlist.getOuvintes().remove(ouvinte);
 		return true;
     }
-//	-----------------------------------------------------------------------------
 
-	// Método de adicionar Musica favorita do ouvinte
-	
-	public void adicionarMusicaFavorita(Musica musica) {
-		ouvinte.setMusicaFavorita(musica);
-	}
 	
 //	-----------------------------------------------------------------------------
 
 	public void editarNome(String nome) {
 		ouvinte.setNome(nome);
     }
-
-    public int quantidadePlaylists() {
-        return ouvinte.getPlaylists().size();
-    }
-
-    public int indexPlaylist(Playlist playlist) {
-        return ouvinte.getPlaylists().indexOf(playlist);
-    }
-
-    public Playlist buscarPlaylistPorIndex(int index) {
-        return ouvinte.getPlaylists().get(index);
-    }
 	
 //	 ********************************* METODOS ESTATICOS *********************************
-    
-    // Método de remover Ouvinte
+
 	public static boolean removerOuvinteCadastrado(Ouvinte ouvinte) {
-		
-	// Se ao tentar remover um ouvinte, chamamos o método ouvinte existe,
-	// e nele verificamos se ouvinte que deseja-se excluir existe de fato!
-		
         if (!ouvinteExiste(ouvinte)) {
             return false;
         }
-        
         if (ouvinte.getPlaylists().isEmpty()) {
             ouvintesCadastrados.remove(ouvinte);
             return true;
@@ -116,14 +82,9 @@ public class OuvinteController {
             return false;
         }
     }
-	
-	
+
 //	-----------------------------------------------------------------------------
-	
-	// Método de buscar Playlist por nome
-	
 	public static Playlist buscarPlaylistPorNome(String nome) {
-		
 		for(Playlist value : playlistsCadastradas) {
 			if(value.getNome().equals(nome)) {
 				return value;
@@ -133,8 +94,6 @@ public class OuvinteController {
 	}
 	
 //		-----------------------------------------------------------------------------
-	 
-	 // Método que fara uam busca por nome de um ouvinte que o usuário deseja
 	 public static Ouvinte buscarOuvintePorNome(String nome) {
 		 
 		 // Contador que percorre a quantidade de ouvintes cadastrados
@@ -146,11 +105,8 @@ public class OuvinteController {
 	            }
 	        }
 			return null;
-    }
-	 
+	    }
 //		-----------------------------------------------------------------------------
-	 
-	 // Método que verifica se um ouvinte existe de fato.
 	 private static Boolean ouvinteExiste(Ouvinte ouvinte){
 		 // Repetição que vai percorrer a quantidade de ouvintes cadastrados
 	        for (Ouvinte value : ouvintesCadastrados) {
