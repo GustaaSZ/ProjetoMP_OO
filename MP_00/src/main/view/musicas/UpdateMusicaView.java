@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.text.ParseException;
 
 import static main.controller.MusicaController.buscarMusicaPorNome;
@@ -99,17 +98,13 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		pnlForm.add(lblLetra);
 		pnlForm.add(txtLetra);
 
-		cboxMusica.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					Musica selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-					txtNome.setText(selected.getNome());
-					txtGenero.setText(selected.getGenero());
-					txtLancamento.setText(dateToString(selected.getLancamento()));
-					txtLetra.setText(selected.getLetra());
-				}
+		cboxMusica.addItemListener(e -> {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				Musica selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
+				txtNome.setText(selected.getNome());
+				txtGenero.setText(selected.getGenero());
+				txtLancamento.setText(dateToString(selected.getLancamento()));
+				txtLetra.setText(selected.getLetra());
 			}
 		});
 

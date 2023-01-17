@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
@@ -69,16 +68,12 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
 		
-		cboxOuvinte.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
-					txtNome.setText(selected.getNome());
-					}
+		cboxOuvinte.addItemListener(e -> {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
+				txtNome.setText(selected.getNome());
 				}
-		});
+			});
 
 		return pnlForm;
 	}

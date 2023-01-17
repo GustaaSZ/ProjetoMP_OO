@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
 import static main.model.Ouvinte.ouvintesCadastrados;
@@ -15,8 +16,8 @@ import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
-public class AdicionarPlaylistsView extends JFrame implements ActionListener {
-	
+public class RemoverPlaylistsView extends JFrame implements ActionListener {
+
 	// Instãnciando componenstes da Classe JPanel
 	private JPanel pnlTitle;
 	private JPanel pnlForm;
@@ -32,13 +33,13 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	private JComboBox<Ouvinte> cboxOuvinte;
 
 	// Instãnciando componenstes da Classe JButton
-	private JButton btnAdd;
+	private JButton btnRemover;
 	private JButton btnCancelar;
 
 	// Construtor
-	public AdicionarPlaylistsView() {
+	public RemoverPlaylistsView() {
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
-		btnAdd.addActionListener(this);
+		btnRemover.addActionListener(this);
 		btnCancelar.addActionListener(this);
 	}
 //	---------------------------------------------------------------------------
@@ -48,7 +49,7 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		lblTitle = new JLabel("Adicionar Playlist");
+		lblTitle = new JLabel("Remover Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -81,8 +82,21 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 		pnlForm.add(lblPlaylist);
 		pnlForm.add(cboxPlaylist);
 
+		cboxOuvinte.addItemListener(e -> {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				cboxPlaylist.removeAllItems();
+
+				Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
+				Playlist[] array1 = new Playlist[selected.getPlaylists().size()];
+				for (int i = 0; i < array1.length; i++) {
+					cboxPlaylist.addItem(selected.getPlaylists().get(i).getNome());
+				}
+			}
+		});
+
 		return pnlForm;
 	}
+	
 	
 //	---------------------------------------------------------------------------
 	
@@ -92,10 +106,10 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnAdd = new JButton("Adicionar");
+		btnRemover = new JButton("Remover");
 		btnCancelar = new JButton("Cancelar");
 
-		pnlRodape.add(btnAdd);
+		pnlRodape.add(btnRemover);
 		pnlRodape.add(btnCancelar);
 
 		return pnlRodape;
@@ -106,13 +120,13 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
-		if (src == btnAdd) {
+		if (src == btnRemover) {
 			OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
 
 			Playlist selectedPlaylist = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
 
-			if (!controller.adicionarPlaylist(selectedPlaylist)) {
-				openDialog("playlist_repetida");
+			if (!controller.removerPlaylist(selectedPlaylist)) {
+				openDialog("error");
 				return;
 			}
 			this.dispose();

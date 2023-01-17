@@ -1,9 +1,9 @@
 package main.view.dialog;
 
-import javax.swing.JOptionPane;
-
 import main.model.Artista;
 import main.model.Ouvinte;
+
+import javax.swing.*;
 
 public class Dialog {
     public static void openDialog(String type) {
@@ -31,6 +31,9 @@ public class Dialog {
                             JOptionPane.ERROR_MESSAGE);
             case "playlist_vazia" ->
                     JOptionPane.showMessageDialog(null, "Nenhuma música cadastrada para esta playlist!", null,
+                            JOptionPane.ERROR_MESSAGE);
+            case "playlist_repetida" ->
+                    JOptionPane.showMessageDialog(null, "Ouvinte já possui essa playlist cadastrada!", null,
                             JOptionPane.ERROR_MESSAGE);
             case "artista_nao_encontrado" -> JOptionPane.showMessageDialog(null, "Artista não encontradado", null,
                     JOptionPane.ERROR_MESSAGE);

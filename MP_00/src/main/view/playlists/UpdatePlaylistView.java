@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
 import static main.model.Playlist.playlistsCadastradas;
@@ -80,16 +79,13 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
     	pnlForm.add(lblDescricao);
     	pnlForm.add(txtDescricao);
 
-		cboxPlaylist.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-					txtNome.setText(selected.getNome());
-					txtDescricao.setText(selected.getDescricao());
-					}
+		cboxPlaylist.addItemListener(e -> {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+				txtNome.setText(selected.getNome());
+				txtDescricao.setText(selected.getDescricao());
 				}
-		});
+			});
 
 		return pnlForm;
 	}

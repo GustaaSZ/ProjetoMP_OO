@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
@@ -75,14 +74,11 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		pnlForm.add(lista, BorderLayout.CENTER);
 		
 		
-		cboxOuvinte.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
-					Playlist[] playlists = selected.getPlaylists().toArray(new Playlist[selected.getPlaylists().size()]);
-					lista.setListData(playlists);
-				}
+		cboxOuvinte.addItemListener(e -> {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				Ouvinte selected1 = (Ouvinte) cboxOuvinte.getSelectedItem();
+				Playlist[] playlists = selected1.getPlaylists().toArray(new Playlist[selected1.getPlaylists().size()]);
+				lista.setListData(playlists);
 			}
 		});
 		return pnlForm;

@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.model.Musica.musicasCadastradas;
@@ -77,18 +76,14 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
 		pnlForm.add(cboxArtista);
 		
 
-		cboxMusica.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					cboxArtista.removeAllItems();
-					
-					Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-					Artista[] array = new Artista[musicaSelecionada.getArtistas().size()];
-					for (int i = 0; i < array.length; i++) {
-						cboxArtista.addItem(musicaSelecionada.getArtistas().get(i));
-					}
+		cboxMusica.addItemListener(e -> {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				cboxArtista.removeAllItems();
+
+				Musica musicaSelecionada1 = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
+				Artista[] array1 = new Artista[musicaSelecionada1.getArtistas().size()];
+				for (int i = 0; i < array1.length; i++) {
+					cboxArtista.addItem(musicaSelecionada1.getArtistas().get(i));
 				}
 			}
 		});

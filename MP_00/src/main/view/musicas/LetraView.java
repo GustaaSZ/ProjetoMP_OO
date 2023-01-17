@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.model.Musica.musicasCadastradas;
@@ -71,13 +70,10 @@ public class LetraView extends JFrame implements ActionListener {
 		pnlForm.add(lblLetra, BorderLayout.CENTER);
 		lblLetra.setBorder(border);
 		
-		cboxMusica.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					Musica selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-					lblLetra.setText(selected.getLetra());
-				}
+		cboxMusica.addItemListener(e -> {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				Musica selected1 = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
+				lblLetra.setText(selected1.getLetra());
 			}
 		});
 		return pnlForm;

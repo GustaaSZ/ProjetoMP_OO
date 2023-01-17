@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static main.model.Ouvinte.ouvintesCadastrados;
-import static main.model.Playlist.playlistsCadastradas;
 
 public class OuvinteController {
 	private final Ouvinte ouvinte;
@@ -82,17 +81,6 @@ public class OuvinteController {
             return false;
         }
     }
-
-//	-----------------------------------------------------------------------------
-	public static Playlist buscarPlaylistPorNome(String nome) {
-		for(Playlist value : playlistsCadastradas) {
-			if(value.getNome().equals(nome)) {
-				return value;
-			}
-		}
-		return null;
-	}
-	
 //		-----------------------------------------------------------------------------
 	 public static Ouvinte buscarOuvintePorNome(String nome) {
 		 

@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import static main.model.Artista.artistasCadastrados;
 import static main.util.Inicializacao.inicializar;
@@ -78,14 +77,11 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 		
 		pnlForm.add(lista, BorderLayout.CENTER);
 
-		cboxArtista.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (e.getStateChange() == ItemEvent.SELECTED) {
-					Artista selected = (Artista) cboxArtista.getSelectedItem();
-					Musica[] musicas = selected.getMusicas().toArray(new Musica[selected.getMusicas().size()]);
-					lista.setListData(musicas);
-				}
+		cboxArtista.addItemListener(e -> {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				Artista selected1 = (Artista) cboxArtista.getSelectedItem();
+				Musica[] musicas = selected1.getMusicas().toArray(new Musica[selected1.getMusicas().size()]);
+				lista.setListData(musicas);
 			}
 		});
 		return pnlForm;
