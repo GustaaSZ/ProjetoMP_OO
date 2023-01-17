@@ -15,24 +15,7 @@ public class ArtistaController {
         this.artista = artista;
     }
 
-    // ----------------- METODOS NAO ESTATICOS -----------------
-
-    public void adicionarMusica(Musica musica) {
-        if (artista.getMusicas().contains(musica)) {
-            return;
-        }
-        artista.getMusicas().add(musica);
-        musica.getArtistas().add(artista);
-    }
-
-    public void removerMusica(Musica musica) {
-        if (!artista.getMusicas().contains(musica)) {
-            return;
-        }
-        artista.getMusicas().remove(musica);
-        musica.getArtistas().remove(artista);
-    }
-
+    // ----------------- METODOS NAO ESTATICOS ----------------
     public void editarNome(String nome) {
         artista.setNome(nome);
     }

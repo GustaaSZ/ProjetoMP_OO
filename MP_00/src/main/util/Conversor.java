@@ -1,7 +1,6 @@
 package main.util;
 
 import main.model.Artista;
-import main.model.Musica;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,13 +10,13 @@ import java.util.Locale;
 
 public class Conversor {
 
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+
     public static Date stringToDate(String dataString) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         return sdf.parse(dataString);
     }
 
     public static String dateToString(Date data) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         return sdf.format(data);
     }
 
@@ -31,17 +30,5 @@ public class Conversor {
             }
         }
         return artistasString.toString();
-    }
-
-    public static String arrayListMusicaToString(ArrayList<Musica> musicas) {
-        StringBuilder musicasString = new StringBuilder();
-        for (int i = 0; i < musicas.size(); i++) {
-            if (i < musicas.size() - 1) {
-                musicasString.append(musicas.get(i).getNome()).append(", ");
-            } else {
-                musicasString.append(musicas.get(i).getNome());
-            }
-        }
-        return musicasString.toString();
     }
 }
