@@ -3,7 +3,6 @@ package main.controller;
 import main.model.Ouvinte;
 import main.model.Playlist;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import static main.model.Ouvinte.ouvintesCadastrados;
@@ -23,30 +22,9 @@ public class OuvinteController {
 		}
 		// Adicionando a ouvinte á lista de playlists
 		ouvinte.getPlaylists().add(playlist);
-		
-		// Adicionando a playlist á um ouvinte
-		playlist.getOuvintes().add(ouvinte);
-		
 		return true;
     }
-	
-//	-----------------------------------------------------------------------------
-	
-	public boolean adicionarPlaylists(ArrayList<Playlist> playlists) {
-		//musica nao pode ter artista repetido
-		for (Playlist playlist : playlists) {
-			if (ouvinte.getPlaylists().contains(playlist)) {
-				return false;
-			}
-		}
-		ouvinte.getPlaylists().addAll(playlists);
-		for (Playlist playlist : playlists) {
-			playlist.getOuvintes().add(ouvinte);
-		}
-		return true;
-	}
-	
-	
+
 //	-----------------------------------------------------------------------------
 	
 	public boolean removerPlaylist(Playlist playlist) {
@@ -55,15 +33,9 @@ public class OuvinteController {
 		}
 		// Removendo o ouvinte da Playlist
         ouvinte.getPlaylists().remove(playlist);
-        
-        // Removendo a playlist do ouvinte ouvinte
- 		playlist.getOuvintes().remove(ouvinte);
 		return true;
     }
-
-	
 //	-----------------------------------------------------------------------------
-
 	public void editarNome(String nome) {
 		ouvinte.setNome(nome);
     }

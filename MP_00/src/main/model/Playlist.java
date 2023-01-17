@@ -7,9 +7,6 @@ public class Playlist {
 	private String nome;
 	private String descricao;
 	private final ArrayList<Musica> musicas;
-
-	// Playlist pode ter vários ouvintes
-	private final ArrayList<Ouvinte> ouvintes;
 	
 	//Array com todas as playlists cadastradas
 	public static ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
@@ -17,7 +14,6 @@ public class Playlist {
 	public Playlist(String nome, String descricao) {
 		this.nome = nome;
 		this.descricao = descricao;
-		this.ouvintes = new ArrayList<>();
 		this.musicas = new ArrayList<>();
 
 		playlistsCadastradas.add(this);
@@ -26,10 +22,9 @@ public class Playlist {
 	public Playlist(Ouvinte ouvinte, String nome, String descricao) {
 		this.nome = nome;
 		this.descricao = descricao;
-		this.ouvintes = new ArrayList<>();
+
 		this.musicas = new ArrayList<>();
 
-		ouvintes.add(ouvinte);
 		playlistsCadastradas.add(this);
 	}
 
@@ -53,10 +48,6 @@ public class Playlist {
 		return musicas;
 	}
 
-	public ArrayList<Ouvinte> getOuvintes() {
-        return ouvintes;
-    }
-	
 
 	@Override
 	public String toString() {

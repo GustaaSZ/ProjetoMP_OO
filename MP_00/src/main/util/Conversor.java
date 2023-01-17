@@ -26,7 +26,7 @@ public class Conversor {
             if (i < artistas.size() - 1) {
                 artistasString.append(artistas.get(i).getNome()).append(", ");
             } else {
-                artistasString.append(artistas.get(i).getNome());
+                artistasString.append(artistas.get(i).getNome()).append(".");
             }
         }
         return artistasString.toString();

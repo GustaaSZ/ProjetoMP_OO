@@ -3,7 +3,6 @@ package main.model;
 import java.util.ArrayList;
 
 public class Artista extends Pessoa {
-
     private final ArrayList<Musica> musicas;
 
     //Array com todos os artistas cadastrados

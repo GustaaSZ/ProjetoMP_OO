@@ -1,13 +1,13 @@
 package main.util;
 
-import java.util.Date;
-
 import main.controller.OuvinteController;
 import main.controller.PlaylistController;
 import main.model.Artista;
 import main.model.Musica;
 import main.model.Ouvinte;
 import main.model.Playlist;
+
+import java.util.Date;
 
 public class Instanciacao {
 	public static void instanciar() {

@@ -3,11 +3,12 @@ package main.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-import main.util.Conversor;
+import static main.util.Conversor.arrayListArtistaToString;
+import static main.util.Conversor.dateToString;
 
 public class Musica {
 
-    private ArrayList<Artista> artistas;
+    private final ArrayList<Artista> artistas;
     private String nome;
     private String genero;
     private Date lancamento;
@@ -79,12 +80,11 @@ public class Musica {
     public String toString() {
         return artistas.size() == 1
                 ?
-                "A musica " + nome + " foi lancada em " + Conversor.dateToString(lancamento)
+                "A musica " + nome + " foi lancada em " + dateToString(lancamento)
                         + ", do genero " + genero + " e foi feita pelo artista " + artistas.get(0).getNome() + "."
                 :
-                "A musica " + nome + " foi lancada em " + Conversor.dateToString(lancamento) +
+                "A musica " + nome + " foi lancada em " + dateToString(lancamento) +
                         ", do genero " + genero + " e foi feita pelos artistas: "
-                        + Conversor.arrayListArtistaToString(artistas) + ".";
+                        + arrayListArtistaToString(artistas);
     }
-
 }
