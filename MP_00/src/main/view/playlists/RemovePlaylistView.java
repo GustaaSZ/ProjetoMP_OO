@@ -1,7 +1,5 @@
 package main.view.playlists;
 
-import main.model.Playlist;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -83,10 +81,7 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 
 		if (src == btnRemover) {
 
-			
-			Playlist playlistSelecionada = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-			
-			if (!removerPlaylist(playlistSelecionada)) {
+			if (!removerPlaylist(buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem()))) {
 				openDialog("playlist_not_null");
 				return;
 			}

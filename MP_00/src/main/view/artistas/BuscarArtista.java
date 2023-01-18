@@ -1,7 +1,5 @@
 package main.view.artistas;
 
-import main.model.Artista;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -81,20 +79,15 @@ public class BuscarArtista extends JFrame implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnBuscar) {
-			if(txtNome.getText() == null || txtNome.getText().trim() == "") {
+			if(txtNome.getText() == null || txtNome.getText().trim().equals("")) {
 				openDialog("error");
+				return;
 			}
-			
-			Artista artista = buscarArtistaPorNome(txtNome.getText());
 
-			try {
-				if (!artista.equals(null)) {
-					objetoEncontrado(artista);
-					return;
-				}
-			} catch (NullPointerException ex) {
-				openDialog("artista_nao_encontrado");
+			if (objetoEncontrado(buscarArtistaPorNome(txtNome.getText()))) {
+				return;
 			}
+			openDialog("artista_nao_encontrado");
 		}
 		
 		if (src == btnCancelar) {

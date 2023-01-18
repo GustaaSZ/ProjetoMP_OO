@@ -130,10 +130,8 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnUpdt) {
-
-			Musica selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-
-			MusicaController controller = new MusicaController(selected);
+			MusicaController controller = new MusicaController(
+					buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
 			controller.atualizarMusica(
 					txtNome.getText(), 
 					txtGenero.getText(), 

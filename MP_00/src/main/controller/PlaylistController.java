@@ -20,7 +20,6 @@ public class PlaylistController {
 		if (playlist.getMusicas().contains(musica)) {
 			return false;
 		}
-		
 		playlist.getMusicas().add(musica);
 		return true;
 	}
@@ -38,6 +37,14 @@ public class PlaylistController {
 		playlist.setDescricao(descricao);
 	}
 
+	public static boolean cadastrarPlaylist(String nome, String descricao) {
+		if (playlistsCadastradas.contains(buscarPlaylistPorNome(nome))){
+			return false;
+		}
+		new Playlist(nome.trim(), descricao.trim());
+		return true;
+	}
+
 	public static boolean removerPlaylist(Playlist playlist) {
 		if (!playlist.getMusicas().isEmpty()) {
 			return false;
@@ -48,7 +55,6 @@ public class PlaylistController {
 	}
 	
 	public static Playlist buscarPlaylistPorNome(String nome) {
-    	
         for (Playlist value : playlistsCadastradas) {
             if (Objects.equals(value.getNome(), nome)) {
                 return value;

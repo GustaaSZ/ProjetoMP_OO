@@ -1,7 +1,6 @@
 package main.view.musicas;
 
 import main.model.Artista;
-import main.model.Musica;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -10,8 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
+import static main.controller.MusicaController.cadastrarMusica;
 import static main.model.Artista.artistasCadastrados;
-import static main.util.Conversor.stringToDate;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -70,7 +69,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	txtGenero = new JTextField(15);
     	
     	lblLancamento = new JLabel("Lancamento:");
-    	txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
+    	txtLancamento = new JFormattedTextField(setMascara());
     	
     	lblLetra = new JLabel("Letra:");
     	txtLetra = new JTextArea();
@@ -119,19 +118,15 @@ public class AddMusicaView extends JFrame implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnCriar) {
-			try {
-				new Musica(
+			if (!cadastrarMusica(
 					(Artista) cboxArtista.getSelectedItem(),
-					txtNome.getText().trim(), 
-					txtLetra.getText().trim(), 
-					txtGenero.getText().trim(), 
-					stringToDate(txtLancamento.getText())
-					);
-			} catch (Exception e1) {
+					txtNome.getText(),
+					txtLetra.getText(),
+					txtGenero.getText(),
+					txtLancamento.getText())) {
 				openDialog("error");
 				return;
 			}
-			
 			this.dispose();
 			new MusicasView();
 			openDialog("success");
@@ -143,10 +138,10 @@ public class AddMusicaView extends JFrame implements ActionListener{
 		}
 	}
 	
-	private MaskFormatter setMascara(String mascara){
+	private MaskFormatter setMascara(){
 	    MaskFormatter mask = null;
 	    try{
-	        mask = new MaskFormatter(mascara);                      
+	        mask = new MaskFormatter("##/##/####");
 	    }catch(ParseException ex){
 	    	ex.printStackTrace();
 	    }

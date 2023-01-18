@@ -11,6 +11,7 @@ import java.awt.event.ItemEvent;
 
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
 public class UpdateOuvinteView extends JFrame implements ActionListener{
 	private JPanel pnlTitle;
@@ -97,13 +98,11 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnUpdt) {
-
 			OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
 			controller.editarNome(txtNome.getText().trim());
-//			System.out.println(artistasCadastrados.get(0));
 			this.dispose();
 			new OuvintesView();
-			JOptionPane.showMessageDialog(null, "Ouvinte Atualizado com Sucesso!");
+			openDialog("success");
 		}
 		
 		if (src == btnCancelar) {

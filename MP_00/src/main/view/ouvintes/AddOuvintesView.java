@@ -1,13 +1,13 @@
 package main.view.ouvintes;
 
-import main.model.Ouvinte;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static main.controller.OuvinteController.cadastrarOuvinte;
 import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
 public class AddOuvintesView extends JFrame implements ActionListener{
 
@@ -92,27 +92,19 @@ public class AddOuvintesView extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		// O método getsource() obtém a origem do evento
 		Object src = e.getSource();
 		
 		if (src == btnCriar) {
-			
-			// Se ao tentar criar um ouvinte, o usuário não digitar nada...Irá aparecer a seguinte mensagem
-			if(txtNome.getText() == null || txtNome.getText().trim() == "") {
-				
-				JOptionPane.showMessageDialog(null, "Erro ao cadastrar Ouvinte!");
+			if(txtNome.getText() == null || txtNome.getText().trim().equals("")) {
+				openDialog("error");
+				return;
 			}
-			// Ao sair da condição, ele cadastra o ouvinte
-			new Ouvinte( txtNome.getText().trim());
-			//new Ouvinte(null, txtNome.getText().trim(), null);
-//			System.out.println(ouvintesCadastrados.get(0));
+			cadastrarOuvinte(txtNome.getText());
 			this.dispose();
 			new OuvintesView();
 			JOptionPane.showMessageDialog(null, "Ouvinte Cadastrado com Sucesso!");
 		}
 		
-		// Se o usuário clicar em cancelar, o programa deve voltar para a tela inicial
 		if (src == btnCancelar) {
 			this.dispose();
 			new OuvintesView();

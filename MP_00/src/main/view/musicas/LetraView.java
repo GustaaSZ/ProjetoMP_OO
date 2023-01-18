@@ -3,7 +3,6 @@ package main.view.musicas;
 import main.model.Musica;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,8 +20,8 @@ public class LetraView extends JFrame implements ActionListener {
 
 	private JLabel lblTitle;
 	private JLabel lblMusica;
-	private JLabel lblLetra;
-
+	private JScrollPane scrollPane;
+	private JTextArea txtLetra;
 	private JComboBox<String> cboxMusica;
 
 	private JButton btnVoltar;
@@ -65,17 +64,23 @@ public class LetraView extends JFrame implements ActionListener {
 		pnlForm.add(cboxMusica, BorderLayout.NORTH);
 
 		Musica selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-		
-		lblLetra = new JLabel(selected.getLetra());
-		pnlForm.add(lblLetra, BorderLayout.CENTER);
-		lblLetra.setBorder(border);
-		
+
+		txtLetra = new JTextArea();
+		txtLetra.setLineWrap(true);
+		txtLetra.setText(selected.getLetra());
+		txtLetra.setEditable(false);
+
+		scrollPane = new JScrollPane(txtLetra);
+
+		pnlForm.add(scrollPane);
+
 		cboxMusica.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				Musica selected1 = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-				lblLetra.setText(selected1.getLetra());
+				txtLetra.setText(selected1.getLetra());
 			}
 		});
+
 		return pnlForm;
 	}
 
@@ -104,21 +109,4 @@ public class LetraView extends JFrame implements ActionListener {
 			new MusicasView();
 		}
 	}
-
-	Border border = new Border() {
-		@Override
-		public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
-			g.drawRect(x, y, width - 1, height - 1);
-		}
-
-		@Override
-		public boolean isBorderOpaque() {
-			return true;
-		}
-
-		@Override
-		public Insets getBorderInsets(Component arg0) {
-			return new Insets(1, 1, 1, 1);
-		}
-	};
 }

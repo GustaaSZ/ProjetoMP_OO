@@ -112,5 +112,4 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 			new ArtistasView();
 		}
 	}
-
 }

@@ -110,14 +110,12 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnRemove) {
-			
-			Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-			MusicaController controller = new MusicaController(musicaSelecionada);
+			MusicaController controller = new MusicaController(
+					buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
 			if (!controller.removerArtista((Artista) cboxArtista.getSelectedItem())) {
 				openDialog("musica_sem_artista");
 				return;
 			}
-			
 			this.dispose();
 			new MusicasView();
 			openDialog("success");

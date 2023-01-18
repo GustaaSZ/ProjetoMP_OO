@@ -12,8 +12,12 @@ public class Conversor {
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
 
-    public static Date stringToDate(String dataString) throws ParseException {
-        return sdf.parse(dataString);
+    public static Date stringToDate(String dataString) {
+        try {
+            return sdf.parse(dataString);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static String dateToString(Date data) {

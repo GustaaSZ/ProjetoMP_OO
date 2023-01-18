@@ -1,7 +1,5 @@
 package main.view.musicas;
 
-import main.model.Musica;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -82,11 +80,7 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnRemover) {
-
-			
-			Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-			
-			if (!removerMusica(musicaSelecionada)) {
+			if (!removerMusica(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()))) {
 				openDialog("error");
 				return;
 			}

@@ -96,13 +96,14 @@ public class Dialog {
         }
     }
 
-    public static void objetoEncontrado(Object o) {
+    public static boolean objetoEncontrado(Object o) {
         if (o instanceof Artista) {
             JOptionPane.showMessageDialog(
                     null,
                     "Artista " + o + " encontrado, operação realizada com sucesso!",
                     "Artista Encontrado!",
                     JOptionPane.INFORMATION_MESSAGE);
+            return true;
         }
         if (o instanceof Ouvinte) {
             JOptionPane.showMessageDialog(
@@ -110,6 +111,8 @@ public class Dialog {
                     "Ouvinte " + o + " encontrado, operação realizada com sucesso!",
                     "Ouvinte Encontrado!",
                     JOptionPane.INFORMATION_MESSAGE);
+            return true;
         }
+        return false;
     }
 }

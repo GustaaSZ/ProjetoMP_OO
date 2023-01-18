@@ -1,12 +1,11 @@
 package main.view.artistas;
 
-import main.model.Artista;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static main.controller.ArtistaController.cadastrarArtista;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -77,10 +76,14 @@ public class AddArtistasView extends JFrame implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnCriar) {
-			if(txtNome.getText() == null || txtNome.getText().trim() == "") {
+			if(txtNome.getText() == null || txtNome.getText().trim().equals("")) {
 				openDialog("error");
+				return;
 			}
-			new Artista(txtNome.getText().trim());
+			if (!cadastrarArtista(txtNome.getText())) {
+				openDialog("error");
+				return;
+			}
 			this.dispose();
 			new ArtistasView();
 			openDialog("success");

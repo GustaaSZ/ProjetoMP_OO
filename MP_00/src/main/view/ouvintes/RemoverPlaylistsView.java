@@ -122,10 +122,8 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 
 		if (src == btnRemover) {
 			OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
-
-			Playlist selectedPlaylist = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-
-			if (!controller.removerPlaylist(selectedPlaylist)) {
+			if (!controller.removerPlaylist(
+					buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem()))) {
 				openDialog("error");
 				return;
 			}

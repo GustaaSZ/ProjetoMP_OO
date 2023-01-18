@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import static main.controller.OuvinteController.removerOuvinteCadastrado;
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
 public class RemoveOuvinteView extends JFrame implements ActionListener{
 
@@ -95,13 +96,13 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 		if (src == btnRemover) {
 			
 			if(!removerOuvinteCadastrado((Ouvinte) cboxOuvinte.getSelectedItem())) {
-				JOptionPane.showMessageDialog(null, "Não foi possível remover o Ouvinte!");
+				openDialog("error");
 				return;
 			}
 			
 			this.dispose();
 			new OuvintesView();
-			JOptionPane.showMessageDialog(null, "Ouvinte removido com sucesso!");
+			openDialog("success");
 		}
 
 		if (src == btnCancelar) {

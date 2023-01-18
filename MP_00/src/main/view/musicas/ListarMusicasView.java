@@ -58,7 +58,7 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
 		JViewport viewport = scroll.getViewport();
-            int w = 400;
+            int w = 500;
             int h = viewport.getPreferredSize().height;
             Dimension preferredSize = new Dimension(w, h);
             viewport.setPreferredSize(preferredSize);

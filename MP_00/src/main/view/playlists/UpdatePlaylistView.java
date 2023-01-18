@@ -109,10 +109,8 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnUpdt) {
-
-			Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-
-			PlaylistController controller = new PlaylistController(selected);
+			PlaylistController controller = new PlaylistController(
+					buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem()));
 			controller.atualizarPlaylist(
 					txtNome.getText(), 
 					txtDescricao.getText()

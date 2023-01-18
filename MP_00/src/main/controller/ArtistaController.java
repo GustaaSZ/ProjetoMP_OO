@@ -2,8 +2,6 @@ package main.controller;
 
 import main.model.Artista;
 
-import java.util.Objects;
-
 import static main.model.Artista.artistasCadastrados;
 
 public class ArtistaController {
@@ -19,6 +17,13 @@ public class ArtistaController {
     }
 
     // ---------------- METODOS ESTATICOS ----------------
+    public static boolean cadastrarArtista(String nome) {
+        if (!artistaExiste(buscarArtistaPorNome(nome))) {
+            new Artista(nome.trim());
+            return true;
+        }
+        return false;
+    }
 
     public static boolean removerArtistaCadastrado(Artista artista) {
         if (!artistaExiste(artista)) {
@@ -42,11 +47,6 @@ public class ArtistaController {
     }
 
     private static Boolean artistaExiste(Artista artista) {
-        for (Artista value : artistasCadastrados) {
-            if (Objects.equals(artista, value)) {
-                return true;
-            }
-        }
-        return false;
+        return artistasCadastrados.contains(artista);
     }
 }

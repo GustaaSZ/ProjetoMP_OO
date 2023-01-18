@@ -18,6 +18,7 @@ class MusicaControllerTest{
         Musica result = MusicaController.buscarMusicaPorNome(nome);
         assertNull(result);
     }
+
     @Test
     void removerMusica() {
         boolean result = MusicaController.removerMusica(
@@ -25,6 +26,7 @@ class MusicaControllerTest{
         );
         assertTrue(result);
     }
+
     @Test
     void adicionarArtista() {
         instanciar();

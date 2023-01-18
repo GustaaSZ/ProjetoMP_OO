@@ -94,7 +94,6 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 				openDialog("error");
 				return;
 			}
-			
 			this.dispose();
 			new ArtistasView();
 			openDialog("success");

@@ -2,7 +2,6 @@ package main.view.ouvintes;
 
 import main.controller.OuvinteController;
 import main.model.Ouvinte;
-import main.model.Playlist;
 
 import javax.swing.*;
 import java.awt.*;
@@ -108,10 +107,8 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 
 		if (src == btnAdd) {
 			OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
-
-			Playlist selectedPlaylist = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-
-			if (!controller.adicionarPlaylist(selectedPlaylist)) {
+			if (!controller.adicionarPlaylist(
+					buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem()))) {
 				openDialog("playlist_repetida");
 				return;
 			}

@@ -3,7 +3,6 @@ package main.controller;
 import main.model.Artista;
 import main.model.Musica;
 
-import java.text.ParseException;
 import java.util.Objects;
 
 import static main.model.Musica.musicasCadastradas;
@@ -43,16 +42,20 @@ public class MusicaController {
 	//------------------- FUNÇÃO DE ATT MUSICA ---------------------
 	
 	public void atualizarMusica(String nome, String genero, String lancamento, String letra) {
-		try {
 		musica.setNome(nome);
 		musica.setGenero(genero);
 		musica.setLancamento(stringToDate(lancamento));
 		musica.setLetra(letra);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 	}
     // ---------------- METODOS ESTATICOS ----------------
+
+	public static boolean cadastrarMusica(Artista artista, String nome, String letra, String genero, String lancamento) {
+			if(!musicaExiste(buscarMusicaPorNome(nome))) {
+				new Musica(artista, nome.trim(), letra.trim(), genero.trim(), stringToDate(lancamento));
+				return true;
+			}
+			return false;
+	}
     public static boolean removerMusica(Musica musica) {
     	if(!musicaExiste(musica)) {
             return false;
@@ -71,12 +74,7 @@ public class MusicaController {
     }
 
     private static Boolean musicaExiste(Musica musica) {
-        for (Musica value : musicasCadastradas) {
-            if (Objects.equals(musica, value)) {
-                return true;
-            }
-        }
-        return false;
+        return musicasCadastradas.contains(musica);
     }
 }
 

@@ -2,7 +2,6 @@ package main.view.musicas;
 
 import main.controller.MusicaController;
 import main.model.Artista;
-import main.model.Musica;
 
 import javax.swing.*;
 import java.awt.*;
@@ -98,9 +97,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnAdd) {
-			
-			Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-			MusicaController controller = new MusicaController(musicaSelecionada);
+			MusicaController controller = new MusicaController(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
 			if (!controller.adicionarArtista((Artista) cboxArtista.getSelectedItem())) {
 				openDialog("artista_repetido");
 				return;

@@ -1,7 +1,5 @@
 package main.view.ouvintes;
 
-import main.model.Ouvinte;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -79,21 +77,14 @@ public class BuscarOuvinte extends JFrame implements ActionListener{
 		Object src = e.getSource();
 		
 		if (src == btnBuscar) {
-			if(txtNome.getText() == null || txtNome.getText().trim() == "") {
+			if(txtNome.getText() == null || txtNome.getText().trim().equals("")) {
 				openDialog("error");
-			}
-			
-			Ouvinte ouvinte = buscarOuvintePorNome(txtNome.getText());
-
-			try {
-				if (!ouvinte.equals(null)) {
-					objetoEncontrado(ouvinte);
-					return;
-				}
-			} catch (NullPointerException ex) {
-				openDialog("ouvinte_nao_encontrado");
 				return;
 			}
+			if (objetoEncontrado(buscarOuvintePorNome(txtNome.getText()))) {
+				return;
+			}
+			openDialog("ouvinte_nao_encontrado");
 		}
 		if (src == btnCancelar) {
 			this.dispose();
