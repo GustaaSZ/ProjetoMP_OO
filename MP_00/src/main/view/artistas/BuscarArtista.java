@@ -25,6 +25,24 @@ public class BuscarArtista extends JFrame implements ActionListener{
 	private JButton btnBuscar;
 	private JButton btnCancelar;
 
+	//	CORES
+	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
+
+	// ----- Cinza escuro -------
+	Color corFundoBtn = new Color(54, 54, 54);
+
+	// ------- Verde forte ---------
+	Color fonteLetra = new Color(50, 205, 50);
+
+	// ---- Preto escuro ------
+	Color corFundo = new Color(28 ,28 ,28);
+
+	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
+	// a imagem que coloquei no mesmo pacote da main View
+
+	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
+	JLabel label = new JLabel(imag);
+
 	public BuscarArtista(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
 
@@ -39,7 +57,13 @@ public class BuscarArtista extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Buscar Artista");
+    	//    	Mudando a cor da letra
+    	lblTitle.setForeground(fonteLetra);
+    	
     	pnlTitle.add(lblTitle);
+		//		Mudando a cor do btn
+    	pnlTitle.setBackground(corFundo);
+
     	
 		return pnlTitle;
 	}
@@ -50,10 +74,17 @@ public class BuscarArtista extends JFrame implements ActionListener{
     	}
     	
     	lblNome = new JLabel("Nome:");
+		lblNome.setForeground(fonteLetra);
+
     	txtNome = new JTextField(20);
+		txtNome.setForeground(fonteLetra);
+		txtNome.setBackground(corFundo);
     	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
+		pnlForm.add(label);
+
+		pnlForm.setBackground(corFundo);
     	
 		return pnlForm;
 	}
@@ -64,12 +95,19 @@ public class BuscarArtista extends JFrame implements ActionListener{
 		}
 		
 		btnBuscar = new JButton("Buscar");
-    	btnCancelar = new JButton("Voltar");
+		btnBuscar.setForeground(corFundo);
+		btnBuscar.setBackground(fonteLetra);
+
     	
+		btnCancelar = new JButton("Voltar");
+    	btnCancelar.setForeground(corFundo);
+		btnCancelar.setBackground(fonteLetra);
+
     	btnBuscar.setSize(30, 50);
     	
     	pnlRodape.add(btnBuscar);
     	pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(corFundo);
 		
 		return pnlRodape;
 	}

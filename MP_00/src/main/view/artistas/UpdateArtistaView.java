@@ -31,6 +31,23 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 	private JButton btnUpdt;
 	private JButton btnCancelar;
 
+	//	CORES
+	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
+
+	// ----- Cinza escuro -------
+	Color corFundoBtn = new Color(54, 54, 54);
+
+	// ------- Verde forte ---------
+	Color fonteLetra = new Color(50, 205, 50);
+
+	// ---- Preto escuro ------
+	Color corFundo = new Color(28 ,28 ,28);
+
+	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
+	// a imagem que coloquei no mesmo pacote da main View
+
+	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
+	JLabel label = new JLabel(imag);
 
 	public UpdateArtistaView(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -47,7 +64,12 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Crud de Artistas");
+		//    	Mudando a cor da letra
+		lblTitle.setForeground(fonteLetra);
+
     	pnlTitle.add(lblTitle);
+		//		Mudando a cor do btn
+    	pnlTitle.setBackground(corFundo);
     	
 		return pnlTitle;
 	}
@@ -64,16 +86,28 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 			array[i] = artistasCadastrados.get(i);
     	}
     	lblArtista = new JLabel("Artista:");
+		lblArtista.setForeground(fonteLetra);
+
     	cboxArtista = new JComboBox<>(array);
+		cboxArtista.setForeground(fonteLetra);
+		cboxArtista.setBackground(corFundo);
 
 		lblNome = new JLabel("Nome:");
+		lblNome.setForeground(fonteLetra);
+
 		txtNome = new JTextField(20);
+		txtNome.setBackground(corFundo);
+		txtNome.setForeground(fonteLetra);
+
 		txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());
     	
     	pnlForm.add(lblArtista);
     	pnlForm.add(cboxArtista);
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
+		pnlForm.add(label);
+
+		pnlForm.setBackground(corFundo);
     	
 		cboxArtista.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -91,10 +125,16 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 		}
 		
 		btnUpdt = new JButton("Atualizar");
+		btnUpdt.setForeground(corFundo);
+		btnUpdt.setBackground(fonteLetra);
+
     	btnCancelar = new JButton("Cancelar");
-    	
+    	btnCancelar.setForeground(corFundo);
+		btnCancelar.setBackground(fonteLetra);
+
     	pnlRodape.add(btnUpdt);
     	pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(corFundo);
 		
 		return pnlRodape;
 	}

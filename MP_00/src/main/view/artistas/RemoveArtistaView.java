@@ -26,6 +26,24 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 	private JButton btnRemover;
 	private JButton btnCancelar;
 
+	//	CORES
+	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
+
+	// ----- Cinza escuro -------
+	Color corFundoBtn = new Color(54, 54, 54);
+
+	// ------- Verde forte ---------
+	Color fonteLetra = new Color(50, 205, 50);
+
+	// ---- Preto escuro ------
+	Color corFundo = new Color(28 ,28 ,28);
+
+	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
+	// a imagem que coloquei no mesmo pacote da main View
+
+	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
+	JLabel label = new JLabel(imag);
+
 	public RemoveArtistaView() {
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
 
@@ -40,7 +58,10 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Remover Artista");
+		lblTitle.setForeground(fonteLetra);
+		
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(corFundo);
 
 		return pnlTitle;
 	}
@@ -53,15 +74,21 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		}
 
 		lblArtista = new JLabel("Artista que deseja remover:");
+		lblArtista.setForeground(fonteLetra);
+		lblArtista.setBackground(corFundo);
 
 		Artista[] array = new Artista[artistasCadastrados.size()];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = artistasCadastrados.get(i);
 		}
 		cboxArtista = new JComboBox<>(array);
+		cboxArtista.setBackground(corFundo);
+
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxArtista);
+		pnlForm.add(label);
+		pnlForm.setBackground(corFundo);
 
 		return pnlForm;
 	}
@@ -74,10 +101,16 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		}
 
 		btnRemover = new JButton("Remover");
+		btnRemover.setForeground(fonteLetra);
+		btnRemover.setBackground(corFundoBtn);
+
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(corFundo);
+		btnCancelar.setBackground(fonteLetra);
 
 		pnlRodape.add(btnRemover);
 		pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(corFundo);
 
 		return pnlRodape;
 	}
