@@ -7,9 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import java.awt.Color;
 
+import main.util.AesthethicsView;
 import static main.model.Artista.artistasCadastrados;
 import static main.model.Musica.musicasCadastradas;
 import static main.util.Inicializacao.inicializar;
@@ -31,23 +30,11 @@ public class ArtistasView extends JFrame implements ActionListener{
 	private JButton btnBuscar;
 	private JButton btnVoltar;
 
-	//	CORES
-	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
-
-	// ----- Cinza escuro -------
-	Color corFundoBtn = new Color(54, 54, 54);
-
-	// ------- Verde forte ---------
-	Color fonteLetra = new Color(50, 205, 50);
-
-	// ---- Preto escuro ------
-	Color corFundo = new Color(28 ,28 ,28);
-
 	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
 	// a imagem que coloquei no mesmo pacote da main View
 
-	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
-	JLabel label = new JLabel(imag);
+	//  ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
+	//  JLabel label = new JLabel(imag);
 
 
 	public ArtistasView() {
@@ -70,14 +57,15 @@ public class ArtistasView extends JFrame implements ActionListener{
 		}
 
 		lblTitle = new JLabel("Crud de Artistas");
+		lblTitle.setFont(AesthethicsView.getFonte());
 
 		// Mudando a cor do lblTitle
-		lblTitle.setForeground(fonteLetra);
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
 
 		pnlTitle.add(lblTitle);
 
 		// Mudando a cor de fundo do pnlTitle
-		pnlTitle.setBackground(corFundo);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -97,20 +85,31 @@ public class ArtistasView extends JFrame implements ActionListener{
 		btnListMusicas = new JButton("Listar Músicas do Artista");
 
 		// Mudando as cores das letras dos botões
-		btnAdd.setForeground(fonteLetra);
-		btnRemove.setForeground(fonteLetra);
-		btnUpdate.setForeground(fonteLetra);
-		btnList.setForeground(fonteLetra);
-		btnListMusicas.setForeground(fonteLetra);
+		btnAdd.setForeground(AesthethicsView.getCorLetra());
+		btnRemove.setForeground(AesthethicsView.getCorLetra());
+		btnUpdate.setForeground(AesthethicsView.getCorLetra());
+		btnList.setForeground(AesthethicsView.getCorLetra());
+		btnBuscar.setForeground(AesthethicsView.getCorLetra());
+		btnListMusicas.setForeground(AesthethicsView.getCorLetra());
 
 		// Mudando as cores de fundo dos botões
-		btnAdd.setBackground(corFundoBtn);
-		btnRemove.setBackground(corFundoBtn);
-		btnUpdate.setBackground(corFundoBtn);
-		btnList.setBackground(corFundoBtn);
-		btnListMusicas.setBackground(corFundoBtn);
+		btnAdd.setBackground(AesthethicsView.getCorFundoBtn());
+		btnRemove.setBackground(AesthethicsView.getCorFundoBtn());
+		btnUpdate.setBackground(AesthethicsView.getCorFundoBtn());
+		btnList.setBackground(AesthethicsView.getCorFundoBtn());
+		btnBuscar.setBackground(AesthethicsView.getCorFundoBtn());
+		btnListMusicas.setBackground(AesthethicsView.getCorFundoBtn());
+
+		// Mudando a fonte dos botões
+		btnAdd.setFont(AesthethicsView.getFonteMenor());
+		btnRemove.setFont(AesthethicsView.getFonteMenor());
+		btnUpdate.setFont(AesthethicsView.getFonteMenor());
+		btnList.setFont(AesthethicsView.getFonteMenor());
+		btnBuscar.setFont(AesthethicsView.getFonteMenor());
+		btnListMusicas.setFont(AesthethicsView.getFonteMenor());
 
 
+		// Adicionando ao pnlBody os componentes
 		pnlBody.add(btnAdd);
 		pnlBody.add(btnRemove);
 		pnlBody.add(btnUpdate);
@@ -119,8 +118,8 @@ public class ArtistasView extends JFrame implements ActionListener{
 		pnlBody.add(btnListMusicas);
 
 		// Add a imagem de fundo preto ao pnlBody
-		pnlBody.add(label);
-		pnlBody.setBackground(corFundo);
+		// pnlBody.add(label);
+		pnlBody.setBackground(AesthethicsView.getCorFundo());
 
 
 		return pnlBody;
@@ -134,12 +133,13 @@ public class ArtistasView extends JFrame implements ActionListener{
 		}
 
 		btnVoltar = new JButton("Voltar");
-		btnVoltar.setForeground(corFundo);
-		btnVoltar.setBackground(fonteLetra);
+		btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonteMenor());
 
 
 		pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(corFundo);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

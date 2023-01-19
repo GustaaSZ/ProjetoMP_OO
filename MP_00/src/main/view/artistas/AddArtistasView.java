@@ -4,9 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import java.awt.Color;
 
+import main.util.AesthethicsView;
 import static main.controller.ArtistaController.cadastrarArtista;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
@@ -25,23 +24,11 @@ public class AddArtistasView extends JFrame implements ActionListener{
 	private JButton btnCriar;
 	private JButton btnCancelar;
 
-	//	CORES
-	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
-
-	// ----- Cinza escuro -------
-	Color corFundoBtn = new Color(54, 54, 54);
-
-	// ------- Verde forte ---------
-	Color fonteLetra = new Color(50, 205, 50);
-
-	// ---- Preto escuro ------
-	Color corFundo = new Color(28 ,28 ,28);
-
 	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
 	// a imagem que coloquei no mesmo pacote da main View
 
-	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
-	JLabel label = new JLabel(imag);
+	// ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
+	// JLabel label = new JLabel(imag);
 
 	public AddArtistasView(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -57,13 +44,14 @@ public class AddArtistasView extends JFrame implements ActionListener{
 
     	lblTitle = new JLabel("Crud de Artistas");
 
-		//    	Mudando a cor da letra
-    	lblTitle.setForeground(fonteLetra);
-    	
+		//    	Mudando a cor da letra e a fonte
+    	lblTitle.setForeground(AesthethicsView.getCorLetra());
+    	lblTitle.setFont(AesthethicsView.getFonte());
+
     	pnlTitle.add(lblTitle);
 
 		//		Mudando a cor do btn
-    	pnlTitle.setBackground(corFundo);
+    	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
     	
 		return pnlTitle;
 	}
@@ -74,24 +62,26 @@ public class AddArtistasView extends JFrame implements ActionListener{
     	}
     	
     	lblNome = new JLabel("Nome:");
-		// Mudando a cor do Jl=Label NNome
-		lblNome.setForeground(fonteLetra);
-		// Mudando a cor do fundo
-    	lblNome.setBackground(corFundo);
 
+		// Mudando a cor da letra, o fundo e a fonte da lblNome
+		lblNome.setForeground(AesthethicsView.getCorLetra());
+    	lblNome.setBackground(AesthethicsView.getCorFundo());
+		lblNome.setFont(AesthethicsView.getFonte());
+
+		// Definindo a cor de fundo o Jtxt, o tamanho e a cor do texto digitado
     	txtNome = new JTextField(20);
-		// Mudando a cor de fundo do JTxt
-    	txtNome.setBackground(corFundoBtn);
-		// Mudando a cor do texto que o usuário digitar
-    	txtNome.setForeground(fonteLetra);
+    	txtNome.setBackground(AesthethicsView.getCorFundoBtn());
+    	txtNome.setForeground(AesthethicsView.getCorLetra());
 
 
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
-		// Adicionando a imagem7
-    	pnlForm.add(label);
+		
+		// Adicionando a imagem
+    	// pnlForm.add(label);
+
 		// preenchendo as partes do body que não foram preenchidas com a cor de fundo
-    	pnlForm.setBackground(corFundo);
+    	pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlForm;
 	}
@@ -102,19 +92,20 @@ public class AddArtistasView extends JFrame implements ActionListener{
 		}
 		
 		btnCriar = new JButton("Cadastrar");
-		btnCriar.setForeground(fonteLetra);
-		btnCriar.setBackground(corFundoBtn);
+		btnCriar.setForeground(AesthethicsView.getCorFundo());
+		btnCriar.setBackground(AesthethicsView.getCorLetra());
+		btnCriar.setFont(AesthethicsView.getFonteMenor());
 
     	btnCancelar = new JButton("Cancelar");
-    	btnCancelar.setForeground(fonteLetra);
-    	btnCancelar.setBackground(corFundoBtn);
-
+    	btnCancelar.setForeground(AesthethicsView.getCorFundo());
+    	btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonteMenor());
 
     	btnCriar.setSize(30, 50);
     	
     	pnlRodape.add(btnCriar);
     	pnlRodape.add(btnCancelar);
-		pnlRodape.setBackground(corFundo);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

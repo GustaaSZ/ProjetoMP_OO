@@ -1,6 +1,7 @@
 package main.view.artistas;
 
 import main.model.Artista;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,23 +27,11 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 	private JButton btnRemover;
 	private JButton btnCancelar;
 
-	//	CORES
-	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
+	// // Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
+	// // a imagem que coloquei no mesmo pacote da main View
 
-	// ----- Cinza escuro -------
-	Color corFundoBtn = new Color(54, 54, 54);
-
-	// ------- Verde forte ---------
-	Color fonteLetra = new Color(50, 205, 50);
-
-	// ---- Preto escuro ------
-	Color corFundo = new Color(28 ,28 ,28);
-
-	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
-	// a imagem que coloquei no mesmo pacote da main View
-
-	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
-	JLabel label = new JLabel(imag);
+	// ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
+	// JLabel label = new JLabel(imag);
 
 	public RemoveArtistaView() {
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -58,10 +47,11 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Remover Artista");
-		lblTitle.setForeground(fonteLetra);
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
 		
 		pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(corFundo);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -74,21 +64,24 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		}
 
 		lblArtista = new JLabel("Artista que deseja remover:");
-		lblArtista.setForeground(fonteLetra);
-		lblArtista.setBackground(corFundo);
+		lblArtista.setForeground(AesthethicsView.getCorLetra());
+		lblArtista.setBackground(AesthethicsView.getCorFundo());
+		lblArtista.setFont(AesthethicsView.getFonte());
 
 		Artista[] array = new Artista[artistasCadastrados.size()];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = artistasCadastrados.get(i);
 		}
 		cboxArtista = new JComboBox<>(array);
-		cboxArtista.setBackground(corFundo);
+		cboxArtista.setBackground(AesthethicsView.getCorFundo());
+		cboxArtista.setForeground(AesthethicsView.getCorLetra());
+		cboxArtista.setFont(AesthethicsView.getFonteMenor());
 
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxArtista);
-		pnlForm.add(label);
-		pnlForm.setBackground(corFundo);
+		// pnlForm.add(label);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlForm;
 	}
@@ -101,16 +94,18 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		}
 
 		btnRemover = new JButton("Remover");
-		btnRemover.setForeground(fonteLetra);
-		btnRemover.setBackground(corFundoBtn);
+		btnRemover.setForeground(AesthethicsView.getCorFundo());
+		btnRemover.setBackground(AesthethicsView.getCorLetra());
+		btnRemover.setFont(AesthethicsView.getFonte());
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setForeground(corFundo);
-		btnCancelar.setBackground(fonteLetra);
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
 
 		pnlRodape.add(btnRemover);
 		pnlRodape.add(btnCancelar);
-		pnlRodape.setBackground(corFundo);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

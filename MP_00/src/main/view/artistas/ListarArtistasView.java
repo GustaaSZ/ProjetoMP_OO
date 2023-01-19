@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import static main.model.Artista.artistasCadastrados;
 import static main.util.Inicializacao.inicializar;
+import main.util.AesthethicsView;
 
 public class ListarArtistasView extends JFrame implements ActionListener{
 
@@ -24,23 +25,11 @@ public class ListarArtistasView extends JFrame implements ActionListener{
 	
 	private JButton btnVoltar;
 
-	//	CORES
-	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
-
-	// ----- Cinza escuro -------
-	Color corFundoBtn = new Color(54, 54, 54);
-
-	// ------- Verde forte ---------
-	Color fonteLetra = new Color(50, 205, 50);
-
-	// ---- Preto escuro ------
-	Color corFundo = new Color(28 ,28 ,28);
-
 	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
 	// a imagem que coloquei no mesmo pacote das Views.
 
-	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
-	JLabel label = new JLabel(imag);
+	//ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
+	//JLabel label = new JLabel(imag);
 
 	public ListarArtistasView(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -56,12 +45,13 @@ public class ListarArtistasView extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Lista de Artistas");
-		lblTitle.setForeground(fonteLetra);
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
 
 
     	pnlTitle.add(lblTitle);
-    	pnlTitle.setBackground(corFundo);
-    	pnlTitle.add(label);
+    	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
+    	// pnlTitle.add(label);
 
 		return pnlTitle;
 	}
@@ -76,8 +66,9 @@ public class ListarArtistasView extends JFrame implements ActionListener{
     	
     	DefaultListModel<Artista> model = new DefaultListModel<Artista>();
     	lista = new JList<Artista>(model);
-		lista.setBackground(corFundo);
-    	lista.setForeground(fonteLetra);
+		lista.setBackground(AesthethicsView.getCorFundo());
+    	lista.setForeground(AesthethicsView.getCorLetra());
+		lista.setFont(AesthethicsView.getFonteMenor());
 
     	for (int i = 0; i < artistasCadastrados.size(); i++) {
     	    model.add(i, artistasCadastrados.get(i));
@@ -86,8 +77,8 @@ public class ListarArtistasView extends JFrame implements ActionListener{
     	scroll = new JScrollPane(lista);
     	
     	pnlForm.add(scroll);
-    	pnlForm.add(label);
-    	pnlForm.setBackground(corFundo);
+    	// pnlForm.add(label);
+    	pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlForm;
 	}
@@ -100,12 +91,13 @@ public class ListarArtistasView extends JFrame implements ActionListener{
 		}
 		
 		btnVoltar = new JButton("Voltar");
-    	btnVoltar.setForeground(corFundo);
-		btnVoltar.setBackground(fonteLetra);
+    	btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonte());
 		
 		
     	pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(corFundo);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

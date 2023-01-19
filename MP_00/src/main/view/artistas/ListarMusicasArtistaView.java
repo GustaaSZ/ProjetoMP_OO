@@ -2,6 +2,7 @@ package main.view.artistas;
 
 import main.model.Artista;
 import main.model.Musica;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,23 +28,11 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
 	private JButton btnVoltar;
 
-	//	CORES
-	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
+	// // Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
+	// // a imagem que coloquei no mesmo pacote da main View
 
-	// ----- Cinza escuro -------
-	Color corFundoBtn = new Color(54, 54, 54);
-
-	// ------- Verde forte ---------
-	Color fonteLetra = new Color(50, 205, 50);
-
-	// ---- Preto escuro ------
-	Color corFundo = new Color(28 ,28 ,28);
-
-	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
-	// a imagem que coloquei no mesmo pacote da main View
-
-	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
-	JLabel label = new JLabel(imag);
+	// ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
+	// JLabel label = new JLabel(imag);
 
 	public ListarMusicasArtistaView() {
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -60,10 +49,11 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Lista de músicas do Artista");
-		lblTitle.setForeground(fonteLetra);
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
 
 		pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(corFundo);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -76,7 +66,8 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 		}
 
 		lblArtista = new JLabel("Artista:");
-		lblArtista.setForeground(fonteLetra);
+		lblArtista.setForeground(AesthethicsView.getCorLetra());
+		lblArtista.setFont(AesthethicsView.getFonte());
 
 
 		pnlForm.add(lblArtista, BorderLayout.NORTH);
@@ -86,8 +77,9 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 			array[i] = artistasCadastrados.get(i);
 		}
 		cboxArtista = new JComboBox<>(array);
-		cboxArtista.setForeground(fonteLetra);
-		cboxArtista.setBackground(corFundo);
+		cboxArtista.setForeground(AesthethicsView.getCorLetra());
+		cboxArtista.setBackground(AesthethicsView.getCorFundo());
+		cboxArtista.setFont(AesthethicsView.getFonteMenor());
 
 
 		pnlForm.add(cboxArtista, BorderLayout.NORTH);
@@ -96,16 +88,17 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
 		DefaultListModel<Musica> model = new DefaultListModel<Musica>();
 		lista = new JList<Musica>(model);
-		lista.setBackground(corFundo);
-    	lista.setForeground(fonteLetra);
+		lista.setBackground(AesthethicsView.getCorFundo());
+    	lista.setForeground(AesthethicsView.getCorLetra());
+		lista.setFont(AesthethicsView.getFonteMenor());
 
 		for (int i = 0; i < selected.getMusicas().size(); i++) {
 			model.add(i, selected.getMusicas().get(i));
 		}
 		
 		pnlForm.add(lista, BorderLayout.CENTER);
-		pnlForm.add(label);
-    	pnlForm.setBackground(corFundo);
+		// pnlForm.add(label);
+    	pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		cboxArtista.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -125,11 +118,12 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 		}
 
 		btnVoltar = new JButton("Voltar");
-		btnVoltar.setForeground(corFundo);
-		btnVoltar.setBackground(fonteLetra);
+		btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonte());
 
 		pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(corFundo);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

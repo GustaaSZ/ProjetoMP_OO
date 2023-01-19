@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import main.util.AesthethicsView;
 import static main.controller.ArtistaController.buscarArtistaPorNome;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.objetoEncontrado;
@@ -25,23 +26,11 @@ public class BuscarArtista extends JFrame implements ActionListener{
 	private JButton btnBuscar;
 	private JButton btnCancelar;
 
-	//	CORES
-	Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
-
-	// ----- Cinza escuro -------
-	Color corFundoBtn = new Color(54, 54, 54);
-
-	// ------- Verde forte ---------
-	Color fonteLetra = new Color(50, 205, 50);
-
-	// ---- Preto escuro ------
-	Color corFundo = new Color(28 ,28 ,28);
-
 	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
 	// a imagem que coloquei no mesmo pacote da main View
 
-	ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
-	JLabel label = new JLabel(imag);
+	// ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
+	// JLabel label = new JLabel(imag);
 
 	public BuscarArtista(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -57,12 +46,14 @@ public class BuscarArtista extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Buscar Artista");
-    	//    	Mudando a cor da letra
-    	lblTitle.setForeground(fonteLetra);
+    	// Mudando a cor da letra e a fonte
+    	lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
     	
     	pnlTitle.add(lblTitle);
-		//		Mudando a cor do btn
-    	pnlTitle.setBackground(corFundo);
+
+		// Mudando a cor do btn
+    	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
     	
 		return pnlTitle;
@@ -74,17 +65,18 @@ public class BuscarArtista extends JFrame implements ActionListener{
     	}
     	
     	lblNome = new JLabel("Nome:");
-		lblNome.setForeground(fonteLetra);
+		lblNome.setForeground(AesthethicsView.getCorLetra());
+		lblNome.setFont(AesthethicsView.getFonte());
 
     	txtNome = new JTextField(20);
-		txtNome.setForeground(fonteLetra);
-		txtNome.setBackground(corFundo);
+		txtNome.setForeground(AesthethicsView.getCorLetra());
+		txtNome.setBackground(AesthethicsView.getCorFundo());
     	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
-		pnlForm.add(label);
+		// pnlForm.add(label);
 
-		pnlForm.setBackground(corFundo);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
     	
 		return pnlForm;
 	}
@@ -95,19 +87,21 @@ public class BuscarArtista extends JFrame implements ActionListener{
 		}
 		
 		btnBuscar = new JButton("Buscar");
-		btnBuscar.setForeground(corFundo);
-		btnBuscar.setBackground(fonteLetra);
+		btnBuscar.setForeground(AesthethicsView.getCorFundo());
+		btnBuscar.setBackground(AesthethicsView.getCorLetra());
+		btnBuscar.setFont(AesthethicsView.getFonte());
 
     	
 		btnCancelar = new JButton("Voltar");
-    	btnCancelar.setForeground(corFundo);
-		btnCancelar.setBackground(fonteLetra);
+    	btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
 
     	btnBuscar.setSize(30, 50);
     	
     	pnlRodape.add(btnBuscar);
     	pnlRodape.add(btnCancelar);
-		pnlRodape.setBackground(corFundo);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

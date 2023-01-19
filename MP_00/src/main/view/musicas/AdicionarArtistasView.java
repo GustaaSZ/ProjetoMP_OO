@@ -2,6 +2,7 @@ package main.view.musicas;
 
 import main.controller.MusicaController;
 import main.model.Artista;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,7 +44,11 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Adicionar Artista");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -54,25 +59,40 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		}
 
 		lblArtista = new JLabel("Artista:");
+		lblArtista.setForeground(AesthethicsView.getCorFundo());
+		lblArtista.setForeground(AesthethicsView.getCorLetra());
+		lblArtista.setFont(AesthethicsView.getFonte());
+
+
 		lblMusica = new JLabel("Música:");
+		lblMusica.setForeground(AesthethicsView.getCorFundo());
+		lblMusica.setForeground(AesthethicsView.getCorLetra());
+		lblMusica.setFont(AesthethicsView.getFonte());
 
 		Artista[] array = new Artista[artistasCadastrados.size()];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = artistasCadastrados.get(i);
 		}
 		cboxArtista = new JComboBox<>(array);
+		cboxArtista.setBackground(AesthethicsView.getCorFundo());
+		cboxArtista.setForeground(AesthethicsView.getCorLetra());
+		cboxArtista.setFont(AesthethicsView.getFonteMenor());
 		
 		String[] arrayMusica = new String[musicasCadastradas.size()];
 		for (int i = 0; i < arrayMusica.length; i++) {
 			arrayMusica[i] = musicasCadastradas.get(i).getNome();
 		}
 		cboxMusica = new JComboBox<>(arrayMusica);
+		cboxMusica.setForeground(AesthethicsView.getCorLetra());
+		cboxMusica.setBackground(AesthethicsView.getCorFundo());
+		cboxMusica.setFont(AesthethicsView.getFonteMenor());
 
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxArtista);
 		pnlForm.add(lblMusica);
 		pnlForm.add(cboxMusica);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 		
 
 		return pnlForm;
@@ -84,10 +104,19 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		}
 
 		btnAdd = new JButton("Cadastrar");
+		btnAdd.setForeground(AesthethicsView.getCorFundo());
+		btnAdd.setBackground(AesthethicsView.getCorLetra());
+		btnAdd.setFont(AesthethicsView.getFonte());
+
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+    	btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
+
 
 		pnlRodape.add(btnAdd);
 		pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

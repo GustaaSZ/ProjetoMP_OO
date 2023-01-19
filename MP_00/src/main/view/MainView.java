@@ -1,19 +1,26 @@
 package main.view;
 
-import main.view.artistas.ArtistasView;
-import main.view.musicas.MusicasView;
-import main.view.ouvintes.OuvintesView;
-import main.view.playlists.PlaylistsView;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import static main.model.Artista.artistasCadastrados;
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
+// import main.assets.*;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import main.util.AesthethicsView;
+import main.view.artistas.ArtistasView;
+import main.view.musicas.MusicasView;
+import main.view.ouvintes.OuvintesView;
+import main.view.playlists.PlaylistsView;
 
 public class MainView extends JFrame implements ActionListener{
 
@@ -28,24 +35,12 @@ public class MainView extends JFrame implements ActionListener{
 	private JButton btnPlaylists;
 	private JButton btnOuvintes;
 	private JButton btnFechar;
-	
-//	CORES
-Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
 
-// ----- Cinza escuro -------
-Color corFundoBtn = new Color(54, 54, 54);
-
-// ------- Verde forte ---------
-Color fonteLetra = new Color(50, 205, 50);
-
-// ---- Preto escuro ------
-Color corFundo = new Color(28 ,28 ,28);
-
-// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
+	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
    // a imagem que coloquei no mesmo pacote da main View
 
-ImageIcon imag = new ImageIcon(getClass().getResource("imagem7.jpg"));
-JLabel label = new JLabel(imag);
+	ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
+	JLabel label = new JLabel(imag);
 
 
 	public MainView() {
@@ -65,14 +60,15 @@ JLabel label = new JLabel(imag);
     	}
     	
     	lblTitle = new JLabel("Projeto Orientação à Objetos");
+		lblTitle.setFont(AesthethicsView.getFonte());
 
 		//    	Mudando a cor da letra
-		lblTitle.setForeground(fonteLetra);
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
 
     	pnlTitle.add(lblTitle);
 
 		//		Mudando a cor do btn
-    	pnlTitle.setBackground(corFundo);
+    	pnlTitle.setBackground(AesthethicsView.getCorFundo());
     	
 		return pnlTitle;
 	}
@@ -88,16 +84,22 @@ JLabel label = new JLabel(imag);
     	btnPlaylists = new JButton("Gerenciar Playlists");
     	
 		//    	Mudando as cores dos botões
-		btnMusicas.setBackground(corFundoBtn);
-		btnArtistas.setBackground(corFundoBtn);
-		btnOuvintes.setBackground(corFundoBtn);
-		btnPlaylists.setBackground(corFundoBtn);
+		btnMusicas.setBackground(AesthethicsView.getCorFundoBtn());
+		btnArtistas.setBackground(AesthethicsView.getCorFundoBtn());
+		btnOuvintes.setBackground(AesthethicsView.getCorFundoBtn());
+		btnPlaylists.setBackground(AesthethicsView.getCorFundoBtn());
 
 		//    	Mudando as cores das Letra
-		btnMusicas.setForeground(fonteLetra);
-		btnArtistas.setForeground(fonteLetra);
-		btnOuvintes.setForeground(fonteLetra);
-		btnPlaylists.setForeground(fonteLetra);
+		btnMusicas.setForeground(AesthethicsView.getCorLetra());
+		btnArtistas.setForeground(AesthethicsView.getCorLetra());
+		btnOuvintes.setForeground(AesthethicsView.getCorLetra());
+		btnPlaylists.setForeground(AesthethicsView.getCorLetra());
+
+		// 		Mudando a fonte das palavras presentes nos Botões
+		btnArtistas.setFont(AesthethicsView.getFonteMenor());
+		btnMusicas.setFont(AesthethicsView.getFonteMenor());
+		btnOuvintes.setFont(AesthethicsView.getFonteMenor());
+		btnPlaylists.setFont(AesthethicsView.getFonteMenor());
 
     	pnlBody.add(btnArtistas);
     	pnlBody.add(btnMusicas);
@@ -106,7 +108,7 @@ JLabel label = new JLabel(imag);
     	
 		// Adicionando ao pnlBody a imagem com o fundo Preto
     	pnlBody.add(label);
-    	pnlBody.setBackground(corFundo);
+    	pnlBody.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlBody;
 	}
@@ -118,14 +120,16 @@ JLabel label = new JLabel(imag);
 		
 		btnFechar = new JButton("Fechar Programa");
 		
-		//	Mudando a cor da letra
-		btnFechar.setForeground(corFundoBtn);
-		btnFechar.setBackground(fonteLetra);
+		
+		//	Mudando a cor da letra e a fonte do botão de fechar o programa
+		btnFechar.setForeground(AesthethicsView.getCorFundoBtn());
+		btnFechar.setBackground(AesthethicsView.getCorLetra());
+		btnFechar.setFont(AesthethicsView.getFonteMenor());
 
     	pnlRodape.add(btnFechar);
 		
 		//    	Mudando a cor de fundo do rodapé
-    	pnlRodape.setBackground(corFundo);
+    	pnlRodape.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlRodape;
 	}
