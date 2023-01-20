@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
+import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
-import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -57,11 +57,7 @@ public class MusicasView extends JFrame implements ActionListener {
 		
 		pnlForm.add(lblPlaylist, BorderLayout.NORTH);
 
-		String[] array = new String[playlistsCadastradas.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = playlistsCadastradas.get(i).getNome();
-		}
-		cboxPlaylist = new JComboBox<>(array);
+		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
 
 		pnlForm.add(cboxPlaylist, BorderLayout.NORTH);
 

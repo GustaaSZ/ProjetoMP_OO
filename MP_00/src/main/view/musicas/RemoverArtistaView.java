@@ -2,7 +2,6 @@ package main.view.musicas;
 
 import main.controller.MusicaController;
 import main.model.Artista;
-import main.model.Musica;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
-import static main.controller.MusicaController.buscarMusicaPorNome;
-import static main.model.Musica.musicasCadastradas;
+import static main.controller.MusicaController.*;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -56,34 +54,24 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
 		lblArtista = new JLabel("Artista:");
 		lblMusica = new JLabel("Música:");
 
-		String[] arrayMusica = new String[musicasCadastradas.size()];
-		for (int i = 0; i < arrayMusica.length; i++) {
-			arrayMusica[i] = musicasCadastradas.get(i).getNome();
-		}
-		cboxMusica = new JComboBox<>(arrayMusica);
+		cboxMusica = new JComboBox<>(arrayMusicasCadastradas());
 
-		Musica musicaSelecionada = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-
-		Artista[] array = new Artista[musicaSelecionada.getArtistas().size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = musicaSelecionada.getArtistas().get(i);
-		}
-		cboxArtista = new JComboBox<>(array);
+		cboxArtista = new JComboBox<>(
+				arrayArtistasNaMusica(buscarMusicaPorNome((String) cboxMusica.getSelectedItem())));
 
 		pnlForm.add(lblMusica);
 		pnlForm.add(cboxMusica);
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxArtista);
 		
-
 		cboxMusica.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				cboxArtista.removeAllItems();
 
-				Musica musicaSelecionada1 = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
-				Artista[] array1 = new Artista[musicaSelecionada1.getArtistas().size()];
-				for (int i = 0; i < array1.length; i++) {
-					cboxArtista.addItem(musicaSelecionada1.getArtistas().get(i));
+				var array = arrayArtistasNaMusica(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
+				for (int i = 0; i < array.length; i++) {
+					cboxArtista.addItem(buscarMusicaPorNome((String) cboxMusica.getSelectedItem())
+							.getArtistas().get(i));
 				}
 			}
 		});

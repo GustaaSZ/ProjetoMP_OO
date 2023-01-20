@@ -1,7 +1,6 @@
 package main.view.musicas;
 
 import main.controller.MusicaController;
-import main.model.Musica;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -11,8 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.text.ParseException;
 
+import static main.controller.MusicaController.arrayMusicasCadastradas;
 import static main.controller.MusicaController.buscarMusicaPorNome;
-import static main.model.Musica.musicasCadastradas;
 import static main.util.Conversor.dateToString;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
@@ -62,13 +61,8 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 			pnlForm = new JPanel(new GridLayout(5, 5));
 		}
 
-		String[] array = new String[musicasCadastradas.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = musicasCadastradas.get(i).getNome();
-		}
-
 		lblMusica = new JLabel("Música:");
-		cboxMusica = new JComboBox<>(array);
+		cboxMusica = new JComboBox<>(arrayMusicasCadastradas());
 
 		lblNome = new JLabel("Nome:");
 		txtNome = new JTextField(20);
@@ -100,7 +94,7 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 
 		cboxMusica.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				Musica selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
+				var selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
 				txtNome.setText(selected.getNome());
 				txtGenero.setText(selected.getGenero());
 				txtLancamento.setText(dateToString(selected.getLancamento()));

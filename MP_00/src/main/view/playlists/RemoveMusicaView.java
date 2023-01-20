@@ -1,8 +1,6 @@
 package main.view.playlists;
 
 import main.controller.PlaylistController;
-import main.model.Musica;
-import main.model.Playlist;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 import static main.controller.MusicaController.buscarMusicaPorNome;
-import static main.controller.PlaylistController.buscarPlaylistPorNome;
-import static main.model.Playlist.playlistsCadastradas;
+import static main.controller.PlaylistController.*;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -55,24 +52,13 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		}
 		
 		lblPlaylist = new JLabel("Playlist:");
-
-		String[] array = new String[playlistsCadastradas.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = playlistsCadastradas.get(i).getNome();
-		}
 		
-		cboxPlaylist = new JComboBox<>(array);
-
-		Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
 
 		lblMusica = new JLabel("Música:");
-    	
-		String[] arrayMusica = new String[selected.getMusicas().size()];
-		for (int i = 0; i < arrayMusica.length; i++) {
-			arrayMusica[i] = selected.getMusicas().get(i).getNome();
-		}
-		
-		cboxMusica = new JComboBox<>(arrayMusica);
+
+		cboxMusica = new JComboBox<>(arrayMusicasNaPlaylist(
+				buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem())));
     	
 		pnlForm.add(lblPlaylist);
     	pnlForm.add(cboxPlaylist);
@@ -83,14 +69,14 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				cboxMusica.removeAllItems();
 
-				Playlist selected1 = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-				Musica[] array1 = new Musica[selected1.getMusicas().size()];
-				for (int i = 0; i < array1.length; i++) {
-					cboxMusica.addItem(selected1.getMusicas().get(i).getNome());
+				var selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+				var array = arrayMusicasNaPlaylist(selected);
+
+				for (int i = 0; i < array.length; i++) {
+					cboxMusica.addItem(selected.getMusicas().get(i).getNome());
 				}
 			}
 		});
-
 		return pnlForm;
 	}
 

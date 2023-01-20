@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
+import static main.controller.OuvinteController.arrayOuvintesCadastrados;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
-import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
@@ -70,12 +70,8 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 			array[i] = playlistsCadastradas.get(i).getNome();
 		}
 		cboxPlaylist = new JComboBox<>(array);
-		
-		Ouvinte[] arrayOuvinte = new Ouvinte[ouvintesCadastrados.size()];
-		for (int i = 0; i < arrayOuvinte.length; i++) {
-			arrayOuvinte[i] = ouvintesCadastrados.get(i);
-		}
-		cboxOuvinte = new JComboBox<>(arrayOuvinte);
+
+		cboxOuvinte = new JComboBox<>(arrayOuvintesCadastrados());
 
 		pnlForm.add(lblOuvinte);
 		pnlForm.add(cboxOuvinte);

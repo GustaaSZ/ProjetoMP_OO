@@ -75,6 +75,11 @@ public class OuvinteController {
 			return null;
 	    }
 //		-----------------------------------------------------------------------------
+
+	public static Ouvinte[] arrayOuvintesCadastrados(){
+		return ouvintesCadastrados.toArray(new Ouvinte[0]);
+	}
+
 	 private static Boolean ouvinteExiste(Ouvinte ouvinte){
 		 // Repetição que vai percorrer a quantidade de ouvintes cadastrados
 	        for (Ouvinte value : ouvintesCadastrados) {

@@ -9,9 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static main.controller.ArtistaController.arrayArtistasCadastrados;
+import static main.controller.MusicaController.arrayMusicasCadastradas;
 import static main.controller.MusicaController.buscarMusicaPorNome;
-import static main.model.Artista.artistasCadastrados;
-import static main.model.Musica.musicasCadastradas;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -63,30 +63,20 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		lblArtista.setForeground(AesthethicsView.getCorLetra());
 		lblArtista.setFont(AesthethicsView.getFonte());
 
-
 		lblMusica = new JLabel("Música:");
 		lblMusica.setForeground(AesthethicsView.getCorFundo());
 		lblMusica.setForeground(AesthethicsView.getCorLetra());
 		lblMusica.setFont(AesthethicsView.getFonte());
 
-		Artista[] array = new Artista[artistasCadastrados.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = artistasCadastrados.get(i);
-		}
-		cboxArtista = new JComboBox<>(array);
+		cboxArtista = new JComboBox<>(arrayArtistasCadastrados());
 		cboxArtista.setBackground(AesthethicsView.getCorFundo());
 		cboxArtista.setForeground(AesthethicsView.getCorLetra());
 		cboxArtista.setFont(AesthethicsView.getFonteMenor());
-		
-		String[] arrayMusica = new String[musicasCadastradas.size()];
-		for (int i = 0; i < arrayMusica.length; i++) {
-			arrayMusica[i] = musicasCadastradas.get(i).getNome();
-		}
-		cboxMusica = new JComboBox<>(arrayMusica);
+
+		cboxMusica = new JComboBox<>(arrayMusicasCadastradas());
 		cboxMusica.setForeground(AesthethicsView.getCorLetra());
 		cboxMusica.setBackground(AesthethicsView.getCorFundo());
 		cboxMusica.setFont(AesthethicsView.getFonteMenor());
-
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxArtista);
@@ -94,7 +84,6 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		pnlForm.add(cboxMusica);
 		pnlForm.setBackground(AesthethicsView.getCorFundo());
 		
-
 		return pnlForm;
 	}
 

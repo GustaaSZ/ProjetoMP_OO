@@ -1,26 +1,20 @@
 package main.view;
 
-import static main.model.Artista.artistasCadastrados;
-import static main.model.Ouvinte.ouvintesCadastrados;
-import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
-// import main.assets.*;
-
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import main.util.AesthethicsView;
 import main.view.artistas.ArtistasView;
 import main.view.musicas.MusicasView;
 import main.view.ouvintes.OuvintesView;
 import main.view.playlists.PlaylistsView;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static main.model.Artista.artistasCadastrados;
+import static main.model.Ouvinte.ouvintesCadastrados;
+import static main.util.Inicializacao.inicializar;
+import static main.view.dialog.Dialog.openDialog;
 
 public class MainView extends JFrame implements ActionListener{
 
@@ -107,7 +101,7 @@ public class MainView extends JFrame implements ActionListener{
     	pnlBody.add(btnPlaylists);
     	
 		// Adicionando ao pnlBody a imagem com o fundo Preto
-    	pnlBody.add(label);
+//    	pnlBody.add(label);
     	pnlBody.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlBody;

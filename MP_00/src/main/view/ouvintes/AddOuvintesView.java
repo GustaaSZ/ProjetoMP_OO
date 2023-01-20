@@ -46,13 +46,11 @@ public class AddOuvintesView extends JFrame implements ActionListener{
 	}
 	
 //	-----------------------------------------------------------------------------
-	
 	public JPanel getPnlForm() {
 		
     	if (pnlForm == null) {
     		pnlForm = new JPanel();
     	}
-    	
     	// Definindo a mensagem que irá aparecer no JLabel lblNome
     	lblNome = new JLabel("Nome:");
     	// Definindo o tamanho do campo de texto

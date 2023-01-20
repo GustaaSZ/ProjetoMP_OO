@@ -7,8 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static main.controller.OuvinteController.arrayOuvintesCadastrados;
 import static main.controller.OuvinteController.removerOuvinteCadastrado;
-import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -58,12 +58,8 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 		}
 
 		lblOuvinte = new JLabel("Ouvinte:");
-		
-		Ouvinte[] array = new Ouvinte[ouvintesCadastrados.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = ouvintesCadastrados.get(i);
-		}
-		cboxOuvinte = new JComboBox<>(array);
+
+		cboxOuvinte = new JComboBox<>(arrayOuvintesCadastrados());
 
 		pnlForm.add(lblOuvinte);
 		pnlForm.add(cboxOuvinte);

@@ -5,9 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static main.controller.PlaylistController.buscarPlaylistPorNome;
-import static main.controller.PlaylistController.removerPlaylist;
-import static main.model.Playlist.playlistsCadastradas;
+import static main.controller.PlaylistController.*;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -49,11 +47,7 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 
 		lblArtista = new JLabel("Playlist:");
 
-		String[] array = new String[playlistsCadastradas.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = playlistsCadastradas.get(i).getNome();
-		}
-		cboxPlaylist = new JComboBox<>(array);
+		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxPlaylist);

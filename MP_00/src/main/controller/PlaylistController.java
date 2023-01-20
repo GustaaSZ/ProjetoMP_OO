@@ -62,5 +62,21 @@ public class PlaylistController {
         }
 		return null;
     }
+
+	public static String[] arrayPlaylistsCadastradas() {
+		String[] array = new String[playlistsCadastradas.size()];
+		for (int i = 0; i < array.length; i++) {
+			array[i] = playlistsCadastradas.get(i).getNome();
+		}
+		return array;
+	}
+
+	public static String[] arrayMusicasNaPlaylist(Playlist playlist) {
+		String[] array = new String[playlist.getMusicas().size()];
+		for (int i = 0; i < array.length; i++) {
+			array[i] = playlist.getMusicas().get(i).getNome();
+		}
+		return array;
+	}
 }
 

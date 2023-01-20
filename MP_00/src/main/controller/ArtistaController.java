@@ -46,6 +46,10 @@ public class ArtistaController {
 		return null;
     }
 
+    public static Artista[] arrayArtistasCadastrados() {
+        return artistasCadastrados.toArray(new Artista[0]);
+    }
+
     private static Boolean artistaExiste(Artista artista) {
         return artistasCadastrados.contains(artista);
     }

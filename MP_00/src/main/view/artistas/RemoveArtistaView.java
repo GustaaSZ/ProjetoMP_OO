@@ -8,8 +8,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.controller.ArtistaController.removerArtistaCadastrado;
-import static main.model.Artista.artistasCadastrados;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -68,11 +68,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		lblArtista.setBackground(AesthethicsView.getCorFundo());
 		lblArtista.setFont(AesthethicsView.getFonte());
 
-		Artista[] array = new Artista[artistasCadastrados.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = artistasCadastrados.get(i);
-		}
-		cboxArtista = new JComboBox<>(array);
+		cboxArtista = new JComboBox<>(arrayArtistasCadastrados());
 		cboxArtista.setBackground(AesthethicsView.getCorFundo());
 		cboxArtista.setForeground(AesthethicsView.getCorLetra());
 		cboxArtista.setFont(AesthethicsView.getFonteMenor());

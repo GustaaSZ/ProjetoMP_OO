@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
-import static main.model.Artista.artistasCadastrados;
+import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.util.Inicializacao.inicializar;
 
 public class ListarMusicasArtistaView extends JFrame implements ActionListener {
@@ -72,10 +72,8 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
 		pnlForm.add(lblArtista, BorderLayout.NORTH);
 
-		Artista[] array = new Artista[artistasCadastrados.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = artistasCadastrados.get(i);
-		}
+		Artista[] array = arrayArtistasCadastrados();
+
 		cboxArtista = new JComboBox<>(array);
 		cboxArtista.setForeground(AesthethicsView.getCorLetra());
 		cboxArtista.setBackground(AesthethicsView.getCorFundo());

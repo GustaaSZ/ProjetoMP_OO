@@ -1,9 +1,10 @@
 package main.app;
 
-import javax.swing.SwingUtilities;
-import static main.util.Instanciacao.instanciar;
-
 import main.view.MainView;
+
+import javax.swing.*;
+
+import static main.util.Instanciacao.instanciar;
 
 public class Run {
 

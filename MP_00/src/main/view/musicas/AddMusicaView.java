@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
+import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.controller.MusicaController.cadastrarMusica;
-import static main.model.Artista.artistasCadastrados;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -114,11 +114,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 		lblArtista.setBackground(AesthethicsView.getCorFundo());
 		lblArtista.setFont(AesthethicsView.getFonte());
     	
-    	Artista[] array = new Artista[artistasCadastrados.size()];
-    	for(int i = 0; i < array.length; i++) {
-    	    array[i] = artistasCadastrados.get(i);
-    	}
-    	cboxArtista = new JComboBox<>(array);
+    	cboxArtista = new JComboBox<>(arrayArtistasCadastrados());
 		cboxArtista.setForeground(AesthethicsView.getCorLetra());
 		cboxArtista.setBackground(AesthethicsView.getCorFundoBtn());
     	

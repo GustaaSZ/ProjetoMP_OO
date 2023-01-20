@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
-import static main.model.Artista.artistasCadastrados;
+import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -71,17 +71,12 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new JPanel(new GridLayout(3,2));
     	}
-    	
-    	Artista[] array = new Artista[artistasCadastrados.size()];
-    	for(int i = 0; i < array.length; i++) {
-			array[i] = artistasCadastrados.get(i);
-    	}
     	lblArtista = new JLabel("Artista:");
 		lblArtista.setFont(AesthethicsView.getFonte());
 		lblArtista.setForeground(AesthethicsView.getCorLetra());
 		lblArtista.setFont(AesthethicsView.getFonte());
 
-    	cboxArtista = new JComboBox<>(array);
+    	cboxArtista = new JComboBox<>(arrayArtistasCadastrados());
 		cboxArtista.setForeground(AesthethicsView.getCorLetra());
 		cboxArtista.setBackground(AesthethicsView.getCorFundo());
 		cboxArtista.setFont(AesthethicsView.getFonteMenor());

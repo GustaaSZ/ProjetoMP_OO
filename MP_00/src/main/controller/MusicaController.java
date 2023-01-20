@@ -10,57 +10,59 @@ import static main.util.Conversor.stringToDate;
 
 public class MusicaController {
 
-	private final Musica musica;
+    private final Musica musica;
 
-	public MusicaController(Musica musica) {
-		this.musica = musica;
-	}
-	
-	//------------------ FUNÇÃO DE ADD ARTISTA NA MUSICA --------------------
-	
-	public boolean adicionarArtista(Artista artista) {
-		if(musica.getArtistas().contains(artista)) {
-			return false;
-		}
-		musica.getArtistas().add(artista);
-		artista.getMusicas().add(musica);
-		return true;
-	}
-//	---------------------------------------------------------------
-	public boolean removerArtista(Artista artista) {
-		if(!musica.getArtistas().contains(artista)) {
+    public MusicaController(Musica musica) {
+        this.musica = musica;
+    }
+
+    //------------------ FUNÇÃO DE ADD ARTISTA NA MUSICA --------------------
+
+    public boolean adicionarArtista(Artista artista) {
+        if (musica.getArtistas().contains(artista)) {
             return false;
-		}
-		if (musica.getArtistas().size() == 1) {
-			return false;
-		}
-		musica.getArtistas().remove(artista);
-		artista.getMusicas().remove(musica);
-		return true;
-	}
-	
-	//------------------- FUNÇÃO DE ATT MUSICA ---------------------
-	
-	public void atualizarMusica(String nome, String genero, String lancamento, String letra) {
-		musica.setNome(nome);
-		musica.setGenero(genero);
-		musica.setLancamento(stringToDate(lancamento));
-		musica.setLetra(letra);
-	}
+        }
+        musica.getArtistas().add(artista);
+        artista.getMusicas().add(musica);
+        return true;
+    }
+
+    //	---------------------------------------------------------------
+    public boolean removerArtista(Artista artista) {
+        if (!musica.getArtistas().contains(artista)) {
+            return false;
+        }
+        if (musica.getArtistas().size() == 1) {
+            return false;
+        }
+        musica.getArtistas().remove(artista);
+        artista.getMusicas().remove(musica);
+        return true;
+    }
+
+    //------------------- FUNÇÃO DE ATT MUSICA ---------------------
+
+    public void atualizarMusica(String nome, String genero, String lancamento, String letra) {
+        musica.setNome(nome);
+        musica.setGenero(genero);
+        musica.setLancamento(stringToDate(lancamento));
+        musica.setLetra(letra);
+    }
     // ---------------- METODOS ESTATICOS ----------------
 
-	public static boolean cadastrarMusica(Artista artista, String nome, String letra, String genero, String lancamento) {
-			if(!musicaExiste(buscarMusicaPorNome(nome))) {
-				new Musica(artista, nome.trim(), letra.trim(), genero.trim(), stringToDate(lancamento));
-				return true;
-			}
-			return false;
-	}
+    public static boolean cadastrarMusica(Artista artista, String nome, String letra, String genero, String lancamento) {
+        if (!musicaExiste(buscarMusicaPorNome(nome))) {
+            new Musica(artista, nome.trim(), letra.trim(), genero.trim(), stringToDate(lancamento));
+            return true;
+        }
+        return false;
+    }
+
     public static boolean removerMusica(Musica musica) {
-    	if(!musicaExiste(musica)) {
+        if (!musicaExiste(musica)) {
             return false;
-    	}
-    	musicasCadastradas.remove(musica);
+        }
+        musicasCadastradas.remove(musica);
         return true;
     }
 
@@ -70,7 +72,23 @@ public class MusicaController {
                 return value;
             }
         }
-		return null;
+        return null;
+    }
+
+    public static String[] arrayMusicasCadastradas() {
+        String[] array = new String[musicasCadastradas.size()];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = musicasCadastradas.get(i).getNome();
+        }
+        return array;
+    }
+
+    public static Artista[] arrayArtistasNaMusica(Musica mus) {
+        Artista[] array = new Artista[mus.getArtistas().size()];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = mus.getArtistas().get(i);
+        }
+        return array;
     }
 
     private static Boolean musicaExiste(Musica musica) {

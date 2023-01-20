@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
+import static main.controller.OuvinteController.arrayOuvintesCadastrados;
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
@@ -56,13 +57,8 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
     	txtNome = new JTextField(20);
 		txtNome.setText(ouvintesCadastrados.get(0).getNome());
     	
-    	Ouvinte[] array = new Ouvinte[ouvintesCadastrados.size()];
-    	for(int i = 0; i < array.length; i++) {
-    	    array[i] = ouvintesCadastrados.get(i);
-    	}
-    	
     	lblOuvinte = new JLabel("Ouvinte:");
-    	cboxOuvinte = new JComboBox<>(array);
+    	cboxOuvinte = new JComboBox<>(arrayOuvintesCadastrados());
     	
     	pnlForm.add(lblOuvinte);
     	pnlForm.add(cboxOuvinte);
@@ -71,8 +67,7 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
 		
 		cboxOuvinte.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
-				txtNome.setText(selected.getNome());
+				txtNome.setText(((Ouvinte) cboxOuvinte.getSelectedItem()).getNome());
 				}
 			});
 

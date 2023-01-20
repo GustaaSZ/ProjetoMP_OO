@@ -7,10 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static main.controller.MusicaController.arrayMusicasCadastradas;
 import static main.controller.MusicaController.buscarMusicaPorNome;
+import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
-import static main.model.Musica.musicasCadastradas;
-import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -54,21 +54,11 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		
 		lblPlaylist = new JLabel("Playlist:");
 
-		String[] array = new String[playlistsCadastradas.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = playlistsCadastradas.get(i).getNome();
-		}
-		
-		cboxPlaylist = new JComboBox<>(array);
+		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
 
 		lblMusica = new JLabel("Música:");
-    	
-		String[] arrayMusica = new String[musicasCadastradas.size()];
-		for (int i = 0; i < arrayMusica.length; i++) {
-			arrayMusica[i] = musicasCadastradas.get(i).getNome();
-		}
-		
-		cboxMusica = new JComboBox<>(arrayMusica);
+
+		cboxMusica = new JComboBox<>(arrayMusicasCadastradas());
     	
 		pnlForm.add(lblPlaylist);
     	pnlForm.add(cboxPlaylist);

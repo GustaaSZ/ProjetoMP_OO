@@ -5,9 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static main.controller.MusicaController.buscarMusicaPorNome;
-import static main.controller.MusicaController.removerMusica;
-import static main.model.Musica.musicasCadastradas;
+import static main.controller.MusicaController.*;
 import static main.util.Inicializacao.inicializar;
 import static main.view.dialog.Dialog.openDialog;
 
@@ -49,11 +47,7 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 
 		lblArtista = new JLabel("Musica:");
 
-		String[] array = new String[musicasCadastradas.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = musicasCadastradas.get(i).getNome();
-		}
-		cboxMusica = new JComboBox<>(array);
+		cboxMusica = new JComboBox<>(arrayMusicasCadastradas());
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxMusica);
