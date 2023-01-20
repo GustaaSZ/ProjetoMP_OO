@@ -9,6 +9,7 @@ import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.controller.MusicaController.removerMusica;
 import static main.model.Musica.musicasCadastradas;
 import static main.util.Inicializacao.inicializar;
+import main.util.AesthethicsView;
 import static main.view.dialog.Dialog.openDialog;
 
 public class RemoveMusicaView extends JFrame implements ActionListener {
@@ -37,7 +38,11 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Remover Musica");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -48,15 +53,23 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		}
 
 		lblArtista = new JLabel("Musica:");
+		lblArtista.setForeground(AesthethicsView.getCorLetra());
+		lblArtista.setBackground(AesthethicsView.getCorFundoBtn());
+		lblArtista.setFont(AesthethicsView.getFonte());
+
 
 		String[] array = new String[musicasCadastradas.size()];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = musicasCadastradas.get(i).getNome();
 		}
 		cboxMusica = new JComboBox<>(array);
+		cboxMusica.setForeground(AesthethicsView.getCorLetra());
+		cboxMusica.setBackground(AesthethicsView.getCorFundoBtn());
+		cboxMusica.setFont(AesthethicsView.getFonteMenor());
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxMusica);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlForm;
 	}
@@ -67,10 +80,18 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		}
 
 		btnRemover = new JButton("Remover");
+		btnRemover.setForeground(AesthethicsView.getCorFundo());
+		btnRemover.setBackground(AesthethicsView.getCorLetra());
+		btnRemover.setFont(AesthethicsView.getFonte());
+
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
 
 		pnlRodape.add(btnRemover);
 		pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

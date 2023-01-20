@@ -1,12 +1,14 @@
 package main.view.musicas;
 
 import main.model.Musica;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+// import java.util.concurrent.LinkedBlockingDeque;
 
 import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.model.Musica.musicasCadastradas;
@@ -39,7 +41,12 @@ public class LetraView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Letra da Música");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -52,6 +59,9 @@ public class LetraView extends JFrame implements ActionListener {
 		}
 
 		lblMusica = new JLabel("Musica:");
+		lblMusica.setBackground(AesthethicsView.getCorFundo());
+		lblMusica.setForeground(AesthethicsView.getCorLetra());
+		lblMusica.setFont(AesthethicsView.getFonte());
 		
 		pnlForm.add(lblMusica, BorderLayout.NORTH);
 
@@ -60,6 +70,10 @@ public class LetraView extends JFrame implements ActionListener {
 			array[i] = musicasCadastradas.get(i).getNome();
 		}
 		cboxMusica = new JComboBox<>(array);
+		cboxMusica.setForeground(AesthethicsView.getCorLetra());
+		cboxMusica.setBackground(AesthethicsView.getCorFundo());
+		cboxMusica.setFont(AesthethicsView.getFonteMenor());
+
 
 		pnlForm.add(cboxMusica, BorderLayout.NORTH);
 
@@ -70,9 +84,15 @@ public class LetraView extends JFrame implements ActionListener {
 		txtLetra.setText(selected.getLetra());
 		txtLetra.setEditable(false);
 
+		txtLetra.setForeground(AesthethicsView.getCorLetra());
+		txtLetra.setBackground(AesthethicsView.getCorFundo());
+		txtLetra.setFont(AesthethicsView.getFonteMenor());
+
 		scrollPane = new JScrollPane(txtLetra);
+		scrollPane.setBackground(AesthethicsView.getCorFundo());
 
 		pnlForm.add(scrollPane);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		cboxMusica.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -92,8 +112,12 @@ public class LetraView extends JFrame implements ActionListener {
 		}
 
 		btnVoltar = new JButton("Voltar");
+		btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonte());
 
 		pnlRodape.add(btnVoltar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

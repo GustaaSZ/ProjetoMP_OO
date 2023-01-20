@@ -1,5 +1,6 @@
 package main.view.playlists;
 
+import main.util.AesthethicsView;
 import main.view.MainView;
 
 import javax.swing.*;
@@ -47,8 +48,12 @@ public class PlaylistsView extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Crud de Playlists");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
     	pnlTitle.add(lblTitle);
-    	
+    	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
+
 		return pnlTitle;
 	}
     
@@ -65,6 +70,34 @@ public class PlaylistsView extends JFrame implements ActionListener{
     	btnAddMusica = new JButton("Adicionar música na playlist");
     	btnRmvMusica = new JButton("Remover música da playlist");
     	
+		// Mudando a cor da letra
+		btnAdd.setForeground(AesthethicsView.getCorLetra());
+    	btnRemove.setForeground(AesthethicsView.getCorLetra());
+    	btnUpdate.setForeground(AesthethicsView.getCorLetra());
+    	btnList.setForeground(AesthethicsView.getCorLetra());
+    	btnMusicas.setForeground(AesthethicsView.getCorLetra());
+    	btnAddMusica.setForeground(AesthethicsView.getCorLetra());
+    	btnRmvMusica.setForeground(AesthethicsView.getCorLetra());
+
+		// Mudando a cor de fundo dos botões
+		btnAdd.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnRemove.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnUpdate.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnList.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnMusicas.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnAddMusica.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnRmvMusica.setBackground(AesthethicsView.getCorFundoBtn());
+
+		// Mudando a fonte dos botões
+		btnAdd.setFont(AesthethicsView.getFonteMenor());
+    	btnRemove.setFont(AesthethicsView.getFonteMenor());
+    	btnUpdate.setFont(AesthethicsView.getFonteMenor());
+    	btnList.setFont(AesthethicsView.getFonteMenor());
+    	btnMusicas.setFont(AesthethicsView.getFonteMenor());
+    	btnAddMusica.setFont(AesthethicsView.getFonteMenor());
+    	btnRmvMusica.setFont(AesthethicsView.getFonteMenor());
+
+
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
@@ -72,6 +105,7 @@ public class PlaylistsView extends JFrame implements ActionListener{
     	pnlBody.add(btnMusicas);
     	pnlBody.add(btnAddMusica);
     	pnlBody.add(btnRmvMusica);
+		pnlBody.setBackground(AesthethicsView.getCorFundo());
     	
 		return pnlBody;
 	}
@@ -82,8 +116,12 @@ public class PlaylistsView extends JFrame implements ActionListener{
 		}
 		
 		btnVoltar = new JButton("Voltar");
-    	
+    	btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonte());
+
     	pnlRodape.add(btnVoltar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

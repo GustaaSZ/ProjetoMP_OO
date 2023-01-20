@@ -83,7 +83,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 
     	cboxArtista = new JComboBox<>(array);
 		cboxArtista.setForeground(AesthethicsView.getCorLetra());
-		cboxArtista.setBackground(AesthethicsView.getCorFundo());
+		cboxArtista.setBackground(AesthethicsView.getCorFundoBtn());
 		cboxArtista.setFont(AesthethicsView.getFonteMenor());
 
 		lblNome = new JLabel("Nome:");
@@ -92,7 +92,8 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 		lblNome.setFont(AesthethicsView.getFonte());
 
 		txtNome = new JTextField(20);
-		txtNome.setBackground(AesthethicsView.getCorFundo());
+		txtNome.setBackground(AesthethicsView.getCorFundoBtn());
+		txtNome.setFont(AesthethicsView.getFonteMenor());
 		txtNome.setForeground(AesthethicsView.getCorLetra());
 
 		txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());

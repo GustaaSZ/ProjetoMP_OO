@@ -74,7 +74,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 			array[i] = artistasCadastrados.get(i);
 		}
 		cboxArtista = new JComboBox<>(array);
-		cboxArtista.setBackground(AesthethicsView.getCorFundo());
+		cboxArtista.setBackground(AesthethicsView.getCorFundoBtn());
 		cboxArtista.setForeground(AesthethicsView.getCorLetra());
 		cboxArtista.setFont(AesthethicsView.getFonteMenor());
 		
@@ -84,7 +84,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 		}
 		cboxMusica = new JComboBox<>(arrayMusica);
 		cboxMusica.setForeground(AesthethicsView.getCorLetra());
-		cboxMusica.setBackground(AesthethicsView.getCorFundo());
+		cboxMusica.setBackground(AesthethicsView.getCorFundoBtn());
 		cboxMusica.setFont(AesthethicsView.getFonteMenor());
 
 

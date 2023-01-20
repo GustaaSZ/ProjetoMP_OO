@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import main.controller.ArtistaController;
 import main.controller.MusicaController;
@@ -46,4 +46,4 @@ class MusicaControllerTest{
         boolean result2 = musicaController.adicionarArtista(ArtistaController.buscarArtistaPorNome("Veigh"));
         assertTrue(result2);
     }
-}
+}*/

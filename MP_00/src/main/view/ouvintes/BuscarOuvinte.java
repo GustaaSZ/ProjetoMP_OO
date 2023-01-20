@@ -1,6 +1,9 @@
 package main.view.ouvintes;
 
 import javax.swing.*;
+
+import main.util.AesthethicsView;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,7 +40,11 @@ public class BuscarOuvinte extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Buscar Artista");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
     	pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
     	
 		return pnlTitle;
 	}
@@ -48,10 +55,18 @@ public class BuscarOuvinte extends JFrame implements ActionListener{
     	}
     	
     	lblNome = new JLabel("Nome:");
+		lblNome.setForeground(AesthethicsView.getCorLetra());
+		lblNome.setFont(AesthethicsView.getFonte());
+
+		
     	txtNome = new JTextField(20);
+		txtNome.setBackground(AesthethicsView.getCorFundoBtn());
+		txtNome.setForeground(AesthethicsView.getCorLetra());
+		txtNome.setFont(AesthethicsView.getFonteMenor());
     	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
     	
 		return pnlForm;
 	}
@@ -62,12 +77,20 @@ public class BuscarOuvinte extends JFrame implements ActionListener{
 		}
 		
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.setForeground(AesthethicsView.getCorFundo());
+		btnBuscar.setBackground(AesthethicsView.getCorLetra());
+		btnBuscar.setFont(AesthethicsView.getFonte());
+
     	btnCancelar = new JButton("Voltar");
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
     	
     	btnBuscar.setSize(30, 50);
     	
     	pnlRodape.add(btnBuscar);
     	pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

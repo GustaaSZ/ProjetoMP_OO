@@ -2,6 +2,7 @@ package main.view.ouvintes;
 
 import main.model.Ouvinte;
 import main.model.Playlist;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,7 +40,11 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		}
 
 		lblTitle = new JLabel("Lista de Playlists do Ouvinte");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -51,6 +56,8 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		}
 
 		lblOuvinte = new JLabel("Ouvinte:");
+		lblOuvinte.setForeground(AesthethicsView.getCorLetra());
+		lblOuvinte.setFont(AesthethicsView.getFonte());
 		
 		pnlForm.add(lblOuvinte, BorderLayout.NORTH);
 		
@@ -59,11 +66,17 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 			array[i] = ouvintesCadastrados.get(i);
 		}
 		cboxOuvinte = new JComboBox<>(array);
-		
+		cboxOuvinte.setForeground(AesthethicsView.getCorLetra());
+		cboxOuvinte.setBackground(AesthethicsView.getCorFundoBtn());
+		cboxOuvinte.setFont(AesthethicsView.getFonteMenor());
+
 		pnlForm.add(cboxOuvinte, BorderLayout.NORTH);
 
 		DefaultListModel<Playlist> model = new DefaultListModel<Playlist>();
 		lista = new JList<Playlist>(model);
+		lista.setForeground(AesthethicsView.getCorLetra());
+		lista.setBackground(AesthethicsView.getCorFundo());
+		lista.setFont(AesthethicsView.getFonteMenor());
 
 		Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
 
@@ -72,6 +85,7 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		}
 		
 		pnlForm.add(lista, BorderLayout.CENTER);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 		
 		
 		cboxOuvinte.addItemListener(e -> {
@@ -91,8 +105,12 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		}
 
 		btnVoltar = new JButton("Voltar");
-
+		btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonte());
+		
 		pnlRodape.add(btnVoltar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

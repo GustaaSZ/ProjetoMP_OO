@@ -3,6 +3,7 @@ package main.view.playlists;
 import main.controller.PlaylistController;
 import main.model.Musica;
 import main.model.Playlist;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,7 +45,11 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Remover Música de alguma Playlist");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -55,29 +60,40 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		}
 		
 		lblPlaylist = new JLabel("Playlist:");
+		lblPlaylist.setForeground(AesthethicsView.getCorLetra());
+		lblPlaylist.setFont(AesthethicsView.getFonte());
 
 		String[] array = new String[playlistsCadastradas.size()];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = playlistsCadastradas.get(i).getNome();
 		}
-		
+
 		cboxPlaylist = new JComboBox<>(array);
+		cboxPlaylist.setForeground(AesthethicsView.getCorLetra());
+		cboxPlaylist.setBackground(AesthethicsView.getCorFundoBtn());
+		cboxPlaylist.setFont(AesthethicsView.getFonteMenor());
 
 		Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
 
 		lblMusica = new JLabel("Música:");
-    	
+    	lblMusica.setForeground(AesthethicsView.getCorLetra());
+		lblMusica.setFont(AesthethicsView.getFonte());
+
 		String[] arrayMusica = new String[selected.getMusicas().size()];
 		for (int i = 0; i < arrayMusica.length; i++) {
 			arrayMusica[i] = selected.getMusicas().get(i).getNome();
 		}
 		
 		cboxMusica = new JComboBox<>(arrayMusica);
+		cboxMusica.setForeground(AesthethicsView.getCorLetra());
+		cboxMusica.setBackground(AesthethicsView.getCorFundoBtn());
+		cboxMusica.setFont(AesthethicsView.getFonteMenor());
     	
 		pnlForm.add(lblPlaylist);
     	pnlForm.add(cboxPlaylist);
     	pnlForm.add(lblMusica);
     	pnlForm.add(cboxMusica);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		cboxPlaylist.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -100,10 +116,18 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		}
 
 		btnRmv = new JButton("Remover");
+		btnRmv.setForeground(AesthethicsView.getCorFundo());
+		btnRmv.setBackground(AesthethicsView.getCorLetra());
+		btnRmv.setFont(AesthethicsView.getFonte());
+
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
 
 		pnlRodape.add(btnRmv);
 		pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

@@ -12,6 +12,7 @@ import static main.controller.PlaylistController.buscarPlaylistPorNome;
 import static main.model.Musica.musicasCadastradas;
 import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
+import main.util.AesthethicsView;
 import static main.view.dialog.Dialog.openDialog;
 
 public class AddMusicaView extends JFrame implements ActionListener {
@@ -42,7 +43,11 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Adicionar Música");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+		
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -52,7 +57,10 @@ public class AddMusicaView extends JFrame implements ActionListener {
 			pnlForm = new JPanel(new GridLayout(2, 2));
 		}
 		
+		
 		lblPlaylist = new JLabel("Playlist:");
+		lblPlaylist.setForeground(AesthethicsView.getCorLetra());
+		lblPlaylist.setFont(AesthethicsView.getFonte());
 
 		String[] array = new String[playlistsCadastradas.size()];
 		for (int i = 0; i < array.length; i++) {
@@ -60,8 +68,13 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		}
 		
 		cboxPlaylist = new JComboBox<>(array);
+		cboxPlaylist.setForeground(AesthethicsView.getCorLetra());
+		cboxPlaylist.setBackground(AesthethicsView.getCorFundoBtn());
+		cboxPlaylist.setFont(AesthethicsView.getFonteMenor());
 
 		lblMusica = new JLabel("Música:");
+		lblMusica.setForeground(AesthethicsView.getCorLetra());
+		lblMusica.setFont(AesthethicsView.getFonte());
     	
 		String[] arrayMusica = new String[musicasCadastradas.size()];
 		for (int i = 0; i < arrayMusica.length; i++) {
@@ -69,11 +82,15 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		}
 		
 		cboxMusica = new JComboBox<>(arrayMusica);
+		cboxMusica.setForeground(AesthethicsView.getCorLetra());
+		cboxMusica.setBackground(AesthethicsView.getCorFundoBtn());
+		cboxMusica.setFont(AesthethicsView.getFonteMenor());
     	
 		pnlForm.add(lblPlaylist);
     	pnlForm.add(cboxPlaylist);
     	pnlForm.add(lblMusica);
     	pnlForm.add(cboxMusica);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlForm;
 	}
@@ -84,10 +101,20 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		}
 
 		btnAdd = new JButton("Adicionar");
-		btnCancelar = new JButton("Cancelar");
+		btnAdd.setForeground(AesthethicsView.getCorFundo());
+		btnAdd.setBackground(AesthethicsView.getCorLetra());
+		btnAdd.setFont(AesthethicsView.getFonte());
 
+
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
+
+		
 		pnlRodape.add(btnAdd);
 		pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

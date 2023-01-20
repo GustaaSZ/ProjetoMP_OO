@@ -72,6 +72,7 @@ public class AddArtistasView extends JFrame implements ActionListener{
     	txtNome = new JTextField(20);
     	txtNome.setBackground(AesthethicsView.getCorFundoBtn());
     	txtNome.setForeground(AesthethicsView.getCorLetra());
+		txtNome.setFont(AesthethicsView.getFonteMenor());
 
 
     	pnlForm.add(lblNome);

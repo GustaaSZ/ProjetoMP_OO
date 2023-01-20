@@ -1,6 +1,7 @@
 package main.view.ouvintes;
 
 import main.model.Ouvinte;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +41,11 @@ public class ListarOuvintesView extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Lista de Ouvintes");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
     	pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
     	
 		return pnlTitle;
 	}
@@ -54,13 +59,18 @@ public class ListarOuvintesView extends JFrame implements ActionListener{
     	}
 
     	DefaultListModel<Ouvinte> model = new DefaultListModel<Ouvinte>();
+
     	lista = new JList<Ouvinte>(model);
+		lista.setForeground(AesthethicsView.getCorLetra());
+		lista.setBackground(AesthethicsView.getCorFundo());
+		lista.setFont(AesthethicsView.getFonteMenor());
 
     	for (int i = 0; i < ouvintesCadastrados.size(); i++) {
     	    model.add(i, ouvintesCadastrados.get(i));
     	}
     	
     	pnlForm.add(lista);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
     	
 		return pnlForm;
 	}
@@ -74,8 +84,12 @@ public class ListarOuvintesView extends JFrame implements ActionListener{
 		}
 		
 		btnVoltar = new JButton("Voltar");
-    	
+    	btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonte());
+
     	pnlRodape.add(btnVoltar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

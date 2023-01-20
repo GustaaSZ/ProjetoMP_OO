@@ -19,6 +19,8 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 	private JPanel pnlForm;
 	private JPanel pnlRodape;
 
+	private JScrollPane scroll;
+
 	private JLabel lblTitle;
 	private JLabel lblArtista;
 
@@ -95,9 +97,17 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 		for (int i = 0; i < selected.getMusicas().size(); i++) {
 			model.add(i, selected.getMusicas().get(i));
 		}
+
+		// Adicionando a a lista no scroll pane, (Barra de rolagem)
+		scroll = new JScrollPane(lista);
+
 		
-		pnlForm.add(lista, BorderLayout.CENTER);
-		// pnlForm.add(label);
+		
+		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scroll.setBackground(AesthethicsView.getCorFundo());
+
+		pnlForm.add(scroll);
     	pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		cboxArtista.addItemListener(e -> {

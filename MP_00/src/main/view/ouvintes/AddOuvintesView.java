@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import static main.controller.OuvinteController.cadastrarOuvinte;
 import static main.util.Inicializacao.inicializar;
+import main.util.AesthethicsView;
 import static main.view.dialog.Dialog.openDialog;
 
 public class AddOuvintesView extends JFrame implements ActionListener{
@@ -22,7 +23,7 @@ public class AddOuvintesView extends JFrame implements ActionListener{
 	// Instânciando componentes da classe JTextField (Campo de texto)
 	private JTextField txtNome;
 	
-	// Instânciando componentes da classe JButton, que por sua vez são botões
+	// Instânciando componentes da classe JButton
 	private JButton btnCriar;
 	private JButton btnCancelar;
 
@@ -40,7 +41,11 @@ public class AddOuvintesView extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Crud de Ouvintes");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
     	pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
     	
 		return pnlTitle;
 	}
@@ -53,14 +58,20 @@ public class AddOuvintesView extends JFrame implements ActionListener{
     		pnlForm = new JPanel();
     	}
     	
-    	// Definindo a mensagem que irá aparecer no JLabel lblNome
     	lblNome = new JLabel("Nome:");
-    	// Definindo o tamanho do campo de texto
+		lblNome.setForeground(AesthethicsView.getCorLetra());
+		lblNome.setFont(AesthethicsView.getFonte());
+
     	txtNome = new JTextField(20);
+		txtNome.setBackground(AesthethicsView.getCorFundoBtn());
+		txtNome.setForeground(AesthethicsView.getCorLetra());
+		txtNome.setFont(AesthethicsView.getFonteMenor());
+
     	
     	// Add os componentes ao JPanel pnlForm
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
     	
 		return pnlForm;
 	}
@@ -73,10 +84,17 @@ public class AddOuvintesView extends JFrame implements ActionListener{
 			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		// Definindo a mensagem que irá aparecer no btnCriar
+		
 		btnCriar = new JButton("Cadastrar");
-		// Definindo a mensagem que irá aparecer no btnCancelar
+		btnCriar.setForeground(AesthethicsView.getCorFundo());
+		btnCriar.setBackground(AesthethicsView.getCorLetra());
+		btnCriar.setFont(AesthethicsView.getFonte());
+
     	btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
+
     	
     	// Altura e largura do botão de criar
     	btnCriar.setSize(30, 50);
@@ -84,6 +102,7 @@ public class AddOuvintesView extends JFrame implements ActionListener{
     	// Add os componentes ao JPanel pnlRodape
     	pnlRodape.add(btnCriar);
     	pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

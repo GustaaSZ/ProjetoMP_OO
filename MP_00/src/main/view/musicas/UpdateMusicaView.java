@@ -15,6 +15,7 @@ import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.model.Musica.musicasCadastradas;
 import static main.util.Conversor.dateToString;
 import static main.util.Inicializacao.inicializar;
+import main.util.AesthethicsView;
 import static main.view.dialog.Dialog.openDialog;
 
 public class UpdateMusicaView extends JFrame implements ActionListener {
@@ -52,7 +53,11 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Atualizar Música");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -68,22 +73,59 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		}
 
 		lblMusica = new JLabel("Música:");
+		lblMusica.setFont(AesthethicsView.getFonte());
+		lblMusica.setForeground(AesthethicsView.getCorLetra());
+
 		cboxMusica = new JComboBox<>(array);
+		cboxMusica.setForeground(AesthethicsView.getCorLetra());
+		cboxMusica.setBackground(AesthethicsView.getCorFundoBtn());
+		cboxMusica.setFont(AesthethicsView.getFonteMenor());
 
 		lblNome = new JLabel("Nome:");
+		lblNome.setFont(AesthethicsView.getFonte());
+		lblNome.setForeground(AesthethicsView.getCorLetra());
+
 		txtNome = new JTextField(20);
+		txtNome.setBackground(AesthethicsView.getCorFundoBtn());
+		txtNome.setForeground(AesthethicsView.getCorLetra());
+		txtNome.setFont(AesthethicsView.getFonteMenor());
+
 		txtNome.setText(cboxMusica.getSelectedItem().toString());
 
 		lblGenero = new JLabel("Genero:");
+		lblGenero.setBackground(AesthethicsView.getCorFundoBtn());
+		lblGenero.setForeground(AesthethicsView.getCorLetra());
+		lblGenero.setFont(AesthethicsView.getFonte());
+
 		txtGenero = new JTextField(15);
+		txtGenero.setBackground(AesthethicsView.getCorFundoBtn());
+		txtGenero.setForeground(AesthethicsView.getCorLetra());
+		txtGenero.setFont(AesthethicsView.getFonteMenor());
+
 		txtGenero.setText(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getGenero());
 
 		lblLancamento = new JLabel("Lancamento:");
+		lblLancamento.setBackground(AesthethicsView.getCorFundoBtn());
+		lblLancamento.setForeground(AesthethicsView.getCorLetra());
+		lblLancamento.setFont(AesthethicsView.getFonte());
+
 		txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
+		txtLancamento.setForeground(AesthethicsView.getCorLetra());
+		txtLancamento.setBackground(AesthethicsView.getCorFundoBtn());
+		txtLancamento.setFont(AesthethicsView.getFonteMenor());
+
 		txtLancamento.setText(dateToString(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getLancamento()));
 
 		lblLetra = new JLabel("Letra:");
+		lblLetra.setBackground(AesthethicsView.getCorFundoBtn());
+		lblLetra.setForeground(AesthethicsView.getCorLetra());
+		lblLetra.setFont(AesthethicsView.getFonte());
+
 		txtLetra = new JTextArea();
+		txtLetra.setForeground(AesthethicsView.getCorLetra());
+		txtLetra.setBackground(AesthethicsView.getCorFundoBtn());
+		txtLetra.setFont(AesthethicsView.getFonteMenor());
+
 		txtLetra.setLineWrap(true);
 		txtLetra.setText(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getLetra());
 
@@ -97,6 +139,7 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		pnlForm.add(txtLancamento);
 		pnlForm.add(lblLetra);
 		pnlForm.add(txtLetra);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		cboxMusica.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -117,10 +160,19 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		}
 
 		btnUpdt = new JButton("Atualizar");
+		btnUpdt.setForeground(AesthethicsView.getCorFundo());
+		btnUpdt.setBackground(AesthethicsView.getCorLetra());
+		btnUpdt.setFont(AesthethicsView.getFonte());
+
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
 
 		pnlRodape.add(btnUpdt);
 		pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
+		
 
 		return pnlRodape;
 	}

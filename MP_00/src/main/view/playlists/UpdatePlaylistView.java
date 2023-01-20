@@ -2,6 +2,7 @@ package main.view.playlists;
 
 import main.controller.PlaylistController;
 import main.model.Playlist;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +46,12 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Atualizar Playlist");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+		
+
 		pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
@@ -56,6 +62,8 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		}
 		
 		lblPlaylist = new JLabel("Playlist:");
+		lblPlaylist.setForeground(AesthethicsView.getCorLetra());
+		lblPlaylist.setFont(AesthethicsView.getFonte());
 
 		String[] array = new String[playlistsCadastradas.size()];
 		for (int i = 0; i < array.length; i++) {
@@ -63,13 +71,28 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		}
 		
 		cboxPlaylist = new JComboBox<>(array);
+		cboxPlaylist.setForeground(AesthethicsView.getCorLetra());
+		cboxPlaylist.setBackground(AesthethicsView.getCorFundoBtn());
+		cboxPlaylist.setFont(AesthethicsView.getFonteMenor());
 
 		lblNome = new JLabel("Nome:");
+		lblNome.setForeground(AesthethicsView.getCorLetra());
+		lblNome.setFont(AesthethicsView.getFonte());
+
     	txtNome = new JTextField(15);
+		txtNome.setBackground(AesthethicsView.getCorFundoBtn());
+		txtNome.setForeground(AesthethicsView.getCorLetra());
+		txtNome.setFont(AesthethicsView.getFonteMenor());
 		txtNome.setText(playlistsCadastradas.get(0).getNome());
     	
     	lblDescricao = new JLabel("Descrição:");
+		lblDescricao.setForeground(AesthethicsView.getCorLetra());
+		lblDescricao.setFont(AesthethicsView.getFonte());
+
     	txtDescricao = new JTextField(15);
+		txtDescricao.setBackground(AesthethicsView.getCorFundoBtn());
+		txtDescricao.setForeground(AesthethicsView.getCorLetra());
+		txtDescricao.setFont(AesthethicsView.getFonteMenor());
 		txtDescricao.setText(playlistsCadastradas.get(0).getDescricao());
     	
 		pnlForm.add(lblPlaylist);
@@ -78,6 +101,7 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
     	pnlForm.add(txtNome);
     	pnlForm.add(lblDescricao);
     	pnlForm.add(txtDescricao);
+		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		cboxPlaylist.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -96,10 +120,18 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		}
 
 		btnUpdt = new JButton("Atualizar");
+		btnUpdt.setForeground(AesthethicsView.getCorFundo());
+		btnUpdt.setBackground(AesthethicsView.getCorLetra());
+		btnUpdt.setFont(AesthethicsView.getFonte());
+
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(AesthethicsView.getCorFundo());
+		btnCancelar.setBackground(AesthethicsView.getCorLetra());
+		btnCancelar.setFont(AesthethicsView.getFonte());
 
 		pnlRodape.add(btnUpdt);
 		pnlRodape.add(btnCancelar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}
