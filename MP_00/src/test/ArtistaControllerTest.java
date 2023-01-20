@@ -1,4 +1,4 @@
-/*package test;
+package test;
 
 import main.controller.ArtistaController;
 import main.model.Artista;
@@ -33,4 +33,4 @@ class ArtistaControllerTest {
         );
         assertFalse(result);
     }
-}*/
+}
