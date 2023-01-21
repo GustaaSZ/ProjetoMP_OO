@@ -22,7 +22,6 @@ public class Playlist {
 	public Playlist(Ouvinte ouvinte, String nome, String descricao) {
 		this.nome = nome;
 		this.descricao = descricao;
-
 		this.musicas = new ArrayList<>();
 
 		playlistsCadastradas.add(this);
@@ -51,7 +50,7 @@ public class Playlist {
 
 	@Override
 	public String toString() {
-		return "Playlist " + this.nome + " possui: " + musicas.size() + " musicas cadastradas!";
+		return "Playlist " + this.nome + " possui " + musicas.size() + " musicas cadastradas!";
 	}
 	
 }

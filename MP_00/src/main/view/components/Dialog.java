@@ -4,9 +4,13 @@ import main.model.Artista;
 import main.model.Ouvinte;
 
 import javax.swing.*;
+import java.awt.*;
+
+import static main.util.AesthethicsView.*;
 
 public class Dialog {
     public static void openDialog(String type) {
+        setColor();
         switch (type.toLowerCase().trim()) {
             case "artista" ->
                     JOptionPane.showMessageDialog(
@@ -97,6 +101,7 @@ public class Dialog {
     }
 
     public static boolean objetoEncontrado(Object o) {
+        setColor();
         if (o instanceof Artista) {
             JOptionPane.showMessageDialog(
                     null,
@@ -114,5 +119,15 @@ public class Dialog {
             return true;
         }
         return false;
+    }
+
+    private static void setColor(){
+//        UIManager.put("OptionPaneUI", "fkrh.FBasicOptionPaneUserInterface");
+        UIManager.put("OptionPane.background", getCorFundoBtn());
+        UIManager.put("Panel.background",getCorFundo());
+        UIManager.put("OptionPane.textFieldFont", getFonte());
+        UIManager.put("OptionPane.textFieldForeground", getCorLetra());
+        UIManager.put("OptionPane.textFieldBackground", Color.YELLOW);
+        UIManager.put("OptionPane.buttonFont", getFonteMenor());
     }
 }

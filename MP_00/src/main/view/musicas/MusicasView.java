@@ -55,7 +55,7 @@ public class MusicasView extends JFrame implements ActionListener {
 
 	public MyJPanel getPnlBody() {
 		if (pnlBody == null) {
-			pnlBody = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlBody = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
 		}
 		btnAdd = new MyJButton("Cadastrar Musica");
 		btnRemove = new MyJButton("Remover Musica");
