@@ -71,6 +71,7 @@ public class BuscarArtista extends JFrame implements ActionListener{
     	txtNome = new JTextField(20);
 		txtNome.setForeground(AesthethicsView.getCorLetra());
 		txtNome.setBackground(AesthethicsView.getCorFundo());
+		txtNome.setFont(AesthethicsView.getFonteMenor());
     	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);

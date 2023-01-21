@@ -16,7 +16,7 @@ public class AesthethicsView {
     }
 
     // Atributo fonte Instânciando da classe Font e seus métodos getters e setters
-    private static Font fonte = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
+    private static Font fonte = new Font("Helvitica", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
     
     public static Font getFonte() {
         return fonte;
@@ -26,14 +26,24 @@ public class AesthethicsView {
     }
 
     // Atributo fonte2 Instânciando da classe Font e seus métodos getters e setters
-    private static Font fonteMenor = new Font("Courier New", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,13);
-    
+    private static Font fonteMenor = new Font("Helvitica", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,13);
+    // Courier New
     public static Font getFonteMenor() {
         return fonteMenor;
     }
     public static void setFonteMenor(Font fonteMenor) {
         AesthethicsView.fonteMenor = fonteMenor;
     }
+
+    // // Atributo fonte Instânciando da classe Font e seus métodos getters e setters
+    // private static Font fonte3 = new Font("Helvitica", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
+        
+    // public static Font getFonte3() {
+    //     return fonte3;
+    // }
+    // public static void setFonte3(Font fonte3) {
+    //     AesthethicsView.fonte3 = fonte3;
+    // }
 
     // Atributo corLetra e os métodos Getters e Setters
     private static Color corLetra = new Color(50, 205, 50); // Verde 

@@ -75,6 +75,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	txtNome = new JTextField(15);
     	txtNome.setBackground(AesthethicsView.getCorFundoBtn());
     	txtNome.setForeground(AesthethicsView.getCorLetra());
+		txtNome.setFont(AesthethicsView.getFonteMenor());
 
 
     	lblGenero = new JLabel("Genero:");
@@ -85,6 +86,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	txtGenero = new JTextField(15);
     	txtGenero.setBackground(AesthethicsView.getCorFundoBtn());
     	txtGenero.setForeground(AesthethicsView.getCorLetra());
+		txtGenero.setFont(AesthethicsView.getFonteMenor());
 
 
     	lblLancamento = new JLabel("Lancamento:");
@@ -95,6 +97,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	txtLancamento = new JFormattedTextField(setMascara());
 		txtLancamento.setBackground(AesthethicsView.getCorFundoBtn());
     	txtLancamento.setForeground(AesthethicsView.getCorLetra());
+		txtLancamento.setFont(AesthethicsView.getFonteMenor());
     	
     	lblLetra = new JLabel("Letra:");
 		lblLetra.setForeground(AesthethicsView.getCorLetra());
@@ -104,6 +107,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	txtLetra = new JTextArea();
 		txtLetra.setBackground(AesthethicsView.getCorFundoBtn());
     	txtLetra.setForeground(AesthethicsView.getCorLetra());
+		txtLetra.setFont(AesthethicsView.getFonteMenor());
 
 		txtLetra.setLineWrap(true);
     	

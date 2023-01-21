@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
+import main.util.AesthethicsView;
 import static main.view.dialog.Dialog.openDialog;
 
 public class OuvintesView extends JFrame implements ActionListener{
@@ -50,7 +51,11 @@ public class OuvintesView extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Crud de Ouvintes");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
     	pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
     	
 		return pnlTitle;
 	}
@@ -70,6 +75,37 @@ public class OuvintesView extends JFrame implements ActionListener{
 		btnRmvPlaylist = new JButton("Remover Playlist");
     	btnListPlaylists = new JButton("Listar Playlists do Ouvinte");
     	
+		// Cor das letras
+		btnAdd.setForeground(AesthethicsView.getCorLetra());
+    	btnRemove.setForeground(AesthethicsView.getCorLetra());
+    	btnUpdate.setForeground(AesthethicsView.getCorLetra());
+    	btnList.setForeground(AesthethicsView.getCorLetra());
+    	btnBuscar.setForeground(AesthethicsView.getCorLetra());
+		btnAddPlaylist.setForeground(AesthethicsView.getCorLetra());
+		btnRmvPlaylist.setForeground(AesthethicsView.getCorLetra());
+    	btnListPlaylists.setForeground(AesthethicsView.getCorLetra());
+
+
+		// Cor de fundo dos botões
+		btnAdd.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnRemove.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnUpdate.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnList.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnBuscar.setBackground(AesthethicsView.getCorFundoBtn());
+		btnAddPlaylist.setBackground(AesthethicsView.getCorFundoBtn());
+		btnRmvPlaylist.setBackground(AesthethicsView.getCorFundoBtn());
+    	btnListPlaylists.setBackground(AesthethicsView.getCorFundoBtn());
+
+		// Fonte dos botões
+		btnAdd.setFont(AesthethicsView.getFonteMenor());
+    	btnRemove.setFont(AesthethicsView.getFonteMenor());
+    	btnUpdate.setFont(AesthethicsView.getFonteMenor());
+    	btnList.setFont(AesthethicsView.getFonteMenor());
+    	btnBuscar.setFont(AesthethicsView.getFonteMenor());
+		btnAddPlaylist.setFont(AesthethicsView.getFonteMenor());
+		btnRmvPlaylist.setFont(AesthethicsView.getFonteMenor());
+    	btnListPlaylists.setFont(AesthethicsView.getFonteMenor());
+
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
@@ -78,6 +114,7 @@ public class OuvintesView extends JFrame implements ActionListener{
     	pnlBody.add(btnAddPlaylist);
     	pnlBody.add(btnRmvPlaylist);
     	pnlBody.add(btnListPlaylists);
+		pnlBody.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlBody;
 	}
@@ -89,8 +126,12 @@ public class OuvintesView extends JFrame implements ActionListener{
 		}
 		
 		btnVoltar = new JButton("Voltar");
-    	
+    	btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonte());
+
     	pnlRodape.add(btnVoltar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

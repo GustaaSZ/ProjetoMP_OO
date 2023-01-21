@@ -1,6 +1,7 @@
 package main.view.musicas;
 
 import main.model.Musica;
+import main.util.AesthethicsView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +36,11 @@ public class ListarMusicasView extends JFrame implements ActionListener{
     	}
     	
     	lblTitle = new JLabel("Lista de Musicas");
+		lblTitle.setForeground(AesthethicsView.getCorLetra());
+		lblTitle.setFont(AesthethicsView.getFonte());
+
     	pnlTitle.add(lblTitle);
+		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
     	
 		return pnlTitle;
 	}
@@ -47,23 +52,29 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 
     	DefaultListModel<Musica> model = new DefaultListModel<Musica>();
     	lista = new JList<Musica>(model);
+		lista.setForeground(AesthethicsView.getCorLetra());
+		lista.setBackground(AesthethicsView.getCorFundoBtn());
+		lista.setFont(AesthethicsView.getFonteMenor());
 
     	for (int i = 0; i < musicasCadastradas.size(); i++) {
     	    model.add(i, musicasCadastradas.get(i));
 		}
     	
 		scroll = new JScrollPane(lista);
+		
 
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scroll.setBackground(AesthethicsView.getCorFundoBtn());
 
 		JViewport viewport = scroll.getViewport();
-            int w = 500;
-            int h = viewport.getPreferredSize().height;
-            Dimension preferredSize = new Dimension(w, h);
-            viewport.setPreferredSize(preferredSize);
+		int w = 500;
+		int h = viewport.getPreferredSize().height;
+		Dimension preferredSize = new Dimension(w, h);
+		viewport.setPreferredSize(preferredSize);
 
     	pnlForm.add(scroll);
+		pnlForm.setBackground((AesthethicsView.getCorFundo()));
     	
 		return pnlForm;
 	}
@@ -74,8 +85,12 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 		}
 		
 		btnVoltar = new JButton("Voltar");
+		btnVoltar.setForeground(AesthethicsView.getCorFundo());
+		btnVoltar.setBackground(AesthethicsView.getCorLetra());
+		btnVoltar.setFont(AesthethicsView.getFonte());
     	
     	pnlRodape.add(btnVoltar);
+		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 		
 		return pnlRodape;
 	}

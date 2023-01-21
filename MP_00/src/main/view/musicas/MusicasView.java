@@ -57,13 +57,13 @@ public class MusicasView extends JFrame implements ActionListener {
 		}
 
 		lblTitle = new JLabel("Crud de musicas");
-		//    	Mudando a cor da letra e a fonte
+	    // Mudando a cor da letra e a fonte
     	lblTitle.setForeground(AesthethicsView.getCorLetra());
 		lblTitle.setFont(AesthethicsView.getFonte());
 		
 		pnlTitle.add(lblTitle);
 
-		//		Mudando a cor de fundo do pnlTitle
+		// Mudando a cor de fundo do pnlTitle
     	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
