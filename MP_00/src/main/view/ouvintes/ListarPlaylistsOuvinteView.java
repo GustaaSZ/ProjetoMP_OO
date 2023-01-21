@@ -17,74 +17,74 @@ import static main.util.Inicializacao.inicializar;
 
 public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJComboBox<Ouvinte> cboxOuvinte;
+    private MyJComboBox<Ouvinte> cboxOuvinte;
 
-	private MyJList<Playlist> lista;
+    private MyJList<Playlist> lista;
 
-	private MyJButton btnVoltar;
+    private MyJButton btnVoltar;
 
-	public ListarPlaylistsOuvinteView() {
-		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
-		btnVoltar.addActionListener(this);
-	}
+    public ListarPlaylistsOuvinteView() {
+        inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+        btnVoltar.addActionListener(this);
+    }
 
-	public MyJPanel getPnlTitle() {
-		if (pnlTitle == null) {
-			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		MyJLabel lblTitle = new MyJLabel("Lista de Playlists do Ouvinte");
-		pnlTitle.add(lblTitle);
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        MyJLabel lblTitle = new MyJLabel("Lista de Playlists do Ouvinte");
+        pnlTitle.add(lblTitle);
 
-		return pnlTitle;
-	}
-	
-	public MyJPanel getPnlForm() {
-		if (pnlForm == null) {
-			pnlForm = new MyJPanel(new BorderLayout(), true);
-		}
-		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
+        return pnlTitle;
+    }
 
-		DefaultListModel<Playlist> model = new DefaultListModel<>();
-		lista = new MyJList<>(model);
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new BorderLayout(), true);
+        }
+        cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
 
-		for (int i = 0; i < ouvintesCadastrados.get(0).getPlaylists().size(); i++) {
-			model.add(i, ouvintesCadastrados.get(0).getPlaylists().get(i));
-		}
+        DefaultListModel<Playlist> model = new DefaultListModel<>();
+        lista = new MyJList<>(model);
 
-		pnlForm.add(cboxOuvinte, BorderLayout.NORTH);
-		pnlForm.add(lista, BorderLayout.CENTER);
+        for (int i = 0; i < ouvintesCadastrados.get(0).getPlaylists().size(); i++) {
+            model.add(i, ouvintesCadastrados.get(0).getPlaylists().get(i));
+        }
 
-		cboxOuvinte.addItemListener(e -> {
-			if (e.getStateChange() == ItemEvent.SELECTED) {
-				lista.setListData(
-						arrayPlaylistsPorOuvinte((Ouvinte) cboxOuvinte.getSelectedItem()));
-			}
-		});
-		return pnlForm;
-	}
+        pnlForm.add(cboxOuvinte, BorderLayout.NORTH);
+        pnlForm.add(lista, BorderLayout.CENTER);
 
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		btnVoltar = new MyJButton("Voltar", true);
-		pnlRodape.add(btnVoltar);
+        cboxOuvinte.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                lista.setListData(
+                        arrayPlaylistsPorOuvinte((Ouvinte) cboxOuvinte.getSelectedItem()));
+            }
+        });
+        return pnlForm;
+    }
 
-		return pnlRodape;
-	}
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        btnVoltar = new MyJButton("Voltar", true);
+        pnlRodape.add(btnVoltar);
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
+        return pnlRodape;
+    }
 
-		if (src == btnVoltar) {
-			this.dispose();
-			new OuvintesView();
-		}
-	}
-	
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
+
+        if (src == btnVoltar) {
+            this.dispose();
+            new OuvintesView();
+        }
+    }
+
 }

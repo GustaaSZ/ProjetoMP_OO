@@ -39,19 +39,15 @@ public class ArtistaController {
     }
 
     public static Artista buscarArtistaPorNome(String nome) {
-        for (Artista value : artistasCadastrados) {
-            if (value.getNome().trim().equalsIgnoreCase(nome)) {
-                return value;
-            }
-        }
-		return null;
+        return artistasCadastrados.stream()
+                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
     }
 
     public static Artista[] arrayArtistasCadastrados() {
         return artistasCadastrados.toArray(new Artista[0]);
     }
 
-    public static Musica[] arrayMusicasDoArtista(Artista artista){
+    public static Musica[] arrayMusicasDoArtista(Artista artista) {
         return artista.getMusicas().toArray(new Musica[0]);
     }
 

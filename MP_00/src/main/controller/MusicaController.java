@@ -3,8 +3,6 @@ package main.controller;
 import main.model.Artista;
 import main.model.Musica;
 
-import java.util.Objects;
-
 import static main.model.Musica.musicasCadastradas;
 import static main.util.Conversor.stringToDate;
 
@@ -67,12 +65,8 @@ public class MusicaController {
     }
 
     public static Musica buscarMusicaPorNome(String nome) {
-        for (Musica value : musicasCadastradas) {
-            if (Objects.equals(value.getNome(), nome)) {
-                return value;
-            }
-        }
-        return null;
+        return musicasCadastradas.stream()
+                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
     }
 
     public static String[] arrayMusicasCadastradas() {
