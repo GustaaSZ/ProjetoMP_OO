@@ -4,9 +4,9 @@ import main.model.Artista;
 import main.model.Ouvinte;
 
 import javax.swing.*;
-import java.awt.*;
 
 import static main.util.AesthethicsView.*;
+import static main.util.AesthethicsView.getCorLetra;
 
 public class Dialog {
     public static void openDialog(String type) {
@@ -122,12 +122,10 @@ public class Dialog {
     }
 
     private static void setColor(){
-//        UIManager.put("OptionPaneUI", "fkrh.FBasicOptionPaneUserInterface");
-        UIManager.put("OptionPane.background", getCorFundoBtn());
         UIManager.put("Panel.background",getCorFundo());
-        UIManager.put("OptionPane.textFieldFont", getFonte());
-        UIManager.put("OptionPane.textFieldForeground", getCorLetra());
-        UIManager.put("OptionPane.textFieldBackground", Color.YELLOW);
+        UIManager.put("OptionPane.background", getCorFundoBtn());
         UIManager.put("OptionPane.buttonFont", getFonteMenor());
+        UIManager.put("OptionPane.messageForeground", getCorLetra());
+        UIManager.put("Button.background", getCorLetra());
     }
 }
