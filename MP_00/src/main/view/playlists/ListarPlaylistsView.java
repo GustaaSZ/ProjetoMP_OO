@@ -1,60 +1,55 @@
 package main.view.playlists;
 
 import main.model.Playlist;
+import main.util.AesthethicsView;
+import main.view.components.MyJButton;
+import main.view.components.MyJLabel;
+import main.view.components.MyJList;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import main.util.AesthethicsView;
 
 import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
 
 public class ListarPlaylistsView extends JFrame implements ActionListener{
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 	
 	private JScrollPane scroll;
 	
-	private JLabel lblTitle;
+	private MyJLabel lblTitle;
 	
-	private JList<Playlist> lista;
+	private MyJList<Playlist> lista;
 	
-	private JButton btnVoltar;
+	private MyJButton btnVoltar;
 
 	public ListarPlaylistsView(){
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
 		btnVoltar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Lista de playlists");
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-
+    	lblTitle = new MyJLabel("Lista de playlists");
     	pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
-    	
+
 		return pnlTitle;
 	}
 	
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel();
+    		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-
 		DefaultListModel<Playlist> model = new DefaultListModel<Playlist>();
-    	lista = new JList<Playlist>(model);
-		lista.setForeground(AesthethicsView.getCorLetra());
-		lista.setBackground(AesthethicsView.getCorFundo());
-		lista.setFont(AesthethicsView.getFonteMenor());
+    	lista = new MyJList<Playlist>(model);
 
     	for (int i = 0; i < playlistsCadastradas.size(); i++) {
     	    model.add(i, playlistsCadastradas.get(i));
@@ -64,24 +59,17 @@ public class ListarPlaylistsView extends JFrame implements ActionListener{
 		scroll.setBackground(AesthethicsView.getCorFundo());
     	
     	pnlForm.add(scroll);
-		pnlForm.setBackground(AesthethicsView.getCorFundo());
-    	
+
 		return pnlForm;
 	}
 	
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		
-		btnVoltar = new JButton("Voltar");
-		btnVoltar.setForeground(AesthethicsView.getCorFundo());
-		btnVoltar.setBackground(AesthethicsView.getCorLetra());
-		btnVoltar.setFont(AesthethicsView.getFonte());
-
+		btnVoltar = new MyJButton("Voltar");
     	pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
-		
+
 		return pnlRodape;
 	}
 

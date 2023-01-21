@@ -2,6 +2,10 @@ package main.view.ouvintes;
 
 import main.controller.OuvinteController;
 import main.model.Ouvinte;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,32 +13,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
+import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
-import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	
-	// Instãnciando componenstes da Classe JPanel
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	// Instãnciando componenstes da Classe JLabel
-	private JLabel lblTitle;
-	private JLabel lblPlaylist;
-	private JLabel lblOuvinte;
+	private MyJLabel lblTitle;
+	private MyJLabel lblPlaylist;
+	private MyJLabel lblOuvinte;
 
-	// Instãnciando componenstes da Classe JComboBox
-	private JComboBox<String> cboxPlaylist;
-	private JComboBox<Ouvinte> cboxOuvinte;
+	private MyJComboBox<String> cboxPlaylist;
+	private MyJComboBox<Ouvinte> cboxOuvinte;
 
-	// Instãnciando componenstes da Classe JButton
-	private JButton btnAdd;
-	private JButton btnCancelar;
+	private MyJButton btnAdd;
+	private MyJButton btnCancelar;
 
-	// Construtor
 	public AdicionarPlaylistsView() {
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
 		btnAdd.addActionListener(this);
@@ -42,12 +41,11 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	}
 //	---------------------------------------------------------------------------
 	
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Adicionar Playlist");
+		lblTitle = new MyJLabel("Adicionar Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -55,21 +53,15 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	
 //	---------------------------------------------------------------------------
 	
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(2, 2));
+			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
 		}
+		lblPlaylist = new MyJLabel("Playlist:");
+		lblOuvinte = new MyJLabel("Ouvinte:");
 
-		lblPlaylist = new JLabel("Playlist:");
-		lblOuvinte = new JLabel("Ouvinte:");
-
-		String[] array = new String[playlistsCadastradas.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = playlistsCadastradas.get(i).getNome();
-		}
-		cboxPlaylist = new JComboBox<>(array);
-
-		cboxOuvinte = new JComboBox<>(arrayOuvintesCadastrados());
+		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
+		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
 
 		pnlForm.add(lblOuvinte);
 		pnlForm.add(cboxOuvinte);
@@ -81,14 +73,12 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	
 //	---------------------------------------------------------------------------
 	
-	public JPanel getPnlRodape() {
-		
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnAdd = new JButton("Adicionar");
-		btnCancelar = new JButton("Cancelar");
+		btnAdd = new MyJButton("Adicionar", true);
+		btnCancelar = new MyJButton("Cancelar", true);
 
 		pnlRodape.add(btnAdd);
 		pnlRodape.add(btnCancelar);

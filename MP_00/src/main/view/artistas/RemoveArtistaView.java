@@ -1,7 +1,10 @@
 package main.view.artistas;
 
 import main.model.Artista;
-import main.util.AesthethicsView;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,27 +14,21 @@ import java.awt.event.ActionListener;
 import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.controller.ArtistaController.removerArtistaCadastrado;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class RemoveArtistaView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
-	private JLabel lblArtista;
+	private MyJLabel lblTitle;
+	private MyJLabel lblArtista;
 
-	private JComboBox<Artista> cboxArtista;
+	private MyJComboBox<Artista> cboxArtista;
 
-	private JButton btnRemover;
-	private JButton btnCancelar;
-
-	// // Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
-	// // a imagem que coloquei no mesmo pacote da main View
-
-	// ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
-	// JLabel label = new JLabel(imag);
+	private MyJButton btnRemover;
+	private MyJButton btnCancelar;
 
 	public RemoveArtistaView() {
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -41,67 +38,43 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 	}
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Remover Artista");
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-		
+		lblTitle = new MyJLabel("Remover Artista");
 		pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
 
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel();
+			pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
 		}
 
-		lblArtista = new JLabel("Artista que deseja remover:");
-		lblArtista.setForeground(AesthethicsView.getCorLetra());
-		lblArtista.setBackground(AesthethicsView.getCorFundo());
-		lblArtista.setFont(AesthethicsView.getFonte());
-
-		cboxArtista = new JComboBox<>(arrayArtistasCadastrados());
-		cboxArtista.setBackground(AesthethicsView.getCorFundo());
-		cboxArtista.setForeground(AesthethicsView.getCorLetra());
-		cboxArtista.setFont(AesthethicsView.getFonteMenor());
-
+		lblArtista = new MyJLabel("Artista que deseja remover:");
+		cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxArtista);
-		// pnlForm.add(label);
-		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlForm;
 	}
 
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnRemover = new JButton("Remover");
-		btnRemover.setForeground(AesthethicsView.getCorFundo());
-		btnRemover.setBackground(AesthethicsView.getCorLetra());
-		btnRemover.setFont(AesthethicsView.getFonte());
-
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setForeground(AesthethicsView.getCorFundo());
-		btnCancelar.setBackground(AesthethicsView.getCorLetra());
-		btnCancelar.setFont(AesthethicsView.getFonte());
+		btnRemover = new MyJButton("Remover", true);
+		btnCancelar = new MyJButton("Cancelar", true);
 
 		pnlRodape.add(btnRemover);
 		pnlRodape.add(btnCancelar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

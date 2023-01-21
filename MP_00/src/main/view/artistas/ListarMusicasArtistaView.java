@@ -3,6 +3,7 @@ package main.view.artistas;
 import main.model.Artista;
 import main.model.Musica;
 import main.util.AesthethicsView;
+import main.view.components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,31 +12,26 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 import static main.controller.ArtistaController.arrayArtistasCadastrados;
+import static main.controller.ArtistaController.arrayMusicasDoArtista;
+import static main.model.Artista.artistasCadastrados;
 import static main.util.Inicializacao.inicializar;
 
 public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
 	private JScrollPane scroll;
 
-	private JLabel lblTitle;
-	private JLabel lblArtista;
+	private MyJLabel lblTitle;
+	private MyJLabel lblArtista;
 
-	private JComboBox<Artista> cboxArtista;
+	private MyJComboBox<Artista> cboxArtista;
 
-	private JList<Musica> lista;
+	private MyJList<Musica> lista;
 
-	private JButton btnVoltar;
-
-	// // Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
-	// // a imagem que coloquei no mesmo pacote da main View
-
-	// ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
-	// JLabel label = new JLabel(imag);
-
+	private MyJButton btnVoltar;
 	public ListarMusicasArtistaView() {
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
 
@@ -45,74 +41,49 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Lista de músicas do Artista");
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-
+		lblTitle = new MyJLabel("Lista de músicas do Artista");
 		pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
 
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new BorderLayout());
+			pnlForm = new MyJPanel(new BorderLayout(), true);
 		}
-
-		lblArtista = new JLabel("Artista:");
-		lblArtista.setForeground(AesthethicsView.getCorLetra());
-		lblArtista.setFont(AesthethicsView.getFonte());
-
-
+		lblArtista = new MyJLabel("Artista:");
 		pnlForm.add(lblArtista, BorderLayout.NORTH);
 
-		Artista[] array = arrayArtistasCadastrados();
-
-		cboxArtista = new JComboBox<>(array);
-		cboxArtista.setForeground(AesthethicsView.getCorLetra());
-		cboxArtista.setBackground(AesthethicsView.getCorFundo());
-		cboxArtista.setFont(AesthethicsView.getFonteMenor());
-
-
-		pnlForm.add(cboxArtista, BorderLayout.NORTH);
-		
-		Artista selected = (Artista) cboxArtista.getSelectedItem();
+		cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
 
 		DefaultListModel<Musica> model = new DefaultListModel<Musica>();
-		lista = new JList<Musica>(model);
-		lista.setBackground(AesthethicsView.getCorFundo());
-    	lista.setForeground(AesthethicsView.getCorLetra());
-		lista.setFont(AesthethicsView.getFonteMenor());
+		lista = new MyJList<Musica>(model);
 
-		for (int i = 0; i < selected.getMusicas().size(); i++) {
-			model.add(i, selected.getMusicas().get(i));
+		for (int i = 0; i < artistasCadastrados.get(0).getMusicas().size(); i++) {
+			model.add(i, artistasCadastrados.get(0).getMusicas().get(i));
 		}
 
 		// Adicionando a a lista no scroll pane, (Barra de rolagem)
 		scroll = new JScrollPane(lista);
 
-		
-		
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scroll.setBackground(AesthethicsView.getCorFundo());
 
+		pnlForm.add(cboxArtista, BorderLayout.NORTH);
 		pnlForm.add(scroll);
-    	pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		cboxArtista.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				Artista selected1 = (Artista) cboxArtista.getSelectedItem();
-				Musica[] musicas = selected1.getMusicas().toArray(new Musica[selected1.getMusicas().size()]);
-				lista.setListData(musicas);
+				lista.setListData(
+						arrayMusicasDoArtista((Artista) cboxArtista.getSelectedItem())
+				);
 			}
 		});
 		return pnlForm;
@@ -120,19 +91,14 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		btnVoltar = new JButton("Voltar");
-		btnVoltar.setForeground(AesthethicsView.getCorFundo());
-		btnVoltar.setBackground(AesthethicsView.getCorLetra());
-		btnVoltar.setFont(AesthethicsView.getFonte());
-
+		btnVoltar = new MyJButton("Voltar", true);
 		pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
-		
+
 		return pnlRodape;
 	}
 

@@ -1,7 +1,9 @@
 package main.view.musicas;
 
-import main.util.AesthethicsView;
 import main.view.MainView;
+import main.view.components.MyJButton;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,25 +12,24 @@ import java.awt.event.ActionListener;
 
 import static main.model.Musica.musicasCadastradas;
 import static main.util.Inicializacao.inicializar;
-
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class MusicasView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlBody;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlBody;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
+	private MyJLabel lblTitle;
 
-	private JButton btnAdd;
-	private JButton btnRemove;
-	private JButton btnUpdate;
-	private JButton btnList;
-	private JButton btnVoltar;
-	private JButton btnAddArt;
-	private JButton btnRmvArt;
-	private JButton btnLetra;
+	private MyJButton btnAdd;
+	private MyJButton btnRemove;
+	private MyJButton btnUpdate;
+	private MyJButton btnList;
+	private MyJButton btnVoltar;
+	private MyJButton btnAddArt;
+	private MyJButton btnRmvArt;
+	private MyJButton btnLetra;
 	
 	public MusicasView() {
 		
@@ -44,70 +45,27 @@ public class MusicasView extends JFrame implements ActionListener {
 
 	}
 
-	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
-	// a imagem que coloquei no mesmo pacote da main View
-
-	//ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
-	//JLabel label = new JLabel(imag);
-	
-
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Crud de musicas");
-	    // Mudando a cor da letra e a fonte
-    	lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-		
+		lblTitle = new MyJLabel("Crud de musicas");
 		pnlTitle.add(lblTitle);
-
-		// Mudando a cor de fundo do pnlTitle
-    	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
 
-	public JPanel getPnlBody() {
+	public MyJPanel getPnlBody() {
 		if (pnlBody == null) {
-			pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlBody = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnAdd = new JButton("Cadastrar Musica");
-		btnRemove = new JButton("Remover Musica");
-		btnUpdate = new JButton("Atualizar Musica");
-		btnList = new JButton("Listar Musicas");
-		btnAddArt = new JButton("Adicionar artista na Música");
-		btnRmvArt = new JButton("Remover artista da Música");
-		btnLetra = new JButton("Ver letra da Música");
-
-		// Mudando as cores das letras dos botões
-		btnAdd.setForeground(AesthethicsView.getCorLetra());
-		btnRemove.setForeground(AesthethicsView.getCorLetra());
-		btnUpdate.setForeground(AesthethicsView.getCorLetra());
-		btnList.setForeground(AesthethicsView.getCorLetra());
-		btnAddArt.setForeground(AesthethicsView.getCorLetra());
-		btnRmvArt.setForeground(AesthethicsView.getCorLetra());
-		btnLetra.setForeground(AesthethicsView.getCorLetra());
-
-		// Mudando as cores de fundo dos botões
-		btnAdd.setBackground(AesthethicsView.getCorFundoBtn());
-		btnRemove.setBackground(AesthethicsView.getCorFundoBtn());
-		btnUpdate.setBackground(AesthethicsView.getCorFundoBtn());
-		btnList.setBackground(AesthethicsView.getCorFundoBtn());
-		btnAddArt.setBackground(AesthethicsView.getCorFundoBtn());
-		btnRmvArt.setBackground(AesthethicsView.getCorFundoBtn());
-		btnLetra.setBackground(AesthethicsView.getCorFundoBtn());
-
-		// Mudando as fontes dos botões
-		btnAdd.setFont(AesthethicsView.getFonteMenor());
-		btnRemove.setFont(AesthethicsView.getFonteMenor());
-		btnUpdate.setFont(AesthethicsView.getFonteMenor());
-		btnList.setFont(AesthethicsView.getFonteMenor());
-		btnAddArt.setFont(AesthethicsView.getFonteMenor());
-		btnRmvArt.setFont(AesthethicsView.getFonteMenor());
-		btnLetra.setFont(AesthethicsView.getFonteMenor());
+		btnAdd = new MyJButton("Cadastrar Musica");
+		btnRemove = new MyJButton("Remover Musica");
+		btnUpdate = new MyJButton("Atualizar Musica");
+		btnList = new MyJButton("Listar Musicas");
+		btnAddArt = new MyJButton("Adicionar artista na Música");
+		btnRmvArt = new MyJButton("Remover artista da Música");
+		btnLetra = new MyJButton("Ver letra da Música");
 
 		pnlBody.add(btnAdd);
 		pnlBody.add(btnRemove);
@@ -116,28 +74,16 @@ public class MusicasView extends JFrame implements ActionListener {
 		pnlBody.add(btnLetra);
 		pnlBody.add(btnAddArt);
 		pnlBody.add(btnRmvArt);
-		
-		// Adicionando ao pnlBody a imagem com o fundo Preto
-		//pnlBody.add(CoresView.getLabel());
-		pnlBody.setBackground(AesthethicsView.getCorFundo());
-		
 
 		return pnlBody;
 	}
 
-
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnVoltar = new JButton("Voltar");
-		btnVoltar.setForeground(AesthethicsView.getCorFundo());
-		btnVoltar.setBackground(AesthethicsView.getCorLetra());
-		btnVoltar.setFont(AesthethicsView.getFonte());
-
+		btnVoltar = new MyJButton("Voltar", true);
 		pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlRodape;
 	}

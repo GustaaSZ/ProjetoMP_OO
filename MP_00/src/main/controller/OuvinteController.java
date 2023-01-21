@@ -80,6 +80,10 @@ public class OuvinteController {
 		return ouvintesCadastrados.toArray(new Ouvinte[0]);
 	}
 
+	public static Playlist[] arrayPlaylistsPorOuvinte(Ouvinte ouvinte){
+		return ouvinte.getPlaylists().toArray(new Playlist[0]);
+	}
+
 	 private static Boolean ouvinteExiste(Ouvinte ouvinte){
 		 // Repetição que vai percorrer a quantidade de ouvintes cadastrados
 	        for (Ouvinte value : ouvintesCadastrados) {

@@ -1,6 +1,9 @@
 package main.view.ouvintes;
 
 import main.view.MainView;
+import main.view.components.MyJButton;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,26 +13,25 @@ import java.awt.event.ActionListener;
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
-import main.util.AesthethicsView;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class OuvintesView extends JFrame implements ActionListener{
 	
-	private JPanel pnlTitle;
-	private JPanel pnlBody;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlBody;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
+	private MyJLabel lblTitle;
 
-	private JButton btnAdd;
-	private JButton btnRemove;
-	private JButton btnUpdate;
-	private JButton btnList;
-	private JButton btnBuscar;
-	private JButton btnAddPlaylist;
-	private JButton btnRmvPlaylist;
-	private JButton btnListPlaylists;
-	private JButton btnVoltar;
+	private MyJButton btnAdd;
+	private MyJButton btnRemove;
+	private MyJButton btnUpdate;
+	private MyJButton btnList;
+	private MyJButton btnBuscar;
+	private MyJButton btnAddPlaylist;
+	private MyJButton btnRmvPlaylist;
+	private MyJButton btnListPlaylists;
+	private MyJButton btnVoltar;
 
 	public OuvintesView() {
         inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlBody(), getPnlRodape());
@@ -45,67 +47,29 @@ public class OuvintesView extends JFrame implements ActionListener{
 		btnVoltar.addActionListener(this);
     }
 
-    public JPanel getPnlTitle() {
+    public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Crud de Ouvintes");
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-
+    	lblTitle = new MyJLabel("Crud de Ouvintes");
     	pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
-    	
+
 		return pnlTitle;
 	}
     
-    public JPanel getPnlBody() {
-    	
+    public MyJPanel getPnlBody() {
     	if (pnlBody == null) {
-    		pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlBody = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
+    	btnAdd = new MyJButton("Adicionar Ouvinte");
+    	btnRemove = new MyJButton("Remover Ouvinte");
+    	btnUpdate = new MyJButton("Atualizar Ouvinte");
+    	btnList = new MyJButton("Listar Ouvintes");
+    	btnBuscar = new MyJButton("Buscar Ouvinte");
+		btnAddPlaylist = new MyJButton("Adicionar Playlist");
+		btnRmvPlaylist = new MyJButton("Remover Playlist");
+    	btnListPlaylists = new MyJButton("Listar Playlists do Ouvinte");
     	
-    	btnAdd = new JButton("Adicionar Ouvinte");
-    	btnRemove = new JButton("Remover Ouvinte");
-    	btnUpdate = new JButton("Atualizar Ouvinte");
-    	btnList = new JButton("Listar Ouvintes");
-    	btnBuscar = new JButton("Buscar Ouvinte");
-		btnAddPlaylist = new JButton("Adicionar Playlist");
-		btnRmvPlaylist = new JButton("Remover Playlist");
-    	btnListPlaylists = new JButton("Listar Playlists do Ouvinte");
-    	
-		// Cor das letras
-		btnAdd.setForeground(AesthethicsView.getCorLetra());
-    	btnRemove.setForeground(AesthethicsView.getCorLetra());
-    	btnUpdate.setForeground(AesthethicsView.getCorLetra());
-    	btnList.setForeground(AesthethicsView.getCorLetra());
-    	btnBuscar.setForeground(AesthethicsView.getCorLetra());
-		btnAddPlaylist.setForeground(AesthethicsView.getCorLetra());
-		btnRmvPlaylist.setForeground(AesthethicsView.getCorLetra());
-    	btnListPlaylists.setForeground(AesthethicsView.getCorLetra());
-
-
-		// Cor de fundo dos botões
-		btnAdd.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnRemove.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnUpdate.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnList.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnBuscar.setBackground(AesthethicsView.getCorFundoBtn());
-		btnAddPlaylist.setBackground(AesthethicsView.getCorFundoBtn());
-		btnRmvPlaylist.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnListPlaylists.setBackground(AesthethicsView.getCorFundoBtn());
-
-		// Fonte dos botões
-		btnAdd.setFont(AesthethicsView.getFonteMenor());
-    	btnRemove.setFont(AesthethicsView.getFonteMenor());
-    	btnUpdate.setFont(AesthethicsView.getFonteMenor());
-    	btnList.setFont(AesthethicsView.getFonteMenor());
-    	btnBuscar.setFont(AesthethicsView.getFonteMenor());
-		btnAddPlaylist.setFont(AesthethicsView.getFonteMenor());
-		btnRmvPlaylist.setFont(AesthethicsView.getFonteMenor());
-    	btnListPlaylists.setFont(AesthethicsView.getFonteMenor());
-
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
@@ -114,25 +78,17 @@ public class OuvintesView extends JFrame implements ActionListener{
     	pnlBody.add(btnAddPlaylist);
     	pnlBody.add(btnRmvPlaylist);
     	pnlBody.add(btnListPlaylists);
-		pnlBody.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlBody;
 	}
     
-    public JPanel getPnlRodape() {
-    	
+    public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		
-		btnVoltar = new JButton("Voltar");
-    	btnVoltar.setForeground(AesthethicsView.getCorFundo());
-		btnVoltar.setBackground(AesthethicsView.getCorLetra());
-		btnVoltar.setFont(AesthethicsView.getFonte());
-
+		btnVoltar = new MyJButton("Voltar", true);
     	pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
-		
+
 		return pnlRodape;
 	}
 

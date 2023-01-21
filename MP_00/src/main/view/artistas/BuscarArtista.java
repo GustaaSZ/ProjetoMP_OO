@@ -1,36 +1,34 @@
 package main.view.artistas;
 
+import main.view.components.MyJButton;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
+import main.view.components.MyJTextField;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import main.util.AesthethicsView;
 import static main.controller.ArtistaController.buscarArtistaPorNome;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.objetoEncontrado;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.objetoEncontrado;
+import static main.view.components.Dialog.openDialog;
 
 public class BuscarArtista extends JFrame implements ActionListener{
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 	
-	private JLabel lblTitle;
-	private JLabel lblNome;
+	private MyJLabel lblTitle;
+	private MyJLabel lblNome;
 	
-	private JTextField txtNome;
+	private MyJTextField txtNome;
 	
 	
-	private JButton btnBuscar;
-	private JButton btnCancelar;
-
-	// Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
-	// a imagem que coloquei no mesmo pacote da main View
-
-	// ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
-	// JLabel label = new JLabel(imag);
+	private MyJButton btnBuscar;
+	private MyJButton btnCancelar;
 
 	public BuscarArtista(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -40,69 +38,39 @@ public class BuscarArtista extends JFrame implements ActionListener{
 	}
 
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Buscar Artista");
-    	// Mudando a cor da letra e a fonte
-    	lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-    	
+    	lblTitle = new MyJLabel("Buscar Artista");
     	pnlTitle.add(lblTitle);
 
-		// Mudando a cor do btn
-    	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
-
-    	
 		return pnlTitle;
 	}
 	
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel();
+    		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-    	
-    	lblNome = new JLabel("Nome:");
-		lblNome.setForeground(AesthethicsView.getCorLetra());
-		lblNome.setFont(AesthethicsView.getFonte());
-
-    	txtNome = new JTextField(20);
-		txtNome.setForeground(AesthethicsView.getCorLetra());
-		txtNome.setBackground(AesthethicsView.getCorFundo());
-		txtNome.setFont(AesthethicsView.getFonteMenor());
+    	lblNome = new MyJLabel("Nome:");
+    	txtNome = new MyJTextField(20);
     	
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
-		// pnlForm.add(label);
 
-		pnlForm.setBackground(AesthethicsView.getCorFundo());
-    	
 		return pnlForm;
 	}
 	
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnBuscar = new JButton("Buscar");
-		btnBuscar.setForeground(AesthethicsView.getCorFundo());
-		btnBuscar.setBackground(AesthethicsView.getCorLetra());
-		btnBuscar.setFont(AesthethicsView.getFonte());
+		btnBuscar = new MyJButton("Buscar");
+		btnCancelar = new MyJButton("Voltar");
 
-    	
-		btnCancelar = new JButton("Voltar");
-    	btnCancelar.setForeground(AesthethicsView.getCorFundo());
-		btnCancelar.setBackground(AesthethicsView.getCorLetra());
-		btnCancelar.setFont(AesthethicsView.getFonte());
-
-    	btnBuscar.setSize(30, 50);
-    	
-    	pnlRodape.add(btnBuscar);
-    	pnlRodape.add(btnCancelar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
+    	pnlRodape.add(btnBuscar, true);
+    	pnlRodape.add(btnCancelar, true);
 		
 		return pnlRodape;
 	}

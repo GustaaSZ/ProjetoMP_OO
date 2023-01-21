@@ -1,7 +1,7 @@
 package main.view.playlists;
 
 import main.model.Musica;
-import main.model.Playlist;
+import main.view.components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,75 +11,63 @@ import java.awt.event.ItemEvent;
 
 import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
+import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class MusicasView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
-	private JLabel lblPlaylist;
+	private MyJLabel lblTitle;
 
-	private JList<Musica> lista;
+	private MyJList<Musica> lista;
 
-	private JComboBox<String> cboxPlaylist;
+	private MyJComboBox<String> cboxPlaylist;
 
-	private JButton btnVoltar;
+	private MyJButton btnVoltar;
 
 	public MusicasView() {
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
 		btnVoltar.addActionListener(this);
 	}
 
-	//	-------------------------------------------------------------
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Músicas da Playlist");
+		lblTitle = new MyJLabel("Músicas da Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
 	}
 
-	//	-------------------------------------------------------------
-
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new BorderLayout());
+			pnlForm = new MyJPanel(new BorderLayout(), true);
 		}
+		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
-		lblPlaylist = new JLabel("Playlist:");
-		
-		pnlForm.add(lblPlaylist, BorderLayout.NORTH);
+		DefaultListModel<Musica> model = new DefaultListModel<Musica>();
+		lista = new MyJList<Musica>(model);
 
-		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
+		for (int i = 0; i < playlistsCadastradas.get(0).getMusicas().size(); i++) {
+			model.add(i, playlistsCadastradas.get(0).getMusicas().get(i));
+		}
 
 		pnlForm.add(cboxPlaylist, BorderLayout.NORTH);
-
-		Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-		
-		DefaultListModel<Musica> model = new DefaultListModel<Musica>();
-		lista = new JList<Musica>(model);
-
-		for (int i = 0; i < selected.getMusicas().size(); i++) {
-			model.add(i, selected.getMusicas().get(i));
-		}
-
 		pnlForm.add(lista, BorderLayout.CENTER);
 
 		cboxPlaylist.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				Playlist selected1 = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-				Musica[] musicas = selected1.getMusicas().toArray(new Musica[selected1.getMusicas().size()]);
-				if (musicas.length > 0) {
-					lista.setListData(musicas);
+				var array = buscarPlaylistPorNome(
+						(String) cboxPlaylist.getSelectedItem()).getMusicas().toArray(new Musica[0]);
+				if (array.length > 0) {
+					lista.setListData(array);
 				} else {
-					lista.setListData(musicas);
+					lista.setListData(array);
 					openDialog("playlist_vazia");
 				}
 			}
@@ -87,21 +75,15 @@ public class MusicasView extends JFrame implements ActionListener {
 		return pnlForm;
 	}
 
-	//	-------------------------------------------------------------
-
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnVoltar = new JButton("Voltar");
-
+		btnVoltar = new MyJButton("Voltar", true);
 		pnlRodape.add(btnVoltar);
 
 		return pnlRodape;
 	}
-
-	//	-------------------------------------------------------------
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

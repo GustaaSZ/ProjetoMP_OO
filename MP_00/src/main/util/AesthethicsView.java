@@ -16,7 +16,7 @@ public class AesthethicsView {
     }
 
     // Atributo fonte Instânciando da classe Font e seus métodos getters e setters
-    private static Font fonte = new Font("Helvitica", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
+    private static Font fonte = new Font("Helvitica", Font.BOLD,15);
     
     public static Font getFonte() {
         return fonte;
@@ -26,7 +26,7 @@ public class AesthethicsView {
     }
 
     // Atributo fonte2 Instânciando da classe Font e seus métodos getters e setters
-    private static Font fonteMenor = new Font("Helvitica", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,13);
+    private static Font fonteMenor = new Font("Helvitica", Font.BOLD,13);
     // Courier New
     public static Font getFonteMenor() {
         return fonteMenor;

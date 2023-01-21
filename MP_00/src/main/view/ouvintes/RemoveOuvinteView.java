@@ -1,6 +1,10 @@
 package main.view.ouvintes;
 
 import main.model.Ouvinte;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,25 +14,21 @@ import java.awt.event.ActionListener;
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
 import static main.controller.OuvinteController.removerOuvinteCadastrado;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class RemoveOuvinteView extends JFrame implements ActionListener{
 
-	// Instânciando componentes da classe JPanel
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	// Instânciando componentes da classe JLabel
-	private JLabel lblTitle;
-	private JLabel lblOuvinte;
+	private MyJLabel lblTitle;
+	private MyJLabel lblOuvinte;
 
-	// Instânciando um componente da classe JComboBox e colocando a lista de ouvintes
-	private JComboBox<Ouvinte> cboxOuvinte;
+	private MyJComboBox<Ouvinte> cboxOuvinte;
 
-	// Instânciando componentes da classe JButton
-	private JButton btnRemover;
-	private JButton btnCancelar;
+	private MyJButton btnRemover;
+	private MyJButton btnCancelar;
 
 	// Construtor
 	public RemoveOuvinteView() {
@@ -39,12 +39,11 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 	
 //	---------------------------------------------------------------------------
 	
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Remover Ouvinte");
+    	lblTitle = new MyJLabel("Remover Ouvinte");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -52,14 +51,12 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 	
 //	----------------------------------------------------------------------
 	
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(1, 2));
+			pnlForm = new MyJPanel(new GridLayout(1, 2), true);
 		}
-
-		lblOuvinte = new JLabel("Ouvinte:");
-
-		cboxOuvinte = new JComboBox<>(arrayOuvintesCadastrados());
+		lblOuvinte = new MyJLabel("Ouvinte:");
+		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
 
 		pnlForm.add(lblOuvinte);
 		pnlForm.add(cboxOuvinte);
@@ -69,13 +66,12 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 	
 //	----------------------------------------------------------------------
 	
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnRemover = new JButton("Remover");
-		btnCancelar = new JButton("Cancelar");
+		btnRemover = new MyJButton("Remover", true);
+		btnCancelar = new MyJButton("Cancelar", true);
 
 		pnlRodape.add(btnRemover);
 		pnlRodape.add(btnCancelar);
@@ -90,7 +86,6 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 		Object src = e.getSource();
 
 		if (src == btnRemover) {
-			
 			if(!removerOuvinteCadastrado((Ouvinte) cboxOuvinte.getSelectedItem())) {
 				openDialog("error");
 				return;

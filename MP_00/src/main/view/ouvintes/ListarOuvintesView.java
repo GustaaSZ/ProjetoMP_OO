@@ -2,6 +2,10 @@ package main.view.ouvintes;
 
 import main.model.Ouvinte;
 import main.util.AesthethicsView;
+import main.view.components.MyJButton;
+import main.view.components.MyJLabel;
+import main.view.components.MyJList;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,21 +17,16 @@ import static main.util.Inicializacao.inicializar;
 
 public class ListarOuvintesView extends JFrame implements ActionListener{
 
-	// Instânciando objetos da classe JPanel
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 	
-	// Instânciando objeto da classe JLabel
-	private JLabel lblTitle;
+	private MyJLabel lblTitle;
 	
-	// Instânciando objeto da classe JList, onde irá pegar uma lista de ouvintes
-	private JList<Ouvinte> lista;
+	private MyJList<Ouvinte> lista;
 	
-	// Instânciando objeto da classe JButton
-	private JButton btnVoltar;
+	private MyJButton btnVoltar;
 
-	// Construtor
 	public ListarOuvintesView(){
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
 		btnVoltar.addActionListener(this);
@@ -35,35 +34,24 @@ public class ListarOuvintesView extends JFrame implements ActionListener{
 	
 //	----------------------------------------------------------------------
 	
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Lista de Ouvintes");
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-
+    	lblTitle = new MyJLabel("Lista de Ouvintes");
     	pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
-    	
+
 		return pnlTitle;
 	}
 	
 //	----------------------------------------------------------------------
 	
-	public JPanel getPnlForm() {
-		
+	public MyJPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel();
+    		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-
     	DefaultListModel<Ouvinte> model = new DefaultListModel<Ouvinte>();
-
-    	lista = new JList<Ouvinte>(model);
-		lista.setForeground(AesthethicsView.getCorLetra());
-		lista.setBackground(AesthethicsView.getCorFundo());
-		lista.setFont(AesthethicsView.getFonteMenor());
+    	lista = new MyJList<Ouvinte>(model);
 
     	for (int i = 0; i < ouvintesCadastrados.size(); i++) {
     	    model.add(i, ouvintesCadastrados.get(i));
@@ -77,20 +65,13 @@ public class ListarOuvintesView extends JFrame implements ActionListener{
 	
 //	----------------------------------------------------------------------
 	
-	public JPanel getPnlRodape() {
-		
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		
-		btnVoltar = new JButton("Voltar");
-    	btnVoltar.setForeground(AesthethicsView.getCorFundo());
-		btnVoltar.setBackground(AesthethicsView.getCorLetra());
-		btnVoltar.setFont(AesthethicsView.getFonte());
-
+		btnVoltar = new MyJButton("Voltar", true);
     	pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
-		
+
 		return pnlRodape;
 	}
 	

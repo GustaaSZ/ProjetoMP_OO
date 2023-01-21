@@ -1,5 +1,10 @@
 package main.view.playlists;
 
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,21 +12,21 @@ import java.awt.event.ActionListener;
 
 import static main.controller.PlaylistController.*;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class RemovePlaylistView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
-	private JLabel lblArtista;
+	private MyJLabel lblTitle;
+	private MyJLabel lblArtista;
 
-	private JComboBox<String> cboxPlaylist;
+	private MyJComboBox<String> cboxPlaylist;
 
-	private JButton btnRemover;
-	private JButton btnCancelar;
+	private MyJButton btnRemover;
+	private MyJButton btnCancelar;
 
 	public RemovePlaylistView() {
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -29,25 +34,22 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 		btnCancelar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Remover Playlist");
+		lblTitle = new MyJLabel("Remover Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
 	}
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(1, 2));
+			pnlForm = new MyJPanel(new GridLayout(1, 2), true);
 		}
-
-		lblArtista = new JLabel("Playlist:");
-
-		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
+		lblArtista = new MyJLabel("Playlist:");
+		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
 		pnlForm.add(lblArtista);
 		pnlForm.add(cboxPlaylist);
@@ -55,13 +57,12 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 		return pnlForm;
 	}
 
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnRemover = new JButton("Remover");
-		btnCancelar = new JButton("Cancelar");
+		btnRemover = new MyJButton("Remover", true);
+		btnCancelar = new MyJButton("Cancelar", true);
 
 		pnlRodape.add(btnRemover);
 		pnlRodape.add(btnCancelar);

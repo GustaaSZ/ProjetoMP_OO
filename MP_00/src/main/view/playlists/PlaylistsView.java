@@ -1,7 +1,9 @@
 package main.view.playlists;
 
-import main.util.AesthethicsView;
 import main.view.MainView;
+import main.view.components.MyJButton;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,23 +13,23 @@ import java.awt.event.ActionListener;
 import static main.model.Musica.musicasCadastradas;
 import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class PlaylistsView extends JFrame implements ActionListener{
-	private JPanel pnlTitle;
-	private JPanel pnlBody;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlBody;
+	private MyJPanel pnlRodape;
 	
-	private JLabel lblTitle;
+	private MyJLabel lblTitle;
 	
-	private JButton btnAdd;
-	private JButton btnRemove;
-	private JButton btnUpdate;
-	private JButton btnList;
-	private JButton btnMusicas;
-	private JButton btnAddMusica;
-	private JButton btnRmvMusica;
-	private JButton btnVoltar;
+	private MyJButton btnAdd;
+	private MyJButton btnRemove;
+	private MyJButton btnUpdate;
+	private MyJButton btnList;
+	private MyJButton btnMusicas;
+	private MyJButton btnAddMusica;
+	private MyJButton btnRmvMusica;
+	private MyJButton btnVoltar;
 
 	public PlaylistsView() {
         inicializar(this, "CRUD Playlist", getPnlTitle(), getPnlBody(), getPnlRodape());
@@ -42,62 +44,28 @@ public class PlaylistsView extends JFrame implements ActionListener{
 		btnVoltar.addActionListener(this);
     }
     
-    public JPanel getPnlTitle() {
+    public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Crud de Playlists");
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-
+    	lblTitle = new MyJLabel("Crud de Playlists");
     	pnlTitle.add(lblTitle);
-    	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
 
 		return pnlTitle;
 	}
     
-    public JPanel getPnlBody() {
+    public MyJPanel getPnlBody() {
     	if (pnlBody == null) {
-    		pnlBody = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlBody = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
+    	btnAdd = new MyJButton("Cadastrar playlist");
+    	btnRemove = new MyJButton("Remover playlist");
+    	btnUpdate = new MyJButton("Atualizar playlist");
+    	btnList = new MyJButton("Listar Playlists");
+    	btnMusicas = new MyJButton("Listar Músicas da Playlist");
+    	btnAddMusica = new MyJButton("Adicionar música na playlist");
+    	btnRmvMusica = new MyJButton("Remover música da playlist");
     	
-    	btnAdd = new JButton("Cadastrar playlist");
-    	btnRemove = new JButton("Remover playlist");
-    	btnUpdate = new JButton("Atualizar playlist");
-    	btnList = new JButton("Listar Playlists");
-    	btnMusicas = new JButton("Listar Músicas da Playlist");
-    	btnAddMusica = new JButton("Adicionar música na playlist");
-    	btnRmvMusica = new JButton("Remover música da playlist");
-    	
-		// Mudando a cor da letra
-		btnAdd.setForeground(AesthethicsView.getCorLetra());
-    	btnRemove.setForeground(AesthethicsView.getCorLetra());
-    	btnUpdate.setForeground(AesthethicsView.getCorLetra());
-    	btnList.setForeground(AesthethicsView.getCorLetra());
-    	btnMusicas.setForeground(AesthethicsView.getCorLetra());
-    	btnAddMusica.setForeground(AesthethicsView.getCorLetra());
-    	btnRmvMusica.setForeground(AesthethicsView.getCorLetra());
-
-		// Mudando a cor de fundo dos botões
-		btnAdd.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnRemove.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnUpdate.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnList.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnMusicas.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnAddMusica.setBackground(AesthethicsView.getCorFundoBtn());
-    	btnRmvMusica.setBackground(AesthethicsView.getCorFundoBtn());
-
-		// Mudando a fonte dos botões
-		btnAdd.setFont(AesthethicsView.getFonteMenor());
-    	btnRemove.setFont(AesthethicsView.getFonteMenor());
-    	btnUpdate.setFont(AesthethicsView.getFonteMenor());
-    	btnList.setFont(AesthethicsView.getFonteMenor());
-    	btnMusicas.setFont(AesthethicsView.getFonteMenor());
-    	btnAddMusica.setFont(AesthethicsView.getFonteMenor());
-    	btnRmvMusica.setFont(AesthethicsView.getFonteMenor());
-
-
     	pnlBody.add(btnAdd);
     	pnlBody.add(btnRemove);
     	pnlBody.add(btnUpdate);
@@ -105,24 +73,17 @@ public class PlaylistsView extends JFrame implements ActionListener{
     	pnlBody.add(btnMusicas);
     	pnlBody.add(btnAddMusica);
     	pnlBody.add(btnRmvMusica);
-		pnlBody.setBackground(AesthethicsView.getCorFundo());
-    	
+
 		return pnlBody;
 	}
     
-    public JPanel getPnlRodape() {
+    public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		
-		btnVoltar = new JButton("Voltar");
-    	btnVoltar.setForeground(AesthethicsView.getCorFundo());
-		btnVoltar.setBackground(AesthethicsView.getCorLetra());
-		btnVoltar.setFont(AesthethicsView.getFonte());
-
+		btnVoltar = new MyJButton("Voltar", true);
     	pnlRodape.add(btnVoltar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
-		
+
 		return pnlRodape;
 	}
 

@@ -1,6 +1,10 @@
 package main.view.playlists;
 
 import main.controller.PlaylistController;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,24 +14,25 @@ import java.awt.event.ItemEvent;
 
 import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.controller.PlaylistController.*;
+import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class RemoveMusicaView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
-	private JLabel lblPlaylist;
-	private JLabel lblMusica;
+	private MyJLabel lblTitle;
+	private MyJLabel lblPlaylist;
+	private MyJLabel lblMusica;
 	
-	private JComboBox<String> cboxPlaylist;
-	private JComboBox<String> cboxMusica;
+	private MyJComboBox<String> cboxPlaylist;
+	private MyJComboBox<String> cboxMusica;
 
-	private JButton btnRmv;
-	private JButton btnCancelar;
+	private MyJButton btnRmv;
+	private MyJButton btnCancelar;
 
 	public RemoveMusicaView() {
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -35,30 +40,26 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		btnCancelar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Remover Música de alguma Playlist");
+		lblTitle = new MyJLabel("Remover Música de alguma Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
 	}
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(2, 2));
+			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
 		}
-		
-		lblPlaylist = new JLabel("Playlist:");
-		
-		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
+		lblPlaylist = new MyJLabel("Playlist:");
+		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
-		lblMusica = new JLabel("Música:");
-
-		cboxMusica = new JComboBox<>(arrayMusicasNaPlaylist(
-				buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem())));
+		lblMusica = new MyJLabel("Música:");
+		cboxMusica = new MyJComboBox<>(arrayMusicasNaPlaylist(
+				playlistsCadastradas.get(0)));
     	
 		pnlForm.add(lblPlaylist);
     	pnlForm.add(cboxPlaylist);
@@ -69,24 +70,23 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				cboxMusica.removeAllItems();
 
-				var selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
-				var array = arrayMusicasNaPlaylist(selected);
+				var array = arrayMusicasNaPlaylist(
+						buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem()));
 
-				for (int i = 0; i < array.length; i++) {
-					cboxMusica.addItem(selected.getMusicas().get(i).getNome());
+				for (String musica : array) {
+					cboxMusica.addItem(musica);
 				}
 			}
 		});
 		return pnlForm;
 	}
 
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnRmv = new JButton("Remover");
-		btnCancelar = new JButton("Cancelar");
+		btnRmv = new MyJButton("Remover", true);
+		btnCancelar = new MyJButton("Cancelar", true);
 
 		pnlRodape.add(btnRmv);
 		pnlRodape.add(btnCancelar);
@@ -99,7 +99,6 @@ public class RemoveMusicaView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnRmv) {
-
 			PlaylistController controller = new PlaylistController(
 				buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem())
 				);

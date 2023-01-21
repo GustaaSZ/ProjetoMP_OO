@@ -1,7 +1,7 @@
 package main.view.playlists;
 
 import main.controller.PlaylistController;
-import main.model.Playlist;
+import main.view.components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,26 +13,26 @@ import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
 import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class UpdatePlaylistView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblPlaylist;
-	private JLabel lblTitle;
-	private JLabel lblNome;
-	private JLabel lblDescricao;
+	private MyJLabel lblPlaylist;
+	private MyJLabel lblTitle;
+	private MyJLabel lblNome;
+	private MyJLabel lblDescricao;
 	
-	private JTextField txtNome;
-	private JTextField txtDescricao;
+	private MyJTextField txtNome;
+	private MyJTextField txtDescricao;
 	
-	private JComboBox<String> cboxPlaylist;
+	private MyJComboBox<String> cboxPlaylist;
 
-	private JButton btnUpdt;
-	private JButton btnCancelar;
+	private MyJButton btnUpdt;
+	private MyJButton btnCancelar;
 
 	public UpdatePlaylistView() {
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -40,32 +40,29 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		btnCancelar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Atualizar Playlist");
+		lblTitle = new MyJLabel("Atualizar Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
 	}
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(5, 2));
+			pnlForm = new MyJPanel(new GridLayout(5, 2), true);
 		}
-		
-		lblPlaylist = new JLabel("Playlist:");
+		lblPlaylist = new MyJLabel("Playlist:");
+		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
-		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
-
-		lblNome = new JLabel("Nome:");
-    	txtNome = new JTextField(15);
+		lblNome = new MyJLabel("Nome:");
+    	txtNome = new MyJTextField(15);
 		txtNome.setText(playlistsCadastradas.get(0).getNome());
     	
-    	lblDescricao = new JLabel("Descrição:");
-    	txtDescricao = new JTextField(15);
+    	lblDescricao = new MyJLabel("Descrição:");
+    	txtDescricao = new MyJTextField(15);
 		txtDescricao.setText(playlistsCadastradas.get(0).getDescricao());
     	
 		pnlForm.add(lblPlaylist);
@@ -77,7 +74,7 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 
 		cboxPlaylist.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				Playlist selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
+				var selected = buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem());
 				txtNome.setText(selected.getNome());
 				txtDescricao.setText(selected.getDescricao());
 				}
@@ -86,13 +83,12 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		return pnlForm;
 	}
 
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnUpdt = new JButton("Atualizar");
-		btnCancelar = new JButton("Cancelar");
+		btnUpdt = new MyJButton("Atualizar", true);
+		btnCancelar = new MyJButton("Cancelar", true);
 
 		pnlRodape.add(btnUpdt);
 		pnlRodape.add(btnCancelar);

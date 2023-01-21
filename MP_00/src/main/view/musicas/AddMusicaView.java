@@ -1,7 +1,7 @@
 package main.view.musicas;
 
 import main.model.Artista;
-import main.util.AesthethicsView;
+import main.view.components.*;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -13,32 +13,32 @@ import java.text.ParseException;
 import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.controller.MusicaController.cadastrarMusica;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class AddMusicaView extends JFrame implements ActionListener{
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 	
-	private JLabel lblTitle;
-	private JLabel lblNome;
-	private JLabel lblGenero;
-	private JLabel lblLancamento;
-	private JLabel lblLetra;
-	private JLabel lblArtista;
+	private MyJLabel lblTitle;
+	private MyJLabel lblNome;
+	private MyJLabel lblGenero;
+	private MyJLabel lblLancamento;
+	private MyJLabel lblLetra;
+	private MyJLabel lblArtista;
 	
-	private JTextField txtNome;
-	private JTextField txtGenero;
-	private JFormattedTextField txtLancamento;
-	private JTextArea txtLetra;
+	private MyJTextField txtNome;
+	private MyJTextField txtGenero;
+	private MyJFormattedTextField txtLancamento;
+	private MyJTextArea txtLetra;
 
 	private JScrollPane scrollPane;
 
-	private JComboBox<Artista> cboxArtista;	
+	private MyJComboBox<Artista> cboxArtista;
 		
-	private JButton btnCriar;
-	private JButton btnCancelar;
+	private MyJButton btnCriar;
+	private MyJButton btnCancelar;
 
 	public AddMusicaView(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -47,82 +47,38 @@ public class AddMusicaView extends JFrame implements ActionListener{
 		btnCancelar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
     	
-    	lblTitle = new JLabel("Cadastro de musicas");
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-
+    	lblTitle = new MyJLabel("Cadastro de musicas");
     	pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
-    	
+
 		return pnlTitle;
 	}
 	
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(5,2));
+    		pnlForm = new MyJPanel(new GridLayout(5,2), true);
     	}
     	
-    	lblNome = new JLabel("Nome:");
-		lblNome.setForeground(AesthethicsView.getCorLetra());
-		lblNome.setBackground(AesthethicsView.getCorFundo());
-		lblNome.setFont(AesthethicsView.getFonte());
+    	lblNome = new MyJLabel("Nome:");
+    	txtNome = new MyJTextField(15);
 
-    	txtNome = new JTextField(15);
-    	txtNome.setBackground(AesthethicsView.getCorFundoBtn());
-    	txtNome.setForeground(AesthethicsView.getCorLetra());
-		txtNome.setFont(AesthethicsView.getFonteMenor());
+    	lblGenero = new MyJLabel("Genero:");
+    	txtGenero = new MyJTextField(15);
 
+    	lblLancamento = new MyJLabel("Lancamento:");
+    	txtLancamento = new MyJFormattedTextField(setMascara());
 
-    	lblGenero = new JLabel("Genero:");
-		lblGenero.setForeground(AesthethicsView.getCorLetra());
-		lblGenero.setBackground(AesthethicsView.getCorFundo());
-		lblGenero.setFont(AesthethicsView.getFonte());
-
-    	txtGenero = new JTextField(15);
-    	txtGenero.setBackground(AesthethicsView.getCorFundoBtn());
-    	txtGenero.setForeground(AesthethicsView.getCorLetra());
-		txtGenero.setFont(AesthethicsView.getFonteMenor());
-
-
-    	lblLancamento = new JLabel("Lancamento:");
-		lblLancamento.setForeground(AesthethicsView.getCorLetra());
-		lblLancamento.setBackground(AesthethicsView.getCorFundo());
-		lblLancamento.setFont(AesthethicsView.getFonte());
-
-    	txtLancamento = new JFormattedTextField(setMascara());
-		txtLancamento.setBackground(AesthethicsView.getCorFundoBtn());
-    	txtLancamento.setForeground(AesthethicsView.getCorLetra());
-		txtLancamento.setFont(AesthethicsView.getFonteMenor());
-    	
-    	lblLetra = new JLabel("Letra:");
-		lblLetra.setForeground(AesthethicsView.getCorLetra());
-		lblLetra.setBackground(AesthethicsView.getCorFundo());
-		lblLetra.setFont(AesthethicsView.getFonte());
-
-    	txtLetra = new JTextArea();
-		txtLetra.setBackground(AesthethicsView.getCorFundoBtn());
-    	txtLetra.setForeground(AesthethicsView.getCorLetra());
-		txtLetra.setFont(AesthethicsView.getFonteMenor());
-
-		txtLetra.setLineWrap(true);
-    	
+    	lblLetra = new MyJLabel("Letra:");
+    	txtLetra = new MyJTextArea();
 		scrollPane = new JScrollPane(txtLetra);
 
-    	lblArtista = new JLabel("Artista:");
-		lblArtista.setForeground(AesthethicsView.getCorLetra());
-		lblArtista.setBackground(AesthethicsView.getCorFundo());
-		lblArtista.setFont(AesthethicsView.getFonte());
+    	lblArtista = new MyJLabel("Artista:");
+    	cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
     	
-    	cboxArtista = new JComboBox<>(arrayArtistasCadastrados());
-		cboxArtista.setForeground(AesthethicsView.getCorLetra());
-		cboxArtista.setBackground(AesthethicsView.getCorFundoBtn());
-    	
-		pnlForm.setBackground(AesthethicsView.getCorFundo());
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
     	pnlForm.add(lblGenero);
@@ -137,26 +93,17 @@ public class AddMusicaView extends JFrame implements ActionListener{
 		return pnlForm;
 	}
 	
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 		
-		btnCriar = new JButton("Cadastrar");
-		btnCriar.setForeground(AesthethicsView.getCorFundo());
-		btnCriar.setBackground(AesthethicsView.getCorLetra());
-		btnCriar.setFont(AesthethicsView.getFonte());
-
-    	btnCancelar = new JButton("Cancelar");
-    	btnCancelar.setForeground(AesthethicsView.getCorFundo());
-		btnCancelar.setBackground(AesthethicsView.getCorLetra());
-		btnCancelar.setFont(AesthethicsView.getFonte());
-
+		btnCriar = new MyJButton("Cadastrar", true);
+    	btnCancelar = new MyJButton("Cancelar", true);
 
     	pnlRodape.add(btnCriar);
     	pnlRodape.add(btnCancelar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
-		
+
 		return pnlRodape;
 	}
 
@@ -184,7 +131,7 @@ public class AddMusicaView extends JFrame implements ActionListener{
 			new MusicasView();
 		}
 	}
-	
+
 	private MaskFormatter setMascara(){
 	    MaskFormatter mask = null;
 	    try{

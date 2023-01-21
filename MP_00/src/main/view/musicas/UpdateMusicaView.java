@@ -1,6 +1,7 @@
 package main.view.musicas;
 
 import main.controller.MusicaController;
+import main.view.components.*;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -12,32 +13,33 @@ import java.text.ParseException;
 
 import static main.controller.MusicaController.arrayMusicasCadastradas;
 import static main.controller.MusicaController.buscarMusicaPorNome;
+import static main.model.Musica.musicasCadastradas;
 import static main.util.Conversor.dateToString;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class UpdateMusicaView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
-	private JLabel lblMusica;
-	private JLabel lblNome;
-	private JLabel lblGenero;
-	private JLabel lblLancamento;
-	private JLabel lblLetra;
+	private MyJLabel lblTitle;
+	private MyJLabel lblMusica;
+	private MyJLabel lblNome;
+	private MyJLabel lblGenero;
+	private MyJLabel lblLancamento;
+	private MyJLabel lblLetra;
 
-	private JTextField txtNome;
-	private JTextField txtGenero;
-	private JFormattedTextField txtLancamento;
-	private JTextArea txtLetra;
+	private MyJTextField txtNome;
+	private MyJTextField txtGenero;
+	private MyJFormattedTextField txtLancamento;
+	private MyJTextArea txtLetra;
 
-	private JComboBox<String> cboxMusica;
+	private MyJComboBox<String> cboxMusica;
 
-	private JButton btnUpdt;
-	private JButton btnCancelar;
+	private MyJButton btnUpdt;
+	private MyJButton btnCancelar;
 
 	public UpdateMusicaView() {
 		inicializar(this, "CRUD Música", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -45,41 +47,40 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		btnCancelar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Atualizar Música");
+		lblTitle = new MyJLabel("Atualizar Música");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
 	}
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(5, 5));
+			pnlForm = new MyJPanel(new GridLayout(5, 5), true);
 		}
 
-		lblMusica = new JLabel("Música:");
-		cboxMusica = new JComboBox<>(arrayMusicasCadastradas());
+		lblMusica = new MyJLabel("Música:");
+		cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
 
-		lblNome = new JLabel("Nome:");
-		txtNome = new JTextField(20);
-		txtNome.setText(cboxMusica.getSelectedItem().toString());
+		lblNome = new MyJLabel("Nome:");
+		txtNome = new MyJTextField(20);
+		txtNome.setText(musicasCadastradas.get(0).getNome());
 
-		lblGenero = new JLabel("Genero:");
-		txtGenero = new JTextField(15);
-		txtGenero.setText(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getGenero());
+		lblGenero = new MyJLabel("Genero:");
+		txtGenero = new MyJTextField(15);
+		txtGenero.setText(musicasCadastradas.get(0).getGenero());
 
-		lblLancamento = new JLabel("Lancamento:");
-		txtLancamento = new JFormattedTextField(setMascara("##/##/####"));
-		txtLancamento.setText(dateToString(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getLancamento()));
+		lblLancamento = new MyJLabel("Lancamento:");
+		txtLancamento = new MyJFormattedTextField(setMascara());
+		txtLancamento.setText(dateToString(musicasCadastradas.get(0).getLancamento()));
 
-		lblLetra = new JLabel("Letra:");
-		txtLetra = new JTextArea();
+		lblLetra = new MyJLabel("Letra:");
+		txtLetra = new MyJTextArea();
 		txtLetra.setLineWrap(true);
-		txtLetra.setText(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()).getLetra());
+		txtLetra.setText(musicasCadastradas.get(0).getLetra());
 
 		pnlForm.add(lblMusica);
 		pnlForm.add(cboxMusica);
@@ -105,13 +106,12 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		return pnlForm;
 	}
 
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnUpdt = new JButton("Atualizar");
-		btnCancelar = new JButton("Cancelar");
+		btnUpdt = new MyJButton("Atualizar");
+		btnCancelar = new MyJButton("Cancelar");
 
 		pnlRodape.add(btnUpdt);
 		pnlRodape.add(btnCancelar);
@@ -142,10 +142,10 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		}
 	}
 
-	private MaskFormatter setMascara(String mascara) {
+	private MaskFormatter setMascara() {
 		MaskFormatter mask = null;
 		try {
-			mask = new MaskFormatter(mascara);
+			mask = new MaskFormatter("##/##/####");
 		} catch (ParseException ex) {
 			ex.printStackTrace();
 		}

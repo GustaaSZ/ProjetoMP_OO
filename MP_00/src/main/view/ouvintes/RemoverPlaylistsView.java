@@ -2,7 +2,10 @@ package main.view.ouvintes;
 
 import main.controller.OuvinteController;
 import main.model.Ouvinte;
-import main.model.Playlist;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,30 +14,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
+import static main.controller.OuvinteController.arrayPlaylistsPorOuvinte;
+import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
-import static main.model.Playlist.playlistsCadastradas;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class RemoverPlaylistsView extends JFrame implements ActionListener {
 
-	// Instãnciando componenstes da Classe JPanel
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	// Instãnciando componenstes da Classe MyJPanel
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	// Instãnciando componenstes da Classe JLabel
-	private JLabel lblTitle;
-	private JLabel lblPlaylist;
-	private JLabel lblOuvinte;
+	// Instãnciando componenstes da Classe MyJLabel
+	private MyJLabel lblTitle;
+	private MyJLabel lblPlaylist;
+	private MyJLabel lblOuvinte;
 
-	// Instãnciando componenstes da Classe JComboBox
-	private JComboBox<String> cboxPlaylist;
-	private JComboBox<Ouvinte> cboxOuvinte;
+	private MyJComboBox<String> cboxPlaylist;
+	private MyJComboBox<Ouvinte> cboxOuvinte;
 
-	// Instãnciando componenstes da Classe JButton
-	private JButton btnRemover;
-	private JButton btnCancelar;
+	private MyJButton btnRemover;
+	private MyJButton btnCancelar;
 
 	// Construtor
 	public RemoverPlaylistsView() {
@@ -44,12 +46,11 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 	}
 //	---------------------------------------------------------------------------
 	
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Remover Playlist");
+		lblTitle = new MyJLabel("Remover Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -57,21 +58,15 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 	
 //	---------------------------------------------------------------------------
 	
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(2, 2));
+			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
 		}
+		lblPlaylist = new MyJLabel("Playlist:");
+		lblOuvinte = new MyJLabel("Ouvinte:");
 
-		lblPlaylist = new JLabel("Playlist:");
-		lblOuvinte = new JLabel("Ouvinte:");
-
-		String[] array = new String[playlistsCadastradas.size()];
-		for (int i = 0; i < array.length; i++) {
-			array[i] = playlistsCadastradas.get(i).getNome();
-		}
-		cboxPlaylist = new JComboBox<>(array);
-
-		cboxOuvinte = new JComboBox<>(arrayOuvintesCadastrados());
+		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
+		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
 
 		pnlForm.add(lblOuvinte);
 		pnlForm.add(cboxOuvinte);
@@ -82,10 +77,10 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				cboxPlaylist.removeAllItems();
 
-				Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
-				Playlist[] array1 = new Playlist[selected.getPlaylists().size()];
-				for (int i = 0; i < array1.length; i++) {
-					cboxPlaylist.addItem(selected.getPlaylists().get(i).getNome());
+				var array = arrayPlaylistsPorOuvinte((Ouvinte) cboxOuvinte.getSelectedItem());
+				for (int i = 0; i < array.length; i++) {
+					cboxPlaylist.addItem(
+							((Ouvinte) cboxOuvinte.getSelectedItem()).getPlaylists().get(i).getNome());
 				}
 			}
 		});
@@ -96,14 +91,12 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 	
 //	---------------------------------------------------------------------------
 	
-	public JPanel getPnlRodape() {
-		
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnRemover = new JButton("Remover");
-		btnCancelar = new JButton("Cancelar");
+		btnRemover = new MyJButton("Remover", true);
+		btnCancelar = new MyJButton("Cancelar", true);
 
 		pnlRodape.add(btnRemover);
 		pnlRodape.add(btnCancelar);

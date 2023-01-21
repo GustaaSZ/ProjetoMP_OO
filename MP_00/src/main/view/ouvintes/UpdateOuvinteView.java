@@ -2,6 +2,7 @@ package main.view.ouvintes;
 
 import main.controller.OuvinteController;
 import main.model.Ouvinte;
+import main.view.components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,23 +13,23 @@ import java.awt.event.ItemEvent;
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
 import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class UpdateOuvinteView extends JFrame implements ActionListener{
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 	
-	private JLabel lblTitle;
-	private JLabel lblNome;
-	private JLabel lblOuvinte;
+	private MyJLabel lblTitle;
+	private MyJLabel lblNome;
+	private MyJLabel lblOuvinte;
 	
-	private JTextField txtNome;
+	private MyJTextField txtNome;
 	
-	private JComboBox<Ouvinte> cboxOuvinte;
+	private MyJComboBox<Ouvinte> cboxOuvinte;
 	
-	private JButton btnUpdt;
-	private JButton btnCancelar;
+	private MyJButton btnUpdt;
+	private MyJButton btnCancelar;
 
 
 	public UpdateOuvinteView(){
@@ -37,28 +38,26 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
 		btnCancelar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Atualizar Ouvinte");
+    	lblTitle = new MyJLabel("Atualizar Ouvinte");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
 	}
 	
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(2,2));
+    		pnlForm = new MyJPanel(new GridLayout(2,2), true);
     	}
-    	
-    	lblNome = new JLabel("Nome: ");
-    	txtNome = new JTextField(20);
+    	lblNome = new MyJLabel("Nome: ");
+    	txtNome = new MyJTextField(20);
 		txtNome.setText(ouvintesCadastrados.get(0).getNome());
     	
-    	lblOuvinte = new JLabel("Ouvinte:");
-    	cboxOuvinte = new JComboBox<>(arrayOuvintesCadastrados());
+    	lblOuvinte = new MyJLabel("Ouvinte:");
+    	cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
     	
     	pnlForm.add(lblOuvinte);
     	pnlForm.add(cboxOuvinte);
@@ -70,17 +69,15 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
 				txtNome.setText(((Ouvinte) cboxOuvinte.getSelectedItem()).getNome());
 				}
 			});
-
 		return pnlForm;
 	}
 	
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		
-		btnUpdt = new JButton("Atualizar");
-    	btnCancelar = new JButton("Cancelar");
+		btnUpdt = new MyJButton("Atualizar", true);
+    	btnCancelar = new MyJButton("Cancelar", true);
     	
     	pnlRodape.add(btnUpdt);
     	pnlRodape.add(btnCancelar);

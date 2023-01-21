@@ -1,6 +1,10 @@
 package main.view.playlists;
 
 import main.controller.PlaylistController;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,23 +16,23 @@ import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class AddMusicaView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
-	private JLabel lblPlaylist;
-	private JLabel lblMusica;
+	private MyJLabel lblTitle;
+	private MyJLabel lblPlaylist;
+	private MyJLabel lblMusica;
 	
-	private JComboBox<String> cboxPlaylist;
-	private JComboBox<String> cboxMusica;
+	private MyJComboBox<String> cboxPlaylist;
+	private MyJComboBox<String> cboxMusica;
 
-	private JButton btnAdd;
-	private JButton btnCancelar;
+	private MyJButton btnAdd;
+	private MyJButton btnCancelar;
 
 	public AddMusicaView() {
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -36,29 +40,25 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		btnCancelar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Adicionar Música");
+		lblTitle = new MyJLabel("Adicionar Música");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
 	}
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new GridLayout(2, 2));
+			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
 		}
-		
-		lblPlaylist = new JLabel("Playlist:");
+		lblPlaylist = new MyJLabel("Playlist:");
+		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
-		cboxPlaylist = new JComboBox<>(arrayPlaylistsCadastradas());
-
-		lblMusica = new JLabel("Música:");
-
-		cboxMusica = new JComboBox<>(arrayMusicasCadastradas());
+		lblMusica = new MyJLabel("Música:");
+		cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
     	
 		pnlForm.add(lblPlaylist);
     	pnlForm.add(cboxPlaylist);
@@ -68,13 +68,12 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		return pnlForm;
 	}
 
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnAdd = new JButton("Adicionar");
-		btnCancelar = new JButton("Cancelar");
+		btnAdd = new MyJButton("Adicionar", true);
+		btnCancelar = new MyJButton("Cancelar", true);
 
 		pnlRodape.add(btnAdd);
 		pnlRodape.add(btnCancelar);

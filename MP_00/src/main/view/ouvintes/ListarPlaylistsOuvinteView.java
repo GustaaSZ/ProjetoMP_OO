@@ -2,6 +2,7 @@ package main.view.ouvintes;
 
 import main.model.Ouvinte;
 import main.model.Playlist;
+import main.view.components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,84 +11,70 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
+import static main.controller.OuvinteController.arrayPlaylistsPorOuvinte;
+import static main.model.Ouvinte.ouvintesCadastrados;
 import static main.util.Inicializacao.inicializar;
 
 public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
-	private JLabel lblOuvinte;
+	private MyJLabel lblTitle;
+	private MyJLabel lblOuvinte;
 
-	private JComboBox<Ouvinte> cboxOuvinte;
+	private MyJComboBox<Ouvinte> cboxOuvinte;
 
-	private JList<Playlist> lista;
+	private MyJList<Playlist> lista;
 
-	private JButton btnVoltar;
+	private MyJButton btnVoltar;
 
 	public ListarPlaylistsOuvinteView() {
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
 		btnVoltar.addActionListener(this);
 	}
 
-
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		lblTitle = new JLabel("Lista de Playlists do Ouvinte");
+		lblTitle = new MyJLabel("Lista de Playlists do Ouvinte");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
 	}
 	
-	public JPanel getPnlForm() {
-		
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new BorderLayout());
+			pnlForm = new MyJPanel(new BorderLayout(), true);
 		}
-
-		lblOuvinte = new JLabel("Ouvinte:");
-		
-		pnlForm.add(lblOuvinte, BorderLayout.NORTH);
-
-		cboxOuvinte = new JComboBox<>(arrayOuvintesCadastrados());
-		
-		pnlForm.add(cboxOuvinte, BorderLayout.NORTH);
+		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
 
 		DefaultListModel<Playlist> model = new DefaultListModel<Playlist>();
-		lista = new JList<Playlist>(model);
+		lista = new MyJList<Playlist>(model);
 
-		Ouvinte selected = (Ouvinte) cboxOuvinte.getSelectedItem();
-
-		for (int i = 0; i < selected.getPlaylists().size(); i++) {
-			model.add(i, selected.getPlaylists().get(i));
+		for (int i = 0; i < ouvintesCadastrados.get(0).getPlaylists().size(); i++) {
+			model.add(i, ouvintesCadastrados.get(0).getPlaylists().get(i));
 		}
-		
+
+		pnlForm.add(cboxOuvinte, BorderLayout.NORTH);
 		pnlForm.add(lista, BorderLayout.CENTER);
-		
-		
+
 		cboxOuvinte.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
-				Ouvinte selected1 = (Ouvinte) cboxOuvinte.getSelectedItem();
-				Playlist[] playlists = selected1.getPlaylists().toArray(new Playlist[selected1.getPlaylists().size()]);
-				lista.setListData(playlists);
+				lista.setListData(
+						arrayPlaylistsPorOuvinte((Ouvinte) cboxOuvinte.getSelectedItem()));
 			}
 		});
 		return pnlForm;
-		
 	}
-	
-	public JPanel getPnlRodape() {
+
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnVoltar = new JButton("Voltar");
-
+		btnVoltar = new MyJButton("Voltar", true);
 		pnlRodape.add(btnVoltar);
 
 		return pnlRodape;

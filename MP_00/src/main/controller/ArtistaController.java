@@ -1,6 +1,7 @@
 package main.controller;
 
 import main.model.Artista;
+import main.model.Musica;
 
 import static main.model.Artista.artistasCadastrados;
 
@@ -48,6 +49,10 @@ public class ArtistaController {
 
     public static Artista[] arrayArtistasCadastrados() {
         return artistasCadastrados.toArray(new Artista[0]);
+    }
+
+    public static Musica[] arrayMusicasDoArtista(Artista artista){
+        return artista.getMusicas().toArray(new Musica[0]);
     }
 
     private static Boolean artistaExiste(Artista artista) {

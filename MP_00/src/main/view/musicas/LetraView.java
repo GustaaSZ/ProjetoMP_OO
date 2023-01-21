@@ -1,5 +1,7 @@
 package main.view.musicas;
 
+import main.view.components.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,35 +10,33 @@ import java.awt.event.ItemEvent;
 
 import static main.controller.MusicaController.arrayMusicasCadastradas;
 import static main.controller.MusicaController.buscarMusicaPorNome;
+import static main.model.Musica.musicasCadastradas;
 import static main.util.Inicializacao.inicializar;
 
 public class LetraView extends JFrame implements ActionListener {
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 
-	private JLabel lblTitle;
-	private JLabel lblMusica;
+	private MyJLabel lblTitle;
 	private JScrollPane scrollPane;
-	private JTextArea txtLetra;
-	private JComboBox<String> cboxMusica;
+	private MyJTextArea txtLetra;
+	private MyJComboBox<String> cboxMusica;
 
-	private JButton btnVoltar;
+	private MyJButton btnVoltar;
 
 	public LetraView() {
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
 		btnVoltar.addActionListener(this);
 	}
 
-	//	-------------------------------------------------------------
-
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
 		if (pnlTitle == null) {
-			pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		lblTitle = new JLabel("Letra da Música");
+		lblTitle = new MyJLabel("Letra da Música");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -44,27 +44,18 @@ public class LetraView extends JFrame implements ActionListener {
 
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new JPanel(new BorderLayout());
+			pnlForm = new MyJPanel(new BorderLayout(), true);
 		}
+		cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
 
-		lblMusica = new JLabel("Musica:");
-		
-		pnlForm.add(lblMusica, BorderLayout.NORTH);
-
-		cboxMusica = new JComboBox<>(arrayMusicasCadastradas());
-
-		pnlForm.add(cboxMusica, BorderLayout.NORTH);
-
-		txtLetra = new JTextArea();
-		txtLetra.setLineWrap(true);
-		txtLetra.setEditable(false);
-		txtLetra.setText(buscarMusicaPorNome((String) cboxMusica.getSelectedItem())
-				.getLetra());
+		txtLetra = new MyJTextArea();
+		txtLetra.setText(musicasCadastradas.get(0).getLetra());
 
 		scrollPane = new JScrollPane(txtLetra);
 
+		pnlForm.add(cboxMusica, BorderLayout.NORTH);
 		pnlForm.add(scrollPane);
 
 		cboxMusica.addItemListener(e -> {
@@ -79,13 +70,11 @@ public class LetraView extends JFrame implements ActionListener {
 
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-
-		btnVoltar = new JButton("Voltar");
-
+		btnVoltar = new MyJButton("Voltar", true);
 		pnlRodape.add(btnVoltar);
 
 		return pnlRodape;

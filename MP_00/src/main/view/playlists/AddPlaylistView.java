@@ -1,31 +1,33 @@
 package main.view.playlists;
 
+import main.view.components.MyJButton;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
+import main.view.components.MyJTextField;
+
 import javax.swing.*;
-
-import main.util.AesthethicsView;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static main.controller.PlaylistController.cadastrarPlaylist;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class AddPlaylistView extends JFrame implements ActionListener{
 	
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 	
-	private JLabel lblTitle;
-	private JLabel lblNome;
-	private JLabel lblDescricao;
-	private JTextField txtNome;
-	private JTextField txtDescricao;
+	private MyJLabel lblTitle;
+	private MyJLabel lblNome;
+	private MyJLabel lblDescricao;
+	private MyJTextField txtNome;
+	private MyJTextField txtDescricao;
 	
-	private JButton btnCriar;
-	private JButton btnCancelar;
+	private MyJButton btnCriar;
+	private MyJButton btnCancelar;
 
 	public AddPlaylistView(){
 		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -33,72 +35,44 @@ public class AddPlaylistView extends JFrame implements ActionListener{
 		btnCancelar.addActionListener(this);
 	}
 
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Cadastro de Playlist");
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-
+    	lblTitle = new MyJLabel("Cadastro de Playlist");
     	pnlTitle.add(lblTitle);
-		pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
-    	
+
 		return pnlTitle;
 	}
 	
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(2,2));
+    		pnlForm = new MyJPanel(new GridLayout(2,2), true);
     	}
-    	
-    	lblNome = new JLabel("Nome:");
-		lblNome.setForeground(AesthethicsView.getCorLetra());
-		lblNome.setFont(AesthethicsView.getFonte());
+    	lblNome = new MyJLabel("Nome:");
+    	txtNome = new MyJTextField(15);
 
-    	txtNome = new JTextField(15);
-    	txtNome.setBackground(AesthethicsView.getCorFundoBtn());
-		txtNome.setForeground(AesthethicsView.getCorLetra());
-		txtNome.setFont(AesthethicsView.getFonteMenor());
-
-    	lblDescricao = new JLabel("Descrição:");
-		lblDescricao.setForeground(AesthethicsView.getCorLetra());
-		lblDescricao.setFont(AesthethicsView.getFonte());
-
-    	txtDescricao = new JTextField(15);
-		txtDescricao.setBackground(AesthethicsView.getCorFundoBtn());
-		txtDescricao.setForeground(AesthethicsView.getCorLetra());
-		txtDescricao.setFont(AesthethicsView.getFonteMenor());
+    	lblDescricao = new MyJLabel("Descrição:");
+    	txtDescricao = new MyJTextField(15);
 
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
     	pnlForm.add(lblDescricao);
     	pnlForm.add(txtDescricao);
-		pnlForm.setBackground(AesthethicsView.getCorFundo());
 
 		return pnlForm;
 	}
 	
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		
-		btnCriar = new JButton("Cadastrar");
-		btnCriar.setForeground(AesthethicsView.getCorFundo());
-		btnCriar.setBackground(AesthethicsView.getCorLetra());
-		btnCriar.setFont(AesthethicsView.getFonte());
+		btnCriar = new MyJButton("Cadastrar");
+    	btnCancelar = new MyJButton("Cancelar");
 
-    	btnCancelar = new JButton("Cancelar");
-		btnCancelar.setForeground(AesthethicsView.getCorFundo());
-		btnCancelar.setBackground(AesthethicsView.getCorLetra());
-		btnCancelar.setFont(AesthethicsView.getFonte());
-    	
     	pnlRodape.add(btnCriar);
     	pnlRodape.add(btnCancelar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
-		
+
 		return pnlRodape;
 	}
 

@@ -1,4 +1,4 @@
-package main.view.dialog;
+package main.view.components;
 
 import main.model.Artista;
 import main.model.Ouvinte;

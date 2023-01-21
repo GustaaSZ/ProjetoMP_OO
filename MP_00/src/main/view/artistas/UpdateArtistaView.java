@@ -2,7 +2,7 @@ package main.view.artistas;
 
 import main.controller.ArtistaController;
 import main.model.Artista;
-import main.util.AesthethicsView;
+import main.view.components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,31 +12,25 @@ import java.awt.event.ItemEvent;
 
 import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.util.Inicializacao.inicializar;
-import static main.view.dialog.Dialog.openDialog;
+import static main.view.components.Dialog.openDialog;
 
 public class UpdateArtistaView extends JFrame implements ActionListener{
 
 
-	private JPanel pnlTitle;
-	private JPanel pnlForm;
-	private JPanel pnlRodape;
+	private MyJPanel pnlTitle;
+	private MyJPanel pnlForm;
+	private MyJPanel pnlRodape;
 	
-	private JLabel lblTitle;
-	private JLabel lblNome;
-	private JLabel lblArtista;
+	private MyJLabel lblTitle;
+	private MyJLabel lblNome;
+	private MyJLabel lblArtista;
 	
-	private JTextField txtNome;
+	private MyJTextField txtNome;
 	
-	private JComboBox<Artista> cboxArtista;
+	private MyJComboBox<Artista> cboxArtista;
 	
-	private JButton btnUpdt;
-	private JButton btnCancelar;
-
-	// // Instanciando um objeto imag da Classe ImageIcon, e passando como argumento
-	// // a imagem que coloquei no mesmo pacote da main View
-
-	// ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
-	// JLabel label = new JLabel(imag);
+	private MyJButton btnUpdt;
+	private MyJButton btnCancelar;
 
 	public UpdateArtistaView(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -45,62 +39,34 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 		btnCancelar.addActionListener(this);
 	}
 
-	//	-------------------------------------------------------------
-
-	public JPanel getPnlTitle() {
+	public MyJPanel getPnlTitle() {
     	if (pnlTitle == null) {
-    		pnlTitle = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new JLabel("Crud de Artistas");
-		//    	Mudando a cor da letra e a fonte
-		lblTitle.setForeground(AesthethicsView.getCorLetra());
-		lblTitle.setFont(AesthethicsView.getFonte());
-
+    	lblTitle = new MyJLabel("Crud de Artistas");
     	pnlTitle.add(lblTitle);
 
-		//		Mudando a cor de fundo do Title
-    	pnlTitle.setBackground(AesthethicsView.getCorFundoBtn());
-    	
 		return pnlTitle;
 	}
 	
 	//	-------------------------------------------------------------
 
-	public JPanel getPnlForm() {
+	public MyJPanel getPnlForm() {
     	if (pnlForm == null) {
-    		pnlForm = new JPanel(new GridLayout(3,2));
+    		pnlForm = new MyJPanel(new GridLayout(3,2), true);
     	}
-    	lblArtista = new JLabel("Artista:");
-		lblArtista.setFont(AesthethicsView.getFonte());
-		lblArtista.setForeground(AesthethicsView.getCorLetra());
-		lblArtista.setFont(AesthethicsView.getFonte());
+    	lblArtista = new MyJLabel("Artista:");
+    	cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
 
-    	cboxArtista = new JComboBox<>(arrayArtistasCadastrados());
-		cboxArtista.setForeground(AesthethicsView.getCorLetra());
-		cboxArtista.setBackground(AesthethicsView.getCorFundoBtn());
-		cboxArtista.setFont(AesthethicsView.getFonteMenor());
-
-		lblNome = new JLabel("Nome:");
-		lblNome.setFont(AesthethicsView.getFonte());
-		lblNome.setForeground(AesthethicsView.getCorLetra());
-		lblNome.setFont(AesthethicsView.getFonte());
-
-		txtNome = new JTextField(20);
-		txtNome.setBackground(AesthethicsView.getCorFundoBtn());
-		txtNome.setFont(AesthethicsView.getFonteMenor());
-		txtNome.setForeground(AesthethicsView.getCorLetra());
-
+		lblNome = new MyJLabel("Nome:");
+		txtNome = new MyJTextField(20);
 		txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());
     	
     	pnlForm.add(lblArtista);
     	pnlForm.add(cboxArtista);
     	pnlForm.add(lblNome);
     	pnlForm.add(txtNome);
-		// pnlForm.add(label);
 
-		pnlForm.setBackground(AesthethicsView.getCorFundo());
-    	
 		cboxArtista.addItemListener(e -> {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());
@@ -111,25 +77,16 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 
 	//	-------------------------------------------------------------
 	
-	public JPanel getPnlRodape() {
+	public MyJPanel getPnlRodape() {
 		if (pnlRodape == null) {
-			pnlRodape = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		
-		btnUpdt = new JButton("Atualizar");
-		btnUpdt.setForeground(AesthethicsView.getCorFundo());
-		btnUpdt.setBackground(AesthethicsView.getCorLetra());
-		btnUpdt.setFont(AesthethicsView.getFonteMenor());
-
-    	btnCancelar = new JButton("Cancelar");
-    	btnCancelar.setForeground(AesthethicsView.getCorFundo());
-		btnCancelar.setBackground(AesthethicsView.getCorLetra());
-		btnCancelar.setFont(AesthethicsView.getFonteMenor());
+		btnUpdt = new MyJButton("Atualizar", true);
+    	btnCancelar = new MyJButton("Cancelar", true);
 
     	pnlRodape.add(btnUpdt);
     	pnlRodape.add(btnCancelar);
-		pnlRodape.setBackground(AesthethicsView.getCorFundoBtn());
-		
+
 		return pnlRodape;
 	}
 
