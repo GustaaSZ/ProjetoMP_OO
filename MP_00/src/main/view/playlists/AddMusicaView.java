@@ -24,10 +24,6 @@ public class AddMusicaView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblPlaylist;
-	private MyJLabel lblMusica;
-	
 	private MyJComboBox<String> cboxPlaylist;
 	private MyJComboBox<String> cboxMusica;
 
@@ -44,7 +40,7 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Adicionar Música");
+		MyJLabel lblTitle = new MyJLabel("Adicionar Música");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -54,10 +50,10 @@ public class AddMusicaView extends JFrame implements ActionListener {
 		if (pnlForm == null) {
 			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
 		}
-		lblPlaylist = new MyJLabel("Playlist:");
+		MyJLabel lblPlaylist = new MyJLabel("Playlist:");
 		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
-		lblMusica = new MyJLabel("Música:");
+		MyJLabel lblMusica = new MyJLabel("Música:");
 		cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
     	
 		pnlForm.add(lblPlaylist);

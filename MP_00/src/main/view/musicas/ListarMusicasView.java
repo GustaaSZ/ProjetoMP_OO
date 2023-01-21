@@ -20,13 +20,7 @@ public class ListarMusicasView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private JScrollPane scroll;
-	
-	private MyJLabel lblTitle;
-	
-	private MyJList<Musica> lista;
-	
+
 	private MyJButton btnVoltar;
 
 	public ListarMusicasView(){
@@ -38,7 +32,7 @@ public class ListarMusicasView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Lista de Musicas");
+		MyJLabel lblTitle = new MyJLabel("Lista de Musicas");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -49,13 +43,13 @@ public class ListarMusicasView extends JFrame implements ActionListener{
     		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
 
-    	DefaultListModel<Musica> model = new DefaultListModel<Musica>();
-    	lista = new MyJList<Musica>(model);
+    	DefaultListModel<Musica> model = new DefaultListModel<>();
+		MyJList<Musica> lista = new MyJList<>(model);
     	for (int i = 0; i < musicasCadastradas.size(); i++) {
     	    model.add(i, musicasCadastradas.get(i));
 		}
-    	
-		scroll = new JScrollPane(lista);
+
+		JScrollPane scroll = new JScrollPane(lista);
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 

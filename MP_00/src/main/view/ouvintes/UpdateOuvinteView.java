@@ -19,11 +19,7 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private MyJLabel lblTitle;
-	private MyJLabel lblNome;
-	private MyJLabel lblOuvinte;
-	
+
 	private MyJTextField txtNome;
 	
 	private MyJComboBox<Ouvinte> cboxOuvinte;
@@ -42,7 +38,7 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Atualizar Ouvinte");
+		MyJLabel lblTitle = new MyJLabel("Atualizar Ouvinte");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -52,11 +48,11 @@ public class UpdateOuvinteView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new GridLayout(2,2), true);
     	}
-    	lblNome = new MyJLabel("Nome: ");
+		MyJLabel lblNome = new MyJLabel("Nome: ");
     	txtNome = new MyJTextField(20);
 		txtNome.setText(ouvintesCadastrados.get(0).getNome());
-    	
-    	lblOuvinte = new MyJLabel("Ouvinte:");
+
+		MyJLabel lblOuvinte = new MyJLabel("Ouvinte:");
     	cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
     	
     	pnlForm.add(lblOuvinte);

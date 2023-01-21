@@ -20,9 +20,6 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblArtista;
-
 	private MyJComboBox<String> cboxPlaylist;
 
 	private MyJButton btnRemover;
@@ -38,7 +35,7 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Remover Playlist");
+		MyJLabel lblTitle = new MyJLabel("Remover Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -48,7 +45,7 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 		if (pnlForm == null) {
 			pnlForm = new MyJPanel(new GridLayout(1, 2), true);
 		}
-		lblArtista = new MyJLabel("Playlist:");
+		MyJLabel lblArtista = new MyJLabel("Playlist:");
 		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
 		pnlForm.add(lblArtista);

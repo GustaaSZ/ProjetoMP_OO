@@ -20,10 +20,7 @@ public class BuscarArtista extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private MyJLabel lblTitle;
-	private MyJLabel lblNome;
-	
+
 	private MyJTextField txtNome;
 	
 	
@@ -42,7 +39,7 @@ public class BuscarArtista extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Buscar Artista");
+		MyJLabel lblTitle = new MyJLabel("Buscar Artista");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -52,7 +49,7 @@ public class BuscarArtista extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-    	lblNome = new MyJLabel("Nome:");
+		MyJLabel lblNome = new MyJLabel("Nome:");
     	txtNome = new MyJTextField(20);
     	
     	pnlForm.add(lblNome);

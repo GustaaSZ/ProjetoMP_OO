@@ -23,9 +23,7 @@ public class MainView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlBody;
 	private MyJPanel pnlRodape;
-	
-	private MyJLabel lblTitle;
-	
+
 	private MyJButton btnArtistas;
 	private MyJButton btnMusicas;
 	private MyJButton btnPlaylists;
@@ -49,7 +47,7 @@ public class MainView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Projeto Orientação à Objetos");
+		MyJLabel lblTitle = new MyJLabel("Projeto Orientação à Objetos");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;

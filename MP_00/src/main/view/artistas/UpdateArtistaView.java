@@ -20,11 +20,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private MyJLabel lblTitle;
-	private MyJLabel lblNome;
-	private MyJLabel lblArtista;
-	
+
 	private MyJTextField txtNome;
 	
 	private MyJComboBox<Artista> cboxArtista;
@@ -43,7 +39,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Crud de Artistas");
+		MyJLabel lblTitle = new MyJLabel("Crud de Artistas");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -55,10 +51,10 @@ public class UpdateArtistaView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new GridLayout(3,2), true);
     	}
-    	lblArtista = new MyJLabel("Artista:");
+		MyJLabel lblArtista = new MyJLabel("Artista:");
     	cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
 
-		lblNome = new MyJLabel("Nome:");
+		MyJLabel lblNome = new MyJLabel("Nome:");
 		txtNome = new MyJTextField(20);
 		txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());
     	

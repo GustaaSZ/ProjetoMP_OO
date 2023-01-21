@@ -24,10 +24,6 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblArtista;
-	private MyJLabel lblMusica;
-
 	private MyJComboBox<Artista> cboxArtista;
 	private MyJComboBox<String> cboxMusica;
 
@@ -44,7 +40,7 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Remover Artista de alguma Música");
+		MyJLabel lblTitle = new MyJLabel("Remover Artista de alguma Música");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -55,8 +51,8 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
 			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
 		}
 
-		lblArtista = new MyJLabel("Artista:");
-		lblMusica = new MyJLabel("Música:");
+		MyJLabel lblArtista = new MyJLabel("Artista:");
+		MyJLabel lblMusica = new MyJLabel("Música:");
 
 		cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
 		cboxArtista = new MyJComboBox<>(

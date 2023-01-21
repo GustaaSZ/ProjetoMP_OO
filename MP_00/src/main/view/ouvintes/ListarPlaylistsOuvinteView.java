@@ -21,9 +21,6 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblOuvinte;
-
 	private MyJComboBox<Ouvinte> cboxOuvinte;
 
 	private MyJList<Playlist> lista;
@@ -39,7 +36,7 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Lista de Playlists do Ouvinte");
+		MyJLabel lblTitle = new MyJLabel("Lista de Playlists do Ouvinte");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -51,8 +48,8 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
 		}
 		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
 
-		DefaultListModel<Playlist> model = new DefaultListModel<Playlist>();
-		lista = new MyJList<Playlist>(model);
+		DefaultListModel<Playlist> model = new DefaultListModel<>();
+		lista = new MyJList<>(model);
 
 		for (int i = 0; i < ouvintesCadastrados.get(0).getPlaylists().size(); i++) {
 			model.add(i, ouvintesCadastrados.get(0).getPlaylists().get(i));

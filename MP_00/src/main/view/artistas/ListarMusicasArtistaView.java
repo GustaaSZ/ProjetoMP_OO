@@ -22,11 +22,6 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private JScrollPane scroll;
-
-	private MyJLabel lblTitle;
-	private MyJLabel lblArtista;
-
 	private MyJComboBox<Artista> cboxArtista;
 
 	private MyJList<Musica> lista;
@@ -45,7 +40,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Lista de músicas do Artista");
+		MyJLabel lblTitle = new MyJLabel("Lista de músicas do Artista");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -57,20 +52,20 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 		if (pnlForm == null) {
 			pnlForm = new MyJPanel(new BorderLayout(), true);
 		}
-		lblArtista = new MyJLabel("Artista:");
+		MyJLabel lblArtista = new MyJLabel("Artista:");
 		pnlForm.add(lblArtista, BorderLayout.NORTH);
 
 		cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
 
-		DefaultListModel<Musica> model = new DefaultListModel<Musica>();
-		lista = new MyJList<Musica>(model);
+		DefaultListModel<Musica> model = new DefaultListModel<>();
+		lista = new MyJList<>(model);
 
 		for (int i = 0; i < artistasCadastrados.get(0).getMusicas().size(); i++) {
 			model.add(i, artistasCadastrados.get(0).getMusicas().get(i));
 		}
 
 		// Adicionando a a lista no scroll pane, (Barra de rolagem)
-		scroll = new JScrollPane(lista);
+		JScrollPane scroll = new JScrollPane(lista);
 
 		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

@@ -20,9 +20,6 @@ public class AddOuvintesView extends JFrame implements ActionListener{
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblNome;
-	
 	private MyJTextField txtNome;
 	
 	private MyJButton btnCriar;
@@ -38,7 +35,7 @@ public class AddOuvintesView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Crud de Ouvintes");
+		MyJLabel lblTitle = new MyJLabel("Crud de Ouvintes");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -49,7 +46,7 @@ public class AddOuvintesView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-    	lblNome = new MyJLabel("Nome:");
+		MyJLabel lblNome = new MyJLabel("Nome:");
     	txtNome = new MyJTextField(20);
     	
     	pnlForm.add(lblNome);

@@ -19,13 +19,7 @@ public class ListarArtistasView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private JScrollPane scroll;
-	
-	private MyJLabel lblTitle;
-	
-	private MyJList<Artista> lista;
-	
+
 	private MyJButton btnVoltar;
 	public ListarArtistasView(){
 		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -39,8 +33,8 @@ public class ListarArtistasView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new MyJLabel("Lista de Artistas");
+
+		MyJLabel lblTitle = new MyJLabel("Lista de Artistas");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -52,14 +46,14 @@ public class ListarArtistasView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-    	DefaultListModel<Artista> model = new DefaultListModel<Artista>();
-    	lista = new MyJList<Artista>(model);
+    	DefaultListModel<Artista> model = new DefaultListModel<>();
+		MyJList<Artista> lista = new MyJList<>(model);
 
     	for (int i = 0; i < artistasCadastrados.size(); i++) {
     	    model.add(i, artistasCadastrados.get(i));
     	}
-    	
-    	scroll = new JScrollPane(lista);
+
+		JScrollPane scroll = new JScrollPane(lista);
     	pnlForm.add(scroll);
 
 		return pnlForm;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ouvinte extends Pessoa {
     private final ArrayList<Playlist> playlists;
     
-    public static ArrayList<Ouvinte> ouvintesCadastrados = new ArrayList<>();
+    public static final ArrayList<Ouvinte> ouvintesCadastrados = new ArrayList<>();
 
     public Ouvinte(String nome) {
         super(nome);

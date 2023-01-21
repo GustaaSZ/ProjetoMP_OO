@@ -15,7 +15,7 @@ public class Musica {
     private String letra;
 
     //Array com todas as músicas cadastradas.
-    public static ArrayList<Musica> musicasCadastradas = new ArrayList<>();
+    public static final ArrayList<Musica> musicasCadastradas = new ArrayList<>();
 
     public Musica(String nome, String letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();

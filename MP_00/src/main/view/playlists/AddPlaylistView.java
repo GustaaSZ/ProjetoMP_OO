@@ -19,10 +19,7 @@ public class AddPlaylistView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private MyJLabel lblTitle;
-	private MyJLabel lblNome;
-	private MyJLabel lblDescricao;
+
 	private MyJTextField txtNome;
 	private MyJTextField txtDescricao;
 	
@@ -39,7 +36,7 @@ public class AddPlaylistView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Cadastro de Playlist");
+		MyJLabel lblTitle = new MyJLabel("Cadastro de Playlist");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -49,10 +46,10 @@ public class AddPlaylistView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new GridLayout(2,2), true);
     	}
-    	lblNome = new MyJLabel("Nome:");
+		MyJLabel lblNome = new MyJLabel("Nome:");
     	txtNome = new MyJTextField(15);
 
-    	lblDescricao = new MyJLabel("Descrição:");
+		MyJLabel lblDescricao = new MyJLabel("Descrição:");
     	txtDescricao = new MyJTextField(15);
 
     	pnlForm.add(lblNome);

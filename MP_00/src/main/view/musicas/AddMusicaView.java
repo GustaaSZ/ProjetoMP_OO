@@ -20,20 +20,11 @@ public class AddMusicaView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private MyJLabel lblTitle;
-	private MyJLabel lblNome;
-	private MyJLabel lblGenero;
-	private MyJLabel lblLancamento;
-	private MyJLabel lblLetra;
-	private MyJLabel lblArtista;
-	
+
 	private MyJTextField txtNome;
 	private MyJTextField txtGenero;
 	private MyJFormattedTextField txtLancamento;
 	private MyJTextArea txtLetra;
-
-	private JScrollPane scrollPane;
 
 	private MyJComboBox<Artista> cboxArtista;
 		
@@ -51,8 +42,8 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	
-    	lblTitle = new MyJLabel("Cadastro de musicas");
+
+		MyJLabel lblTitle = new MyJLabel("Cadastro de musicas");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -62,21 +53,21 @@ public class AddMusicaView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new GridLayout(5,2), true);
     	}
-    	
-    	lblNome = new MyJLabel("Nome:");
+
+		MyJLabel lblNome = new MyJLabel("Nome:");
     	txtNome = new MyJTextField(15);
 
-    	lblGenero = new MyJLabel("Genero:");
+		MyJLabel lblGenero = new MyJLabel("Genero:");
     	txtGenero = new MyJTextField(15);
 
-    	lblLancamento = new MyJLabel("Lancamento:");
+		MyJLabel lblLancamento = new MyJLabel("Lancamento:");
     	txtLancamento = new MyJFormattedTextField(setMascara());
 
-    	lblLetra = new MyJLabel("Letra:");
+		MyJLabel lblLetra = new MyJLabel("Letra:");
     	txtLetra = new MyJTextArea();
-		scrollPane = new JScrollPane(txtLetra);
+		JScrollPane scrollPane = new JScrollPane(txtLetra);
 
-    	lblArtista = new MyJLabel("Artista:");
+		MyJLabel lblArtista = new MyJLabel("Artista:");
     	cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
     	
     	pnlForm.add(lblNome);

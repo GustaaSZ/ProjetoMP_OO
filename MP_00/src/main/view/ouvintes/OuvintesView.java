@@ -21,8 +21,6 @@ public class OuvintesView extends JFrame implements ActionListener{
 	private MyJPanel pnlBody;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-
 	private MyJButton btnAdd;
 	private MyJButton btnRemove;
 	private MyJButton btnUpdate;
@@ -51,7 +49,7 @@ public class OuvintesView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Crud de Ouvintes");
+		MyJLabel lblTitle = new MyJLabel("Crud de Ouvintes");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;

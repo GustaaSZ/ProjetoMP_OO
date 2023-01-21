@@ -24,10 +24,6 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblPlaylist;
-	private MyJLabel lblOuvinte;
-
 	private MyJComboBox<String> cboxPlaylist;
 	private MyJComboBox<Ouvinte> cboxOuvinte;
 
@@ -45,7 +41,7 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Adicionar Playlist");
+		MyJLabel lblTitle = new MyJLabel("Adicionar Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -57,8 +53,8 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 		if (pnlForm == null) {
 			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
 		}
-		lblPlaylist = new MyJLabel("Playlist:");
-		lblOuvinte = new MyJLabel("Ouvinte:");
+		MyJLabel lblPlaylist = new MyJLabel("Playlist:");
+		MyJLabel lblOuvinte = new MyJLabel("Ouvinte:");
 
 		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());

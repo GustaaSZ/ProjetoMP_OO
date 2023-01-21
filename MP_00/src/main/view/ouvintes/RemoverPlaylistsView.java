@@ -27,11 +27,6 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	// Instãnciando componenstes da Classe MyJLabel
-	private MyJLabel lblTitle;
-	private MyJLabel lblPlaylist;
-	private MyJLabel lblOuvinte;
-
 	private MyJComboBox<String> cboxPlaylist;
 	private MyJComboBox<Ouvinte> cboxOuvinte;
 
@@ -50,7 +45,8 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Remover Playlist");
+		// Instãnciando componenstes da Classe MyJLabel
+		MyJLabel lblTitle = new MyJLabel("Remover Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -62,8 +58,8 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 		if (pnlForm == null) {
 			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
 		}
-		lblPlaylist = new MyJLabel("Playlist:");
-		lblOuvinte = new MyJLabel("Ouvinte:");
+		MyJLabel lblPlaylist = new MyJLabel("Playlist:");
+		MyJLabel lblOuvinte = new MyJLabel("Ouvinte:");
 
 		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());

@@ -21,11 +21,6 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblPlaylist;
-	private MyJLabel lblTitle;
-	private MyJLabel lblNome;
-	private MyJLabel lblDescricao;
-	
 	private MyJTextField txtNome;
 	private MyJTextField txtDescricao;
 	
@@ -44,7 +39,7 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Atualizar Playlist");
+		MyJLabel lblTitle = new MyJLabel("Atualizar Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -54,14 +49,14 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 		if (pnlForm == null) {
 			pnlForm = new MyJPanel(new GridLayout(5, 2), true);
 		}
-		lblPlaylist = new MyJLabel("Playlist:");
+		MyJLabel lblPlaylist = new MyJLabel("Playlist:");
 		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
-		lblNome = new MyJLabel("Nome:");
+		MyJLabel lblNome = new MyJLabel("Nome:");
     	txtNome = new MyJTextField(15);
 		txtNome.setText(playlistsCadastradas.get(0).getNome());
-    	
-    	lblDescricao = new MyJLabel("Descrição:");
+
+		MyJLabel lblDescricao = new MyJLabel("Descrição:");
     	txtDescricao = new MyJTextField(15);
 		txtDescricao.setText(playlistsCadastradas.get(0).getDescricao());
     	

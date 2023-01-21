@@ -19,8 +19,6 @@ public class LetraView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private JScrollPane scrollPane;
 	private MyJTextArea txtLetra;
 	private MyJComboBox<String> cboxMusica;
 
@@ -36,7 +34,7 @@ public class LetraView extends JFrame implements ActionListener {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
 
-		lblTitle = new MyJLabel("Letra da Música");
+		MyJLabel lblTitle = new MyJLabel("Letra da Música");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -53,7 +51,7 @@ public class LetraView extends JFrame implements ActionListener {
 		txtLetra = new MyJTextArea();
 		txtLetra.setText(musicasCadastradas.get(0).getLetra());
 
-		scrollPane = new JScrollPane(txtLetra);
+		JScrollPane scrollPane = new JScrollPane(txtLetra);
 
 		pnlForm.add(cboxMusica, BorderLayout.NORTH);
 		pnlForm.add(scrollPane);

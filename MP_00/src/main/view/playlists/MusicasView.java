@@ -21,8 +21,6 @@ public class MusicasView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-
 	private MyJList<Musica> lista;
 
 	private MyJComboBox<String> cboxPlaylist;
@@ -38,7 +36,7 @@ public class MusicasView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Músicas da Playlist");
+		MyJLabel lblTitle = new MyJLabel("Músicas da Playlist");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -50,8 +48,8 @@ public class MusicasView extends JFrame implements ActionListener {
 		}
 		cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
-		DefaultListModel<Musica> model = new DefaultListModel<Musica>();
-		lista = new MyJList<Musica>(model);
+		DefaultListModel<Musica> model = new DefaultListModel<>();
+		lista = new MyJList<>(model);
 
 		for (int i = 0; i < playlistsCadastradas.get(0).getMusicas().size(); i++) {
 			model.add(i, playlistsCadastradas.get(0).getMusicas().get(i));

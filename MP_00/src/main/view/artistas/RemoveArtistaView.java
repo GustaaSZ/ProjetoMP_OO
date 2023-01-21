@@ -22,9 +22,6 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblArtista;
-
 	private MyJComboBox<Artista> cboxArtista;
 
 	private MyJButton btnRemover;
@@ -42,7 +39,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Remover Artista");
+		MyJLabel lblTitle = new MyJLabel("Remover Artista");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -55,7 +52,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 			pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
 		}
 
-		lblArtista = new MyJLabel("Artista que deseja remover:");
+		MyJLabel lblArtista = new MyJLabel("Artista que deseja remover:");
 		cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
 
 		pnlForm.add(lblArtista);

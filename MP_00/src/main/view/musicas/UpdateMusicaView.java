@@ -24,13 +24,6 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblMusica;
-	private MyJLabel lblNome;
-	private MyJLabel lblGenero;
-	private MyJLabel lblLancamento;
-	private MyJLabel lblLetra;
-
 	private MyJTextField txtNome;
 	private MyJTextField txtGenero;
 	private MyJFormattedTextField txtLancamento;
@@ -51,7 +44,7 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Atualizar Música");
+		MyJLabel lblTitle = new MyJLabel("Atualizar Música");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -62,22 +55,22 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
 			pnlForm = new MyJPanel(new GridLayout(5, 5), true);
 		}
 
-		lblMusica = new MyJLabel("Música:");
+		MyJLabel lblMusica = new MyJLabel("Música:");
 		cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
 
-		lblNome = new MyJLabel("Nome:");
+		MyJLabel lblNome = new MyJLabel("Nome:");
 		txtNome = new MyJTextField(20);
 		txtNome.setText(musicasCadastradas.get(0).getNome());
 
-		lblGenero = new MyJLabel("Genero:");
+		MyJLabel lblGenero = new MyJLabel("Genero:");
 		txtGenero = new MyJTextField(15);
 		txtGenero.setText(musicasCadastradas.get(0).getGenero());
 
-		lblLancamento = new MyJLabel("Lancamento:");
+		MyJLabel lblLancamento = new MyJLabel("Lancamento:");
 		txtLancamento = new MyJFormattedTextField(setMascara());
 		txtLancamento.setText(dateToString(musicasCadastradas.get(0).getLancamento()));
 
-		lblLetra = new MyJLabel("Letra:");
+		MyJLabel lblLetra = new MyJLabel("Letra:");
 		txtLetra = new MyJTextArea();
 		txtLetra.setLineWrap(true);
 		txtLetra.setText(musicasCadastradas.get(0).getLetra());

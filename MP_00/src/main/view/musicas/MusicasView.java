@@ -20,8 +20,6 @@ public class MusicasView extends JFrame implements ActionListener {
 	private MyJPanel pnlBody;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-
 	private MyJButton btnAdd;
 	private MyJButton btnRemove;
 	private MyJButton btnUpdate;
@@ -49,7 +47,7 @@ public class MusicasView extends JFrame implements ActionListener {
 		if (pnlTitle == null) {
 			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
 		}
-		lblTitle = new MyJLabel("Crud de musicas");
+		MyJLabel lblTitle = new MyJLabel("Crud de musicas");
 		pnlTitle.add(lblTitle);
 
 		return pnlTitle;

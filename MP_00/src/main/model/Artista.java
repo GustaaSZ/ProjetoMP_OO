@@ -6,7 +6,7 @@ public class Artista extends Pessoa {
     private final ArrayList<Musica> musicas;
 
     //Array com todos os artistas cadastrados
-    public static ArrayList<Artista> artistasCadastrados = new ArrayList<>();
+    public static final ArrayList<Artista> artistasCadastrados = new ArrayList<>();
 
     public Artista(String nome) {
         super(nome);

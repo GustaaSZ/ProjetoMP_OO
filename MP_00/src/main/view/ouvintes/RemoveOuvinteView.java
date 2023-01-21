@@ -22,9 +22,6 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblOuvinte;
-
 	private MyJComboBox<Ouvinte> cboxOuvinte;
 
 	private MyJButton btnRemover;
@@ -43,7 +40,7 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Remover Ouvinte");
+		MyJLabel lblTitle = new MyJLabel("Remover Ouvinte");
     	pnlTitle.add(lblTitle);
     	
 		return pnlTitle;
@@ -55,7 +52,7 @@ public class RemoveOuvinteView extends JFrame implements ActionListener{
 		if (pnlForm == null) {
 			pnlForm = new MyJPanel(new GridLayout(1, 2), true);
 		}
-		lblOuvinte = new MyJLabel("Ouvinte:");
+		MyJLabel lblOuvinte = new MyJLabel("Ouvinte:");
 		cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
 
 		pnlForm.add(lblOuvinte);

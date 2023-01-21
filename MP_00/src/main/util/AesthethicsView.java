@@ -1,7 +1,5 @@
 package main.util;
 import java.awt.*;
-// import javax.swing.ImageIcon;
-// import javax.swing.*;
 
 public class AesthethicsView {
 
@@ -11,9 +9,6 @@ public class AesthethicsView {
     public static Color getCorFundoBtn() {
         return corFundoBtn;
     }
-    public void setCorFundoBtn(Color corFundoBtn) {
-        AesthethicsView.corFundoBtn = corFundoBtn;
-    }
 
     // Atributo fonte Instânciando da classe Font e seus métodos getters e setters
     private static Font fonte = new Font("Helvitica", Font.BOLD,15);
@@ -21,18 +16,12 @@ public class AesthethicsView {
     public static Font getFonte() {
         return fonte;
     }
-    public static void setFonte(Font fonte) {
-        AesthethicsView.fonte = fonte;
-    }
 
     // Atributo fonte2 Instânciando da classe Font e seus métodos getters e setters
     private static Font fonteMenor = new Font("Helvitica", Font.BOLD,13);
     // Courier New
     public static Font getFonteMenor() {
         return fonteMenor;
-    }
-    public static void setFonteMenor(Font fonteMenor) {
-        AesthethicsView.fonteMenor = fonteMenor;
     }
 
     // // Atributo fonte Instânciando da classe Font e seus métodos getters e setters
@@ -51,18 +40,12 @@ public class AesthethicsView {
     public  static Color getCorLetra() {
         return corLetra;
     }
-    public void setCorLetra(Color corLetra) {
-        AesthethicsView.corLetra = corLetra;
-    }
 
     // Atributo corFundo e os métodos Getters e Setters
     private static Color corFundo = new Color(28 ,28 ,28); // Preto escuro
     
     public static Color getCorFundo() {
         return corFundo;
-    }
-    public void setCorFundo(Color corFundo) {
-        AesthethicsView.corFundo = corFundo;
     }
 
     // private ImageIcon image = new ImageIcon(getClass().getResource("imagem.jpg"));

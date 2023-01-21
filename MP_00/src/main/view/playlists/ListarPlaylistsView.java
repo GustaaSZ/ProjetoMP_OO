@@ -20,13 +20,7 @@ public class ListarPlaylistsView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private JScrollPane scroll;
-	
-	private MyJLabel lblTitle;
-	
-	private MyJList<Playlist> lista;
-	
+
 	private MyJButton btnVoltar;
 
 	public ListarPlaylistsView(){
@@ -38,7 +32,7 @@ public class ListarPlaylistsView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Lista de playlists");
+		MyJLabel lblTitle = new MyJLabel("Lista de playlists");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -48,14 +42,14 @@ public class ListarPlaylistsView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-		DefaultListModel<Playlist> model = new DefaultListModel<Playlist>();
-    	lista = new MyJList<Playlist>(model);
+		DefaultListModel<Playlist> model = new DefaultListModel<>();
+		MyJList<Playlist> lista = new MyJList<>(model);
 
     	for (int i = 0; i < playlistsCadastradas.size(); i++) {
     	    model.add(i, playlistsCadastradas.get(i));
     	}
-    	
-    	scroll = new JScrollPane(lista);
+
+		JScrollPane scroll = new JScrollPane(lista);
 		scroll.setBackground(AesthethicsView.getCorFundo());
     	
     	pnlForm.add(scroll);

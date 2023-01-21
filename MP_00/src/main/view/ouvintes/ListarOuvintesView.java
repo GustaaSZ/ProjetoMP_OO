@@ -20,11 +20,7 @@ public class ListarOuvintesView extends JFrame implements ActionListener{
 	private MyJPanel pnlTitle;
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
-	
-	private MyJLabel lblTitle;
-	
-	private MyJList<Ouvinte> lista;
-	
+
 	private MyJButton btnVoltar;
 
 	public ListarOuvintesView(){
@@ -38,7 +34,7 @@ public class ListarOuvintesView extends JFrame implements ActionListener{
     	if (pnlTitle == null) {
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
-    	lblTitle = new MyJLabel("Lista de Ouvintes");
+		MyJLabel lblTitle = new MyJLabel("Lista de Ouvintes");
     	pnlTitle.add(lblTitle);
 
 		return pnlTitle;
@@ -50,8 +46,8 @@ public class ListarOuvintesView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-    	DefaultListModel<Ouvinte> model = new DefaultListModel<Ouvinte>();
-    	lista = new MyJList<Ouvinte>(model);
+    	DefaultListModel<Ouvinte> model = new DefaultListModel<>();
+		MyJList<Ouvinte> lista = new MyJList<>(model);
 
     	for (int i = 0; i < ouvintesCadastrados.size(); i++) {
     	    model.add(i, ouvintesCadastrados.get(i));

@@ -9,7 +9,7 @@ public class Playlist {
 	private final ArrayList<Musica> musicas;
 	
 	//Array com todas as playlists cadastradas
-	public static ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
+	public static final ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
 	
 	public Playlist(String nome, String descricao) {
 		this.nome = nome;

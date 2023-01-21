@@ -20,9 +20,6 @@ public class AddArtistasView extends JFrame implements ActionListener{
 	private MyJPanel pnlForm;
 	private MyJPanel pnlRodape;
 
-	private MyJLabel lblTitle;
-	private MyJLabel lblNome;
-	
 	private MyJTextField txtNome;
 	
 	private MyJButton btnCriar;
@@ -39,7 +36,7 @@ public class AddArtistasView extends JFrame implements ActionListener{
     		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
     	}
 
-    	lblTitle = new MyJLabel("Crud de Artistas");
+		MyJLabel lblTitle = new MyJLabel("Crud de Artistas");
 
     	pnlTitle.add(lblTitle);
 
@@ -50,8 +47,8 @@ public class AddArtistasView extends JFrame implements ActionListener{
     	if (pnlForm == null) {
     		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
     	}
-    	
-    	lblNome = new MyJLabel("Nome:");
+
+		MyJLabel lblNome = new MyJLabel("Nome:");
     	txtNome = new MyJTextField(20);
 
     	pnlForm.add(lblNome);

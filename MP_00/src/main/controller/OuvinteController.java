@@ -42,12 +42,11 @@ public class OuvinteController {
 	
 //	 ********************************* METODOS ESTATICOS *********************************
 
-	public static boolean cadastrarOuvinte(String nome) {
+	public static void cadastrarOuvinte(String nome) {
 		if (!ouvinteExiste(buscarOuvintePorNome(nome))) {
-			return false;
+			return;
 		}
 		new Ouvinte(nome.trim());
-		return true;
 	}
 
 	public static boolean removerOuvinteCadastrado(Ouvinte ouvinte) {
