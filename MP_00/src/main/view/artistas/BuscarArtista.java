@@ -15,83 +15,83 @@ import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.objetoEncontrado;
 import static main.view.components.Dialog.openDialog;
 
-public class BuscarArtista extends JFrame implements ActionListener{
+public class BuscarArtista extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJTextField txtNome;
-	
-	
-	private MyJButton btnBuscar;
-	private MyJButton btnCancelar;
-
-	public BuscarArtista(){
-		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
-
-		btnBuscar.addActionListener(this);
-		btnCancelar.addActionListener(this);
-	}
+    private MyJTextField txtNome;
 
 
-	public MyJPanel getPnlTitle() {
-    	if (pnlTitle == null) {
-    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-    	}
-		MyJLabel lblTitle = new MyJLabel("Buscar Artista");
-    	pnlTitle.add(lblTitle);
+    private MyJButton btnBuscar;
+    private MyJButton btnCancelar;
 
-		return pnlTitle;
-	}
-	
-	public MyJPanel getPnlForm() {
-    	if (pnlForm == null) {
-    		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
-    	}
-		MyJLabel lblNome = new MyJLabel("Nome:");
-    	txtNome = new MyJTextField(20);
-    	
-    	pnlForm.add(lblNome);
-    	pnlForm.add(txtNome);
+    public BuscarArtista() {
+        inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
 
-		return pnlForm;
-	}
-	
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		
-		btnBuscar = new MyJButton("Buscar");
-		btnCancelar = new MyJButton("Voltar");
+        btnBuscar.addActionListener(this);
+        btnCancelar.addActionListener(this);
+    }
 
-    	pnlRodape.add(btnBuscar, true);
-    	pnlRodape.add(btnCancelar, true);
-		
-		return pnlRodape;
-	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		
-		if (src == btnBuscar) {
-			if(txtNome.getText() == null || txtNome.getText().trim().equals("")) {
-				openDialog("error");
-				return;
-			}
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        MyJLabel lblTitle = new MyJLabel("Buscar Artista");
+        pnlTitle.add(lblTitle);
 
-			if (objetoEncontrado(buscarArtistaPorNome(txtNome.getText()))) {
-				return;
-			}
-			openDialog("artista_nao_encontrado");
-		}
-		
-		if (src == btnCancelar) {
-			this.dispose();
-			new ArtistasView();
-		}
-	}
-	
+        return pnlTitle;
+    }
+
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
+        }
+        MyJLabel lblNome = new MyJLabel("Nome:");
+        txtNome = new MyJTextField(20);
+
+        pnlForm.add(lblNome);
+        pnlForm.add(txtNome);
+
+        return pnlForm;
+    }
+
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+
+        btnBuscar = new MyJButton("Buscar");
+        btnCancelar = new MyJButton("Voltar");
+
+        pnlRodape.add(btnBuscar, true);
+        pnlRodape.add(btnCancelar, true);
+
+        return pnlRodape;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
+
+        if (src == btnBuscar) {
+            if (txtNome.getText() == null || txtNome.getText().trim().equals("")) {
+                openDialog("error");
+                return;
+            }
+
+            if (objetoEncontrado(buscarArtistaPorNome(txtNome.getText()))) {
+                return;
+            }
+            openDialog("artista_nao_encontrado");
+        }
+
+        if (src == btnCancelar) {
+            this.dispose();
+            new ArtistasView();
+        }
+    }
+
 }

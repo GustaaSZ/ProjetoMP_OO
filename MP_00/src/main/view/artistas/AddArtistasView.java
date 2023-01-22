@@ -14,85 +14,86 @@ import static main.controller.ArtistaController.cadastrarArtista;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
-public class AddArtistasView extends JFrame implements ActionListener{
+public class AddArtistasView extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJTextField txtNome;
-	
-	private MyJButton btnCriar;
-	private MyJButton btnCancelar;
-	public AddArtistasView(){
-		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
+    private MyJTextField txtNome;
 
-		btnCriar.addActionListener(this);
+    private MyJButton btnCriar;
+    private MyJButton btnCancelar;
+
+    public AddArtistasView() {
+        inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
+
+        btnCriar.addActionListener(this);
         btnCancelar.addActionListener(this);
-	}
+    }
 
-	public MyJPanel getPnlTitle() {
-    	if (pnlTitle == null) {
-    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-    	}
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
 
-		MyJLabel lblTitle = new MyJLabel("Crud de Artistas");
+        MyJLabel lblTitle = new MyJLabel("Crud de Artistas");
 
-    	pnlTitle.add(lblTitle);
+        pnlTitle.add(lblTitle);
 
-		return pnlTitle;
-	}
-	
-	public MyJPanel getPnlForm() {
-    	if (pnlForm == null) {
-    		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
-    	}
+        return pnlTitle;
+    }
 
-		MyJLabel lblNome = new MyJLabel("Nome:");
-    	txtNome = new MyJTextField(20);
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
+        }
 
-    	pnlForm.add(lblNome);
-    	pnlForm.add(txtNome);
+        MyJLabel lblNome = new MyJLabel("Nome:");
+        txtNome = new MyJTextField(20);
 
-		return pnlForm;
-	}
-	
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		
-		btnCriar = new MyJButton("Cadastrar", true);
-    	btnCancelar = new MyJButton("Cancelar", true);
+        pnlForm.add(lblNome);
+        pnlForm.add(txtNome);
 
-    	pnlRodape.add(btnCriar);
-    	pnlRodape.add(btnCancelar);
+        return pnlForm;
+    }
 
-		return pnlRodape;
-	}
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		
-		if (src == btnCriar) {
-			if(txtNome.getText() == null || txtNome.getText().trim().equals("")) {
-				openDialog("error");
-				return;
-			}
-			if (!cadastrarArtista(txtNome.getText())) {
-				openDialog("error");
-				return;
-			}
-			this.dispose();
-			new ArtistasView();
-			openDialog("success");
-		}
-		
-		if (src == btnCancelar) {
-			this.dispose();
-			new ArtistasView();
-		}
-	}
-	
+        btnCriar = new MyJButton("Cadastrar", true);
+        btnCancelar = new MyJButton("Cancelar", true);
+
+        pnlRodape.add(btnCriar);
+        pnlRodape.add(btnCancelar);
+
+        return pnlRodape;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
+
+        if (src == btnCriar) {
+            if (txtNome.getText() == null || txtNome.getText().trim().equals("")) {
+                openDialog("error");
+                return;
+            }
+            if (!cadastrarArtista(txtNome.getText())) {
+                openDialog("error");
+                return;
+            }
+            this.dispose();
+            new ArtistasView();
+            openDialog("success");
+        }
+
+        if (src == btnCancelar) {
+            this.dispose();
+            new ArtistasView();
+        }
+    }
+
 }
