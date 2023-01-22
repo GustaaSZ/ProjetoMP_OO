@@ -159,7 +159,7 @@ public class OuvintesView extends JFrame implements ActionListener {
                 return;
             }
             this.dispose();
-            new BuscarOuvinte();
+            new BuscarOuvinteView();
         }
 
         if (src == btnVoltar) {

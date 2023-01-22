@@ -40,7 +40,9 @@ public class ArtistaController {
 
     public static Artista buscarArtistaPorNome(String nome) {
         return artistasCadastrados.stream()
-                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
+                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome))
+                .findFirst()
+                .orElse(null);
     }
 
     public static Artista artistaPorIndex(int index) {

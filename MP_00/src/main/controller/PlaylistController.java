@@ -53,7 +53,9 @@ public class PlaylistController {
 
     public static Playlist buscarPlaylistPorNome(String nome) {
         return playlistsCadastradas.stream()
-                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
+                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome))
+                .findFirst()
+                .orElse(null);
     }
 
     public static Playlist playlistPorIndex(int index) {

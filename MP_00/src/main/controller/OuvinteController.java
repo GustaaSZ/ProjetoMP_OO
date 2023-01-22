@@ -62,7 +62,9 @@ public class OuvinteController {
 
     public static Ouvinte buscarOuvintePorNome(String nome) {
         return ouvintesCadastrados.stream()
-                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
+                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome))
+                .findFirst()
+                .orElse(null);
     }
 
     public static Ouvinte ouvintePorIndex(int index) {

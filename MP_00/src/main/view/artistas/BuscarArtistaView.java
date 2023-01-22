@@ -1,4 +1,4 @@
-package main.view.ouvintes;
+package main.view.artistas;
 
 import main.view.components.MyJButton;
 import main.view.components.MyJLabel;
@@ -10,12 +10,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static main.controller.OuvinteController.buscarOuvintePorNome;
+import static main.controller.ArtistaController.buscarArtistaPorNome;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.objetoEncontrado;
 import static main.view.components.Dialog.openDialog;
 
-public class BuscarOuvinte extends JFrame implements ActionListener {
+public class BuscarArtistaView extends JFrame implements ActionListener {
 
     private MyJPanel pnlTitle;
     private MyJPanel pnlForm;
@@ -23,14 +23,17 @@ public class BuscarOuvinte extends JFrame implements ActionListener {
 
     private MyJTextField txtNome;
 
+
     private MyJButton btnBuscar;
     private MyJButton btnCancelar;
 
-    public BuscarOuvinte() {
-        inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+    public BuscarArtistaView() {
+        inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
+
         btnBuscar.addActionListener(this);
         btnCancelar.addActionListener(this);
     }
+
 
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
@@ -59,11 +62,12 @@ public class BuscarOuvinte extends JFrame implements ActionListener {
         if (pnlRodape == null) {
             pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
         }
-        btnBuscar = new MyJButton("Buscar", true);
-        btnCancelar = new MyJButton("Voltar", true);
 
-        pnlRodape.add(btnBuscar);
-        pnlRodape.add(btnCancelar);
+        btnBuscar = new MyJButton("Buscar");
+        btnCancelar = new MyJButton("Voltar");
+
+        pnlRodape.add(btnBuscar, true);
+        pnlRodape.add(btnCancelar, true);
 
         return pnlRodape;
     }
@@ -77,14 +81,17 @@ public class BuscarOuvinte extends JFrame implements ActionListener {
                 openDialog("error");
                 return;
             }
-            if (objetoEncontrado(buscarOuvintePorNome(txtNome.getText()))) {
+
+            if (objetoEncontrado(buscarArtistaPorNome(txtNome.getText()))) {
                 return;
             }
-            openDialog("ouvinte_nao_encontrado");
+            openDialog("artista_nao_encontrado");
         }
+
         if (src == btnCancelar) {
             this.dispose();
-            new OuvintesView();
+            new ArtistasView();
         }
     }
+
 }

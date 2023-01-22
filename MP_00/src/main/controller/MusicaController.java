@@ -66,7 +66,9 @@ public class MusicaController {
 
     public static Musica buscarMusicaPorNome(String nome) {
         return musicasCadastradas.stream()
-                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
+                .filter(value -> value.getNome().trim().equalsIgnoreCase(nome))
+                .findFirst()
+                .orElse(null);
     }
 
     public static Musica musicaPorIndex(int index) {

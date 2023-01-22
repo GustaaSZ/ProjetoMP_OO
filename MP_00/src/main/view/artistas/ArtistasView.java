@@ -135,7 +135,7 @@ public class ArtistasView extends JFrame implements ActionListener {
                 return;
             }
             this.dispose();
-            new BuscarArtista();
+            new BuscarArtistaView();
         }
 
         if (src == btnListMusicas) {
