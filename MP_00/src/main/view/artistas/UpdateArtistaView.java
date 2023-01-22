@@ -49,7 +49,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(3, 2), true);
+            pnlForm = new MyJPanel(new GridLayout(3, 2));
         }
         MyJLabel lblArtista = new MyJLabel("Artista:");
         cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());

@@ -42,7 +42,7 @@ public class LetraView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new BorderLayout(), true);
+            pnlForm = new MyJPanel(new BorderLayout());
         }
         cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
 

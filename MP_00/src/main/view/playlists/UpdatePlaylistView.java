@@ -45,7 +45,7 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(5, 2), true);
+            pnlForm = new MyJPanel(new GridLayout(5, 2));
         }
         MyJLabel lblPlaylist = new MyJLabel("Playlist:");
         cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());

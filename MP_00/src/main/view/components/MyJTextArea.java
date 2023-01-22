@@ -8,7 +8,7 @@ public class MyJTextArea extends JTextArea {
     public MyJTextArea() {
         setLineWrap(true);
         setWrapStyleWord(true);
-        setBackground(AesthethicsView.getCorFundoBtn());
+        setBackground(AesthethicsView.getCorFundo());
         setForeground(AesthethicsView.getCorLetra());
         setFont(AesthethicsView.getFonteMenor());
     }

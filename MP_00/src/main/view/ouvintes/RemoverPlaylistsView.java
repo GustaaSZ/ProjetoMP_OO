@@ -56,7 +56,7 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 	
 	public MyJPanel getPnlForm() {
 		if (pnlForm == null) {
-			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
+			pnlForm = new MyJPanel(new GridLayout(2, 2));
 		}
 		MyJLabel lblPlaylist = new MyJLabel("Playlist:");
 		MyJLabel lblOuvinte = new MyJLabel("Ouvinte:");

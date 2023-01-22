@@ -47,7 +47,7 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(2, 2), true);
+            pnlForm = new MyJPanel(new GridLayout(2, 2));
         }
 
         MyJLabel lblArtista = new MyJLabel("Artista:");

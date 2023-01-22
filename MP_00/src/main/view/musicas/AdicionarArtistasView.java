@@ -49,7 +49,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(2, 2), true);
+            pnlForm = new MyJPanel(new GridLayout(2, 2));
         }
         MyJLabel lblMusica = new MyJLabel("Música:");
         cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());

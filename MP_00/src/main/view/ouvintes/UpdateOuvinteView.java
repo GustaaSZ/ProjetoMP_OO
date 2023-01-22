@@ -46,7 +46,7 @@ public class UpdateOuvinteView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(2, 2), true);
+            pnlForm = new MyJPanel(new GridLayout(2, 2));
         }
         MyJLabel lblNome = new MyJLabel("Nome: ");
         txtNome = new MyJTextField(20);

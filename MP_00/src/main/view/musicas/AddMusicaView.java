@@ -51,7 +51,7 @@ public class AddMusicaView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(5, 2), true);
+            pnlForm = new MyJPanel(new GridLayout(5, 2));
         }
 
         MyJLabel lblNome = new MyJLabel("Nome:");

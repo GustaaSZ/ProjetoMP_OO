@@ -43,7 +43,7 @@ public class RemovePlaylistView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(1, 2), true);
+            pnlForm = new MyJPanel(new GridLayout(1, 2));
         }
         MyJLabel lblArtista = new MyJLabel("Playlist:");
         cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());

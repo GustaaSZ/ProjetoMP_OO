@@ -49,7 +49,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new BorderLayout(), true);
+            pnlForm = new MyJPanel(new BorderLayout());
         }
         MyJLabel lblArtista = new MyJLabel("Artista:");
         pnlForm.add(lblArtista, BorderLayout.NORTH);
