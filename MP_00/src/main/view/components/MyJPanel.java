@@ -17,7 +17,7 @@ public class MyJPanel extends JPanel {
 
     public MyJPanel(FlowLayout flowLayout, boolean isForm) {
         super(flowLayout);
-        setBackground(isForm ? AesthethicsView.getCorFundo() : AesthethicsView.getCorFundoBtn());
+        setBackground(AesthethicsView.getCorFundo());
     }
     public MyJPanel(GridLayout gridLayout) {
         super(gridLayout);
