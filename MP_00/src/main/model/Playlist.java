@@ -50,7 +50,7 @@ public class Playlist {
 
     @Override
     public String toString() {
-        return "Playlist " + this.nome + " possui " + musicas.size() + " musicas cadastradas!";
+        return this.nome + " possui " + musicas.size() + " musicas cadastradas!";
     }
 
 }

@@ -80,10 +80,10 @@ public class Musica {
     public String toString() {
         return artistas.size() == 1
                 ?
-                "A musica " + nome + " foi lancada em " + dateToString(lancamento)
+                this.nome + " foi lancada em " + dateToString(lancamento)
                         + ", do genero " + genero + " e foi feita pelo artista " + artistas.get(0).getNome() + "."
                 :
-                "A musica " + nome + " foi lancada em " + dateToString(lancamento) +
+                this.nome + " foi lancada em " + dateToString(lancamento) +
                         ", do genero " + genero + " e foi feita pelos artistas: "
                         + arrayListArtistaToString(artistas);
     }
