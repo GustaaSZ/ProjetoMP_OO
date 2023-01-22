@@ -12,77 +12,78 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static main.model.Musica.musicasCadastradas;
+import static main.controller.MusicaController.musicaPorIndex;
+import static main.controller.MusicaController.quantidadeMusicasCadastradas;
 import static main.util.Inicializacao.inicializar;
 
-public class ListarMusicasView extends JFrame implements ActionListener{
+public class ListarMusicasView extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJButton btnVoltar;
+    private MyJButton btnVoltar;
 
-	public ListarMusicasView(){
-		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
-		btnVoltar.addActionListener(this);
-	}
-	
-	public MyJPanel getPnlTitle() {
-    	if (pnlTitle == null) {
-    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-    	}
-		MyJLabel lblTitle = new MyJLabel("Lista de Musicas");
-    	pnlTitle.add(lblTitle);
+    public ListarMusicasView() {
+        inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
+        btnVoltar.addActionListener(this);
+    }
 
-		return pnlTitle;
-	}
-	
-	public MyJPanel getPnlForm() {
-    	if (pnlForm == null) {
-    		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
-    	}
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        MyJLabel lblTitle = new MyJLabel("Lista de Musicas");
+        pnlTitle.add(lblTitle);
 
-    	DefaultListModel<Musica> model = new DefaultListModel<>();
-		MyJList<Musica> lista = new MyJList<>(model);
-    	for (int i = 0; i < musicasCadastradas.size(); i++) {
-    	    model.add(i, musicasCadastradas.get(i));
-		}
+        return pnlTitle;
+    }
 
-		JScrollPane scroll = new JScrollPane(lista);
-		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
+        }
 
-		JViewport viewport = scroll.getViewport();
-		int w = 500;
-		int h = viewport.getPreferredSize().height;
-		Dimension preferredSize = new Dimension(w, h);
-		viewport.setPreferredSize(preferredSize);
+        DefaultListModel<Musica> model = new DefaultListModel<>();
+        MyJList<Musica> lista = new MyJList<>(model);
+        for (int i = 0; i < quantidadeMusicasCadastradas(); i++) {
+            model.add(i, musicaPorIndex(i));
+        }
 
-    	pnlForm.add(scroll);
-		pnlForm.setBackground((AesthethicsView.getCorFundo()));
-    	
-		return pnlForm;
-	}
-	
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		btnVoltar = new MyJButton("Voltar", true);
-    	pnlRodape.add(btnVoltar);
+        JScrollPane scroll = new JScrollPane(lista);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-		return pnlRodape;
-	}
+        JViewport viewport = scroll.getViewport();
+        int w = 500;
+        int h = viewport.getPreferredSize().height;
+        Dimension preferredSize = new Dimension(w, h);
+        viewport.setPreferredSize(preferredSize);
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		
-		if (src == btnVoltar) {
-			this.dispose();
-			new MusicasView();
-		}
-	}
-	
+        pnlForm.add(scroll);
+        pnlForm.setBackground((AesthethicsView.getCorFundo()));
+
+        return pnlForm;
+    }
+
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        btnVoltar = new MyJButton("Voltar", true);
+        pnlRodape.add(btnVoltar);
+
+        return pnlRodape;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
+
+        if (src == btnVoltar) {
+            this.dispose();
+            new MusicasView();
+        }
+    }
+
 }

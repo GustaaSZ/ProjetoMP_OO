@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Ouvinte extends Pessoa {
     private final ArrayList<Playlist> playlists;
-    
+
     public static final ArrayList<Ouvinte> ouvintesCadastrados = new ArrayList<>();
 
     public Ouvinte(String nome) {
@@ -17,10 +17,10 @@ public class Ouvinte extends Pessoa {
         return playlists;
     }
 
-	@Override
-	public String toString() {
-		return this.getNome();
-	}
-    
+    @Override
+    public String toString() {
+        return this.getNome();
+    }
+
 }
 

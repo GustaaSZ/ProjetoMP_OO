@@ -12,69 +12,70 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static main.model.Playlist.playlistsCadastradas;
+import static main.controller.PlaylistController.playlistPorIndex;
+import static main.controller.PlaylistController.quantidadePlaylistsCadastradas;
 import static main.util.Inicializacao.inicializar;
 
-public class ListarPlaylistsView extends JFrame implements ActionListener{
+public class ListarPlaylistsView extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJButton btnVoltar;
+    private MyJButton btnVoltar;
 
-	public ListarPlaylistsView(){
-		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
-		btnVoltar.addActionListener(this);
-	}
+    public ListarPlaylistsView() {
+        inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+        btnVoltar.addActionListener(this);
+    }
 
-	public MyJPanel getPnlTitle() {
-    	if (pnlTitle == null) {
-    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-    	}
-		MyJLabel lblTitle = new MyJLabel("Lista de playlists");
-    	pnlTitle.add(lblTitle);
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        MyJLabel lblTitle = new MyJLabel("Lista de playlists");
+        pnlTitle.add(lblTitle);
 
-		return pnlTitle;
-	}
-	
-	public MyJPanel getPnlForm() {
-    	if (pnlForm == null) {
-    		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
-    	}
-		DefaultListModel<Playlist> model = new DefaultListModel<>();
-		MyJList<Playlist> lista = new MyJList<>(model);
+        return pnlTitle;
+    }
 
-    	for (int i = 0; i < playlistsCadastradas.size(); i++) {
-    	    model.add(i, playlistsCadastradas.get(i));
-    	}
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
+        }
+        DefaultListModel<Playlist> model = new DefaultListModel<>();
+        MyJList<Playlist> lista = new MyJList<>(model);
 
-		JScrollPane scroll = new JScrollPane(lista);
-		scroll.setBackground(AesthethicsView.getCorFundo());
-    	
-    	pnlForm.add(scroll);
+        for (int i = 0; i < quantidadePlaylistsCadastradas(); i++) {
+            model.add(i, playlistPorIndex(i));
+        }
 
-		return pnlForm;
-	}
-	
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		btnVoltar = new MyJButton("Voltar");
-    	pnlRodape.add(btnVoltar);
+        JScrollPane scroll = new JScrollPane(lista);
+        scroll.setBackground(AesthethicsView.getCorFundo());
 
-		return pnlRodape;
-	}
+        pnlForm.add(scroll);
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		
-		if (src == btnVoltar) {
-			this.dispose();
-			new PlaylistsView();
-		}
-	}
-	
+        return pnlForm;
+    }
+
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        btnVoltar = new MyJButton("Voltar");
+        pnlRodape.add(btnVoltar);
+
+        return pnlRodape;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
+
+        if (src == btnVoltar) {
+            this.dispose();
+            new PlaylistsView();
+        }
+    }
+
 }

@@ -56,6 +56,18 @@ public class PlaylistController {
                 .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
     }
 
+    public static Playlist playlistPorIndex(int index) {
+        return playlistsCadastradas.get(index);
+    }
+
+    public static int quantidadePlaylistsCadastradas() {
+        return playlistsCadastradas.size();
+    }
+
+    public static boolean isPlaylistsEmpty() {
+        return playlistsCadastradas.isEmpty();
+    }
+
     public static String[] arrayPlaylistsCadastradas() {
         String[] array = new String[playlistsCadastradas.size()];
         for (int i = 0; i < array.length; i++) {
@@ -72,4 +84,3 @@ public class PlaylistController {
         return array;
     }
 }
-

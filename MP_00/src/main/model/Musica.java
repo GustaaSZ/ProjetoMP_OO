@@ -26,7 +26,7 @@ public class Musica {
 
         musicasCadastradas.add(this);
     }
-    
+
     public Musica(Artista artista, String nome, String letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();
         this.nome = nome;
@@ -40,7 +40,7 @@ public class Musica {
         artista.getMusicas().add(this);
     }
 
-	public ArrayList<Artista> getArtistas() {
+    public ArrayList<Artista> getArtistas() {
         return artistas;
     }
 

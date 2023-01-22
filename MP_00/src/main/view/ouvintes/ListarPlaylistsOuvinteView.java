@@ -10,9 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
-import static main.controller.OuvinteController.arrayOuvintesCadastrados;
-import static main.controller.OuvinteController.arrayPlaylistsPorOuvinte;
-import static main.model.Ouvinte.ouvintesCadastrados;
+import static main.controller.OuvinteController.*;
 import static main.util.Inicializacao.inicializar;
 
 public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener {
@@ -51,8 +49,8 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
         DefaultListModel<Playlist> model = new DefaultListModel<>();
         lista = new MyJList<>(model);
 
-        for (int i = 0; i < ouvintesCadastrados.get(0).getPlaylists().size(); i++) {
-            model.add(i, ouvintesCadastrados.get(0).getPlaylists().get(i));
+        for (int i = 0; i < ouvintePorIndex(0).getPlaylists().size(); i++) {
+            model.add(i, ouvintePorIndex(0).getPlaylists().get(i));
         }
 
         pnlForm.add(cboxOuvinte, BorderLayout.NORTH);

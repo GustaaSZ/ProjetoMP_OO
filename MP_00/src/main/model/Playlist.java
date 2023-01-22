@@ -4,53 +4,53 @@ import java.util.ArrayList;
 
 public class Playlist {
 
-	private String nome;
-	private String descricao;
-	private final ArrayList<Musica> musicas;
-	
-	//Array com todas as playlists cadastradas
-	public static final ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
-	
-	public Playlist(String nome, String descricao) {
-		this.nome = nome;
-		this.descricao = descricao;
-		this.musicas = new ArrayList<>();
+    private String nome;
+    private String descricao;
+    private final ArrayList<Musica> musicas;
 
-		playlistsCadastradas.add(this);
-	}
+    //Array com todas as playlists cadastradas
+    public static final ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
 
-	public Playlist(Ouvinte ouvinte, String nome, String descricao) {
-		this.nome = nome;
-		this.descricao = descricao;
-		this.musicas = new ArrayList<>();
+    public Playlist(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.musicas = new ArrayList<>();
 
-		playlistsCadastradas.add(this);
-	}
+        playlistsCadastradas.add(this);
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public Playlist(Ouvinte ouvinte, String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.musicas = new ArrayList<>();
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+        playlistsCadastradas.add(this);
+    }
 
-	public String getDescricao() {
-		return descricao;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public ArrayList<Musica> getMusicas() {
-		return musicas;
-	}
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public ArrayList<Musica> getMusicas() {
+        return musicas;
+    }
 
 
-	@Override
-	public String toString() {
-		return "Playlist " + this.nome + " possui " + musicas.size() + " musicas cadastradas!";
-	}
-	
+    @Override
+    public String toString() {
+        return "Playlist " + this.nome + " possui " + musicas.size() + " musicas cadastradas!";
+    }
+
 }

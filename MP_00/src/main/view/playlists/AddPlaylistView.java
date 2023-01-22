@@ -14,84 +14,84 @@ import static main.controller.PlaylistController.cadastrarPlaylist;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
-public class AddPlaylistView extends JFrame implements ActionListener{
-	
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+public class AddPlaylistView extends JFrame implements ActionListener {
 
-	private MyJTextField txtNome;
-	private MyJTextField txtDescricao;
-	
-	private MyJButton btnCriar;
-	private MyJButton btnCancelar;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	public AddPlaylistView(){
-		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
-		btnCriar.addActionListener(this);
-		btnCancelar.addActionListener(this);
-	}
+    private MyJTextField txtNome;
+    private MyJTextField txtDescricao;
 
-	public MyJPanel getPnlTitle() {
-    	if (pnlTitle == null) {
-    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-    	}
-		MyJLabel lblTitle = new MyJLabel("Cadastro de Playlist");
-    	pnlTitle.add(lblTitle);
+    private MyJButton btnCriar;
+    private MyJButton btnCancelar;
 
-		return pnlTitle;
-	}
-	
-	public MyJPanel getPnlForm() {
-    	if (pnlForm == null) {
-    		pnlForm = new MyJPanel(new GridLayout(2,2), true);
-    	}
-		MyJLabel lblNome = new MyJLabel("Nome:");
-    	txtNome = new MyJTextField(15);
+    public AddPlaylistView() {
+        inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+        btnCriar.addActionListener(this);
+        btnCancelar.addActionListener(this);
+    }
 
-		MyJLabel lblDescricao = new MyJLabel("Descrição:");
-    	txtDescricao = new MyJTextField(15);
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        MyJLabel lblTitle = new MyJLabel("Cadastro de Playlist");
+        pnlTitle.add(lblTitle);
 
-    	pnlForm.add(lblNome);
-    	pnlForm.add(txtNome);
-    	pnlForm.add(lblDescricao);
-    	pnlForm.add(txtDescricao);
+        return pnlTitle;
+    }
 
-		return pnlForm;
-	}
-	
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		btnCriar = new MyJButton("Cadastrar");
-    	btnCancelar = new MyJButton("Cancelar");
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new GridLayout(2, 2), true);
+        }
+        MyJLabel lblNome = new MyJLabel("Nome:");
+        txtNome = new MyJTextField(15);
 
-    	pnlRodape.add(btnCriar);
-    	pnlRodape.add(btnCancelar);
+        MyJLabel lblDescricao = new MyJLabel("Descrição:");
+        txtDescricao = new MyJTextField(15);
 
-		return pnlRodape;
-	}
+        pnlForm.add(lblNome);
+        pnlForm.add(txtNome);
+        pnlForm.add(lblDescricao);
+        pnlForm.add(txtDescricao);
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		
-		if (src == btnCriar) {
-				 if (!cadastrarPlaylist(
-					txtNome.getText(),
-					txtDescricao.getText())) {
-				openDialog("error");
-				return;
-			}
-			this.dispose();
-			new PlaylistsView();
-			openDialog("success");
-		}
-		
-		if (src == btnCancelar) {
-			this.dispose();
-			new PlaylistsView();
-		}
-	}
+        return pnlForm;
+    }
+
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        btnCriar = new MyJButton("Cadastrar");
+        btnCancelar = new MyJButton("Cancelar");
+
+        pnlRodape.add(btnCriar);
+        pnlRodape.add(btnCancelar);
+
+        return pnlRodape;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
+
+        if (src == btnCriar) {
+            if (!cadastrarPlaylist(
+                    txtNome.getText(),
+                    txtDescricao.getText())) {
+                openDialog("error");
+                return;
+            }
+            this.dispose();
+            new PlaylistsView();
+            openDialog("success");
+        }
+
+        if (src == btnCancelar) {
+            this.dispose();
+            new PlaylistsView();
+        }
+    }
 }

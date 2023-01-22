@@ -69,6 +69,18 @@ public class MusicaController {
                 .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
     }
 
+    public static Musica musicaPorIndex(int index) {
+        return musicasCadastradas.get(index);
+    }
+
+    public static int quantidadeMusicasCadastradas() {
+        return musicasCadastradas.size();
+    }
+
+    public static boolean isMusicasEmpty() {
+        return musicasCadastradas.isEmpty();
+    }
+
     public static String[] arrayMusicasCadastradas() {
         String[] array = new String[musicasCadastradas.size()];
         for (int i = 0; i < array.length; i++) {

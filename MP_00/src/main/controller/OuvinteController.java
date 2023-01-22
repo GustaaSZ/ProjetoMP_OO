@@ -65,6 +65,18 @@ public class OuvinteController {
                 .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
     }
 
+    public static Ouvinte ouvintePorIndex(int index) {
+        return ouvintesCadastrados.get(index);
+    }
+
+    public static int quantidadeOuvintesCadastrados() {
+        return ouvintesCadastrados.size();
+    }
+
+    public static boolean isOuvintesEmpty() {
+        return ouvintesCadastrados.isEmpty();
+    }
+
     public static Ouvinte[] arrayOuvintesCadastrados() {
         return ouvintesCadastrados.toArray(new Ouvinte[0]);
     }

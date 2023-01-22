@@ -14,104 +14,103 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 import static main.controller.MusicaController.*;
-import static main.model.Musica.musicasCadastradas;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
 public class RemoverArtistaView extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJComboBox<Artista> cboxArtista;
-	private MyJComboBox<String> cboxMusica;
+    private MyJComboBox<Artista> cboxArtista;
+    private MyJComboBox<String> cboxMusica;
 
-	private MyJButton btnRemove;
-	private MyJButton btnCancelar;
+    private MyJButton btnRemove;
+    private MyJButton btnCancelar;
 
-	public RemoverArtistaView() {
-		inicializar(this, "CRUD Música", getPnlTitle(), getPnlForm(), getPnlRodape());
-		btnRemove.addActionListener(this);
-		btnCancelar.addActionListener(this);
-	}
+    public RemoverArtistaView() {
+        inicializar(this, "CRUD Música", getPnlTitle(), getPnlForm(), getPnlRodape());
+        btnRemove.addActionListener(this);
+        btnCancelar.addActionListener(this);
+    }
 
-	public MyJPanel getPnlTitle() {
-		if (pnlTitle == null) {
-			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		MyJLabel lblTitle = new MyJLabel("Remover Artista de alguma Música");
-		pnlTitle.add(lblTitle);
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        MyJLabel lblTitle = new MyJLabel("Remover Artista de alguma Música");
+        pnlTitle.add(lblTitle);
 
-		return pnlTitle;
-	}
+        return pnlTitle;
+    }
 
-	public MyJPanel getPnlForm() {
-		if (pnlForm == null) {
-			pnlForm = new MyJPanel(new GridLayout(2, 2), true);
-		}
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new GridLayout(2, 2), true);
+        }
 
-		MyJLabel lblArtista = new MyJLabel("Artista:");
-		MyJLabel lblMusica = new MyJLabel("Música:");
+        MyJLabel lblArtista = new MyJLabel("Artista:");
+        MyJLabel lblMusica = new MyJLabel("Música:");
 
-		cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
-		cboxArtista = new MyJComboBox<>(
-				arrayArtistasNaMusica(musicasCadastradas.get(0)));
+        cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
+        cboxArtista = new MyJComboBox<>(
+                arrayArtistasNaMusica(musicaPorIndex(0)));
 
-		pnlForm.add(lblMusica);
-		pnlForm.add(cboxMusica);
-		pnlForm.add(lblArtista);
-		pnlForm.add(cboxArtista);
-		
-		cboxMusica.addItemListener(e -> {
-			if (e.getStateChange() == ItemEvent.SELECTED) {
-				cboxArtista.removeAllItems();
+        pnlForm.add(lblMusica);
+        pnlForm.add(cboxMusica);
+        pnlForm.add(lblArtista);
+        pnlForm.add(cboxArtista);
 
-				var array = arrayArtistasNaMusica(
-						buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
+        cboxMusica.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                cboxArtista.removeAllItems();
 
-				for (Artista artista : array) {
-					cboxArtista.addItem(artista);
-				}
-			}
-		});
+                var array = arrayArtistasNaMusica(
+                        buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
 
-		return pnlForm;
-	}
+                for (Artista artista : array) {
+                    cboxArtista.addItem(artista);
+                }
+            }
+        });
 
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		btnRemove = new MyJButton("Remover", true);
-		btnCancelar = new MyJButton("Cancelar", true);
+        return pnlForm;
+    }
 
-		pnlRodape.add(btnRemove);
-		pnlRodape.add(btnCancelar);
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        btnRemove = new MyJButton("Remover", true);
+        btnCancelar = new MyJButton("Cancelar", true);
 
-		return pnlRodape;
-	}
+        pnlRodape.add(btnRemove);
+        pnlRodape.add(btnCancelar);
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
+        return pnlRodape;
+    }
 
-		if (src == btnRemove) {
-			MusicaController controller = new MusicaController(
-					buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
-			if (!controller.removerArtista((Artista) cboxArtista.getSelectedItem())) {
-				openDialog("musica_sem_artista");
-				return;
-			}
-			this.dispose();
-			new MusicasView();
-			openDialog("success");
-		}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
 
-		if (src == btnCancelar) {
-			this.dispose();
-			new MusicasView();
-		}
-	}
+        if (src == btnRemove) {
+            MusicaController controller = new MusicaController(
+                    buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
+            if (!controller.removerArtista((Artista) cboxArtista.getSelectedItem())) {
+                openDialog("musica_sem_artista");
+                return;
+            }
+            this.dispose();
+            new MusicasView();
+            openDialog("success");
+        }
+
+        if (src == btnCancelar) {
+            this.dispose();
+            new MusicasView();
+        }
+    }
 
 }

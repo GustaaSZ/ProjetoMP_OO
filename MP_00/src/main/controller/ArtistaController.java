@@ -43,6 +43,18 @@ public class ArtistaController {
                 .filter(value -> value.getNome().trim().equalsIgnoreCase(nome)).findFirst().orElse(null);
     }
 
+    public static Artista artistaPorIndex(int index) {
+        return artistasCadastrados.get(index);
+    }
+
+    public static int quantidadeArtistasCadastrados() {
+        return artistasCadastrados.size();
+    }
+
+    public static boolean isArtistasEmpty() {
+        return artistasCadastrados.isEmpty();
+    }
+
     public static Artista[] arrayArtistasCadastrados() {
         return artistasCadastrados.toArray(new Artista[0]);
     }

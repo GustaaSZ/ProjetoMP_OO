@@ -18,85 +18,85 @@ import static main.view.components.Dialog.openDialog;
 
 public class RemoveArtistaView extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJComboBox<Artista> cboxArtista;
+    private MyJComboBox<Artista> cboxArtista;
 
-	private MyJButton btnRemover;
-	private MyJButton btnCancelar;
+    private MyJButton btnRemover;
+    private MyJButton btnCancelar;
 
-	public RemoveArtistaView() {
-		inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
+    public RemoveArtistaView() {
+        inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
 
-		btnRemover.addActionListener(this);
-		btnCancelar.addActionListener(this);
-	}
-	//	-------------------------------------------------------------
+        btnRemover.addActionListener(this);
+        btnCancelar.addActionListener(this);
+    }
+    //	-------------------------------------------------------------
 
-	public MyJPanel getPnlTitle() {
-		if (pnlTitle == null) {
-			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		MyJLabel lblTitle = new MyJLabel("Remover Artista");
-		pnlTitle.add(lblTitle);
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        MyJLabel lblTitle = new MyJLabel("Remover Artista");
+        pnlTitle.add(lblTitle);
 
-		return pnlTitle;
-	}
+        return pnlTitle;
+    }
 
-	//	-------------------------------------------------------------
+    //	-------------------------------------------------------------
 
-	public MyJPanel getPnlForm() {
-		if (pnlForm == null) {
-			pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
-		}
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
+        }
 
-		MyJLabel lblArtista = new MyJLabel("Artista que deseja remover:");
-		cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
+        MyJLabel lblArtista = new MyJLabel("Artista que deseja remover:");
+        cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
 
-		pnlForm.add(lblArtista);
-		pnlForm.add(cboxArtista);
+        pnlForm.add(lblArtista);
+        pnlForm.add(cboxArtista);
 
-		return pnlForm;
-	}
+        return pnlForm;
+    }
 
-	//	-------------------------------------------------------------
+    //	-------------------------------------------------------------
 
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		btnRemover = new MyJButton("Remover", true);
-		btnCancelar = new MyJButton("Cancelar", true);
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        btnRemover = new MyJButton("Remover", true);
+        btnCancelar = new MyJButton("Cancelar", true);
 
-		pnlRodape.add(btnRemover);
-		pnlRodape.add(btnCancelar);
+        pnlRodape.add(btnRemover);
+        pnlRodape.add(btnCancelar);
 
-		return pnlRodape;
-	}
+        return pnlRodape;
+    }
 
-	//	-------------------------------------------------------------
+    //	-------------------------------------------------------------
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
 
-		if (src == btnRemover) {
-			
-			if(!removerArtistaCadastrado((Artista) cboxArtista.getSelectedItem())) {
-				openDialog("error");
-				return;
-			}
-			this.dispose();
-			new ArtistasView();
-			openDialog("success");
-		}
+        if (src == btnRemover) {
 
-		if (src == btnCancelar) {
-			this.dispose();
-			new ArtistasView();
-		}
-	}
+            if (!removerArtistaCadastrado((Artista) cboxArtista.getSelectedItem())) {
+                openDialog("error");
+                return;
+            }
+            this.dispose();
+            new ArtistasView();
+            openDialog("success");
+        }
+
+        if (src == btnCancelar) {
+            this.dispose();
+            new ArtistasView();
+        }
+    }
 
 }

@@ -8,8 +8,8 @@ import static main.util.Instanciacao.instanciar;
 
 public class Run {
 
-	public static void main(String[] args) {
-		instanciar();
-		SwingUtilities.invokeLater(MainView::new);
-	}
+    public static void main(String[] args) {
+        instanciar();
+        SwingUtilities.invokeLater(MainView::new);
+    }
 }

@@ -1,4 +1,5 @@
 package main.util;
+
 import java.awt.*;
 
 public class AesthethicsView {
@@ -11,14 +12,15 @@ public class AesthethicsView {
     }
 
     // Atributo fonte Instânciando da classe Font e seus métodos getters e setters
-    private static Font fonte = new Font("Helvitica", Font.BOLD,15);
-    
+    private static Font fonte = new Font("Helvitica", Font.BOLD, 15);
+
     public static Font getFonte() {
         return fonte;
     }
 
     // Atributo fonte2 Instânciando da classe Font e seus métodos getters e setters
-    private static Font fonteMenor = new Font("Helvitica", Font.BOLD,13);
+    private static Font fonteMenor = new Font("Helvitica", Font.BOLD, 13);
+
     // Courier New
     public static Font getFonteMenor() {
         return fonteMenor;
@@ -26,7 +28,7 @@ public class AesthethicsView {
 
     // // Atributo fonte Instânciando da classe Font e seus métodos getters e setters
     // private static Font fonte3 = new Font("Helvitica", Font.LAYOUT_LEFT_TO_RIGHT | Font.BOLD,15);
-        
+
     // public static Font getFonte3() {
     //     return fonte3;
     // }
@@ -36,14 +38,14 @@ public class AesthethicsView {
 
     // Atributo corLetra e os métodos Getters e Setters
     private static Color corLetra = new Color(50, 205, 50); // Verde 
-    
-    public  static Color getCorLetra() {
+
+    public static Color getCorLetra() {
         return corLetra;
     }
 
     // Atributo corFundo e os métodos Getters e Setters
-    private static Color corFundo = new Color(28 ,28 ,28); // Preto escuro
-    
+    private static Color corFundo = new Color(28, 28, 28); // Preto escuro
+
     public static Color getCorFundo() {
         return corFundo;
     }
@@ -65,7 +67,6 @@ public class AesthethicsView {
     // public void setLabel(JLabel label) {
     //     CoresView.label = label;
     // }
-
 
 
 }

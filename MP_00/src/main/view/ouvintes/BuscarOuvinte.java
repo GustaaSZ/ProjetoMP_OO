@@ -15,76 +15,76 @@ import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.objetoEncontrado;
 import static main.view.components.Dialog.openDialog;
 
-public class BuscarOuvinte extends JFrame implements ActionListener{
+public class BuscarOuvinte extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJTextField txtNome;
+    private MyJTextField txtNome;
 
-	private MyJButton btnBuscar;
-	private MyJButton btnCancelar;
+    private MyJButton btnBuscar;
+    private MyJButton btnCancelar;
 
-	public BuscarOuvinte(){
-		inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
-		btnBuscar.addActionListener(this);
-		btnCancelar.addActionListener(this);
-	}
+    public BuscarOuvinte() {
+        inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+        btnBuscar.addActionListener(this);
+        btnCancelar.addActionListener(this);
+    }
 
-	public MyJPanel getPnlTitle() {
-    	if (pnlTitle == null) {
-    		pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-    	}
-		MyJLabel lblTitle = new MyJLabel("Buscar Artista");
-    	pnlTitle.add(lblTitle);
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        MyJLabel lblTitle = new MyJLabel("Buscar Artista");
+        pnlTitle.add(lblTitle);
 
-		return pnlTitle;
-	}
-	
-	public MyJPanel getPnlForm() {
-    	if (pnlForm == null) {
-    		pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
-    	}
-		MyJLabel lblNome = new MyJLabel("Nome:");
-    	txtNome = new MyJTextField(20);
+        return pnlTitle;
+    }
 
-    	pnlForm.add(lblNome);
-    	pnlForm.add(txtNome);
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
+        }
+        MyJLabel lblNome = new MyJLabel("Nome:");
+        txtNome = new MyJTextField(20);
 
-		return pnlForm;
-	}
-	
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		btnBuscar = new MyJButton("Buscar", true);
-    	btnCancelar = new MyJButton("Voltar", true);
+        pnlForm.add(lblNome);
+        pnlForm.add(txtNome);
 
-    	pnlRodape.add(btnBuscar);
-    	pnlRodape.add(btnCancelar);
+        return pnlForm;
+    }
 
-		return pnlRodape;
-	}
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        btnBuscar = new MyJButton("Buscar", true);
+        btnCancelar = new MyJButton("Voltar", true);
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		
-		if (src == btnBuscar) {
-			if(txtNome.getText() == null || txtNome.getText().trim().equals("")) {
-				openDialog("error");
-				return;
-			}
-			if (objetoEncontrado(buscarOuvintePorNome(txtNome.getText()))) {
-				return;
-			}
-			openDialog("ouvinte_nao_encontrado");
-		}
-		if (src == btnCancelar) {
-			this.dispose();
-			new OuvintesView();
-		}
-	}
+        pnlRodape.add(btnBuscar);
+        pnlRodape.add(btnCancelar);
+
+        return pnlRodape;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
+
+        if (src == btnBuscar) {
+            if (txtNome.getText() == null || txtNome.getText().trim().equals("")) {
+                openDialog("error");
+                return;
+            }
+            if (objetoEncontrado(buscarOuvintePorNome(txtNome.getText()))) {
+                return;
+            }
+            openDialog("ouvinte_nao_encontrado");
+        }
+        if (src == btnCancelar) {
+            this.dispose();
+            new OuvintesView();
+        }
+    }
 }

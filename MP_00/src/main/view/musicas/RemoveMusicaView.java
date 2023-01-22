@@ -16,76 +16,76 @@ import static main.view.components.Dialog.openDialog;
 
 public class RemoveMusicaView extends JFrame implements ActionListener {
 
-	private MyJPanel pnlTitle;
-	private MyJPanel pnlForm;
-	private MyJPanel pnlRodape;
+    private MyJPanel pnlTitle;
+    private MyJPanel pnlForm;
+    private MyJPanel pnlRodape;
 
-	private MyJComboBox<String> cboxMusica;
+    private MyJComboBox<String> cboxMusica;
 
-	private MyJButton btnRemover;
-	private MyJButton btnCancelar;
+    private MyJButton btnRemover;
+    private MyJButton btnCancelar;
 
-	public RemoveMusicaView() {
-		inicializar(this, "CRUD Música", getPnlTitle(), getPnlForm(), getPnlRodape());
-		btnRemover.addActionListener(this);
-		btnCancelar.addActionListener(this);
-	}
+    public RemoveMusicaView() {
+        inicializar(this, "CRUD Música", getPnlTitle(), getPnlForm(), getPnlRodape());
+        btnRemover.addActionListener(this);
+        btnCancelar.addActionListener(this);
+    }
 
-	public MyJPanel getPnlTitle() {
-		if (pnlTitle == null) {
-			pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
+    public MyJPanel getPnlTitle() {
+        if (pnlTitle == null) {
+            pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
 
-		MyJLabel lblTitle = new MyJLabel("Remover Musica");
-		pnlTitle.add(lblTitle);
+        MyJLabel lblTitle = new MyJLabel("Remover Musica");
+        pnlTitle.add(lblTitle);
 
-		return pnlTitle;
-	}
+        return pnlTitle;
+    }
 
-	public MyJPanel getPnlForm() {
-		if (pnlForm == null) {
-			pnlForm = new MyJPanel(new GridLayout(1, 2), true);
-		}
-		MyJLabel lblArtista = new MyJLabel("Musica:");
-		cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
+    public MyJPanel getPnlForm() {
+        if (pnlForm == null) {
+            pnlForm = new MyJPanel(new GridLayout(1, 2), true);
+        }
+        MyJLabel lblArtista = new MyJLabel("Musica:");
+        cboxMusica = new MyJComboBox<>(arrayMusicasCadastradas());
 
-		pnlForm.add(lblArtista);
-		pnlForm.add(cboxMusica);
+        pnlForm.add(lblArtista);
+        pnlForm.add(cboxMusica);
 
-		return pnlForm;
-	}
+        return pnlForm;
+    }
 
-	public MyJPanel getPnlRodape() {
-		if (pnlRodape == null) {
-			pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
-		}
-		btnRemover = new MyJButton("Remover", true);
-		btnCancelar = new MyJButton("Cancelar", true);
+    public MyJPanel getPnlRodape() {
+        if (pnlRodape == null) {
+            pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
+        }
+        btnRemover = new MyJButton("Remover", true);
+        btnCancelar = new MyJButton("Cancelar", true);
 
-		pnlRodape.add(btnRemover);
-		pnlRodape.add(btnCancelar);
+        pnlRodape.add(btnRemover);
+        pnlRodape.add(btnCancelar);
 
-		return pnlRodape;
-	}
+        return pnlRodape;
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object src = e.getSource();
 
-		if (src == btnRemover) {
-			if (!removerMusica(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()))) {
-				openDialog("error");
-				return;
-			}
-			this.dispose();
-			new MusicasView();
-			openDialog("success");
-		}
+        if (src == btnRemover) {
+            if (!removerMusica(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()))) {
+                openDialog("error");
+                return;
+            }
+            this.dispose();
+            new MusicasView();
+            openDialog("success");
+        }
 
-		if (src == btnCancelar) {
-			this.dispose();
-			new MusicasView();
-		}
-	}
+        if (src == btnCancelar) {
+            this.dispose();
+            new MusicasView();
+        }
+    }
 
 }
