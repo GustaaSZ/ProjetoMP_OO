@@ -7,10 +7,14 @@ import main.model.Musica;
 import main.model.Ouvinte;
 import main.model.Playlist;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Instanciacao {
     public static void instanciar() {
+
+        ArrayList<String> letras = letras();
+
         Artista artista1 = new Artista("Djonga");
         Artista artista2 = new Artista("Froid");
         Artista artista3 = new Artista("Veigh");
@@ -18,12 +22,12 @@ public class Instanciacao {
         Artista artista5 = new Artista("Kyan");
         Artista artista6 = new Artista("Leviano");
 
-        Musica musica1 = new Musica(artista1, "O Mundo é Nosso", "aaaaaa", "Rap", new Date());
-        Musica musica2 = new Musica(artista2, "Peita de dar Rolê", "bbb", "Rap", new Date());
-        Musica musica3 = new Musica(artista3, "Mil Maneiras", "cccccc", "Trap", new Date());
-        Musica musica4 = new Musica(artista4, "237", "dddddddddd", "Trap", new Date());
-        Musica musica5 = new Musica(artista5, "Mandrake", "eeeeeeee", "Drill", new Date());
-        Musica musica6 = new Musica(artista6, "Quieto", "fffffffff", "Trap", new Date());
+        Musica musica1 = new Musica(artista1, "O Mundo é Nosso", letras.get(1), "Rap", new Date());
+        Musica musica2 = new Musica(artista2, "Peita de dar Rolê", letras.get(2), "Rap", new Date());
+        Musica musica3 = new Musica(artista3, "Mil Maneiras", letras.get(3), "Trap", new Date());
+        Musica musica4 = new Musica(artista4, "237", letras.get(4), "Trap", new Date());
+        Musica musica5 = new Musica(artista5, "Mandrake", letras.get(5), "Drill", new Date());
+        Musica musica6 = new Musica(artista6, "Quieto", letras.get(6), "Trap", new Date());
 
         Playlist playlist1 = new Playlist("Rap", "Descrição 1");
 
@@ -57,5 +61,21 @@ public class Instanciacao {
 
         ouvinteController3.adicionarPlaylist(playlist2);
         ouvinteController3.adicionarPlaylist(playlist3);
+    }
+
+    private static ArrayList<String> letras() {
+        ArrayList<String> letras = new ArrayList<>();
+        
+        letras.add("aaaaaa");
+        letras.add("bbbbbb");
+        letras.add("cccccc");
+        letras.add("dddddd");
+        letras.add("dsdasdasd");
+        letras.add("sdsdsd");
+
+
+
+
+        return letras;
     }
 }
