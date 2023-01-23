@@ -73,6 +73,8 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
         txtLetra.setLineWrap(true);
         txtLetra.setText(musicaPorIndex(0).getLetra());
 
+
+
         pnlForm.add(lblMusica);
         pnlForm.add(cboxMusica);
         pnlForm.add(lblNome);
@@ -84,6 +86,7 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
         pnlForm.add(lblLetra);
         pnlForm.add(txtLetra);
 
+
         cboxMusica.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 var selected = buscarMusicaPorNome((String) cboxMusica.getSelectedItem());
@@ -91,9 +94,10 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
                 txtGenero.setText(selected.getGenero());
                 txtLancamento.setText(dateToString(selected.getLancamento()));
                 txtLetra.setText(selected.getLetra());
+                
             }
         });
-
+       
         return pnlForm;
     }
 

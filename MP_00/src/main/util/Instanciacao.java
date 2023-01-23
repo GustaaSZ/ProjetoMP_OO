@@ -24,12 +24,26 @@ public class Instanciacao {
         Artista artista5 = new Artista("Kyan");
         Artista artista6 = new Artista("Leviano");
 
+        Artista artista7 = new Artista("ColdPlay");
+        Artista artista8 = new Artista("Chris Brown");
+        Artista artista9 = new Artista("Jorge Aragão");
+        Artista artista10 = new Artista("Grupo Revelação");
+        Artista artista11 = new Artista("Raça Negra");
+
         Musica musica1 = new Musica(artista1, "O Mundo é Nosso", letras.get(0), "Rap", new Date());
         Musica musica2 = new Musica(artista2, "Peita de dar Rolê", letras.get(1), "Rap", new Date());
         Musica musica3 = new Musica(artista3, "Mil Maneiras", letras.get(2), "Trap", new Date());
         Musica musica4 = new Musica(artista4, "237", letras.get(3), "Trap", new Date());
         Musica musica5 = new Musica(artista5, "Mandrake", letras.get(4), "Drill", new Date());
         Musica musica6 = new Musica(artista6, "Quieto", letras.get(5), "Trap", new Date());
+        
+        Musica musica7 = new Musica(artista7, "Magic",letras.get(6), "Rock alternativo", new Date());
+        Musica musica8 = new Musica(artista7, "Clocks",letras.get(7), "Rock alternativo", new Date());
+        Musica musica9 = new Musica(artista8, "Under The Influence",letras.get(8), "R&B/soul", new Date());
+        Musica musica10 = new Musica(artista9, "Eu e você Sempre", letras.get(9), "Samba", new Date());
+        Musica musica11 = new Musica(artista10, "Coração Radiante", letras.get(10), "Samba", new Date());
+        Musica musica12 = new Musica(artista10, "Deixa Acontecer", letras.get(11), "Samba", new Date());
+        Musica musica13 = new Musica(artista11, "É Tarde Demais", letras.get(12), "Samba", new Date());
 
         Playlist playlist1 = new Playlist("Rap", "Descrição 1");
 
@@ -47,13 +61,31 @@ public class Instanciacao {
         controller2.adicionarMusica(musica5);
         controller2.adicionarMusica(musica6);
 
+        Playlist playlist4 = new Playlist("Internacionais", "Playlist com Musicas internacionais");
+        PlaylistController controller3 = new PlaylistController(playlist4);
+
+        controller3.adicionarMusica(musica7);
+        controller3.adicionarMusica(musica8);
+        controller3.adicionarMusica(musica9);
+
+
+        PlaylistController controller4 = new PlaylistController(playlist3);
+        controller4.adicionarMusica(musica10);  
+        controller4.adicionarMusica(musica11); 
+        controller4.adicionarMusica(musica12); 
+        controller4.adicionarMusica(musica13);     
+
         Ouvinte ouvinte1 = new Ouvinte("Joãozinho");
         Ouvinte ouvinte2 = new Ouvinte("Maria");
         Ouvinte ouvinte3 = new Ouvinte("Pedro");
+        Ouvinte ouvinte4 = new Ouvinte("Gustavo");
+        Ouvinte ouvinte5 = new Ouvinte("Felipe");
 
         OuvinteController ouvinteController1 = new OuvinteController(ouvinte1);
         OuvinteController ouvinteController2 = new OuvinteController(ouvinte2);
         OuvinteController ouvinteController3 = new OuvinteController(ouvinte3);
+        OuvinteController ouvinteController4 = new OuvinteController(ouvinte4);
+        OuvinteController ouvinteController5 = new OuvinteController(ouvinte5);
 
         ouvinteController1.adicionarPlaylist(playlist1);
         ouvinteController1.adicionarPlaylist(playlist2);
@@ -63,6 +95,11 @@ public class Instanciacao {
 
         ouvinteController3.adicionarPlaylist(playlist2);
         ouvinteController3.adicionarPlaylist(playlist3);
+
+        ouvinteController4.adicionarPlaylist(playlist4);
+        ouvinteController4.adicionarPlaylist(playlist3);
+
+        ouvinteController5.adicionarPlaylist(playlist3);
     }
 
     private static ArrayList<String> letras() {
@@ -387,6 +424,434 @@ public class Instanciacao {
                 Por isso que eu mantenho a minha gang no certo (ha-ha)
                 Jogo essa festa no teto
                 Eu sou o cara que abastece-tece""");
+        
+        
+        letras.add("""
+                Call it magic
+                Call it true
+                I call it magic
+                When I'm with you
+
+                And I just got broken
+                Broken into two
+                Still I call it magic
+                When I'm next to you
+
+                And I don't, and I don't, and I don't, and I don't
+                No, I don't, it's true
+                I don't, no, I don't, no, I don't, no, I don't
+                Want anybody else but you
+
+                I don't, no, I don't, no, I don't, no, I don't
+                No, I don't, it's true
+                I don't, no, I don't, no, I don't, no, I don't
+                Want anybody else but you
+                (Ooh, ooh)
+
+                Call it magic
+                Cut me into two
+                And with all your magic
+                I disappear from view
+
+                And I can't get over
+                Can't get over you
+                Still I call it magic
+                Such a precious jewel
+
+                And I don't, and I don't, and I don't, and I don't
+                No, I don't, it's true
+                I don't, no, I don't, no, I don't, no, I don't
+                Want anybody else but you
+
+                I don't, no, I don't, no, I don't, no, I don't
+                No, I don't, it's true
+                I don't, no, I don't, no, I don't, no, I don't
+                Want anybody else but you
+
+                Wanna fall
+                I fall so far
+                I wanna fall
+                I fall so hard
+
+                And I call it magic
+                And I call it true
+                I call it ma-ma-ma-magic
+
+                Ooh, ooh
+                Ooh, ooh
+                Ooh, ooh
+                Ooh, ooh
+
+                And if you were to ask me
+                After all that we've been through
+                Still believe in magic?
+                Oh, yes, I do
+
+                Oh, yes, I do
+                Oh, yes, I do
+                Oh, yes, I do
+                Of course, I do""");
+
+        letras.add("""
+                Lights go out and I can't be saved
+                Tides that I tried to swim against
+                Have brought me down upon my knees
+                Oh, I beg, I beg and plead, singing
+
+                Come out of things unsaid
+                Shoot an apple off my head
+                And a trouble that can't be named
+                A tiger's waiting to be tamed, singing
+
+                You are, you are
+
+                Confusion never stops
+                Closing walls and ticking clocks
+                Gonna come back and take you home
+                I could not stop that you now know, singing
+
+                Come out upon my seas
+                Cursed missed opportunities
+                Am I a part of the cure?
+                Or am I part of the disease? Singing
+
+                You are, you are
+                You are, you are
+
+                You are, you are
+
+                And nothing else compares
+                Oh, nothing else compares
+                And nothing else compares
+
+                You are, you are
+
+                Home, home where I wanted to go
+                Home, home where I wanted to go
+                Home, home where I wanted to go (you are)
+                Home, home where I wanted to go (you are)""");
+
+        letras.add("""
+                (Kido, Kido)
+                (K-Kiddominant on the beat, better run it back)
+
+                Fuckin' Robitussin
+                I don't know why this shit got me lazy right now, yeah
+                Can't do Percocets or molly
+                I'm turnin' one, tryna live it up here right, right, right
+
+                Baby, you can
+                Ride it, oh, yeah
+                Bring it over to my place
+                And you be like
+                Baby, who cares?
+                But I know you care
+                Bring it over to my place
+
+                You don't know what you did, did to me
+                Your body lightweight speaks to me
+                I don't know what you did, did to me
+                Your body lightweight speaks to me
+
+                (Yeah)
+                (Yeah)
+
+                I can make it hurricane on it
+                Hunnid bands, make it rain on it
+                Tie it up, put a chain on it
+                Make you tattoo my name on it, oh
+                Make you cry like a baby, yeah
+                Let's Go Pro and make a video, yeah
+                Make you cry like a baby, yeah
+                Let's Go Pro and make a video
+                Oh, yeah, yeah, yeah
+
+                Baby, you can
+                Ride it, oh, yeah
+                Bring it over to my place
+                And you be like
+                Baby, who cares?
+                But I know you care
+                Bring it over to my place
+
+                You don't know what you did, did to me
+                Your body lightweight speaks to me
+                I don't know what you did, did to me
+                Your body lightweight speaks to me
+
+                Baby, you can
+                Ride it, oh, yeah
+                And you be like
+                Baby, who cares?
+                But I know you care""");
+
+        letras.add("""
+                Logo, logo, assim que puder, vou telefonar
+                Por enquanto tá doendo
+                E quando a saudade quiser me deixar cantar
+                Vão saber que andei sofrendo
+
+                E que agora, longe de mim
+                Você possa, enfim
+                Ter felicidade
+                Nem que faça um tempo ruim
+                Não se sinta assim
+                Só pela metade
+
+                Ontem demorei pra dormir, tava assim, sei lá
+                Meio passional por dentro
+                Se eu tivesse o dom de fugir pra qualquer lugar
+                Ia feito um pé de vento
+
+                Sem pensar no que aconteceu
+                Nada, nada é meu
+                Nem meu pensamento
+                Por falar em nada que é meu
+                Encontrei o anel
+                Que você esqueceu
+
+                Aí foi que o barraco desabou
+                Nessa que meu barco se perdeu
+                Nele tá gravado só você e eu
+                Aí foi que o barraco desabou
+                Nessa que meu barco se perdeu
+                Nele tá gravado só você e eu
+
+                Logo, logo, assim que puder, vou telefonar
+                Por enquanto tá doendo
+                E quando a saudade quiser me deixar cantar
+                Vão saber que andei sofrendo
+
+                E que agora, longe de mim
+                Você possa, enfim
+                Ter felicidade
+                Nem que faça um tempo ruim
+                Não se sinta assim
+                Só pela metade
+
+                Ontem demorei pra dormir, tava assim, sei lá
+                Meio passional por dentro
+                Se eu tivesse o dom de fugir pra qualquer lugar
+                Ia feito um pé de vento
+
+                Sem pensar no que aconteceu
+                Nada, nada é meu
+                Nem meu pensamento
+                Por falar em nada que é meu
+                Encontrei o anel
+                Que você esqueceu
+
+                Aí foi que o barraco desabou
+                Nessa que meu barco se perdeu
+                Nele tá gravado só você e eu
+                Aí foi que o barraco desabou
+                Nessa que meu barco se perdeu
+                Nele tá gravado só você e eu
+
+                Aí foi que o barraco desabou
+                Nessa que meu barco se perdeu
+                Nele tá gravado só você e eu
+                Aí foi que o barraco desabou
+                Nessa que meu barco se perdeu
+                Nele tá gravado só você e eu
+
+                Só você e eu
+                Só você e eu""");
+
+        letras.add("""
+                O que mais quero é te dar um beijo
+                E o seu corpo acariciar
+                Você bem sabe que eu te desejo
+                Está escrito no meu olhar
+                O teu sorriso é um paraíso
+                Onde contigo eu queria estar
+                Ai, quem me dera se eu fosse o céu
+                Você seria o meu luar
+
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar
+
+                Meu coração está radiante
+                Bate feliz, acho que é amor
+                Quando te vejo chego a sonhar
+                Penso em você quase a todo instante
+                Seu jeito meigo me apaixonou
+                O que fazer pra te conquistar?
+
+                O que mais quero é te dar um beijo
+                E o seu corpo acariciar
+                Você bem sabe que eu te desejo
+                Está escrito no meu olhar
+                O teu sorriso é um paraíso
+                Onde contigo eu queria estar
+                Ai, quem me dera se eu fosse o céu
+                Você seria o meu luar
+
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar
+
+                Meu coração está radiante
+                Bate feliz, acho que é amor
+                Quando te vejo chego a sonhar
+                Penso em você quase a todo instante
+                Seu jeito meigo me apaixonou
+                O que fazer pra te conquistar?
+
+                O que mais quero é te dar um beijo
+                E o seu corpo acariciar
+                Você bem sabe que eu te desejo
+                Está escrito no meu olhar
+                O teu sorriso é um paraíso
+                Onde, contigo, eu queria estar
+                Ai, quem me dera se eu fosse o céu
+                Você seria o meu luar
+
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar
+
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar
+
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar
+
+                Eu te quero só pra mim
+                Como as ondas são do mar
+                Não dá pra viver assim
+                Querer sem poder te tocar""");
+                
+        letras.add("""
+                Deixa acontecer naturalmente
+                Eu não quero ver você chorar
+                Deixa que o amor encontre a gente
+                Nosso caso vai eternizar
+
+                Deixa acontecer naturalmente
+                Eu não quero ver você chorar
+                Deixa que o amor encontre a gente
+                Nosso caso vai eternizar
+
+                Você já disse que me quer
+                Pra toda vida, eternidade
+                Quando está distante de mim
+                Fica louca de saudade
+
+                Que a razão do seu viver sou eu
+                Está tudo bem, eu acredito
+                Eu não tô duvidando disso
+
+                Só que eu tenho muito medo de me apaixonar
+                Esse filme já passou na minha vida
+                E você tá me ajudando a superar
+                Eu não quero ser um mal na sua vida
+
+                Deixa acontecer naturalmente
+                Eu não quero ver você chorar
+                Deixa que o amor encontre a gente
+                Nosso caso vai eternizar
+
+                Deixa acontecer naturalmente
+                (Deixa acontecer naturalmente)
+                Eu não quero ver você chorar
+                (Eu não quero ver você chorar)
+                Deixa que o amor encontre a gente
+                (Deixa que o amor encontre a gente)
+                Nosso caso vai eternizar
+
+                Você já disse que me quer
+                Pra toda vida, eternidade
+                Quando está distante de mim
+                Fica louca de saudade
+
+                Que a razão do seu viver sou eu
+                Está tudo bem, eu acredito
+                Eu não tô duvidando disso
+
+                Só que eu tenho muito medo de me apaixonar
+                Esse filme já passou na minha vida
+                E você tá me ajudando a superar
+                Eu não quero ser um mal na sua vida
+
+                Deixa acontecer naturalmente
+                (Deixa acontecer naturalmente)
+                Eu não quero ver você chorar
+                (Eu não quero ver você chorar)
+                Deixa que o amor encontre a gente
+                (Deixa que o amor encontre a gente)
+                Nosso caso vai eternizar
+
+                Deixa acontecer naturalmente
+                (Deixa acontecer naturalmente)
+                Eu não quero ver você chorar
+                (Eu não quero ver você chorar)
+                Deixa que o amor encontre a gente
+                (Deixa que o amor encontre a gente)
+                Nosso caso vai eternizar""");
+
+        letras.add("""
+                Olha só você
+                Depois de me perder
+                Veja só você
+                Que pena
+
+                Você não quis me ouvir
+                Você não quis saber
+                Desfez do meu amor
+                Que pena, que pena
+
+                Hoje é você quem está sofrendo, amor
+                Hoje sou eu quem não te quer
+                O meu coração já tem um novo amor
+                Você pode fazer o que quiser
+
+                Você jogou fora o amor que eu te dei
+                O sonho que sonhei, isso não se faz
+                Você jogou fora a minha ilusão, a louca paixão
+                É tarde demais
+                Que pena
+                Que pena, amor
+                Que pena
+                Que pena, amor
+
+                Hoje é você quem está sofrendo, amor
+                Hoje sou eu quem não te quer
+                O meu coração já tem um novo amor
+                Você pode fazer o que quiser
+
+                Você jogou fora o amor que eu te dei
+                O sonho que sonhei, isso não se faz
+                Você jogou fora a minha ilusão, a louca paixão
+                É tarde demais
+                Que pena
+                Que pena, amor
+                Que pena
+                Que pena, amor
+                Que pena
+                Que pena, amor
+                Que pena""");
+
         letras.add("sdsdsd");
 
 

@@ -63,7 +63,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
             model.add(i, artistaPorIndex(0).getMusicas().get(i));
         }
 
-        // Adicionando a a lista no scroll pane, (Barra de rolagem)
+        // Adicionando a a lista no JScrollPane, (Barra de rolagem)
         JScrollPane scroll = new JScrollPane(lista);
 
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);

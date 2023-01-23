@@ -53,8 +53,14 @@ public class MusicasView extends JFrame implements ActionListener {
             model.add(i, playlistPorIndex(0).getMusicas().get(i));
         }
 
+        // Adicionando a a lista no JScrollPane, (Barra de rolagem)
+        JScrollPane scroll = new JScrollPane(lista);
+
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        //scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        
         pnlForm.add(cboxPlaylist, BorderLayout.NORTH);
-        pnlForm.add(lista, BorderLayout.CENTER);
+        pnlForm.add(scroll);
 
         cboxPlaylist.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
