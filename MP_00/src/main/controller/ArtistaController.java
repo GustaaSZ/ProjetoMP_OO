@@ -4,7 +4,7 @@ import main.model.Artista;
 import main.model.Musica;
 
 import static main.model.Artista.artistasCadastrados;
-import static main.model.Musica.musicasCadastradas;
+// import static main.model.Musica.musicasCadastradas;
 
 /**
  * Classe com métodos para manipulação de artistas.
@@ -26,6 +26,7 @@ public class ArtistaController {
     }
 
     // ---------------- METODOS ESTATICOS ----------------
+
     /**
      * Método para cadastrar um artista.
      * @param nome nome do artista.
@@ -39,6 +40,7 @@ public class ArtistaController {
         }
         return false;
     }
+
 
     /**
      * Método para remover um artista cadastrado.
@@ -57,6 +59,7 @@ public class ArtistaController {
         }
     }
 
+
     /**
      * Método para buscar um artista por nome.
      * @param nome nome do artista que será buscado.
@@ -69,6 +72,7 @@ public class ArtistaController {
                 .orElse(null);
     }
 
+
     /**
      * Método para procurar um artista pelo seu index no ArrayList de artistas cadastrados.
      * @param index index do artista.
@@ -78,6 +82,7 @@ public class ArtistaController {
         return artistasCadastrados.get(index);
     }
 
+
     /**
      * Método para verificar a quantidade de artistas cadastrados.
      * @return retorna a quantidade de artistas cadastrados.
@@ -86,6 +91,7 @@ public class ArtistaController {
         return artistasCadastrados.size();
     }
 
+
     /**
      * Método para verificar se existe algum artista cadastrado.
      * @return retorna true se não existir nenhum artista cadastrado.
@@ -93,6 +99,7 @@ public class ArtistaController {
     public static boolean isArtistasEmpty() {
         return artistasCadastrados.isEmpty();
     }
+
 
     /**
      * Método que converte o ArrayList de artistas cadastrados em um vetor de strings com os nomes dos artistas.
@@ -106,6 +113,7 @@ public class ArtistaController {
         return array;
     }
 
+
     /**
      * Método que converte o ArrayList de músicas de um artista em um vetor de músicas.
      * @param artista artista que deseja converter o ArrayList de músicas.
@@ -114,6 +122,7 @@ public class ArtistaController {
     public static Musica[] arrayMusicasDoArtista(Artista artista) {
         return artista.getMusicas().toArray(new Musica[0]);
     }
+
 
     /**
      * Método para verificar se um artista existe.

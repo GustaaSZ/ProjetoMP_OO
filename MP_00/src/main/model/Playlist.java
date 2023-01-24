@@ -18,6 +18,12 @@ public class Playlist {
     //Array com todas as playlists cadastradas
     public static final ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
 
+    
+    /**
+     * Construtor da classe Playlist
+     * @param nome
+     * @param descricao
+     */
     public Playlist(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
@@ -26,6 +32,13 @@ public class Playlist {
         playlistsCadastradas.add(this);
     }
 
+
+    /**
+     * Construtor2 da classe playlist
+     * @param ouvinte
+     * @param nome
+     * @param descricao
+     */
     public Playlist(Ouvinte ouvinte, String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
