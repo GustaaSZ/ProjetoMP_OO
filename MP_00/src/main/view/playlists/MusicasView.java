@@ -1,17 +1,28 @@
 package main.view.playlists;
 
-import main.model.Musica;
-import main.view.components.*;
+import static main.controller.PlaylistController.arrayMusicasNaPlaylist;
+import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
+import static main.controller.PlaylistController.buscarPlaylistPorNome;
+import static main.controller.PlaylistController.playlistPorIndex;
+import static main.util.Inicializacao.inicializar;
+import static main.view.components.Dialog.openDialog;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
-import static main.controller.PlaylistController.*;
-import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJList;
+import main.view.components.MyJPanel;
 
 public class MusicasView extends JFrame implements ActionListener {
 
@@ -19,7 +30,7 @@ public class MusicasView extends JFrame implements ActionListener {
     private MyJPanel pnlForm;
     private MyJPanel pnlRodape;
 
-    private MyJList<Musica> lista;
+    private MyJList<String> lista;
 
     private MyJComboBox<String> cboxPlaylist;
 
@@ -46,14 +57,13 @@ public class MusicasView extends JFrame implements ActionListener {
         }
         cboxPlaylist = new MyJComboBox<>(arrayPlaylistsCadastradas());
 
-        DefaultListModel<Musica> model = new DefaultListModel<>();
+        DefaultListModel<String> model = new DefaultListModel<>();
         lista = new MyJList<>(model);
 
         for (int i = 0; i < playlistPorIndex(0).getMusicas().size(); i++) {
-            model.add(i, playlistPorIndex(0).getMusicas().get(i));
+            model.add(i, playlistPorIndex(0).getMusicas().get(i).getNome());
         }
 
-        // Adicionando a a lista no JScrollPane, (Barra de rolagem)
         JScrollPane scroll = new JScrollPane(lista);
 
         scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -64,8 +74,8 @@ public class MusicasView extends JFrame implements ActionListener {
 
         cboxPlaylist.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                var array = buscarPlaylistPorNome(
-                        (String) cboxPlaylist.getSelectedItem()).getMusicas().toArray(new Musica[0]);
+                var array = arrayMusicasNaPlaylist(buscarPlaylistPorNome(
+                        (String) cboxPlaylist.getSelectedItem()));
                 if (array.length > 0) {
                     lista.setListData(array);
                 } else {

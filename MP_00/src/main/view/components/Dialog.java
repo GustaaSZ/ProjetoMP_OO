@@ -105,7 +105,7 @@ public class Dialog {
         if (o instanceof Artista) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Artista " + o + ", operação realizada com sucesso!",
+                    "Artista " + ((Artista) o).getNome() + " encontrado, operação realizada com sucesso!",
                     "Artista Encontrado!",
                     JOptionPane.INFORMATION_MESSAGE);
             return true;
@@ -113,7 +113,7 @@ public class Dialog {
         if (o instanceof Ouvinte) {
             JOptionPane.showMessageDialog(
                     null,
-                    "Ouvinte " + o + ", operação realizada com sucesso!",
+                    "Ouvinte " + ((Ouvinte) o).getNome() + " encontrado, operação realizada com sucesso!",
                     "Ouvinte Encontrado!",
                     JOptionPane.INFORMATION_MESSAGE);
             return true;

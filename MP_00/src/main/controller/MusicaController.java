@@ -150,10 +150,10 @@ public class MusicaController {
      * @param mus música que será convertida.
      * @return retorna um vetor com os artistas da música.
      */
-    public static Artista[] arrayArtistasNaMusica(Musica mus) {
-        Artista[] array = new Artista[mus.getArtistas().size()];
+    public static String[] arrayArtistasNaMusica(Musica mus) {
+        String[] array = new String[mus.getArtistas().size()];
         for (int i = 0; i < array.length; i++) {
-            array[i] = mus.getArtistas().get(i);
+            array[i] = mus.getArtistas().get(i).getNome();
         }
         return array;
     }

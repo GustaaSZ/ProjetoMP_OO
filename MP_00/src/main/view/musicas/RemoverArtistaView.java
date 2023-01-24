@@ -1,21 +1,26 @@
 package main.view.musicas;
 
-import main.controller.MusicaController;
-import main.model.Artista;
-import main.view.components.MyJButton;
-import main.view.components.MyJComboBox;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import static main.controller.ArtistaController.buscarArtistaPorNome;
+import static main.controller.MusicaController.arrayArtistasNaMusica;
+import static main.controller.MusicaController.arrayMusicasCadastradas;
+import static main.controller.MusicaController.buscarMusicaPorNome;
+import static main.controller.MusicaController.musicaPorIndex;
+import static main.util.Inicializacao.inicializar;
+import static main.view.components.Dialog.openDialog;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
-import static main.controller.MusicaController.*;
-import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import javax.swing.JFrame;
+
+import main.controller.MusicaController;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 public class RemoverArtistaView extends JFrame implements ActionListener {
 
@@ -23,7 +28,7 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
     private MyJPanel pnlForm;
     private MyJPanel pnlRodape;
 
-    private MyJComboBox<Artista> cboxArtista;
+    private MyJComboBox<String> cboxArtista;
     private MyJComboBox<String> cboxMusica;
 
     private MyJButton btnRemove;
@@ -69,7 +74,7 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
                 var array = arrayArtistasNaMusica(
                         buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
 
-                for (Artista artista : array) {
+                for (String artista : array) {
                     cboxArtista.addItem(artista);
                 }
             }
@@ -98,7 +103,7 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
         if (src == btnRemove) {
             MusicaController controller = new MusicaController(
                     buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
-            if (!controller.removerArtista((Artista) cboxArtista.getSelectedItem())) {
+            if (!controller.removerArtista(buscarArtistaPorNome((String) cboxArtista.getSelectedItem()))) {
                 openDialog("musica_sem_artista");
                 return;
             }
