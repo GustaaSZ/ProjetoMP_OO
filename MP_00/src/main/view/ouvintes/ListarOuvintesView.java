@@ -55,6 +55,15 @@ public class ListarOuvintesView extends JFrame implements ActionListener {
         }
 
         JScrollPane scroll = new JScrollPane(lista);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        JViewport viewport = scroll.getViewport();
+        int w = 500;
+        int h = viewport.getPreferredSize().height;
+        Dimension preferredSize = new Dimension(w, h);
+        viewport.setPreferredSize(preferredSize);
+
         pnlForm.add(scroll);
         pnlForm.setBackground(AesthethicsView.getCorFundo());
 

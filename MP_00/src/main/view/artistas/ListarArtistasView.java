@@ -56,6 +56,7 @@ public class ListarArtistasView extends JFrame implements ActionListener {
         }
 
         JScrollPane scroll = new JScrollPane(lista);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         pnlForm.add(scroll);
 
         return pnlForm;
