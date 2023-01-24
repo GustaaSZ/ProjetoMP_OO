@@ -2,6 +2,13 @@ package main.model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe que representa um ouvinte e herda de Pessoa.
+ *
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ */
 public class Ouvinte extends Pessoa {
 
     // Atributo musicaFavorita, que diferencia a classe filha da classe pai

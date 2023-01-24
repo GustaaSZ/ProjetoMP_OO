@@ -2,6 +2,13 @@ package main.model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe que representa uma playlist.
+ *
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ */
 public class Playlist {
 
     private String nome;

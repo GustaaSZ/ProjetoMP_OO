@@ -9,10 +9,19 @@ import main.model.Playlist;
 
 import java.util.ArrayList;
 import java.util.Date;
-
+/**
+ * Classe com métodos para instanciar objetos.
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ */
 public class Instanciacao {
 
     private static ArrayList<String> letras = new ArrayList<>();
+
+    /**
+     * Método para instanciar objetos.
+     */
     public static void instanciar() {
 
         letras = letras();
@@ -75,17 +84,21 @@ public class Instanciacao {
         controller4.adicionarMusica(musica12); 
         controller4.adicionarMusica(musica13);     
 
+
         Ouvinte ouvinte1 = new Ouvinte("Joãozinho", "Under The Influence");
         Ouvinte ouvinte2 = new Ouvinte("Maria", "Deixa Acontecer");
         Ouvinte ouvinte3 = new Ouvinte("Pedro", "Clocks");
         Ouvinte ouvinte4 = new Ouvinte("Gustavo", "Magic");
-        Ouvinte ouvinte5 = new Ouvinte("Felipe", "O Mundo é nosso");
+        Ouvinte ouvinte5 = new Ouvinte("Arthur", "O Mundo é nosso");
+        Ouvinte ouvinte6 = new Ouvinte("Felipe", "Peita de dar Rolê");
+
 
         OuvinteController ouvinteController1 = new OuvinteController(ouvinte1);
         OuvinteController ouvinteController2 = new OuvinteController(ouvinte2);
         OuvinteController ouvinteController3 = new OuvinteController(ouvinte3);
         OuvinteController ouvinteController4 = new OuvinteController(ouvinte4);
         OuvinteController ouvinteController5 = new OuvinteController(ouvinte5);
+        OuvinteController ouvinteController6 = new OuvinteController(ouvinte6);
 
         ouvinteController1.adicionarPlaylist(playlist1);
         ouvinteController1.adicionarPlaylist(playlist2);
@@ -100,10 +113,16 @@ public class Instanciacao {
         ouvinteController4.adicionarPlaylist(playlist3);
 
         ouvinteController5.adicionarPlaylist(playlist3);
+
+        ouvinteController6.adicionarPlaylist(playlist1);
+        ouvinteController6.adicionarPlaylist(playlist3);
     }
 
+    /**
+     * Método para instanciar as letras das músicas.
+     * @return retorna um ArrayList de Strings com as letras das músicas.
+     */
     private static ArrayList<String> letras() {
-
 
         letras.add(
                 """
@@ -227,44 +246,45 @@ public class Instanciacao {
                 A gente existe por obrigação e ainda insiste numa ligação
                 Que você nunca atende, você é maluca, me entende
                 Única""");
-        letras.add("É preciso passar pela escuridão, pra apreciar o nascer do sol\n" +
-                "Que a maldade não me atinja, que a inveja reflita no ouro do cordão\n" +
-                "Inimigos eu sei, tenho alguns, se me odeiam, sem ressentimentos\n" +
-                "Cada um oferece oque tem, de boas intenções o inferno tá cheio\n" +
-                "Pela brecha da porta eu vejo\n" +
-                "Mil motivos de fazer dinheiro\n" +
-                "Mil maneiras de ficar famoso\n" +
-                "Mas nada é de graça tudo tem um preço\n" +
-                "Rodeado de falsos amores\n" +
-                "Querendo sugar do pouco que eu tenho\n" +
-                "Mas o pouco, com Deus, sempre é muito, né\n" +
-                "Cê entendeu ou quer que eu desenho\n" +
-                "Noites em claro só pensamentos, gasolina nóis' que divida\n" +
-                "Dentre situações de tormento, mãe eu vou te tirar dessa vida\n" +
-                "Um sorriso no rosto da Lyllian, o Ryan vai tá forte, de fato\n" +
-                "Vai andar só com peça da moda, o tênis do mais foda e com 18 um carro\n" +
-                "O menino que saiu do morro\n" +
-                "Em busca do tesouro, jovem milionário\n" +
-                "O menino que saiu do morro\n" +
-                "Ahn, futuro milionário\n" +
-                "É preciso passar pela escuridão, pra apreciar o nascer do sol\n" +
-                "Que a maldade não me atinja, que a inveja reflita no ouro do cordão\n" +
-                "Inimigos eu sei, tenho alguns, se me odeiam, sem ressentimentos\n" +
-                "Cada um oferece o que tem, de boas intenções o inferno tá cheio\n" +
-                "Não temerás espanto noturno, nem seta que voe de dia\n" +
-                "Nem peste que ande na escuridão\n" +
-                "Nem a mortandade que assole ao meio-dia\n" +
-                "Mil cairão ao teu lado, e dez mil à tua direita\n" +
-                "Mas tu jamais serás atingido\n" +
-                "Ahn, futuro milionário\n" +
-                "O menino que saiu do morro\n" +
-                "Em busca do tesouro, jovem milionário\n" +
-                "O menino que saiu do morro\n" +
-                "Ahn, futuro milionário\n" +
-                "O menino que saiu do morro\n" +
-                "Em busca do tesouro, jovem milionário\n" +
-                "O menino que saiu do morro\n" +
-                "Ahn, futuro milionário");
+        letras.add("""
+                É preciso passar pela escuridão, pra apreciar o nascer do sol
+                Que a maldade não me atinja, que a inveja reflita no ouro do cordão
+                Inimigos eu sei, tenho alguns, se me odeiam, sem ressentimentos
+                Cada um oferece oque tem, de boas intenções o inferno tá cheio
+                Pela brecha da porta eu vejo
+                Mil motivos de fazer dinheiro
+                Mil maneiras de ficar famoso
+                Mas nada é de graça tudo tem um preço
+                Rodeado de falsos amores
+                Querendo sugar do pouco que eu tenho
+                Mas o pouco, com Deus, sempre é muito, né
+                Cê entendeu ou quer que eu desenho
+                Noites em claro só pensamentos, gasolina nóis' que divida
+                Dentre situações de tormento, mãe eu vou te tirar dessa vida
+                Um sorriso no rosto da Lyllian, o Ryan vai tá forte, de fato
+                Vai andar só com peça da moda, o tênis do mais foda e com 18 um carro
+                O menino que saiu do morro
+                Em busca do tesouro, jovem milionário
+                O menino que saiu do morro
+                Ahn, futuro milionário
+                É preciso passar pela escuridão, pra apreciar o nascer do sol
+                Que a maldade não me atinja, que a inveja reflita no ouro do cordão
+                Inimigos eu sei, tenho alguns, se me odeiam, sem ressentimentos
+                Cada um oferece o que tem, de boas intenções o inferno tá cheio
+                Não temerás espanto noturno, nem seta que voe de dia
+                Nem peste que ande na escuridão
+                Nem a mortandade que assole ao meio-dia
+                Mil cairão ao teu lado, e dez mil à tua direita
+                Mas tu jamais serás atingido
+                Ahn, futuro milionário
+                O menino que saiu do morro
+                Em busca do tesouro, jovem milionário
+                O menino que saiu do morro
+                Ahn, futuro milionário
+                O menino que saiu do morro
+                Em busca do tesouro, jovem milionário
+                O menino que saiu do morro
+                Ahn, futuro milionário""");
         letras.add("""
                 Yeah, yeah
                 Baby, yeah, yeah, yeah, yeah
