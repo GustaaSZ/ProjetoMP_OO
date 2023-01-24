@@ -2,6 +2,13 @@ package main.model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe que representa um artista e herda de Pessoa.
+ *
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ */
 public class Artista extends Pessoa {
     private final ArrayList<Musica> musicas;
 

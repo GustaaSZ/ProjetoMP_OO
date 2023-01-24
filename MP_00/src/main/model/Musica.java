@@ -6,6 +6,13 @@ import java.util.Date;
 import static main.util.Conversor.arrayListArtistaToString;
 import static main.util.Conversor.dateToString;
 
+/**
+ * Classe que representa uma música.
+ *
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ */
 public class Musica {
 
     private final ArrayList<Artista> artistas;
