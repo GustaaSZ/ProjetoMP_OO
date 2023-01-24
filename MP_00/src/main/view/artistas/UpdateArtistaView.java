@@ -1,18 +1,26 @@
 package main.view.artistas;
 
-import main.controller.ArtistaController;
-import main.model.Artista;
-import main.view.components.*;
+import static main.controller.ArtistaController.arrayArtistasCadastrados;
+import static main.controller.ArtistaController.buscarArtistaPorNome;
+import static main.controller.ArtistaController.artistaPorIndex;
+import static main.util.Inicializacao.inicializar;
+import static main.view.components.Dialog.openDialog;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
-import static main.controller.ArtistaController.arrayArtistasCadastrados;
-import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import javax.swing.JFrame;
+
+import main.controller.ArtistaController;
+import main.model.Artista;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
+import main.view.components.MyJTextField;
 
 public class UpdateArtistaView extends JFrame implements ActionListener {
 
@@ -24,7 +32,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
     private MyJTextField txtNome;
     private MyJTextField txtEstiloMusical;
 
-    private MyJComboBox<Artista> cboxArtista;
+    private MyJComboBox<String> cboxArtista;
 
     private MyJButton btnUpdt;
     private MyJButton btnCancelar;
@@ -57,11 +65,11 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
 
         MyJLabel lblNome = new MyJLabel("Nome:");
         txtNome = new MyJTextField(15);
-        txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());
+        txtNome.setText(artistaPorIndex(0).getNome());
 
         MyJLabel lblEstiloMusical = new MyJLabel("Estilo Musical:");
         txtEstiloMusical = new MyJTextField(15);
-        txtEstiloMusical.setText(((Artista)cboxArtista.getSelectedItem()).getEstiloMusical());
+        txtEstiloMusical.setText(artistaPorIndex(0).getEstiloMusical());
 
         pnlForm.add(lblArtista);
         pnlForm.add(cboxArtista);
@@ -72,8 +80,8 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
 
         cboxArtista.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());
-                txtEstiloMusical.setText(((Artista) cboxArtista.getSelectedItem()).getEstiloMusical());
+                txtNome.setText((String) cboxArtista.getSelectedItem());
+                txtEstiloMusical.setText((buscarArtistaPorNome((String) cboxArtista.getSelectedItem())).getEstiloMusical());
             }
         });
         return pnlForm;
@@ -101,8 +109,11 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
         Object src = e.getSource();
 
         if (src == btnUpdt) {
-            ArtistaController controller = new ArtistaController((Artista) cboxArtista.getSelectedItem());
-            controller.editarArtista(txtNome.getText().trim(), txtEstiloMusical.getText().trim());
+            ArtistaController controller = new ArtistaController(
+            		(buscarArtistaPorNome((String) cboxArtista.getSelectedItem())));
+            
+            controller.editarArtista(txtNome.getText().trim(),
+            						 txtEstiloMusical.getText().trim());
 
             this.dispose();
             new ArtistasView();

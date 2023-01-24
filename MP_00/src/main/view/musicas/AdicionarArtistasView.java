@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static main.controller.ArtistaController.arrayArtistasCadastrados;
+import static main.controller.ArtistaController.buscarArtistaPorNome;
 import static main.controller.MusicaController.arrayMusicasCadastradas;
 import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.util.Inicializacao.inicializar;
@@ -24,7 +25,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
     private MyJPanel pnlForm;
     private MyJPanel pnlRodape;
 
-    private MyJComboBox<Artista> cboxArtista;
+    private MyJComboBox<String> cboxArtista;
     private MyJComboBox<String> cboxMusica;
 
     private MyJButton btnAdd;
@@ -84,7 +85,7 @@ public class AdicionarArtistasView extends JFrame implements ActionListener {
 
         if (src == btnAdd) {
             MusicaController controller = new MusicaController(buscarMusicaPorNome((String) cboxMusica.getSelectedItem()));
-            if (!controller.adicionarArtista((Artista) cboxArtista.getSelectedItem())) {
+            if (!controller.adicionarArtista((buscarArtistaPorNome((String) cboxArtista.getSelectedItem())))) {
                 openDialog("artista_repetido");
                 return;
             }

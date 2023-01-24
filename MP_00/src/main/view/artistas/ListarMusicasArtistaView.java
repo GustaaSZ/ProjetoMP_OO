@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 import static main.controller.ArtistaController.*;
+import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.util.Inicializacao.inicializar;
 
 public class ListarMusicasArtistaView extends JFrame implements ActionListener {
@@ -20,7 +21,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
     private MyJPanel pnlForm;
     private MyJPanel pnlRodape;
 
-    private MyJComboBox<Artista> cboxArtista;
+    private MyJComboBox<String> cboxArtista;
 
     private MyJList<Musica> lista;
 
@@ -76,7 +77,8 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
         cboxArtista.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 lista.setListData(
-                        arrayMusicasDoArtista((Artista) cboxArtista.getSelectedItem())
+                        arrayMusicasDoArtista(buscarArtistaPorNome(
+                        		(String) cboxArtista.getSelectedItem()))
                 );
             }
         });

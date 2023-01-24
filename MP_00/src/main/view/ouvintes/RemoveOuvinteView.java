@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
+import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.controller.OuvinteController.removerOuvinteCadastrado;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
@@ -22,7 +23,7 @@ public class RemoveOuvinteView extends JFrame implements ActionListener {
     private MyJPanel pnlForm;
     private MyJPanel pnlRodape;
 
-    private MyJComboBox<Ouvinte> cboxOuvinte;
+    private MyJComboBox<String> cboxOuvinte;
 
     private MyJButton btnRemover;
     private MyJButton btnCancelar;
@@ -83,7 +84,8 @@ public class RemoveOuvinteView extends JFrame implements ActionListener {
         Object src = e.getSource();
 
         if (src == btnRemover) {
-            if (!removerOuvinteCadastrado((Ouvinte) cboxOuvinte.getSelectedItem())) {
+            if (!removerOuvinteCadastrado(buscarOuvintePorNome(
+            		(String) cboxOuvinte.getSelectedItem()))) {
                 openDialog("error");
                 return;
             }

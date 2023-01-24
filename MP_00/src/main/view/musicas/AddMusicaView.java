@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import static main.controller.ArtistaController.arrayArtistasCadastrados;
+import static main.controller.ArtistaController.buscarArtistaPorNome;
 import static main.controller.MusicaController.cadastrarMusica;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
@@ -26,7 +27,7 @@ public class AddMusicaView extends JFrame implements ActionListener {
     private MyJFormattedTextField txtLancamento;
     private MyJTextArea txtLetra;
 
-    private MyJComboBox<Artista> cboxArtista;
+    private MyJComboBox<String> cboxArtista;
 
     private MyJButton btnCriar;
     private MyJButton btnCancelar;
@@ -104,7 +105,7 @@ public class AddMusicaView extends JFrame implements ActionListener {
 
         if (src == btnCriar) {
             if (!cadastrarMusica(
-                    (Artista) cboxArtista.getSelectedItem(),
+            		(buscarArtistaPorNome((String) cboxArtista.getSelectedItem())),
                     txtNome.getText(),
                     txtLetra.getText(),
                     txtGenero.getText(),

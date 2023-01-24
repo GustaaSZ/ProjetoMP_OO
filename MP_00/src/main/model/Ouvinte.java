@@ -11,7 +11,6 @@ import java.util.ArrayList;
  */
 public class Ouvinte extends Pessoa {
 
-    // Atributo musicaFavorita, que diferencia a classe filha da classe pai
     private String musicaFavorita;
 
     private final ArrayList<Playlist> playlists;
@@ -29,7 +28,6 @@ public class Ouvinte extends Pessoa {
         return playlists;
     }
 
-    // Encapsulamento dos Atributo MusicaFavorita
     public String getMusicaFavorita(){
         return musicaFavorita;
     }
@@ -40,7 +38,7 @@ public class Ouvinte extends Pessoa {
 
     @Override
     public String toString() {
-        return "O ouvinte "+this.getNome()+", tem como música favorita a música "+this.getMusicaFavorita()+".";
+        return "O ouvinte " + this.getNome() + ", tem como música favorita a música " + this.getMusicaFavorita() + ".";
     }
 
 }

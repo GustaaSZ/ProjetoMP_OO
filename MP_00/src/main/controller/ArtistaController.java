@@ -4,6 +4,7 @@ import main.model.Artista;
 import main.model.Musica;
 
 import static main.model.Artista.artistasCadastrados;
+import static main.model.Musica.musicasCadastradas;
 
 /**
  * Classe com métodos para manipulação de artistas.
@@ -26,9 +27,10 @@ public class ArtistaController {
 
     // ---------------- METODOS ESTATICOS ----------------
     /**
-     * @param nome
-     * @param estiloMusical
-     * @return
+     * Método para cadastrar um artista.
+     * @param nome nome do artista.
+     * @param estiloMusical estilo musical do artista.
+     * @return retorna true se o artista for cadastrado com sucesso.
      */
     public static boolean cadastrarArtista(String nome, String estiloMusical) {
         if (!artistaExiste(buscarArtistaPorNome(nome))) {
@@ -69,7 +71,7 @@ public class ArtistaController {
 
     /**
      * Método para procurar um artista pelo seu index no ArrayList de artistas cadastrados.
-      * @param index index do artista.
+     * @param index index do artista.
      * @return retorna o artista.
      */
     public static Artista artistaPorIndex(int index) {
@@ -93,11 +95,15 @@ public class ArtistaController {
     }
 
     /**
-     * Método que converte o ArrayList de artistas cadastrados em um vetor de artistas.
+     * Método que converte o ArrayList de artistas cadastrados em um vetor de strings com os nomes dos artistas.
      * @return retorna um vetor de artistas.
      */
-    public static Artista[] arrayArtistasCadastrados() {
-        return artistasCadastrados.toArray(new Artista[0]);
+    public static String[] arrayArtistasCadastrados() {
+    	String[] array = new String[artistasCadastrados.size()];
+    	for (int i = 0; i < array.length; i++) {
+            array[i] = artistasCadastrados.get(i).getNome();
+        }
+        return array;
     }
 
     /**

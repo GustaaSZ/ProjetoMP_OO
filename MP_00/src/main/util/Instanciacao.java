@@ -9,8 +9,10 @@ import main.model.Playlist;
 
 import java.util.ArrayList;
 import java.util.Date;
+
 /**
  * Classe com métodos para instanciar objetos.
+ *
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0
  * @since 2023
@@ -26,18 +28,18 @@ public class Instanciacao {
 
         letras = letras();
 
-        Artista artista1 = new Artista("Djonga", "Rapper");
-        Artista artista2 = new Artista("Froid","Rapper");
-        Artista artista3 = new Artista("Veigh","Rapper");
-        Artista artista4 = new Artista("Yunk Vino","Rapper");
-        Artista artista5 = new Artista("Kyan","Rapper");
-        Artista artista6 = new Artista("Leviano","Rapper");
+        Artista artista1 = new Artista("Djonga", "Rap");
+        Artista artista2 = new Artista("Froid", "Rap");
+        Artista artista3 = new Artista("Veigh", "Rap");
+        Artista artista4 = new Artista("Yunk Vino", "Rap");
+        Artista artista5 = new Artista("Kyan", "Rap");
+        Artista artista6 = new Artista("Leviano", "Rap");
 
-        Artista artista7 = new Artista("ColdPlay","Pop");
-        Artista artista8 = new Artista("Chris Brown","Pop");
+        Artista artista7 = new Artista("ColdPlay", "Pop");
+        Artista artista8 = new Artista("Chris Brown", "Pop");
         Artista artista9 = new Artista("Jorge Aragão", "Samba");
-        Artista artista10 = new Artista("Grupo Revelação","Samba");
-        Artista artista11 = new Artista("Raça Negra","Samba");
+        Artista artista10 = new Artista("Grupo Revelação", "Samba");
+        Artista artista11 = new Artista("Raça Negra", "Samba");
 
         Musica musica1 = new Musica(artista1, "O Mundo é Nosso", letras.get(0), "Rap", new Date());
         Musica musica2 = new Musica(artista2, "Peita de dar Rolê", letras.get(1), "Rap", new Date());
@@ -45,10 +47,10 @@ public class Instanciacao {
         Musica musica4 = new Musica(artista4, "237", letras.get(3), "Trap", new Date());
         Musica musica5 = new Musica(artista5, "Mandrake", letras.get(4), "Drill", new Date());
         Musica musica6 = new Musica(artista6, "Quieto", letras.get(5), "Trap", new Date());
-        
-        Musica musica7 = new Musica(artista7, "Magic",letras.get(6), "Rock alternativo", new Date());
-        Musica musica8 = new Musica(artista7, "Clocks",letras.get(7), "Rock alternativo", new Date());
-        Musica musica9 = new Musica(artista8, "Under The Influence",letras.get(8), "Hip Hop", new Date());
+
+        Musica musica7 = new Musica(artista7, "Magic", letras.get(6), "Rock alternativo", new Date());
+        Musica musica8 = new Musica(artista7, "Clocks", letras.get(7), "Rock alternativo", new Date());
+        Musica musica9 = new Musica(artista8, "Under The Influence", letras.get(8), "Hip Hop", new Date());
         Musica musica10 = new Musica(artista9, "Eu e você Sempre", letras.get(9), "Samba", new Date());
         Musica musica11 = new Musica(artista10, "Coração Radiante", letras.get(10), "Samba", new Date());
         Musica musica12 = new Musica(artista10, "Deixa Acontecer", letras.get(11), "Samba", new Date());
@@ -79,10 +81,10 @@ public class Instanciacao {
 
 
         PlaylistController controller4 = new PlaylistController(playlist3);
-        controller4.adicionarMusica(musica10);  
-        controller4.adicionarMusica(musica11); 
-        controller4.adicionarMusica(musica12); 
-        controller4.adicionarMusica(musica13);     
+        controller4.adicionarMusica(musica10);
+        controller4.adicionarMusica(musica11);
+        controller4.adicionarMusica(musica12);
+        controller4.adicionarMusica(musica13);
 
 
         Ouvinte ouvinte1 = new Ouvinte("Joãozinho", "Under The Influence");
@@ -112,6 +114,7 @@ public class Instanciacao {
         ouvinteController4.adicionarPlaylist(playlist4);
         ouvinteController4.adicionarPlaylist(playlist3);
 
+        ouvinteController5.adicionarPlaylist(playlist1);
         ouvinteController5.adicionarPlaylist(playlist3);
 
         ouvinteController6.adicionarPlaylist(playlist1);
@@ -120,79 +123,77 @@ public class Instanciacao {
 
     /**
      * Método para instanciar as letras das músicas.
+     *
      * @return retorna um ArrayList de Strings com as letras das músicas.
      */
     private static ArrayList<String> letras() {
 
-        letras.add(
-                """
+        letras.add("""
                 Homem negro, inferno branco, tipo Tarantino
-                Homem branco, inferno banto, tipo tá tirano
-                Os menor tá desesperado, tipo atirando
-                Eu querendo salvar o mundo, e ela pergunta "'tá zuando?"
-                É que as ruas me lembram o Massacre da Serra Elétrica
-                Eles tentam roubar, é o massacre da cerca elétrica
-                E o rap preocupa com o povo ou preocupa com a métrica
-                Mas os tentáculos do polvo é o que vai me afundar
-                E o olho que me julga precisa fazer regime
-                Ou algum de nós dois vai estar lá na cena do crime
-                E eu só querendo eu e minha mina na fila do cine
-                Vendo o filme da minha vitória
-                Sou da sua raça, mano, é a nossa vitória
-                Já foram farsa, vamo, contar nossa história
-                Quilombos, favelas, do futuro seremos reis, Charles
-                Seremos a negra mais linda desse baile charme
-                A negra velha mais sábia, crianças a chave
-                Eles são cadeado, já foram corrente, sabe?
-                O lado negro da força, mato com meu sabre
-                Te corto com meu sabre
-                Como se fosse a noite, 'cê vê tudo preto
-                Como fosse um blackout, 'cê vê tudo preto
-                São meus manos, minhas minas
-                Meus irmãos, minhas irmãs, yeah
-                O mundo é nosso, hã
-                Tipo a noite, 'cê vê tudo preto
-                Tipo um blackout, 'cê vê tudo preto
-                São cantos de esquinas, de reis e rainhas
-                Yeah, o mundo é nosso
-                Já disse, pretos no topo, e eu falava sério
-                Tipo BK, me veja como exemplo
-                Minha quebrada na merda, minha city fora do mapa, mano
-                Pros meus irmão eu sou exemplo, não nasci branco
-                Para ser franco, não nasci blanco
-                Mesmo assim a Paty quer sentar
-                Sou elétrico, tenho em mim a resistência
-                Sou DV Afrotribo pondo fim na concorrência
-                Ganhar dinheiro tipo Cassino de Scorsese
-                Gastar dinheiro tipo 'até que a sorte nos separe'
-                Manos se drogam, pensam até que a morte nos ampare
-                E a bola de cristal do boy é a taça de Campari
-                E o morro chora, desespero e ainda tem barro lá
-                Prefeito diz "Senhor é meu pastor, mas nada te asfaltará
-                Tudo te faltará, se comprometerá
-                Pra consumir doses de alegria, e não pagará"
-                É o Homem na Estrada de todo dia
-                E sabe a resposta, o que é clara e salgada
-                Os mais novo vive queimando largada
-                Não sabe ler nem escrever, e sabe o nome da delegada
-                Sejamos Abraham Lincoln, independência
-                Com a pele de Barack Obama
-                Sejamos Tupac Shakur, Afeni Shakur
-                Achemos a cura pra nossa insegurança
-                Cada bala de fuzil é uma lágrima de Oxalá
-                Mas na rua né não, na mão dos cana né não
-                Na cintura era um celular e eles confundem com um oitão
-                Como se fosse a noite, 'cê vê tudo preto
-                Como fosse um blackout, 'cê vê tudo preto
-                São meus manos, minhas minas
-                Meus irmãos, minhas irmãs, yeah
-                O mundo é nosso, hã
-                Tipo a noite, 'cê vê tudo preto
-                Tipo um blackout, 'cê vê tudo preto
-                São cantos de esquinas, de reis e rainhas
-                Yeah, o mundo é nosso
-                """
-                );
+                                Homem branco, inferno banto, tipo tá tirano
+                                Os menor tá desesperado, tipo atirando
+                                Eu querendo salvar o mundo, e ela pergunta tá zuando?
+                                É que as ruas me lembram o Massacre da Serra Elétrica
+                                Eles tentam roubar, é o massacre da cerca elétrica
+                                E o rap preocupa com o povo ou preocupa com a métrica
+                                Mas os tentáculos do polvo é o que vai me afundar
+                                E o olho que me julga precisa fazer regime
+                                Ou algum de nós dois vai estar lá na cena do crime
+                                E eu só querendo eu e minha mina na fila do cine
+                                Vendo o filme da minha vitória
+                                Sou da sua raça, mano, é a nossa vitória
+                                Já foram farsa, vamo, contar nossa história
+                                Quilombos, favelas, do futuro seremos reis, Charles
+                                Seremos a negra mais linda desse baile charme
+                                A negra velha mais sábia, crianças a chave
+                                Eles são cadeado, já foram corrente, sabe?
+                                O lado negro da força, mato com meu sabre
+                                Te corto com meu sabre
+                                Como se fosse a noite, 'cê vê tudo preto
+                                Como fosse um blackout, 'cê vê tudo preto
+                                São meus manos, minhas minas
+                                Meus irmãos, minhas irmãs, yeah
+                                O mundo é nosso, hã
+                                Tipo a noite, 'cê vê tudo preto
+                                Tipo um blackout, 'cê vê tudo preto
+                                São cantos de esquinas, de reis e rainhas
+                                Yeah, o mundo é nosso
+                                Já disse, pretos no topo, e eu falava sério
+                                Tipo BK, me veja como exemplo
+                                Minha quebrada na merda, minha city fora do mapa, mano
+                                Pros meus irmão eu sou exemplo, não nasci branco
+                                Para ser franco, não nasci blanco
+                                Mesmo assim a Paty quer sentar
+                                Sou elétrico, tenho em mim a resistência
+                                Sou DV Afrotribo pondo fim na concorrência
+                                Ganhar dinheiro tipo Cassino de Scorsese
+                                Gastar dinheiro tipo 'até que a sorte nos separe'
+                                Manos se drogam, pensam até que a morte nos ampare
+                                E a bola de cristal do boy é a taça de Campari
+                                E o morro chora, desespero e ainda tem barro lá
+                                Prefeito diz "Senhor é meu pastor, mas nada te asfaltará
+                                Tudo te faltará, se comprometerá
+                                Pra consumir doses de alegria, e não pagará"
+                                É o Homem na Estrada de todo dia
+                                E sabe a resposta, o que é clara e salgada
+                                Os mais novo vive queimando largada
+                                Não sabe ler nem escrever, e sabe o nome da delegada
+                                Sejamos Abraham Lincoln, independência
+                                Com a pele de Barack Obama
+                                Sejamos Tupac Shakur, Afeni Shakur
+                                Achemos a cura pra nossa insegurança
+                                Cada bala de fuzil é uma lágrima de Oxalá
+                                Mas na rua né não, na mão dos cana né não
+                                Na cintura era um celular e eles confundem com um oitão
+                                Como se fosse a noite, 'cê vê tudo preto
+                                Como fosse um blackout, 'cê vê tudo preto
+                                São meus manos, minhas minas
+                                Meus irmãos, minhas irmãs, yeah
+                                O mundo é nosso, hã
+                                Tipo a noite, 'cê vê tudo preto
+                                Tipo um blackout, 'cê vê tudo preto
+                                São cantos de esquinas, de reis e rainhas
+                                Yeah, o mundo é nosso""");
         letras.add("""
                 Você nunca atende, você é maluca
                 Mas você nunca me atende
@@ -444,8 +445,8 @@ public class Instanciacao {
                 Por isso que eu mantenho a minha gang no certo (ha-ha)
                 Jogo essa festa no teto
                 Eu sou o cara que abastece-tece""");
-        
-        
+
+
         letras.add("""
                 Call it magic
                 Call it true
@@ -761,7 +762,7 @@ public class Instanciacao {
                 Como as ondas são do mar
                 Não dá pra viver assim
                 Querer sem poder te tocar""");
-                
+
         letras.add("""
                 Deixa acontecer naturalmente
                 Eu não quero ver você chorar
@@ -873,8 +874,6 @@ public class Instanciacao {
                 Que pena""");
 
         letras.add("sdsdsd");
-
-
 
 
         return letras;

@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
+import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.controller.OuvinteController.ouvintePorIndex;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
@@ -23,7 +24,7 @@ public class UpdateOuvinteView extends JFrame implements ActionListener {
     private MyJTextField txtNome;
     private MyJTextField txtMusicaFavorita;
 
-    private MyJComboBox<Ouvinte> cboxOuvinte;
+    private MyJComboBox<String> cboxOuvinte;
 
     private MyJButton btnUpdt;
     private MyJButton btnCancelar;
@@ -70,8 +71,10 @@ public class UpdateOuvinteView extends JFrame implements ActionListener {
 
         cboxOuvinte.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                txtNome.setText(((Ouvinte) cboxOuvinte.getSelectedItem()).getNome());
-                txtMusicaFavorita.setText(((Ouvinte) cboxOuvinte.getSelectedItem()).getMusicaFavorita());
+                txtNome.setText((buscarOuvintePorNome(
+                		(String) cboxOuvinte.getSelectedItem()).getNome()));
+                txtMusicaFavorita.setText((buscarOuvintePorNome(
+                		(String) cboxOuvinte.getSelectedItem()).getMusicaFavorita()));
             }
         });
         return pnlForm;
@@ -95,8 +98,10 @@ public class UpdateOuvinteView extends JFrame implements ActionListener {
         Object src = e.getSource();
 
         if (src == btnUpdt) {
-            OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
-            controller.editarOuvinte(txtNome.getText().trim(),txtMusicaFavorita.getText().trim());
+            OuvinteController controller = new OuvinteController(buscarOuvintePorNome(
+            		(String) cboxOuvinte.getSelectedItem()));
+            
+            controller.editarOuvinte(txtNome.getText().trim(), txtMusicaFavorita.getText().trim());
             this.dispose();
             new OuvintesView();
             openDialog("success");

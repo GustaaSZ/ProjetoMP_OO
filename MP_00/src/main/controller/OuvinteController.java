@@ -3,6 +3,7 @@ package main.controller;
 import main.model.Ouvinte;
 import main.model.Playlist;
 
+import static main.model.Artista.artistasCadastrados;
 import static main.model.Ouvinte.ouvintesCadastrados;
 
 public class OuvinteController {
@@ -81,8 +82,12 @@ public class OuvinteController {
         return ouvintesCadastrados.isEmpty();
     }
 
-    public static Ouvinte[] arrayOuvintesCadastrados() {
-        return ouvintesCadastrados.toArray(new Ouvinte[0]);
+    public static String[] arrayOuvintesCadastrados() {
+    	String[] array = new String[ouvintesCadastrados.size()];
+    	for (int i = 0; i < array.length; i++) {
+            array[i] = ouvintesCadastrados.get(i).getNome();
+        }
+        return array;
     }
 
     public static Playlist[] arrayPlaylistsPorOuvinte(Ouvinte ouvinte) {

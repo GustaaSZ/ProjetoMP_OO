@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 
 import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.controller.ArtistaController.removerArtistaCadastrado;
+import static main.controller.ArtistaController.buscarArtistaPorNome;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
@@ -22,7 +23,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
     private MyJPanel pnlForm;
     private MyJPanel pnlRodape;
 
-    private MyJComboBox<Artista> cboxArtista;
+    private MyJComboBox<String> cboxArtista;
 
     private MyJButton btnRemover;
     private MyJButton btnCancelar;
@@ -84,7 +85,7 @@ public class RemoveArtistaView extends JFrame implements ActionListener {
 
         if (src == btnRemover) {
 
-            if (!removerArtistaCadastrado((Artista) cboxArtista.getSelectedItem())) {
+            if (!removerArtistaCadastrado(buscarArtistaPorNome((String) cboxArtista.getSelectedItem()))) {
                 openDialog("error");
                 return;
             }

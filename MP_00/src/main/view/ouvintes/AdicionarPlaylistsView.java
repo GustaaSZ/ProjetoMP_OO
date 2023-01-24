@@ -1,22 +1,24 @@
 package main.view.ouvintes;
 
-import main.controller.OuvinteController;
-import main.model.Ouvinte;
-import main.view.components.MyJButton;
-import main.view.components.MyJComboBox;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
+import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
+
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+import main.controller.OuvinteController;
+import main.view.components.MyJButton;
+import main.view.components.MyJComboBox;
+import main.view.components.MyJLabel;
+import main.view.components.MyJPanel;
 
 public class AdicionarPlaylistsView extends JFrame implements ActionListener {
 
@@ -25,7 +27,7 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
     private MyJPanel pnlRodape;
 
     private MyJComboBox<String> cboxPlaylist;
-    private MyJComboBox<Ouvinte> cboxOuvinte;
+    private MyJComboBox<String> cboxOuvinte;
 
     private MyJButton btnAdd;
     private MyJButton btnCancelar;
@@ -88,7 +90,9 @@ public class AdicionarPlaylistsView extends JFrame implements ActionListener {
         Object src = e.getSource();
 
         if (src == btnAdd) {
-            OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
+            OuvinteController controller = new OuvinteController(buscarOuvintePorNome(
+            		(String) cboxOuvinte.getSelectedItem()));
+            
             if (!controller.adicionarPlaylist(
                     buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem()))) {
                 openDialog("playlist_repetida");

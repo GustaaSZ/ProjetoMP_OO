@@ -15,6 +15,7 @@ import java.awt.event.ItemEvent;
 
 import static main.controller.OuvinteController.arrayOuvintesCadastrados;
 import static main.controller.OuvinteController.arrayPlaylistsPorOuvinte;
+import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
 import static main.util.Inicializacao.inicializar;
@@ -28,7 +29,7 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 	private MyJPanel pnlRodape;
 
 	private MyJComboBox<String> cboxPlaylist;
-	private MyJComboBox<Ouvinte> cboxOuvinte;
+	private MyJComboBox<String> cboxOuvinte;
 
 	private MyJButton btnRemover;
 	private MyJButton btnCancelar;
@@ -73,10 +74,12 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 			if (e.getStateChange() == ItemEvent.SELECTED) {
 				cboxPlaylist.removeAllItems();
 
-				var array = arrayPlaylistsPorOuvinte((Ouvinte) cboxOuvinte.getSelectedItem());
+				var array = arrayPlaylistsPorOuvinte(buscarOuvintePorNome(
+	            		(String) cboxOuvinte.getSelectedItem()));
 				for (int i = 0; i < array.length; i++) {
 					cboxPlaylist.addItem(
-							((Ouvinte) cboxOuvinte.getSelectedItem()).getPlaylists().get(i).getNome());
+							buscarOuvintePorNome(
+			                		(String) cboxOuvinte.getSelectedItem()).getPlaylists().get(i).getNome());
 				}
 			}
 		});
@@ -106,7 +109,8 @@ public class RemoverPlaylistsView extends JFrame implements ActionListener {
 		Object src = e.getSource();
 
 		if (src == btnRemover) {
-			OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
+			OuvinteController controller = new OuvinteController(buscarOuvintePorNome(
+            		(String) cboxOuvinte.getSelectedItem()));
 			if (!controller.removerPlaylist(
 					buscarPlaylistPorNome((String) cboxPlaylist.getSelectedItem()))) {
 				openDialog("error");

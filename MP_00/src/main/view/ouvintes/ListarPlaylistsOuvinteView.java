@@ -1,6 +1,5 @@
 package main.view.ouvintes;
 
-import main.model.Ouvinte;
 import main.model.Playlist;
 import main.view.components.*;
 
@@ -19,7 +18,7 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
     private MyJPanel pnlForm;
     private MyJPanel pnlRodape;
 
-    private MyJComboBox<Ouvinte> cboxOuvinte;
+    private MyJComboBox<String> cboxOuvinte;
 
     private MyJList<Playlist> lista;
 
@@ -59,7 +58,8 @@ public class ListarPlaylistsOuvinteView extends JFrame implements ActionListener
         cboxOuvinte.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 lista.setListData(
-                        arrayPlaylistsPorOuvinte((Ouvinte) cboxOuvinte.getSelectedItem()));
+                        arrayPlaylistsPorOuvinte(buscarOuvintePorNome(
+                        		(String) cboxOuvinte.getSelectedItem())));
             }
         });
         return pnlForm;
