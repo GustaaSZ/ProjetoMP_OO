@@ -36,7 +36,7 @@ public class BuscarOuvinteView extends JFrame implements ActionListener {
         if (pnlTitle == null) {
             pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
         }
-        MyJLabel lblTitle = new MyJLabel("Buscar Artista");
+        MyJLabel lblTitle = new MyJLabel("Buscar Ouvinte");
         pnlTitle.add(lblTitle);
 
         return pnlTitle;

@@ -81,8 +81,13 @@ public class Musica {
         return artistas.size() == 1
                 ?
                 this.nome + " foi lancada em " + dateToString(lancamento)
-                        + ", do genero " + genero + " e foi feita pelo artista " + artistas.get(0).getNome() + "."
+                        + ", do genero " + genero + " e foi feita pelo artista " + artistas.get(0).getNome() + ","+ " Que tem como Estilo Musical o/a " + artistas.get(0).getEstiloMusical() +"."
                 :
+                // "Nome da Musica: "+this.nome+"\n"+
+                // "Data de Lançamento: "+dateToString(lancamento)+
+                // "Gênero: "+this.genero+
+                // "Artista Compositor da Musica: "+artistas.get(0).getNome()+
+                // "Estilo Musical do(a) "+artistas.get(0).getNome()+": "+ artistas.get(0).getEstiloMusical()
                 this.nome + " foi lancada em " + dateToString(lancamento) +
                         ", do genero " + genero + " e foi feita pelos artistas: "
                         + arrayListArtistaToString(artistas);

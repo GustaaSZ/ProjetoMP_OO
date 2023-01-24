@@ -35,17 +35,19 @@ public class OuvinteController {
     }
 
     //	-----------------------------------------------------------------------------
-    public void editarNome(String nome) {
+    
+    public void editarOuvinte(String nome, String musicaFavorita) {
         ouvinte.setNome(nome);
+        ouvinte.setMusicaFavorita(musicaFavorita);
     }
 
 //	 ********************************* METODOS ESTATICOS *********************************
 
-    public static void cadastrarOuvinte(String nome) {
+    public static void cadastrarOuvinte(String nome, String musicaFavorita) {
         if (!ouvinteExiste(buscarOuvintePorNome(nome))) {
             return;
         }
-        new Ouvinte(nome.trim());
+        new Ouvinte(nome.trim(), musicaFavorita.trim());
     }
 
     public static boolean removerOuvinteCadastrado(Ouvinte ouvinte) {

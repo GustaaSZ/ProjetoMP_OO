@@ -17,18 +17,18 @@ public class Instanciacao {
 
         letras = letras();
 
-        Artista artista1 = new Artista("Djonga");
-        Artista artista2 = new Artista("Froid");
-        Artista artista3 = new Artista("Veigh");
-        Artista artista4 = new Artista("Yunk Vino");
-        Artista artista5 = new Artista("Kyan");
-        Artista artista6 = new Artista("Leviano");
+        Artista artista1 = new Artista("Djonga", "Rapper");
+        Artista artista2 = new Artista("Froid","Rapper");
+        Artista artista3 = new Artista("Veigh","Rapper");
+        Artista artista4 = new Artista("Yunk Vino","Rapper");
+        Artista artista5 = new Artista("Kyan","Rapper");
+        Artista artista6 = new Artista("Leviano","Rapper");
 
-        Artista artista7 = new Artista("ColdPlay");
-        Artista artista8 = new Artista("Chris Brown");
-        Artista artista9 = new Artista("Jorge Aragão");
-        Artista artista10 = new Artista("Grupo Revelação");
-        Artista artista11 = new Artista("Raça Negra");
+        Artista artista7 = new Artista("ColdPlay","Pop");
+        Artista artista8 = new Artista("Chris Brown","Pop");
+        Artista artista9 = new Artista("Jorge Aragão", "Samba");
+        Artista artista10 = new Artista("Grupo Revelação","Samba");
+        Artista artista11 = new Artista("Raça Negra","Samba");
 
         Musica musica1 = new Musica(artista1, "O Mundo é Nosso", letras.get(0), "Rap", new Date());
         Musica musica2 = new Musica(artista2, "Peita de dar Rolê", letras.get(1), "Rap", new Date());
@@ -39,7 +39,7 @@ public class Instanciacao {
         
         Musica musica7 = new Musica(artista7, "Magic",letras.get(6), "Rock alternativo", new Date());
         Musica musica8 = new Musica(artista7, "Clocks",letras.get(7), "Rock alternativo", new Date());
-        Musica musica9 = new Musica(artista8, "Under The Influence",letras.get(8), "R&B/soul", new Date());
+        Musica musica9 = new Musica(artista8, "Under The Influence",letras.get(8), "Hip Hop", new Date());
         Musica musica10 = new Musica(artista9, "Eu e você Sempre", letras.get(9), "Samba", new Date());
         Musica musica11 = new Musica(artista10, "Coração Radiante", letras.get(10), "Samba", new Date());
         Musica musica12 = new Musica(artista10, "Deixa Acontecer", letras.get(11), "Samba", new Date());
@@ -75,11 +75,11 @@ public class Instanciacao {
         controller4.adicionarMusica(musica12); 
         controller4.adicionarMusica(musica13);     
 
-        Ouvinte ouvinte1 = new Ouvinte("Joãozinho");
-        Ouvinte ouvinte2 = new Ouvinte("Maria");
-        Ouvinte ouvinte3 = new Ouvinte("Pedro");
-        Ouvinte ouvinte4 = new Ouvinte("Gustavo");
-        Ouvinte ouvinte5 = new Ouvinte("Felipe");
+        Ouvinte ouvinte1 = new Ouvinte("Joãozinho", "Under The Influence");
+        Ouvinte ouvinte2 = new Ouvinte("Maria", "Deixa Acontecer");
+        Ouvinte ouvinte3 = new Ouvinte("Pedro", "Clocks");
+        Ouvinte ouvinte4 = new Ouvinte("Gustavo", "Magic");
+        Ouvinte ouvinte5 = new Ouvinte("Felipe", "O Mundo é nosso");
 
         OuvinteController ouvinteController1 = new OuvinteController(ouvinte1);
         OuvinteController ouvinteController2 = new OuvinteController(ouvinte2);

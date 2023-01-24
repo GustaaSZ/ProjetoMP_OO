@@ -21,6 +21,8 @@ public class AddArtistasView extends JFrame implements ActionListener {
     private MyJPanel pnlRodape;
 
     private MyJTextField txtNome;
+    private MyJTextField txtEstiloMusical;
+
 
     private MyJButton btnCriar;
     private MyJButton btnCancelar;
@@ -46,14 +48,21 @@ public class AddArtistasView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
+            pnlForm = new MyJPanel(new GridLayout(6, 2));
+            // pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
         }
 
         MyJLabel lblNome = new MyJLabel("Nome:");
         txtNome = new MyJTextField(20);
 
+        MyJLabel lblEstiloMusical = new MyJLabel("Estilo Musical:");
+        txtEstiloMusical = new MyJTextField(20);
+
         pnlForm.add(lblNome);
         pnlForm.add(txtNome);
+
+        pnlForm.add(lblEstiloMusical);
+        pnlForm.add(txtEstiloMusical);
 
         return pnlForm;
     }
@@ -81,7 +90,7 @@ public class AddArtistasView extends JFrame implements ActionListener {
                 openDialog("error");
                 return;
             }
-            if (!cadastrarArtista(txtNome.getText())) {
+            if (!cadastrarArtista(txtNome.getText(), txtEstiloMusical.getText())) {
                 openDialog("error");
                 return;
             }

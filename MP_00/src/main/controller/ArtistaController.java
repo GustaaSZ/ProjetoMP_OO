@@ -13,14 +13,15 @@ public class ArtistaController {
         this.artista = artista;
     }
 
-    public void editarNome(String nome) {
+    public void editarArtista(String nome, String estiloMusical) {
         artista.setNome(nome);
+        artista.setEstiloMusical(estiloMusical);
     }
 
     // ---------------- METODOS ESTATICOS ----------------
-    public static boolean cadastrarArtista(String nome) {
+    public static boolean cadastrarArtista(String nome, String estiloMusical) {
         if (!artistaExiste(buscarArtistaPorNome(nome))) {
-            new Artista(nome.trim());
+            new Artista(nome.trim(), estiloMusical.trim());
             return true;
         }
         return false;

@@ -21,6 +21,7 @@ public class UpdateOuvinteView extends JFrame implements ActionListener {
     private MyJPanel pnlRodape;
 
     private MyJTextField txtNome;
+    private MyJTextField txtMusicaFavorita;
 
     private MyJComboBox<Ouvinte> cboxOuvinte;
 
@@ -46,11 +47,15 @@ public class UpdateOuvinteView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(2, 2));
+            pnlForm = new MyJPanel(new GridLayout(7, 2));
         }
         MyJLabel lblNome = new MyJLabel("Nome: ");
         txtNome = new MyJTextField(20);
         txtNome.setText(ouvintePorIndex(0).getNome());
+
+        MyJLabel lblMusicaFavorita = new MyJLabel("Musica Favorita: ");
+        txtMusicaFavorita = new MyJTextField(20);
+        txtMusicaFavorita.setText(ouvintePorIndex(0).getMusicaFavorita());
 
         MyJLabel lblOuvinte = new MyJLabel("Ouvinte:");
         cboxOuvinte = new MyJComboBox<>(arrayOuvintesCadastrados());
@@ -60,9 +65,13 @@ public class UpdateOuvinteView extends JFrame implements ActionListener {
         pnlForm.add(lblNome);
         pnlForm.add(txtNome);
 
+        pnlForm.add(lblMusicaFavorita);
+        pnlForm.add(txtMusicaFavorita);
+
         cboxOuvinte.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 txtNome.setText(((Ouvinte) cboxOuvinte.getSelectedItem()).getNome());
+                txtMusicaFavorita.setText(((Ouvinte) cboxOuvinte.getSelectedItem()).getMusicaFavorita());
             }
         });
         return pnlForm;
@@ -87,7 +96,7 @@ public class UpdateOuvinteView extends JFrame implements ActionListener {
 
         if (src == btnUpdt) {
             OuvinteController controller = new OuvinteController((Ouvinte) cboxOuvinte.getSelectedItem());
-            controller.editarNome(txtNome.getText().trim());
+            controller.editarOuvinte(txtNome.getText().trim(),txtMusicaFavorita.getText().trim());
             this.dispose();
             new OuvintesView();
             openDialog("success");

@@ -21,6 +21,7 @@ public class AddOuvintesView extends JFrame implements ActionListener {
     private MyJPanel pnlRodape;
 
     private MyJTextField txtNome;
+    private MyJTextField txtMusicaFavorita;
 
     private MyJButton btnCriar;
     private MyJButton btnCancelar;
@@ -44,13 +45,20 @@ public class AddOuvintesView extends JFrame implements ActionListener {
     //	-----------------------------------------------------------------------------
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
+            pnlForm = new MyJPanel(new GridLayout(6, 2));
+            // pnlForm = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
         }
         MyJLabel lblNome = new MyJLabel("Nome:");
         txtNome = new MyJTextField(20);
 
+        MyJLabel lblMusicaFavorita = new MyJLabel("Musica Favorita:");
+        txtMusicaFavorita = new MyJTextField(20);
+
         pnlForm.add(lblNome);
         pnlForm.add(txtNome);
+
+        pnlForm.add(lblMusicaFavorita);
+        pnlForm.add(txtMusicaFavorita);
 
         return pnlForm;
     }
@@ -82,7 +90,7 @@ public class AddOuvintesView extends JFrame implements ActionListener {
                 openDialog("error");
                 return;
             }
-            cadastrarOuvinte(txtNome.getText());
+            cadastrarOuvinte(txtNome.getText(), txtMusicaFavorita.getText());
             this.dispose();
             new OuvintesView();
             JOptionPane.showMessageDialog(null, "Ouvinte Cadastrado com Sucesso!");

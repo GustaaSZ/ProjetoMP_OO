@@ -22,6 +22,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
     private MyJPanel pnlRodape;
 
     private MyJTextField txtNome;
+    private MyJTextField txtEstiloMusical;
 
     private MyJComboBox<Artista> cboxArtista;
 
@@ -49,23 +50,30 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
 
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
-            pnlForm = new MyJPanel(new GridLayout(3, 2));
+            pnlForm = new MyJPanel(new GridLayout(7, 2));
         }
         MyJLabel lblArtista = new MyJLabel("Artista:");
         cboxArtista = new MyJComboBox<>(arrayArtistasCadastrados());
 
         MyJLabel lblNome = new MyJLabel("Nome:");
-        txtNome = new MyJTextField(20);
+        txtNome = new MyJTextField(15);
         txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());
+
+        MyJLabel lblEstiloMusical = new MyJLabel("Estilo Musical:");
+        txtEstiloMusical = new MyJTextField(15);
+        txtEstiloMusical.setText(((Artista)cboxArtista.getSelectedItem()).getEstiloMusical());
 
         pnlForm.add(lblArtista);
         pnlForm.add(cboxArtista);
         pnlForm.add(lblNome);
         pnlForm.add(txtNome);
+        pnlForm.add(lblEstiloMusical);
+        pnlForm.add(txtEstiloMusical);
 
         cboxArtista.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 txtNome.setText(((Artista) cboxArtista.getSelectedItem()).getNome());
+                txtEstiloMusical.setText(((Artista) cboxArtista.getSelectedItem()).getEstiloMusical());
             }
         });
         return pnlForm;
@@ -94,7 +102,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
 
         if (src == btnUpdt) {
             ArtistaController controller = new ArtistaController((Artista) cboxArtista.getSelectedItem());
-            controller.editarNome(txtNome.getText().trim());
+            controller.editarArtista(txtNome.getText().trim(), txtEstiloMusical.getText().trim());
 
             this.dispose();
             new ArtistasView();
