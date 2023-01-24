@@ -1,6 +1,6 @@
 package main.view.artistas;
 
-import main.model.Artista;
+// import main.model.Artista;
 import main.view.components.MyJButton;
 import main.view.components.MyJComboBox;
 import main.view.components.MyJLabel;

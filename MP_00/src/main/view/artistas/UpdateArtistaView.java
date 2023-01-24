@@ -15,7 +15,7 @@ import java.awt.event.ItemEvent;
 import javax.swing.JFrame;
 
 import main.controller.ArtistaController;
-import main.model.Artista;
+// import main.model.Artista;
 import main.view.components.MyJButton;
 import main.view.components.MyJComboBox;
 import main.view.components.MyJLabel;

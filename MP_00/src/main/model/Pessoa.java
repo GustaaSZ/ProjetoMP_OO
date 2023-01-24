@@ -8,6 +8,8 @@ package main.model;
  * @since 2023
  */
 public abstract class Pessoa {
+    // Essa classe é abstrata, pois não permite assim a criação de um objeto pessoa,
+    //  e sim de suas filhas (Artista e Ouvinte)
     private String nome;
 
     public Pessoa(String nome) {

@@ -1,6 +1,6 @@
 package main.view.artistas;
 
-import main.model.Artista;
+// import main.model.Artista;
 import main.model.Musica;
 import main.util.AesthethicsView;
 import main.view.components.*;
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 
 import static main.controller.ArtistaController.*;
-import static main.controller.OuvinteController.buscarOuvintePorNome;
+// import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.util.Inicializacao.inicializar;
 
 public class ListarMusicasArtistaView extends JFrame implements ActionListener {
