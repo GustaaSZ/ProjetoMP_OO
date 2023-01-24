@@ -54,7 +54,8 @@ public class ListarOuvintesView extends JFrame implements ActionListener {
             model.add(i, ouvintePorIndex(i));
         }
 
-        pnlForm.add(lista);
+        JScrollPane scroll = new JScrollPane(lista);
+        pnlForm.add(scroll);
         pnlForm.setBackground(AesthethicsView.getCorFundo());
 
         return pnlForm;

@@ -40,7 +40,7 @@ public class Ouvinte extends Pessoa {
 
     @Override
     public String toString() {
-        return this.getNome();
+        return "O ouvinte "+this.getNome()+", tem como música favorita a música "+this.getMusicaFavorita()+".";
     }
 
 }

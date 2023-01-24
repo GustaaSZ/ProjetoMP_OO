@@ -41,7 +41,7 @@ public class Artista extends Pessoa {
 
     @Override
     public String toString() {
-        return this.getNome();
+        return "O artista "+this.getNome()+", tem como estilo musical o "+this.getEstiloMusical()+".";
     }
 
 }
