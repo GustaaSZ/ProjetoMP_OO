@@ -14,6 +14,14 @@ import static main.controller.PlaylistController.cadastrarPlaylist;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
+/**
+ * Classe view de adicionar ouvintes, que se relaciona com a classe de PlaylistController
+ *
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ * @see PlaylistController
+ */
 public class AddPlaylistView extends JFrame implements ActionListener {
 
     private MyJPanel pnlTitle;
