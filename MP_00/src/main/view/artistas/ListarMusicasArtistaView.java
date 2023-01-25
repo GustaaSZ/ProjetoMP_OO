@@ -1,8 +1,10 @@
 package main.view.artistas;
 
 // import main.model.Artista;
+
 import main.model.Musica;
 import main.util.AesthethicsView;
+import main.util.Inicializacao;
 import main.view.components.*;
 
 import javax.swing.*;
@@ -17,9 +19,10 @@ import static main.util.Inicializacao.inicializar;
 
 /**
  * Classe com a view de listar musicas de algum artista cadastrado.
+ *
  * @author Arthur Gabriel e Gustavo Abrantes
- * @since 2023
  * @version 1.0
+ * @since 2023
  */
 public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
@@ -35,7 +38,8 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
     /**
      * Construtor da classe, chama o método inicializar e adiciona o listener ao JButton.
-     * @see Inicializacao.
+     *
+     * @see Inicializacao
      */
     public ListarMusicasArtistaView() {
         inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
@@ -46,6 +50,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
     /**
      * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
+     *
      * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
      */
     public MyJPanel getPnlTitle() {
@@ -60,6 +65,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
     /**
      * Método que instância objetos das classes MyJPanel, MyJLabel e MyJList, e tem como objetivo editar a tela, na parte central
+     *
      * @return Retorna o JPanel do body com os JButtons, JLabels e MyJList instanciados.
      */
     public MyJPanel getPnlForm() {
@@ -92,7 +98,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 lista.setListData(
                         arrayMusicasDoArtista(buscarArtistaPorNome(
-                        		(String) cboxArtista.getSelectedItem()))
+                                (String) cboxArtista.getSelectedItem()))
                 );
             }
         });
@@ -101,6 +107,7 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
     /**
      * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
+     *
      * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
      */
     public MyJPanel getPnlRodape() {
@@ -116,9 +123,10 @@ public class ListarMusicasArtistaView extends JFrame implements ActionListener {
 
     /**
      * Listener para os JButtons
-     * @param actionEvente e, que está diretamente ligado com a 
-       captura de eventos da interface EventListener, para detectar cliques em botões.
-     */ 
+     *
+     * @param e está diretamente ligado com a
+     *          captura de eventos da interface EventListener, para detectar cliques em botões.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();

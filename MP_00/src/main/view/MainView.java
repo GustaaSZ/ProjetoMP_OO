@@ -1,5 +1,6 @@
 package main.view;
 
+import main.util.Inicializacao;
 import main.view.artistas.ArtistasView;
 import main.view.components.MyJButton;
 import main.view.components.MyJLabel;
@@ -18,6 +19,13 @@ import static main.controller.OuvinteController.isOuvintesEmpty;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
+/**
+ * Classe que representa a tela principal do sistema.
+ *
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ */
 public class MainView extends JFrame implements ActionListener {
 
     private MyJPanel pnlTitle;
@@ -30,9 +38,11 @@ public class MainView extends JFrame implements ActionListener {
     private MyJButton btnOuvintes;
     private MyJButton btnFechar;
 
-//	ImageIcon imag = new ImageIcon(getClass().getResource("imagem.jpg"));
-//	MyJLabel label = new MyJLabel(imag);
-
+    /**
+     * Construtor da classe, chama o método inicializar e adiciona o listener aos JButtons.
+     *
+     * @see Inicializacao
+     */
     public MainView() {
         inicializar(this, "Sistema de Músicas", getPnlTitle(), getPnlBody(), getPnlRodape());
 
