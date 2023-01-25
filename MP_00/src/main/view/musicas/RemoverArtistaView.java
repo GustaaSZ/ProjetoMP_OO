@@ -22,6 +22,14 @@ import main.view.components.MyJComboBox;
 import main.view.components.MyJLabel;
 import main.view.components.MyJPanel;
 
+/**
+ * Classe view RemoverArtistaView, que se relaciona com a classe de musicaController
+ *
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ * @see MusicaController
+ */
 public class RemoverArtistaView extends JFrame implements ActionListener {
 
     private MyJPanel pnlTitle;
@@ -34,12 +42,22 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
     private MyJButton btnRemove;
     private MyJButton btnCancelar;
 
+    /**
+     * Construtor da classe RemoveMusicaView, que chama o método inicializar e adiciona o listener aos JButtons.
+     *
+     * @see Inicializacao
+     */
     public RemoverArtistaView() {
         inicializar(this, "CRUD Música", getPnlTitle(), getPnlForm(), getPnlRodape());
         btnRemove.addActionListener(this);
         btnCancelar.addActionListener(this);
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
+     *
+     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
             pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
@@ -50,6 +68,11 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
         return pnlTitle;
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela, na parte central
+     *
+     * @return Retorna o JPanel do body com os JButtons e JLabels instanciados.
+     */
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
             pnlForm = new MyJPanel(new GridLayout(2, 2));
@@ -83,6 +106,11 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
         return pnlForm;
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
+     *
+     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
             pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
@@ -96,6 +124,12 @@ public class RemoverArtistaView extends JFrame implements ActionListener {
         return pnlRodape;
     }
 
+    /**
+     * Listener para os JButtons
+     *
+     * @param (ActionEvent e) está diretamente ligado com a
+        captura de eventos da interface EventListener, para detectar cliques em botões.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
