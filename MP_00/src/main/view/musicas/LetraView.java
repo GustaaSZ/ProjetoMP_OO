@@ -17,6 +17,7 @@ import static main.util.Inicializacao.inicializar;
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0
  * @since 2023
+ * @see MusicaController
  */
 public class LetraView extends JFrame implements ActionListener {
 
@@ -37,14 +38,14 @@ public class LetraView extends JFrame implements ActionListener {
      */
     public LetraView() {
         inicializar(this, "CRUD Artista", getPnlTitle(), getPnlForm(), getPnlRodape());
+        //REGISTRA O EVENTO
         btnVoltar.addActionListener(this);
     }
 
-
     /**
-     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
+     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a parte superior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JLabel instanciado.
      */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
@@ -57,10 +58,8 @@ public class LetraView extends JFrame implements ActionListener {
         return pnlTitle;
     }
 
-    //	-------------------------------------------------------------
-
     /**
-     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela, na parte central
+     * Método que instância objetos das classes MyJPanel, MyJLabel, JScrollPane, MyJTextArea e MyJComboBox, tem como objetivo editar a parte central da tela.
      *
      * @return Retorna o JPanel do body com os JButtons e JLabels instanciados.
      */
@@ -88,12 +87,10 @@ public class LetraView extends JFrame implements ActionListener {
         return pnlForm;
     }
 
-    //	-------------------------------------------------------------
-
     /**
      * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JButton instanciado.
      */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {

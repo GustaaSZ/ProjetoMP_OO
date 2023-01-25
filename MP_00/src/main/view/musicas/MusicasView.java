@@ -20,7 +20,7 @@ import static main.view.components.Dialog.openDialog;
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0
  * @since 2023
- * @see isMusicasEmpty
+ * @see isMusicasEmpty MusicaController
  */
 public class MusicasView extends JFrame implements ActionListener {
 
@@ -46,6 +46,7 @@ public class MusicasView extends JFrame implements ActionListener {
     public MusicasView() {
 
         inicializar(this, "CRUD Música", getPnlTitle(), getPnlBody(), getPnlRodape());
+        //REGISTRA OS EVENTOS
         btnAdd.addActionListener(this);
         btnRemove.addActionListener(this);
         btnUpdate.addActionListener(this);
@@ -60,7 +61,7 @@ public class MusicasView extends JFrame implements ActionListener {
     /**
      * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JLabel instanciado.
      */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
@@ -74,9 +75,9 @@ public class MusicasView extends JFrame implements ActionListener {
 
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJButton, e tem como objetivo editar a tela, na parte central
+     * Método que instância objetos das classes MyJPanel e MyJButton, e tem como objetivo editar a parte central da tela.
      *
-     * @return Retorna o JPanel do body com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel do body com os JButtons instanciados.
      */
     public MyJPanel getPnlBody() {
         if (pnlBody == null) {
@@ -102,9 +103,9 @@ public class MusicasView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
+     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a parte inferior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JButton instanciado.
      */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
@@ -120,7 +121,7 @@ public class MusicasView extends JFrame implements ActionListener {
      * Listener para os JButtons
      *
      * @param (ActionEvent e) está diretamente ligado com a
-        captura de eventos da interface EventListener, para detectar cliques em botões.
+        captura de eventos da interface EventListener, para detectar cliques nos botões.
      */
     @Override
     public void actionPerformed(ActionEvent e) {

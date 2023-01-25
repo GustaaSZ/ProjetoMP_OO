@@ -15,6 +15,14 @@ import static main.controller.PlaylistController.isPlaylistsEmpty;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
+/**
+ * Classe view de Ouvintes, que se relaciona com a classe de OuvinteController, em específico com o método siOuvintesEmpty
+   em específico com o método de buscarOuvintePorNome
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ * @see isOuvintesEmpty OuvinteController
+ */
 public class OuvintesView extends JFrame implements ActionListener {
 
     private MyJPanel pnlTitle;
@@ -31,9 +39,15 @@ public class OuvintesView extends JFrame implements ActionListener {
     private MyJButton btnListPlaylists;
     private MyJButton btnVoltar;
 
+    /**
+     * Construtor da classe OuvintesView, que chama o método inicializar e adiciona o listener aos JButtons.
+     *
+     * @see Inicializacao
+     */
     public OuvintesView() {
         inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlBody(), getPnlRodape());
 
+        // REGISTRA OS EVENTOS
         btnAdd.addActionListener(this);
         btnRemove.addActionListener(this);
         btnUpdate.addActionListener(this);
@@ -45,6 +59,11 @@ public class OuvintesView extends JFrame implements ActionListener {
         btnVoltar.addActionListener(this);
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
+     *
+     * @return Retorna o JPanel da parte inferior com o JLabel instanciado.
+     */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
             pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
@@ -55,6 +74,11 @@ public class OuvintesView extends JFrame implements ActionListener {
         return pnlTitle;
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJButton, tem como objetivo editar a tela, na parte central
+     *
+     * @return Retorna o JPanel do body com os JButtons instanciados.
+     */
     public MyJPanel getPnlBody() {
         if (pnlBody == null) {
             pnlBody = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
@@ -80,6 +104,11 @@ public class OuvintesView extends JFrame implements ActionListener {
         return pnlBody;
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
+     *
+     * @return Retorna o JPanel da parte inferior com os JButtons instanciados.
+     */ 
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
             pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
@@ -90,6 +119,12 @@ public class OuvintesView extends JFrame implements ActionListener {
         return pnlRodape;
     }
 
+    /**
+     * Listener para os JButtons
+     *
+     * @param (ActionEvent e), está diretamente ligado com a
+       captura de eventos da interface EventListener, para detectar cliques em botões.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();

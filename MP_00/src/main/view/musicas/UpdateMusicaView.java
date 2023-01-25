@@ -47,14 +47,15 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
      */
     public UpdateMusicaView() {
         inicializar(this, "CRUD Música", getPnlTitle(), getPnlForm(), getPnlRodape());
+        //REGISTRA OS EVENTOS
         btnUpdt.addActionListener(this);
         btnCancelar.addActionListener(this);
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
+     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a parte superior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JLabel instanciado.
      */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
@@ -67,9 +68,9 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela, na parte central
+     * Método que instância objetos das classes MyJPanel, MyJLabel, MyJTextField, MyJComboBox e MyJTextArea, tem como objetivo editar a parte central da tela.
      *
-     * @return Retorna o JPanel do body com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel do body com os JLabels, JComboBoxs, JTextFields e JTextArea's instanciados.
      */
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
@@ -124,9 +125,9 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
+     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a parte inferior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com os JButtons instanciados.
      */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
