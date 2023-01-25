@@ -72,8 +72,7 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
         txtLetra = new MyJTextArea();
         txtLetra.setLineWrap(true);
         txtLetra.setText(musicaPorIndex(0).getLetra());
-
-
+        JScrollPane scrollPane = new JScrollPane(txtLetra);
 
         pnlForm.add(lblMusica);
         pnlForm.add(cboxMusica);
@@ -84,7 +83,7 @@ public class UpdateMusicaView extends JFrame implements ActionListener {
         pnlForm.add(lblLancamento);
         pnlForm.add(txtLancamento);
         pnlForm.add(lblLetra);
-        pnlForm.add(txtLetra);
+        pnlForm.add(scrollPane);
 
 
         cboxMusica.addItemListener(e -> {
