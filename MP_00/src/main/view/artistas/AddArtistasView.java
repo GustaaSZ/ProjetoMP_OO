@@ -35,8 +35,7 @@ public class AddArtistasView extends JFrame implements ActionListener {
 
 
     /**
-     * Construtor da classe, que instância alguns elementos
-       do método inicializar (para inicialização das telas), da classe instanciacao.
+     * Construtor da classe, chama o método inicializar e adiciona o listener aos JButtons.
      * @see Inicializacao.
      */
     public AddArtistasView() {
@@ -50,8 +49,7 @@ public class AddArtistasView extends JFrame implements ActionListener {
 
     /**
      * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
-     * Retorna o texto definido no lblTitle e adicionado no pnlTitle
-     * @return String
+     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
      */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
@@ -68,7 +66,7 @@ public class AddArtistasView extends JFrame implements ActionListener {
 
     /**
      * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela, na parte central
-     * @return textos e campos de textos definidos e adicionados ao pnlForm
+     * @return Retorna o JPanel do body com os JButtons e JLabels instanciados.
      */
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
@@ -94,8 +92,7 @@ public class AddArtistasView extends JFrame implements ActionListener {
 
     /**
      * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
-     * Altera o layout para FlowLayout.CENTER
-     * @return botões com seus respectivos textos definidos e adicionados ao pnlRodape
+     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
      */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
@@ -113,7 +110,7 @@ public class AddArtistasView extends JFrame implements ActionListener {
 
 
     /**
-     * Método para gerenciar eventos
+     * Listener para os JButtons
      * @param actionEvente e, que está diretamente ligado com a 
        captura de eventos da interface EventListener, para detectar cliques em botões.
      */ 
