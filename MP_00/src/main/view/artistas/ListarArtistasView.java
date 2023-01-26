@@ -43,9 +43,10 @@ public class ListarArtistasView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
+     * Método que instância objetos das classes MyJPanel e MyJLabel. 
+       Tem como objetivo editar a parte superior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JLabel instanciado.
      */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
@@ -59,9 +60,10 @@ public class ListarArtistasView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel, MyJLabel e MyJList, e tem como objetivo editar a tela, na parte central
+     * Método que instância objetos das classes MyJPanel, MyJLabel, JScrollPane e MyJList.
+       Tem como objetivo editar a parte central da tela.
      *
-     * @return Retorna o JPanel do body com os JButtons, JLabels e MyJList instanciados.
+     * @return Retorna o JPanel do body com os JButtons, JLabels, JList e JScrollPane instanciados.
      */
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
@@ -82,9 +84,10 @@ public class ListarArtistasView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
+     * Método que instância objetos das classes MyJPanel e MyJButton.
+       Tem como objetivo editar a parte inferior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JButton instanciado.
      */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
@@ -99,8 +102,8 @@ public class ListarArtistasView extends JFrame implements ActionListener {
     /**
      * Listener para os JButtons
      *
-     * @param e está diretamente ligado com a
-     *          captura de eventos da interface EventListener, para detectar cliques em botões.
+     * @param ActionEvent e. Está diretamente ligado com a
+       captura de eventos da interface EventListener, para detectar cliques em botões.
      */
     @Override
     public void actionPerformed(ActionEvent e) {

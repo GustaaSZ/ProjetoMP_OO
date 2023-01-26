@@ -20,7 +20,7 @@ import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
 /**
- * Classe que representa a tela principal do sistema.
+ * Classe MainView que representa a tela principal do sistema.
  *
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0
@@ -39,7 +39,7 @@ public class MainView extends JFrame implements ActionListener {
     private MyJButton btnFechar;
 
     /**
-     * Construtor da classe, chama o método inicializar e adiciona o listener aos JButtons.
+     * Construtor da classe MainView, chama o método inicializar e adiciona o listener aos JButtons.
      *
      * @see Inicializacao
      */
@@ -53,6 +53,11 @@ public class MainView extends JFrame implements ActionListener {
         btnFechar.addActionListener(this);
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a parte superior da tela Principal
+     *
+     * @return Retorna o JPanel da parte superior da tela com o JLabel instanciado.
+     */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
             pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
@@ -63,6 +68,12 @@ public class MainView extends JFrame implements ActionListener {
         return pnlTitle;
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJButton.
+       Tem como objetivo editar a parte central da tela principal.
+     *
+     * @return Retorna o JPanel do body com os JButtons instanciados.
+     */
     public MyJPanel getPnlBody() {
         if (pnlBody == null) {
             pnlBody = new MyJPanel(new FlowLayout(FlowLayout.CENTER), true);
@@ -80,6 +91,11 @@ public class MainView extends JFrame implements ActionListener {
         return pnlBody;
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a parte inferior da tela Principal
+     *
+     * @return Retorna o JPanel da parte inferior com o JButton instanciado.
+     */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
             pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
@@ -90,6 +106,12 @@ public class MainView extends JFrame implements ActionListener {
         return pnlRodape;
     }
 
+    /**
+     * Listener para os JButtons
+     *
+     * @param (ActionEvent e), está diretamente ligado com a
+       captura de eventos da interface EventListener, para detectar cliques em botões.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();

@@ -110,7 +110,7 @@ public class MusicaController {
 
     /**
      * Método que busca uma música pelo seu index no ArrayList de músicas cadastradas.
-     * @param index index da música que será buscada.
+     * @param index da música que será buscada.
      * @return retorna a música se ela for encontrada.
      */
     public static Musica musicaPorIndex(int index) {

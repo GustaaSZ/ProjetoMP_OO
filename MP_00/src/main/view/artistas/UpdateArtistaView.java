@@ -20,6 +20,7 @@ import static main.view.components.Dialog.openDialog;
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0
  * @since 2023
+ * @see ArtistaController
  */
 public class UpdateArtistaView extends JFrame implements ActionListener {
 
@@ -37,7 +38,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
     private MyJButton btnCancelar;
 
     /**
-     * Construtor da classe, chama o método inicializar e adiciona o listener ao JButton.
+     * Construtor da classe UpdateArtistaView, chama o método inicializar e adiciona o listener ao JButton.
      *
      * @see Inicializacao
      */
@@ -49,9 +50,10 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
+     * Método que instância objetos das classes MyJPanel e MyJLabel. 
+       Tem como objetivo editar a parte superior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JLabel instanciado.
      */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
@@ -64,9 +66,10 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel, MyJLabel e MyJComboBox, e tem como objetivo editar a tela, na parte central
+     * Método que instância objetos das classes MyJPanel, MyJLabel e MyJComboBox, MyJTextField. 
+       Tem como objetivo editar a tela, na parte central.
      *
-     * @return Retorna o JPanel do body com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel do body com os JLabels, JComboBoxs e os JTextFields instanciados.
      */
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
@@ -100,9 +103,10 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
+     * Método que instância objetos das classes MyJPanel e MyJButton. 
+       Tem como objetivo editar a parte inferior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com os JButtons instanciados.
      */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
@@ -120,8 +124,9 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
     /**
      * Listener para os JButtons
      *
-     * @param e está diretamente ligado com a
-     *          captura de eventos da interface EventListener, para detectar cliques em botões.
+     * @param (ActionEvent e). Está diretamente ligado com a
+       captura de eventos da interface EventListener, para detectar cliques em botões.
+     *
      */
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -13,6 +13,14 @@ import static main.controller.PlaylistController.*;
 import static main.util.Inicializacao.inicializar;
 import static main.view.components.Dialog.openDialog;
 
+/**
+ * Classe de atualizar uma playlist view, que se relaciona com a classe de PlaylistController
+ *
+ * @author Arthur Gabriel e Gustavo Abrantes
+ * @version 1.0
+ * @since 2023
+ * @see PlaylistController
+ */
 public class UpdatePlaylistView extends JFrame implements ActionListener {
 
     private MyJPanel pnlTitle;
@@ -27,12 +35,23 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
     private MyJButton btnUpdt;
     private MyJButton btnCancelar;
 
+    /**
+     * Construtor da classe UpdatePlaylistView, que chama o método inicializar e adiciona o listener aos JButtons.
+     *
+     * @see Inicializacao
+     */
     public UpdatePlaylistView() {
         inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+        // REGISTRA OS EVENTOS
         btnUpdt.addActionListener(this);
         btnCancelar.addActionListener(this);
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a parte superior da tela
+     *
+     * @return Retorna o JPanel da parte superior da tela com o JLabel instanciado.
+     */
     public MyJPanel getPnlTitle() {
         if (pnlTitle == null) {
             pnlTitle = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
@@ -43,6 +62,11 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
         return pnlTitle;
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel, MyJComboBox, MyJTextField e o MyJLabel. Tem como objetivo editar a parte central da tela
+     *
+     * @return Retorna o JPanel do body com os JLabels, JComboBoxs e os JTextFields instanciados.
+     */
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
             pnlForm = new MyJPanel(new GridLayout(7, 2));
@@ -76,6 +100,11 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
         return pnlForm;
     }
 
+    /**
+     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a parte inferior da tela
+     *
+     * @return Retorna o JPanel da parte inferior com os JButtons instanciados.
+     */
     public MyJPanel getPnlRodape() {
         if (pnlRodape == null) {
             pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
@@ -89,6 +118,12 @@ public class UpdatePlaylistView extends JFrame implements ActionListener {
         return pnlRodape;
     }
 
+    /**
+     * Listener para os JButtons
+     *
+     * @param (ActionEvent e), está diretamente ligado com a
+       captura de eventos da interface EventListener, para detectar cliques em botões.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();

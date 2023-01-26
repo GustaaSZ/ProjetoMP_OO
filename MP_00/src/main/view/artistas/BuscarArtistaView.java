@@ -17,11 +17,12 @@ import static main.view.components.Dialog.objetoEncontrado;
 import static main.view.components.Dialog.openDialog;
 
 /**
- * Classe com a view de buscar artistas cadastrados.
+ * Classe com a view de buscar artistas cadastrados. View que se relaciona com a classe de ArtistaController
  *
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0
  * @since 2023
+ * @see ArtistaController
  */
 public class BuscarArtistaView extends JFrame implements ActionListener {
 
@@ -37,7 +38,7 @@ public class BuscarArtistaView extends JFrame implements ActionListener {
 
 
     /**
-     * Construtor da classe, chama o método inicializar e adiciona o listener aos JButtons.
+     * Construtor da classe BuscarArtistaView, chama o método inicializar e adiciona o listener aos JButtons.
      *
      * @see Inicializacao
      */
@@ -50,9 +51,10 @@ public class BuscarArtistaView extends JFrame implements ActionListener {
 
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela na parte superior
+     * Método que instância objetos das classes MyJPanel e MyJLabel. 
+       Tem como objetivo editar a parte superior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com o JLabel instanciado.
      */
 
     public MyJPanel getPnlTitle() {
@@ -66,9 +68,10 @@ public class BuscarArtistaView extends JFrame implements ActionListener {
     }
 
      /**
-     * Método que instância objetos das classes MyJPanel e MyJLabel, e tem como objetivo editar a tela, na parte central
+     * Método que instância objetos das classes MyJPanel, MyJLabel e o MyJTextField.
+       Tem como objetivo editar a parte central da tela.
      *
-     * @return Retorna o JPanel do body com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel do body com o JLabel e o JTexField instanciados.
      */
     public MyJPanel getPnlForm() {
         if (pnlForm == null) {
@@ -84,9 +87,10 @@ public class BuscarArtistaView extends JFrame implements ActionListener {
     }
 
     /**
-     * Método que instância objetos das classes MyJPanel e MyJButton e tem como objetivo editar a tela na parte inferior
+     * Método que instância objetos das classes MyJPanel e MyJButton.
+       Tem como objetivo editar a parte inferior da tela.
      *
-     * @return Retorna o JPanel da parte inferior com os JButtons e JLabels instanciados.
+     * @return Retorna o JPanel da parte inferior com os JButtons instanciados.
      * @return
      */
     public MyJPanel getPnlRodape() {
@@ -103,12 +107,11 @@ public class BuscarArtistaView extends JFrame implements ActionListener {
         return pnlRodape;
     }
 
-
     /**
      * Listener para os JButtons
      *
-     * @param e está diretamente ligado com a
-     *          captura de eventos da interface EventListener, para detectar cliques em botões.
+     * @param (ActionEvent e). Está diretamente ligado com a
+       captura de eventos da interface EventListener, para detectar cliques em botões.
      */
     @Override
     public void actionPerformed(ActionEvent e) {

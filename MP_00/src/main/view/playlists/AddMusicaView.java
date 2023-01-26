@@ -45,6 +45,7 @@ public class AddMusicaView extends JFrame implements ActionListener {
      */
     public AddMusicaView() {
         inicializar(this, "CRUD Ouvinte", getPnlTitle(), getPnlForm(), getPnlRodape());
+        // REGISTRA O EVENTO
         btnAdd.addActionListener(this);
         btnCancelar.addActionListener(this);
     }
