@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Classe com métodos para conversão de dados.
@@ -17,7 +16,7 @@ import java.util.Locale;
 public class Conversor {
 
     
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     /**
      * Método para converter uma string em uma data.
