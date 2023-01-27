@@ -1,6 +1,6 @@
 package main.view.ouvintes;
 
-import main.view.MainView;
+import main.view.TelaPrincipal;
 import main.components.MyJButton;
 import main.components.MyJLabel;
 import main.components.MyJPanel;
@@ -199,7 +199,7 @@ public class OuvintesView extends JFrame implements ActionListener {
 
         if (src == btnVoltar) {
             this.dispose();
-            new MainView();
+            new TelaPrincipal();
         }
 
     }

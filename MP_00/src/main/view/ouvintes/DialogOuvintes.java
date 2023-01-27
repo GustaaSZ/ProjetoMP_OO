@@ -55,6 +55,12 @@ public class DialogOuvintes {
                             "Ouvinte não encontradado",
                             null,
                             JOptionPane.ERROR_MESSAGE);
+            case "ouvinte_repetido" ->
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Ouvinte já Cadastrado! Por favor, Insira Outro Nome.",
+                            null,
+                            JOptionPane.ERROR_MESSAGE);
             default ->
                     JOptionPane.showMessageDialog(
                             null,
@@ -72,6 +78,8 @@ public class DialogOuvintes {
      */
     public static boolean objetoEncontrado(Object o) {
         setColor();
+        // O instanceof é um operador que permite testar se um objeto
+        // é uma instância de um tipo específico de uma class, subclass ou interface.
         if (o instanceof Ouvinte) {
             JOptionPane.showMessageDialog(
                     null,

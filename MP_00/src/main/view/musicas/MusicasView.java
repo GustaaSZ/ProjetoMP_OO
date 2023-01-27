@@ -1,6 +1,6 @@
 package main.view.musicas;
 
-import main.view.MainView;
+import main.view.TelaPrincipal;
 import main.components.MyJButton;
 import main.components.MyJLabel;
 import main.components.MyJPanel;
@@ -188,7 +188,7 @@ public class MusicasView extends JFrame implements ActionListener {
 
         if (src == btnVoltar) {
             this.dispose();
-            new MainView();
+            new TelaPrincipal();
         }
     }
 }

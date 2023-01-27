@@ -122,14 +122,13 @@ public class AddOuvintesView extends JFrame implements ActionListener {
                 return;
             }
             if (!cadastrarOuvinte(txtNome.getText(), txtMusicaFavorita.getText())) {
-                openDialog("error");
+                openDialog("ouvinte_repetido");
                 return;
             }
             cadastrarOuvinte(txtNome.getText(), txtMusicaFavorita.getText());
             this.dispose();
             new OuvintesView();
             openDialog("success");
-            // JOptionPane.showMessageDialog(null, "Ouvinte Cadastrado com Sucesso!");
         }
 
         if (src == btnCancelar) {
@@ -137,8 +136,6 @@ public class AddOuvintesView extends JFrame implements ActionListener {
             new OuvintesView();
         }
     }
-
-//	-----------------------------------------------------------------------------
 
 }
 

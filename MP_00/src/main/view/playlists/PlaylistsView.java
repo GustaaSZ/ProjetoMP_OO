@@ -1,6 +1,6 @@
 package main.view.playlists;
 
-import main.view.MainView;
+import main.view.TelaPrincipal;
 import main.components.MyJButton;
 import main.components.MyJLabel;
 import main.components.MyJPanel;
@@ -185,7 +185,7 @@ public class PlaylistsView extends JFrame implements ActionListener {
 
         if (src == btnVoltar) {
             this.dispose();
-            new MainView();
+            new TelaPrincipal();
         }
     }
 }

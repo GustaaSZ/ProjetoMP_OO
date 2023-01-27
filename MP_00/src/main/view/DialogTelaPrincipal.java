@@ -9,13 +9,13 @@ import static main.util.AesthethicsView.*;
 import static main.util.AesthethicsView.getCorLetra;
 
 /**
- * Classe Dialog que se relaciona com a tela principal do sistema.
+ * Classe DialogTelaPrincipal que se relaciona com a tela principal do sistema.
  *
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0
  * @since 2023
  */
-public class Dialog {
+public class DialogTelaPrincipal {
 
         /**
          * Método openDialog. Nele será usado um switch, para cada caso contém as mensagens de Warnings.
