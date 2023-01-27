@@ -32,7 +32,7 @@ public class Musica {
      * @param nome String.
      * @param letra String
      * @param genero String.
-     * @param lacamento Date.
+     * @param lancamento Date.
      */
     public Musica(String nome, String letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();
@@ -50,7 +50,7 @@ public class Musica {
      * @param nome String.
      * @param letra String
      * @param genero String.
-     * @param lacamento Date.
+     * @param lancamento Date.
      */
     public Musica(Artista artista, String nome, String letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();

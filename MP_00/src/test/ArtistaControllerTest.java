@@ -5,7 +5,7 @@
  import org.junit.jupiter.api.BeforeEach;
  import org.junit.jupiter.api.Test;
 
- import static main.util.Instanciacao.instanciar;
+ import static main.controller.Instanciacao.instanciar;
  import static org.junit.jupiter.api.Assertions.*;
 
  /**

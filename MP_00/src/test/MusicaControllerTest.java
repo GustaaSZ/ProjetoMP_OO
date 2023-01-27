@@ -8,7 +8,7 @@
 
  import java.util.Date;
 
- import static main.util.Instanciacao.instanciar;
+ import static main.controller.Instanciacao.instanciar;
  import static org.junit.jupiter.api.Assertions.*;
 
     /**
