@@ -9,7 +9,7 @@ import static main.util.AesthethicsView.*;
 import static main.util.AesthethicsView.getCorLetra;
 
 /**
- * Classe DialogTelaPrincipal que se relaciona com a tela principal do sistema.
+ * Classe DialogMainView que se relaciona com a tela principal (MainView) do sistema.
  *
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0

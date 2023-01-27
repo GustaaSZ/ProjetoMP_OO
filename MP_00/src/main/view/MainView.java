@@ -20,7 +20,7 @@ import static main.util.Inicializacao.inicializar;
 import static main.view.DialogMainView.openDialog;
 
 /**
- * Classe TelaPrincipal que representa a tela principal (1º tela) do sistema.
+ * Classe MainView que representa a tela principal (1º tela) do sistema.
  *
  * @author Arthur Gabriel e Gustavo Abrantes
  * @version 1.0
