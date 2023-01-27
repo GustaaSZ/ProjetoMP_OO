@@ -16,7 +16,7 @@ public class MyJComboBox<T> extends JComboBox {
     /**
      * Construtor da classe MyJComboBox.
      * Altera as cores do background, foreground e altera a fonte do texto. 
-     * @param items
+     * @param items lista de itens do JComboBox
      */
     public MyJComboBox(T[] items) {
         super(items);

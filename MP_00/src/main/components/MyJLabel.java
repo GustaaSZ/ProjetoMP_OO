@@ -16,7 +16,7 @@ public class MyJLabel extends JLabel {
     /**
      * Construtor da classe MyJLabel.
      * Altera as cores do background, foreground e altera a fonte do texto. 
-     * @param text
+     * @param text texto do JLabel
      */
     public MyJLabel(String text) {
         // Chama o construtor da classe Pai (JLabel)

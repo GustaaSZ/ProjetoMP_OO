@@ -16,7 +16,6 @@ public class MyJButton extends JButton {
     /**
      * Construtor da classe MyJButton.
      * Altera as cores do background e foreground. Além de alterar a fonte do texto. 
-     * @version 1.0
      * @param text
      */
     public MyJButton(String text) {

@@ -17,8 +17,7 @@ public class MyJPanel extends JPanel {
     /**
      * Construtor da classe MyJPanel.
      * Altera as cores do background.
-     * @version 1.0
-     * @param flowLayout 
+     * @param flowLayout layout do panel
      */
     public MyJPanel(FlowLayout flowLayout) { //  Panel para o Header e Footer 
         super(flowLayout);
@@ -28,8 +27,8 @@ public class MyJPanel extends JPanel {
     /**
      * Construtor da classe MyJPanel.
      * Altera as cores do background.
-     * @version 1.1
-     * @param flowLayout, isForm 
+     * @param flowLayout layout do panel
+     * @param isForm se o panel é um form
      */
     public MyJPanel(FlowLayout flowLayout, boolean isForm) { // Panels para o Body
         super(flowLayout);
@@ -39,8 +38,7 @@ public class MyJPanel extends JPanel {
     /**
      * Construtor da classe MyJPanel.
      * Altera as cores do background.
-     * @version 1.2
-     * @param gridLayout
+     * @param gridLayout layout do panel
      */
     public MyJPanel(GridLayout gridLayout) {
         super(gridLayout);
@@ -50,8 +48,7 @@ public class MyJPanel extends JPanel {
     /**
      * Construtor da classe MyJPanel.
      * Altera as cores do background.
-     * @version 1.3
-     * @param borderLayout
+     * @param borderLayout layout do panel
      */
     public MyJPanel(BorderLayout borderLayout) {
         super(borderLayout);

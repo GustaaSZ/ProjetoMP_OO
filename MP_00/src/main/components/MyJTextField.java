@@ -16,7 +16,7 @@ public class MyJTextField extends JTextField {
     /**
      * Construtor da classe MyJTextField.
      * Altera as cores do background, foreground e altera a fonte de texto.
-     * @param columns 
+     * @param columns numero de colunas do campo de texto
      */
     public MyJTextField(int columns) {
         super(columns);

@@ -17,7 +17,7 @@ public class MyJFormattedTextField extends JFormattedTextField {
     /**
      * Construtor da classe MyJFormattedTextField.
      * Altera as cores do background, foreground e altera a fonte do texto. 
-     * @param maskFormatter
+     * @param maskFormatter mascara do campo de texto
      */
     public MyJFormattedTextField(MaskFormatter maskFormatter) {
         super(maskFormatter);

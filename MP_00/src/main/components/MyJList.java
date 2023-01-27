@@ -18,7 +18,7 @@ public class MyJList<T> extends JList {
      * Altera as cores do background, foreground e altera a fonte do texto
        para padrões de fonte e cor definidos na classe AesthethicsView.
      *
-     * @param model
+     * @param model modelo da lista
      */
     public MyJList(DefaultListModel<T> model) {
         super(model);
