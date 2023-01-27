@@ -16,6 +16,10 @@ public class MusicaController {
 
     private final Musica musica;
 
+    /**
+     * Construtor da classe MusicaController
+     * @param musica Musica.
+     */
     public MusicaController(Musica musica) {
         this.musica = musica;
     }
@@ -23,7 +27,8 @@ public class MusicaController {
     /**
      * Método para adicionar um artista a uma música.
      * @param artista artista que será adicionado.
-     * @return retorna true se o artista for adicionado com sucesso.
+     * Retorna true se o artista for adicionado com sucesso.
+     * @return boolean
      */
     public boolean adicionarArtista(Artista artista) {
         if (musica.getArtistas().contains(artista)) {
@@ -37,7 +42,8 @@ public class MusicaController {
     /**
      * Método para remover um artista de uma música.
      * @param artista artista que será removido.
-     * @return retorna true se o artista for removido com sucesso.
+     * Retorna true se o artista for removido com sucesso.
+     * @return boolean
      */
     public boolean removerArtista(Artista artista) {
         if (!musica.getArtistas().contains(artista)) {
@@ -86,7 +92,8 @@ public class MusicaController {
     /**
      * Método para remover uma música cadastrada.
      * @param musica música que será removida.
-     * @return retorna true se a música for removida com sucesso.
+     * Retorna true se a música for removida com sucesso.
+     * @return boolean
      */
     public static boolean removerMusica(Musica musica) {
         if (!musicaExiste(musica)) {
@@ -99,7 +106,8 @@ public class MusicaController {
     /**
      * Método para buscar uma música por nome.
      * @param nome nome da música que será buscada.
-     * @return retorna a música se ela for encontrada.
+     * Retorna a música se ela for encontrada.
+     * @return musica
      */
     public static Musica buscarMusicaPorNome(String nome) {
         return musicasCadastradas.stream()
@@ -111,7 +119,8 @@ public class MusicaController {
     /**
      * Método que busca uma música pelo seu index no ArrayList de músicas cadastradas.
      * @param index da música que será buscada.
-     * @return retorna a música se ela for encontrada.
+     * Retorna a música se ela for encontrada.
+     * @return Musica
      */
     public static Musica musicaPorIndex(int index) {
         return musicasCadastradas.get(index);
@@ -119,7 +128,8 @@ public class MusicaController {
 
     /**
      * Método para verificar a quantidade de músicas cadastradas.
-     * @return retorna a quantidade de músicas cadastradas.
+     * Retorna valor inteiro da quantidade de músicas cadastradas.
+     * @return inteiro
      */
     public static int quantidadeMusicasCadastradas() {
         return musicasCadastradas.size();
@@ -127,7 +137,8 @@ public class MusicaController {
 
     /**
      * Método para verificar se o ArrayList de músicas cadastradas está vazio.
-     * @return retorna true se o ArrayList estiver vazio.
+     * Retorna true se o ArrayList estiver vazio.
+     * @return boolean
      */
     public static boolean isMusicasEmpty() {
         return musicasCadastradas.isEmpty();
@@ -135,7 +146,8 @@ public class MusicaController {
 
     /**
      * Método que converte o ArrayList de músicas cadastradas em um vetor com seus respectivos nomes.
-     * @return retorna um vetor com os nomes das músicas cadastradas.
+     * Retorna um vetor com os nomes das músicas cadastradas.
+     * @return String
      */
     public static String[] arrayMusicasCadastradas() {
         String[] array = new String[musicasCadastradas.size()];
@@ -148,7 +160,8 @@ public class MusicaController {
     /**
      * Método que converte o Arraylist de artistas de uma música em um vetor de artistas.
      * @param mus música que será convertida.
-     * @return retorna um vetor com os artistas da música.
+     * Retorna um vetor com os artistas da música.
+     * @return String
      */
     public static String[] arrayArtistasNaMusica(Musica mus) {
         String[] array = new String[mus.getArtistas().size()];
@@ -161,7 +174,8 @@ public class MusicaController {
     /**
      * Método que verifica se uma música existe.
      * @param musica música que será verificada.
-     * @return retorna true se a música existir.
+     * Retorna true se a música existir.
+     * @return boolean
      */
     private static Boolean musicaExiste(Musica musica) {
         return musicasCadastradas.contains(musica);

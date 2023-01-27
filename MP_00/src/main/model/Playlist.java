@@ -11,18 +11,20 @@ import java.util.ArrayList;
  */
 public class Playlist {
 
+    // Atributos
     private String nome;
     private String descricao;
+
+    // Array de musicas
     private final ArrayList<Musica> musicas;
 
     //Array com todas as playlists cadastradas
     public static final ArrayList<Playlist> playlistsCadastradas = new ArrayList<>();
 
-    
     /**
-     * Construtor da classe Playlist
-     * @param nome
-     * @param descricao
+     * Construtor da classe Playlist.
+     * @param nome String
+     * @param descricao String.
      */
     public Playlist(String nome, String descricao) {
         this.nome = nome;
@@ -34,10 +36,10 @@ public class Playlist {
 
 
     /**
-     * Construtor2 da classe playlist
-     * @param ouvinte
-     * @param nome
-     * @param descricao
+     * Construtor da classe playlist. Agora, passando como parâmetro, um ouvinte instânciado.
+     * @param ouvinte Ouvinte.
+     * @param nome String.
+     * @param descricao String.
      */
     public Playlist(Ouvinte ouvinte, String nome, String descricao) {
         this.nome = nome;
@@ -47,6 +49,7 @@ public class Playlist {
         playlistsCadastradas.add(this);
     }
 
+    // Métodos gets e sets
     public String getNome() {
         return nome;
     }
@@ -67,7 +70,7 @@ public class Playlist {
         return musicas;
     }
 
-
+    // Método toString da classe
     @Override
     public String toString() {
         return this.nome + " possui " + musicas.size() + " musicas cadastradas!";

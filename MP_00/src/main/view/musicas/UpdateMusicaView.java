@@ -1,7 +1,7 @@
 package main.view.musicas;
 
 import main.controller.MusicaController;
-import main.view.components.*;
+import main.components.*;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -14,7 +14,7 @@ import java.text.ParseException;
 import static main.controller.MusicaController.*;
 import static main.util.Conversor.dateToString;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.musicas.DialogMusicas.openDialog;
 
 /**
  * Classe view UpdateMusicaView, que se relaciona com a classe de musicaController

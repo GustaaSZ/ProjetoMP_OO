@@ -1,7 +1,7 @@
 package main.view.musicas;
 
 // import main.model.Artista;
-import main.view.components.*;
+import main.components.*;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -14,7 +14,7 @@ import static main.controller.ArtistaController.arrayArtistasCadastrados;
 import static main.controller.ArtistaController.buscarArtistaPorNome;
 import static main.controller.MusicaController.cadastrarMusica;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.musicas.DialogMusicas.openDialog;
 
 /**
  * Classe view de adicionar musica, que se relaciona com a classe de MusicaController

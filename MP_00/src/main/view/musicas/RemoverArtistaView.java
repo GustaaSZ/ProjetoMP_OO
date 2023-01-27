@@ -6,7 +6,7 @@ import static main.controller.MusicaController.arrayMusicasCadastradas;
 import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.controller.MusicaController.musicaPorIndex;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.musicas.DialogMusicas.openDialog;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -17,10 +17,10 @@ import java.awt.event.ItemEvent;
 import javax.swing.JFrame;
 
 import main.controller.MusicaController;
-import main.view.components.MyJButton;
-import main.view.components.MyJComboBox;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJComboBox;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
 
 /**
  * Classe view RemoverArtistaView, que se relaciona com a classe de musicaController

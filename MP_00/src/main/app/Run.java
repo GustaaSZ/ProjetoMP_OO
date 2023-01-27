@@ -4,7 +4,7 @@ import main.view.MainView;
 
 import javax.swing.*;
 
-import static main.util.Instanciacao.instanciar;
+ import static main.controller.Instanciacao.instanciar;
 
 /**
  * Classe com método main.

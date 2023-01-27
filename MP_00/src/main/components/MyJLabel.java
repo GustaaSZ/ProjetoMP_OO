@@ -1,4 +1,4 @@
-package main.view.components;
+package main.components;
 
 import main.util.AesthethicsView;
 
@@ -26,4 +26,3 @@ public class MyJLabel extends JLabel {
         setFont(AesthethicsView.getFonte());
     }
 }
-

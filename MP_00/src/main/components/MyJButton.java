@@ -1,4 +1,4 @@
-package main.view.components;
+package main.components;
 
 import main.util.AesthethicsView;
 
@@ -39,4 +39,3 @@ public class MyJButton extends JButton {
         setFont(AesthethicsView.getFonteMenor());
     }
 }
-

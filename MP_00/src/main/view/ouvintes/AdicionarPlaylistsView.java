@@ -5,7 +5,7 @@ import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.controller.PlaylistController.arrayPlaylistsCadastradas;
 import static main.controller.PlaylistController.buscarPlaylistPorNome;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.ouvintes.DialogOuvintes.openDialog;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -15,10 +15,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 import main.controller.OuvinteController;
-import main.view.components.MyJButton;
-import main.view.components.MyJComboBox;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJComboBox;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
 
 /**
  * Classe view de adicionar playlist no ouvinte, que se relaciona com a classe de OuvinteController

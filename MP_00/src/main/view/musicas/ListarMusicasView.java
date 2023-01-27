@@ -2,10 +2,10 @@ package main.view.musicas;
 
 import main.model.Musica;
 import main.util.AesthethicsView;
-import main.view.components.MyJButton;
-import main.view.components.MyJLabel;
-import main.view.components.MyJList;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJLabel;
+import main.components.MyJList;
+import main.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;

@@ -14,11 +14,17 @@ public class Artista extends Pessoa {
     // Atributo estiloMusical, que diferencia a classe filha da classe pai
     private String estiloMusical;
 
+    // Array de musicas no artista
     private final ArrayList<Musica> musicas;
 
     //Array com todos os artistas cadastrados
     public static final ArrayList<Artista> artistasCadastrados = new ArrayList<>();
 
+    /**
+     * Método Construtor da classe Artista.
+     * @param nome String.
+     * @param estiloMusical String.
+     */
     public Artista(String nome, String estiloMusical) {
         super(nome);
         this.estiloMusical = estiloMusical;
@@ -26,11 +32,11 @@ public class Artista extends Pessoa {
         artistasCadastrados.add(this);
     }
 
+    // Métodos gets e sets
     public ArrayList<Musica> getMusicas() {
         return musicas;
     }
 
-    // Encapsulamento do Atributo EstiloMusical
     public String getEstiloMusical(){
         return estiloMusical;
     }
@@ -39,6 +45,7 @@ public class Artista extends Pessoa {
         this.estiloMusical = estiloMusical;
     }
 
+    // ToString da classe
     @Override
     public String toString() {
         return "O artista " + this.getNome() + ", tem como estilo musical o "+ this.getEstiloMusical()+".";

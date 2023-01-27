@@ -1,7 +1,7 @@
 package main.view.ouvintes;
 
 import main.model.Playlist;
-import main.view.components.*;
+import main.components.*;
 
 import javax.swing.*;
 import java.awt.*;

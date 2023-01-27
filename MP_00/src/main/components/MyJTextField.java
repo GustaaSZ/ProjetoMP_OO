@@ -1,4 +1,4 @@
-package main.view.components;
+package main.components;
 
 import main.util.AesthethicsView;
 
@@ -25,4 +25,3 @@ public class MyJTextField extends JTextField {
         setFont(AesthethicsView.getFonteMenor());
     }
 }
-

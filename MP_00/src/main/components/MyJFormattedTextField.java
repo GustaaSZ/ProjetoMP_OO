@@ -1,4 +1,4 @@
-package main.view.components;
+package main.components;
 
 import main.util.AesthethicsView;
 

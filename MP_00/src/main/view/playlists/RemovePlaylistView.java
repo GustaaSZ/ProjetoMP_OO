@@ -1,9 +1,9 @@
 package main.view.playlists;
 
-import main.view.components.MyJButton;
-import main.view.components.MyJComboBox;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJComboBox;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 import static main.controller.PlaylistController.*;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.playlists.DialogPlaylists.openDialog;
 
 /**
  * Classe de remover uma playlist view, que se relaciona com a classe de PlaylistController

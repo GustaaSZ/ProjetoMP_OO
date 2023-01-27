@@ -15,7 +15,10 @@ import static main.util.Conversor.dateToString;
  */
 public class Musica {
 
+    // Array de artistas na Musica
     private final ArrayList<Artista> artistas;
+
+    // Atributos
     private String nome;
     private String genero;
     private Date lancamento;
@@ -24,6 +27,13 @@ public class Musica {
     //Array com todas as músicas cadastradas.
     public static final ArrayList<Musica> musicasCadastradas = new ArrayList<>();
 
+     /**
+     * Método Construtor da classe Musica.
+     * @param nome String.
+     * @param letra String
+     * @param genero String.
+     * @param lacamento Date.
+     */
     public Musica(String nome, String letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();
         this.nome = nome;
@@ -34,6 +44,14 @@ public class Musica {
         musicasCadastradas.add(this);
     }
 
+    /**
+     * Método Construtor da classe Musica. Agora, passando como parâmetro uma artista instânciado.
+     * @param artista Artista.
+     * @param nome String.
+     * @param letra String
+     * @param genero String.
+     * @param lacamento Date.
+     */
     public Musica(Artista artista, String nome, String letra, String genero, Date lancamento) {
         this.artistas = new ArrayList<>();
         this.nome = nome;
@@ -47,6 +65,7 @@ public class Musica {
         artista.getMusicas().add(this);
     }
 
+    // Métodos gets e sets
     public ArrayList<Artista> getArtistas() {
         return artistas;
     }
@@ -83,6 +102,7 @@ public class Musica {
         this.letra = letra;
     }
 
+    // ToString da classe
     @Override
     public String toString() {
         return artistas.size() == 1
@@ -90,11 +110,6 @@ public class Musica {
                 this.nome + " foi lancada em " + dateToString(lancamento)
                         + ", do genero " + genero + " e foi feita pelo artista " + artistas.get(0).getNome() + ","+ " Que tem como Estilo Musical o/a " + artistas.get(0).getEstiloMusical() +"."
                 :
-                // "Nome da Musica: "+this.nome+"\n"+
-                // "Data de Lançamento: "+dateToString(lancamento)+
-                // "Gênero: "+this.genero+
-                // "Artista Compositor da Musica: "+artistas.get(0).getNome()+
-                // "Estilo Musical do(a) "+artistas.get(0).getNome()+": "+ artistas.get(0).getEstiloMusical()
                 this.nome + " foi lancada em " + dateToString(lancamento) +
                         ", do genero " + genero + " e foi feita pelos artistas: "
                         + arrayListArtistaToString(artistas);

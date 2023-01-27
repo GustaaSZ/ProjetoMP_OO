@@ -14,12 +14,17 @@ import static main.model.Ouvinte.ouvintesCadastrados;
  * @since 2023
  */
 public class OuvinteController {
+
+    // Instanciando o ouvinte. Ouvinte Só pode ter seu valor atribuído uma unica vez na classe
     private final Ouvinte ouvinte;
 
+    /**
+     * Método Construtor da classe OuvinteController.
+     * @param ouvinte Ouvinte
+     */
     public OuvinteController(Ouvinte ouvinte) {
         this.ouvinte = ouvinte;
     }
-
 
     /**
      * Método para adicionar uma playlist a um ouvinte.
@@ -36,7 +41,6 @@ public class OuvinteController {
         return true;
     }
 
-
     /**
      * Método para remover uma playlist de um ouvinte.
      * @param playlist playlist que será removida.
@@ -52,7 +56,7 @@ public class OuvinteController {
         return true;
     }
 
-    
+
     /**
      * Método para atualizar os dados do ouvinte.
      * @param nome nome que será atribuído ao ouvinte.
@@ -63,8 +67,7 @@ public class OuvinteController {
         ouvinte.setMusicaFavorita(musicaFavorita);
     }
 
-//	 ********************************* METODOS ESTATICOS *********************************
-
+    //	 ***************** METODOS ESTATICOS *********************
 
     /**
      * Método para cadastrar um ouvinte.
@@ -73,13 +76,13 @@ public class OuvinteController {
      * Verifica se o ouvinte já foi cadastrado, se não, é cadastrado com sucesso
      * Não retorna nada
      */
-    public static void cadastrarOuvinte(String nome, String musicaFavorita) {
+    public static boolean cadastrarOuvinte(String nome, String musicaFavorita) {
         if (!ouvinteExiste(buscarOuvintePorNome(nome))) {
-            return;
+            new Ouvinte(nome.trim(), musicaFavorita.trim());
+            return true;
         }
-        new Ouvinte(nome.trim(), musicaFavorita.trim());
+        return false;
     }
-
 
     /**
      * Método para remover um ouvinte cadastrado.
@@ -99,7 +102,6 @@ public class OuvinteController {
         }
     }
 
-
     /**
      * Método para buscar um ouvinte cadastrada pelo nome.
      * @param nome nome do ouvinte que será buscado.
@@ -113,7 +115,6 @@ public class OuvinteController {
                 .orElse(null);
     }
 
-
     /**
      * Método que busca um ouvinte pelo seu index no ArrayList de ouvintes cadastrados.
      * @param index index do ouvinte que será buscado.
@@ -122,7 +123,6 @@ public class OuvinteController {
     public static Ouvinte ouvintePorIndex(int index) {
         return ouvintesCadastrados.get(index);
     }
-
 
     /**
      * Método para verificar a quantidade de ouvintes cadastrados.
@@ -133,7 +133,6 @@ public class OuvinteController {
         return ouvintesCadastrados.size();
     }
 
-
     /**
      * Método para verificar se o ArrayList de ouvintes cadastradas está vazio.
      * Retorna TRUE se o ArrayList de ouvintes cadastradas estiver vazio, e FALSE caso contrário.
@@ -142,7 +141,6 @@ public class OuvinteController {
     public static boolean isOuvintesEmpty() {
         return ouvintesCadastrados.isEmpty();
     }
-
 
     /**
     * Método que converte o ArrayList de ouvintes cadastradas em um vetor com seus respectivos nomes.

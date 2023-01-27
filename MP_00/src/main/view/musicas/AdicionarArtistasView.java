@@ -2,10 +2,10 @@ package main.view.musicas;
 
 import main.controller.MusicaController;
 // import main.model.Artista;
-import main.view.components.MyJButton;
-import main.view.components.MyJComboBox;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJComboBox;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ import static main.controller.ArtistaController.buscarArtistaPorNome;
 import static main.controller.MusicaController.arrayMusicasCadastradas;
 import static main.controller.MusicaController.buscarMusicaPorNome;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.musicas.DialogMusicas.openDialog;
 
 
 /**

@@ -1,8 +1,7 @@
 package main.view.ouvintes;
 
 import main.controller.OuvinteController;
-// import main.model.Ouvinte;
-import main.view.components.*;
+import main.components.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +13,7 @@ import static main.controller.OuvinteController.arrayOuvintesCadastrados;
 import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.controller.OuvinteController.ouvintePorIndex;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.ouvintes.DialogOuvintes.openDialog;
 
 /**
  * Classe view de Atualizar o Ouvinte, que se relaciona com os método

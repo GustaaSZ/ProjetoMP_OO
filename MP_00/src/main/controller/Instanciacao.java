@@ -1,7 +1,5 @@
-package main.util;
+package main.controller;
 
-import main.controller.OuvinteController;
-import main.controller.PlaylistController;
 import main.model.Artista;
 import main.model.Musica;
 import main.model.Ouvinte;
@@ -864,3 +862,4 @@ public class Instanciacao {
         return letras;
     }
 }
+

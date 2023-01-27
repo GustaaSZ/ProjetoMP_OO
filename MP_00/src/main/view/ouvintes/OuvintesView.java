@@ -1,9 +1,9 @@
 package main.view.ouvintes;
 
 import main.view.MainView;
-import main.view.components.MyJButton;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import static main.controller.OuvinteController.isOuvintesEmpty;
 import static main.controller.PlaylistController.isPlaylistsEmpty;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.ouvintes.DialogOuvintes.openDialog;
 
 /**
  * Classe view de Ouvintes, que se relaciona com a classe de OuvinteController, em específico com o método siOuvintesEmpty

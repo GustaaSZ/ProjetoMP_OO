@@ -3,9 +3,9 @@ package main.view.artistas;
 
 import main.util.Inicializacao;
 import main.view.MainView;
-import main.view.components.MyJButton;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 import static main.controller.ArtistaController.isArtistasEmpty;
 import static main.controller.MusicaController.isMusicasEmpty;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.artistas.DialogArtistas.openDialog;
 
 /**
  * Classe com a view principal de artistas.

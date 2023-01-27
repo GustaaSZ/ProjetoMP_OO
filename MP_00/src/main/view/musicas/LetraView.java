@@ -1,6 +1,6 @@
 package main.view.musicas;
 
-import main.view.components.*;
+import main.components.*;
 
 import javax.swing.*;
 import java.awt.*;

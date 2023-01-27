@@ -13,12 +13,17 @@ import static main.model.Playlist.playlistsCadastradas;
  */
 public class PlaylistController {
 
+    // Instânciando um objeto playlists. Dessa forma,
+    // ele só pode ter seu valor atríbuido uma única vez nessa classe.
     private final Playlist playlist;
 
+    /**
+     * Construtor da classe PlaylistController
+     * @param playlist Playlist.
+     */
     public PlaylistController(Playlist playlist) {
         this.playlist = playlist;
     }
-
 
     /**
      * Método para adicionar uma musica a uma playlist.
@@ -34,7 +39,6 @@ public class PlaylistController {
         return true;
     }
 
-
     /**
      * Método para remover uma musica de uma playlist.
      * @param musica musica que será removida.
@@ -49,7 +53,6 @@ public class PlaylistController {
         return true;
     }
 
-
     /**
      * Método para atualizar os dados da playlist.
      * @param nome nome que será atribuído a playlist.
@@ -59,7 +62,6 @@ public class PlaylistController {
         playlist.setNome(nome);
         playlist.setDescricao(descricao);
     }
-
 
     /**
      * Método para cadastrar uma playlist.
@@ -76,7 +78,6 @@ public class PlaylistController {
         return true;
     }
 
-
     /**
      * Método para remover uma playlist cadastrada.
      * @param playlist playlist que será removida.
@@ -91,7 +92,6 @@ public class PlaylistController {
         return true;
     }
 
-
     /**
      * Método para buscar uma playlist cadastrada pelo nome.
      * @param nome nome da playlist que será buscado.
@@ -105,7 +105,6 @@ public class PlaylistController {
                 .orElse(null);
     }
 
-
     /**
      * Método que busca uma playlist pelo seu index no ArrayList de playlists cadastradas.
      * @param index index da playlist que será buscada.
@@ -114,7 +113,6 @@ public class PlaylistController {
     public static Playlist playlistPorIndex(int index) {
         return playlistsCadastradas.get(index);
     }
-
 
     /**
      * Método para verificar a quantidade de playlists cadastradas.
@@ -134,7 +132,6 @@ public class PlaylistController {
         return playlistsCadastradas.isEmpty();
     }
 
-
     /**
      * Método que converte o ArrayList de playlists cadastradas em um vetor com seus respectivos nomes.
      * Retorna um vetor com os nomes das playlists cadastradas.
@@ -147,7 +144,6 @@ public class PlaylistController {
         }
         return array;
     }
-
 
     /**
      * Método que converte o Arraylist de musicas de uma playlist em um vetor de musicas.

@@ -1,10 +1,11 @@
 package main.view.artistas;
 
+
 import main.util.Inicializacao;
-import main.view.components.MyJButton;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
-import main.view.components.MyJTextField;
+import main.components.MyJButton;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
+import main.components.MyJTextField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.awt.event.ActionListener;
 
 import static main.controller.ArtistaController.cadastrarArtista;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.artistas.DialogArtistas.openDialog;
 
 /**
  * Classe view de adicionar artista, que se relaciona com a classe de artistaController

@@ -4,7 +4,7 @@ package main.view.artistas;
 import main.model.Musica;
 import main.util.AesthethicsView;
 import main.util.Inicializacao;
-import main.view.components.*;
+import main.components.*;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,10 +1,10 @@
 package main.view.ouvintes;
 
 // import main.model.Ouvinte;
-import main.view.components.MyJButton;
-import main.view.components.MyJComboBox;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJComboBox;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ import static main.controller.OuvinteController.arrayOuvintesCadastrados;
 import static main.controller.OuvinteController.buscarOuvintePorNome;
 import static main.controller.OuvinteController.removerOuvinteCadastrado;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.ouvintes.DialogOuvintes.openDialog;
 
 /**
  * Classe view de remover Ouvinte, que se relaciona com o método de removerOuvinte da classe OuvinteController

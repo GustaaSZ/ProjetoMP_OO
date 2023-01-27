@@ -2,9 +2,9 @@ package main.view;
 
 import main.util.Inicializacao;
 import main.view.artistas.ArtistasView;
-import main.view.components.MyJButton;
-import main.view.components.MyJLabel;
-import main.view.components.MyJPanel;
+import main.components.MyJButton;
+import main.components.MyJLabel;
+import main.components.MyJPanel;
 import main.view.musicas.MusicasView;
 import main.view.ouvintes.OuvintesView;
 import main.view.playlists.PlaylistsView;
@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import static main.controller.ArtistaController.isArtistasEmpty;
 import static main.controller.OuvinteController.isOuvintesEmpty;
 import static main.util.Inicializacao.inicializar;
-import static main.view.components.Dialog.openDialog;
+import static main.view.Dialog.openDialog;
 
 /**
  * Classe MainView que representa a tela principal do sistema.
