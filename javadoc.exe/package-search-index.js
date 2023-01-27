@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"main.app"},{"l":"main.components"},{"l":"main.controller"},{"l":"main.model"},{"l":"main.util"},{"l":"main.view"},{"l":"main.view.artistas"},{"l":"main.view.musicas"},{"l":"main.view.ouvintes"},{"l":"main.view.playlists"},{"l":"test"}];updateSearchResults();

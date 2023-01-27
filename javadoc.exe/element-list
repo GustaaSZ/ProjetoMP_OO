@@ -1,0 +1,11 @@
+main.app
+main.components
+main.controller
+main.model
+main.util
+main.view
+main.view.artistas
+main.view.musicas
+main.view.ouvintes
+main.view.playlists
+test

@@ -124,7 +124,7 @@ public class UpdateArtistaView extends JFrame implements ActionListener {
     /**
      * Listener para os JButtons
      *
-     * @param (ActionEvent e). Está diretamente ligado com a
+     * @param e Está diretamente ligado com a
        captura de eventos da interface EventListener, para detectar cliques em botões.
      *
      */

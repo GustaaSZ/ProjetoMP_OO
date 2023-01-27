@@ -122,7 +122,7 @@ public class OuvintesView extends JFrame implements ActionListener {
     /**
      * Listener para os JButtons
      *
-     * @param (ActionEvent e), está diretamente ligado com a
+     * @param e está diretamente ligado com a
        captura de eventos da interface EventListener, para detectar cliques em botões.
      */
     @Override
