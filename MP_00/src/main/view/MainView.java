@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import static main.controller.ArtistaController.isArtistasEmpty;
 import static main.controller.OuvinteController.isOuvintesEmpty;
 import static main.util.Inicializacao.inicializar;
-import static main.view.DialogTelaPrincipal.openDialog;
+import static main.view.DialogMainView.openDialog;
 
 /**
  * Classe TelaPrincipal que representa a tela principal (1º tela) do sistema.
@@ -26,7 +26,7 @@ import static main.view.DialogTelaPrincipal.openDialog;
  * @version 1.0
  * @since 2023
  */
-public class TelaPrincipal extends JFrame implements ActionListener {
+public class MainView extends JFrame implements ActionListener {
 
     private MyJPanel pnlTitle;
     private MyJPanel pnlBody;
@@ -43,7 +43,7 @@ public class TelaPrincipal extends JFrame implements ActionListener {
      *
      * @see Inicializacao
      */
-    public TelaPrincipal() {
+    public MainView() {
         inicializar(this, "Sistema de Músicas", getPnlTitle(), getPnlBody(), getPnlRodape());
 
         btnArtistas.addActionListener(this);

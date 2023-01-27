@@ -2,7 +2,7 @@ package main.view.artistas;
 
 
 import main.util.Inicializacao;
-import main.view.TelaPrincipal;
+import main.view.MainView;
 import main.components.MyJButton;
 import main.components.MyJLabel;
 import main.components.MyJPanel;
@@ -177,7 +177,7 @@ public class ArtistasView extends JFrame implements ActionListener {
 
         if (src == btnVoltar) {
             this.dispose();
-            new TelaPrincipal();
+            new MainView();
         }
     }
 

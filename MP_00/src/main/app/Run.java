@@ -1,6 +1,6 @@
 package main.app;
 
-import main.view.TelaPrincipal;
+import main.view.MainView;
 
 import javax.swing.*;
 
@@ -16,6 +16,6 @@ public class Run {
 
     public static void main(String[] args) {
         instanciar();
-        SwingUtilities.invokeLater(TelaPrincipal::new);
+        SwingUtilities.invokeLater(MainView::new);
     }
 }

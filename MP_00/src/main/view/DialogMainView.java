@@ -15,7 +15,7 @@ import static main.util.AesthethicsView.getCorLetra;
  * @version 1.0
  * @since 2023
  */
-public class DialogTelaPrincipal {
+public class DialogMainView {
 
         /**
          * Método openDialog. Nele será usado um switch, para cada caso contém as mensagens de Warnings.
