@@ -4,7 +4,6 @@ import main.model.Artista;
 import main.model.Musica;
 
 import static main.model.Artista.artistasCadastrados;
-// import static main.model.Musica.musicasCadastradas;
 
 /**
  * Classe com métodos para manipulação de artistas.
@@ -15,7 +14,7 @@ import static main.model.Artista.artistasCadastrados;
 public class ArtistaController {
 
     // Instânciando um artista. Essa intânciação permite 
-    // que o o valor de artista seja atribuido uma unica vez nessa classe.
+    // que o valor de artista seja atribuido uma unica vez nessa classe.
     private final Artista artista;
 
     public ArtistaController(Artista artista) {
