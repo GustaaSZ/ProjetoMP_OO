@@ -93,8 +93,8 @@ public class AddPlaylistView extends JFrame implements ActionListener {
         if (pnlRodape == null) {
             pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
         }
-        btnCriar = new MyJButton("Cadastrar");
-        btnCancelar = new MyJButton("Cancelar");
+        btnCriar = new MyJButton("Cadastrar", true);
+        btnCancelar = new MyJButton("Cancelar", true);
 
         pnlRodape.add(btnCriar);
         pnlRodape.add(btnCancelar);

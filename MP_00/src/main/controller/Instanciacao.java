@@ -39,12 +39,12 @@ public class Instanciacao {
         Artista artista10 = new Artista("Grupo Revelação", "Samba");
         Artista artista11 = new Artista("Raça Negra", "Samba");
 
-        Musica musica1 = new Musica(artista1, "O Mundo é Nosso", letras.get(0), "Rap", new Date());
-        Musica musica2 = new Musica(artista2, "Peita de dar Rolê", letras.get(1), "Rap", new Date());
-        Musica musica3 = new Musica(artista3, "Mil Maneiras", letras.get(2), "Trap", new Date());
-        Musica musica4 = new Musica(artista4, "237", letras.get(3), "Trap", new Date());
-        Musica musica5 = new Musica(artista5, "Mandrake", letras.get(4), "Drill", new Date());
-        Musica musica6 = new Musica(artista6, "Quieto", letras.get(5), "Trap", new Date());
+        Musica musica1 = new Musica(artista1, "O Mundo é Nosso", letras.get(0), "Rap", new Date("13/03/2017"));
+        Musica musica2 = new Musica(artista2, "Peita de dar Rolê", letras.get(1), "Rap", new Date("07/08/2019"));
+        Musica musica3 = new Musica(artista3, "Mil Maneiras", letras.get(2), "Trap", new Date("19/11/2022"));
+        Musica musica4 = new Musica(artista4, "237", letras.get(3), "Trap", new Date("14/02/2020"));
+        Musica musica5 = new Musica(artista5, "Mandrake", letras.get(4), "Drill", new Date("07/11/2019"));
+        Musica musica6 = new Musica(artista6, "Quieto", letras.get(5), "Trap", new Date("24/03/2022"));
 
         Musica musica7 = new Musica(artista7, "Magic", letras.get(6), "Rock alternativo", new Date());
         Musica musica8 = new Musica(artista7, "Clocks", letras.get(7), "Rock alternativo", new Date());
@@ -54,7 +54,7 @@ public class Instanciacao {
         Musica musica12 = new Musica(artista10, "Deixa Acontecer", letras.get(11), "Samba", new Date());
         Musica musica13 = new Musica(artista11, "É Tarde Demais", letras.get(12), "Samba", new Date());
 
-        Playlist playlist1 = new Playlist("Rap", "Descrição 1");
+        Playlist playlist1 = new Playlist("Rap", "As melhores do rap");
 
         PlaylistController controller1 = new PlaylistController(playlist1);
 
@@ -62,8 +62,8 @@ public class Instanciacao {
         controller1.adicionarMusica(musica2);
         controller1.adicionarMusica(musica3);
 
-        Playlist playlist2 = new Playlist("Rock", "Descrição 2");
-        Playlist playlist3 = new Playlist("Samba", "Descrição 3");
+        Playlist playlist2 = new Playlist("Rock", "Rock and roll");
+        Playlist playlist3 = new Playlist("Samba", "Sambinha dos cria");
         PlaylistController controller2 = new PlaylistController(playlist2);
 
         controller2.adicionarMusica(musica4);
@@ -85,7 +85,7 @@ public class Instanciacao {
         controller4.adicionarMusica(musica13);
 
 
-        Ouvinte ouvinte1 = new Ouvinte("Joãozinho", "Under The Influence");
+        Ouvinte ouvinte1 = new Ouvinte("João", "Under The Influence");
         Ouvinte ouvinte2 = new Ouvinte("Maria", "Deixa Acontecer");
         Ouvinte ouvinte3 = new Ouvinte("Pedro", "Clocks");
         Ouvinte ouvinte4 = new Ouvinte("Gustavo", "Magic");

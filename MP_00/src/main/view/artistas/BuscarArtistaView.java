@@ -98,11 +98,11 @@ public class BuscarArtistaView extends JFrame implements ActionListener {
             pnlRodape = new MyJPanel(new FlowLayout(FlowLayout.CENTER));
         }
 
-        btnBuscar = new MyJButton("Buscar");
-        btnCancelar = new MyJButton("Voltar");
+        btnBuscar = new MyJButton("Buscar", true);
+        btnCancelar = new MyJButton("Voltar", true);
 
-        pnlRodape.add(btnBuscar, true);
-        pnlRodape.add(btnCancelar, true);
+        pnlRodape.add(btnBuscar);
+        pnlRodape.add(btnCancelar);
 
         return pnlRodape;
     }
